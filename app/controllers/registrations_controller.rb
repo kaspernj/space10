@@ -1,0 +1,74 @@
+class RegistrationsController < ApplicationController
+	before_filter :find_event
+	before_filter :only_signed_in_users
+	before_filter :only_published_events, except: :show
+	before_filter :only_current_events, except: :show
+	before_filter :correct_user, only: [:show, :destroy]
+	before_filter :only_once, only: [:new, :create]
+
+	def show
+		@registration = current_user.registrations.find_by(event: @event)
+		unless @registration
+			raise ActiveRecord::RecordNotFound
+		end
+	end
+
+	def new
+		current_user.registrations.new(event: @event)
+	end
+
+	def create
+		@registration = current_user.registrations.new(event: @event)
+		if @registration.save
+			flash[:success] = "Seat requested"
+			redirect_to [@event, @registration]
+		else
+			render 'new'
+		end
+	end
+
+	def destroy
+		
+	end
+
+private
+
+	def find_event
+		@event = Event.find(params[:event_id])
+	end
+
+	def only_signed_in_users
+		if !signed_in?
+			flash[:notice] = "Please sign up"
+			redirect_to new_user_path
+		end
+	end
+
+	def only_published_events
+		if @event.status != :published
+			flash[:danger] = "Event not found"
+			redirect_to @event
+		end
+	end
+
+	def only_current_events
+		if @event.historic?
+			flash[:notice] = "Event has ended"
+			redirect_to @event
+		end
+	end
+
+	def correct_user
+		if !current_user.registrations.find(params[:id]).present?
+			redirect_to root_path
+		end
+	end
+
+	def only_once
+		if current_user.registrations.find_by(event: @event).present?
+			flash[:notice] = "You have already requested a seat for this event"
+			redirect_to @event
+		end
+	end
+
+end

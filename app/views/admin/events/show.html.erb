@@ -1,0 +1,47 @@
+<% provide(:title, @event.title) %>
+<div class="row">
+	<div class="col-md-10">
+		<h2><%= @event.title %></h2>
+	</div>
+	<div class="col-md-2 text-right">
+		<%= link_to "Edit Event", edit_admin_event_path(@event), class: 'btn btn-sm btn-default' %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<p class="lead">
+			Starts at: <%= @event.starts_at.localtime.to_s(:formatted) %> |
+			Ends at: <%= @event.ends_at.localtime.to_s(:formatted) rescue '-' %> |
+			<%= @event.registrations.confirmed.count %><% if @event.max_registrations.present? %>/<%= @event.max_registrations %><% end %> confirmed registrations
+		</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive">
+  		<table class="table">
+  			<thead>
+          <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Requested at</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @event.registrations.each do |r| %>
+						<th scope="row"><%= r.id %></th>
+						<td><%= r.user.full_name %></td>
+						<td><%= r.created_at.localtime.to_s(:formatted) %></td>
+						<td><%= r.confirmation_status.capitalize %></td>
+						<td><%= link_to "#{r.confirmed? ? 'Unconfirm' : 'Confirm registration'}", admin_event_confirm_registration_path(id: r.id, event_id: r.event.id), method: :post, data: { confirm: "Are you sure you want to #{ r.confirmed? ? 'unconfirm' : 'confirm' } the registration?" } %></td>
+        	<% end %>
+        	<% if @event.registrations.empty? %>
+						<td colspan="5">No registrations yet</td>
+        	<% end %>
+        </tbody>
+      </table>
+		</div>
+	</div>
+</div>

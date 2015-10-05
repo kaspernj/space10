@@ -1,0 +1,46 @@
+a {
+	position: relative;
+}
+
+a:not([class]):after {
+	content: ' ';
+	position: absolute;
+	border-bottom: 1px dotted lighten($link-color,80%);
+	left: 0;
+	right: 0;
+	bottom: -3px;
+}
+a:not([class]):hover:after {
+	border-bottom: 1px dotted $link-color;
+}
+
+.navbar, .dropdown-menu {
+	a:after, a:hover:after {
+		border: none;
+	}
+}
+
+.form-control, .btn, .input-group-addon, .note-editor, .list-group .list-group-item {
+	border-width: 2px;
+}
+
+.note-editor {
+	border-color: $brand-primary;
+}
+
+.input-group-addon {
+	color: #000;
+}
+
+.btn {
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.panel:not(.note-editor) {
+	border-width: 10px;
+}
+
+#nprogress .peg {
+	box-shadow: none;
+}

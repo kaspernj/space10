@@ -1,0 +1,11 @@
+<% provide(:title, "Edit event") %>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Edit event</h2>
+		<%= form_for @event, url: admin_event_path(@event), html: { multipart: true } do |f| %>
+			
+			<%= render 'form_fields', f: f %>
+	
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,134 @@
+<% if @event.errors.any? %>
+	<div class="alert alert-danger">
+		<p>Oops! Something went wrong. Try again!</p>
+		<ul>
+	  	<% @event.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		  <% end %>
+		</ul>
+	</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title, class: "form-control" %>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+	<%= f.label :starts_at %>
+	<div class="input-group">
+			<%= f.datetime_field :starts_at, value: (@event.starts_at.blank? ? '' : @event.starts_at.localtime.to_s(:formatted)), placeholder: "#{DateTime.now.to_s(:formatted)}", class: "form-control datetimepicker" %>	
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		</div>
+	</div>
+	
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<%= f.label :ends_at %>
+			<div class="input-group">
+				<%= f.datetime_field :ends_at, value: (@event.ends_at.blank? ? '' : @event.ends_at.localtime.to_s(:formatted)), class: "form-control datetimepicker" %>	
+				<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<%= f.label :max_registrations %>
+			<%= f.number_field :max_registrations, placeholder: 'Leave blank for indefinite', class: 'form-control' %>
+		</div>
+	</div>
+</div>
+<hr>
+<%= f.fields_for :address do |a| %>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :name, "Venue name" %>
+				<%= a.text_field :name, class: "form-control" %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :address_1, "Address line 1" %>
+				<%= a.text_field :address_1, class: "form-control" %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :address_2, "Address line 2 (optional)" %>
+				<%= a.text_field :address_2, class: "form-control" %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :zipcode, "Zip code" %>
+				<%= a.text_field :zipcode, class: "form-control" %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :city %>
+				<%= a.text_field :city, class: "form-control" %>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= a.label :country %>
+				<%= a.text_field :country, class: "form-control" %>
+			</div>
+		</div>
+	</div>
+<% end %>
+<hr>
+<div class="form-group">
+	<%= f.label :excerpt %>
+	<%= f.text_area :excerpt, class: "form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :content %>
+	<%= f.text_area :content, class: "form-control", data: { provider: 'summernote' } %>
+</div>
+
+<div class="form-group upload_images_preview">
+	<% @event.image_attachments.each do |p| %>
+	  <%= image_tag p.image, size: "100x100" %>
+	<% end %>
+</div>
+
+<div class="form-group">
+	<%= label_tag :upload_images %>
+	<%= file_field_tag :upload_images, :multiple => true, name: "upload_images[]" %>
+</div>
+
+<hr>
+
+<% if @event.publish_at.present? && @event.publish_at < DateTime.now  %>
+	<div class="checkbox">
+		<%= label_tag do %>
+			<%= f.check_box :published, id: "published" %> Publish
+		<% end %>
+	</div>
+<% end %>
+<div class="checkbox">
+	<% should_be_checked = (@event.publish_at.nil? || @event.publish_at < DateTime.now) ? false : true %>
+	<%= label_tag do %>
+		<%= check_box_tag :schedule_post, nil, should_be_checked, id: "schedule_post" %> Schedule
+	<% end %>
+</div>
+<div class="row" id="publish_at_form_group">
+	<div class="form-group col-md-4">
+		<div class="input-group">
+			<%= f.datetime_field :publish_at, value: (@event.publish_at.blank? ? '' : @event.publish_at.localtime.to_s(:formatted)), class: "form-control datetimepicker" %>	
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.submit "Save", class: "btn btn-default" %>
+	<%= f.submit "Schedule", class: "btn btn-primary" %>
+	<%= f.submit "Publish now", class: "btn btn-primary" unless (@event.published? && @event.publish_at && @event.publish_at < DateTime.now) %>
+</div>

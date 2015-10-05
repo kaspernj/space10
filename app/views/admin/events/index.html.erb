@@ -1,0 +1,41 @@
+<% provide(:title, "All Events") %>
+<div class="row">
+	<div class="col-md-8">
+		<h2>All Events</h2>
+	</div>
+	<div class="col-md-4 text-right">
+		<%= link_to "New Event", new_admin_event_path, class: 'btn btn-sm btn-default' %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive">
+  		<table class="table">
+  			<thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Updated at</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @events.each do |event| %>
+	          <tr>
+	            <th scope="row"><%= event.id %></th>
+	            <td><%= link_to event.title, admin_event_path(event) %></td>
+	            <td><%= event.status.capitalize %></td>
+	            <td><%= event.updated_at.to_s(:formatted) %></td>
+	            <td class="text-right">
+	            	<%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, event %>
+	            	<%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_event_path(event) %>
+	            	<%= link_to '<i class="fa fa-fw fa-trash"></i>'.html_safe, admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
+	            </td>
+	          </tr>
+	        <% end %>
+        </tbody>
+  		</table>
+  	</div>
+	</div>
+</div>
