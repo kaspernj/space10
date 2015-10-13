@@ -21,7 +21,7 @@ class Api::V1::ApiController < ApplicationController
 
 	def authenticate_api_client
 		authenticate_or_request_with_http_basic do |username, password|
-			username == "ios_app" && password == "secret123"
+			username == ENV['API_USER'] && password == ENV['API_SECRET']
 		end
 	end
 
