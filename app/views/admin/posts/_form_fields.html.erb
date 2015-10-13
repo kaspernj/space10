@@ -1,0 +1,41 @@
+<% if @post.errors.any? %>
+	<div class="alert alert-danger">
+		<p>Oops! Something went wrong. Try again!</p>
+		<ul>
+	  	<% @post.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		  <% end %>
+		</ul>
+	</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= f.label :excerpt %>
+	<%= f.text_area :excerpt, class: 'form-control' %>
+</div>
+
+<hr>
+
+<div class="sortable">
+	<%= f.fields_for :content_blocks do |builder| %>
+		<%= render "#{builder.object.class.name.underscore}_fields", f: builder %>
+	<% end %>
+
+	<div class="add_fields_here">
+		<%= link_to_add_fields 'Add image block', f, :image_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields 'Add text block', f, :text_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields 'Add image slider block', f, :image_slider_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields 'Add video block', f, :video_blocks, { class: 'btn btn-default' } %>
+	</div>
+</div>
+
+<hr>
+
+<div class="form-group">
+	<%= f.submit "Publish now", class: 'btn btn-primary' %>
+</div>

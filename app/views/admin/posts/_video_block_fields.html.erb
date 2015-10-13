@@ -1,0 +1,18 @@
+<fieldset class="panel panel-default sortable_item">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fa fa-bars handle"></i> Video block</h3>
+	</div>
+	<div class="panel-body">
+		<%= f.hidden_field :row_order, class: 'row_order' %>
+		<%= f.fields_for :video_attachment, (f.object.video_attachment || f.object.send('build_video_attachment')) do |builder| %>
+			<%= builder.label :title %>
+			<%= builder.text_field :title %>
+			<%= builder.label :video_url %>
+			<%= builder.text_field :video_url %>
+			<%= builder.label :provider %>
+			<%= builder.text_field :provider %>
+			<%= builder.label :video_id %>
+			<%= builder.text_field :video_id %>
+		<% end %>
+	</div>
+</fieldset>

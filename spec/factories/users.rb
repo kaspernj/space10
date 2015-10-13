@@ -19,7 +19,6 @@ FactoryGirl.define do
 		last_name "Doe"
 		sequence(:email) { |n| "email_#{n}@example.com" }
 		password "abc123456"
-		admin false
   end
 
 end

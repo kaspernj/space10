@@ -36,6 +36,8 @@ gem 'active_model_serializers'
 
 gem 'nprogress-rails'
 
+gem 'ruby-oembed'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

@@ -92,15 +92,15 @@
 	<%= f.text_area :content, class: "form-control", data: { provider: 'summernote' } %>
 </div>
 
-<div class="form-group upload_images_preview">
-	<% @event.image_attachments.each do |p| %>
-	  <%= image_tag p.image, size: "100x100" %>
-	<% end %>
-</div>
-
 <div class="form-group">
-	<%= label_tag :upload_images %>
-	<%= file_field_tag :upload_images, :multiple => true, name: "upload_images[]" %>
+	<%= label_tag :featured_images %>
+	<div class="image_attachments sortable">
+		<%= f.fields_for :image_attachments do |builder| %>
+			<%= render 'image_attachment_fields', f: builder %>
+		<% end %>
+		<%= link_to_add_fields "Add image", f, :image_attachments, {:class => 'add_image btn btn-default'} %>
+	</div>
+	<div class="clearfix"></div>
 </div>
 
 <hr>

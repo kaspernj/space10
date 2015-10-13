@@ -1,0 +1,19 @@
+<div class="panel panel-default sortable_item">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fa fa-bars handle"></i> Image block</h3>
+	</div>
+	<div class="panel-body">
+		<%= f.hidden_field :row_order, class: 'row_order' %>
+		<div class="image_attachments">
+			<%= f.fields_for :image_attachment, (f.object.image_attachment || f.object.send('build_image_attachment')) do |builder| %>
+				<fieldset class="file_upload event_image_attachment">
+					<%= image_tag (builder.object.image.present? ? builder.object.image : "http://placehold.it/400x400?text=Choose+image"), height: "100", class: "image_preview" %>
+					
+					<%= builder.file_field :image, class: "upload upload_image" %>
+					<%= builder.hidden_field :image_cache %>
+				</fieldset>
+			<% end %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

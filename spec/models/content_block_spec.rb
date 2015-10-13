@@ -1,26 +1,24 @@
 # == Schema Information
 #
-# Table name: image_attachments
+# Table name: content_blocks
 #
 #  id            :integer          not null, primary key
+#  type          :string
 #  resource_type :string
 #  resource_id   :integer
-#  title         :string
-#  description   :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  image         :string
 #  row_order     :integer
 #
 
 require 'rails_helper'
 
-RSpec.describe ImageAttachment, type: :model do
-  describe "validations" do
-  	it { should validate_presence_of :image }
+RSpec.describe ContentBlock, type: :model do
+  describe 'validations' do
+
   end
 
-  describe "associations" do
+  describe 'associations' do
   	it { should belong_to :resource }
   end
 end

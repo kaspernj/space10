@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004151851) do
+ActiveRecord::Schema.define(version: 20151013202616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20151004151851) do
     t.datetime "updated_at",       null: false
   end
 
+  create_table "content_blocks", force: :cascade do |t|
+    t.string   "type"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "row_order"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "excerpt"
@@ -59,6 +68,14 @@ ActiveRecord::Schema.define(version: 20151004151851) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "image"
+    t.integer  "row_order"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "excerpt"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -67,6 +84,14 @@ ActiveRecord::Schema.define(version: 20151004151851) do
     t.boolean  "confirmed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "text_attachments", force: :cascade do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.text     "content"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +103,19 @@ ActiveRecord::Schema.define(version: 20151004151851) do
     t.datetime "updated_at",                      null: false
     t.string   "auth_token"
     t.boolean  "admin",           default: false
+  end
+
+  create_table "video_attachments", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.boolean  "featured"
+    t.string   "provider"
+    t.string   "video_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "video_url"
+    t.string   "resource_type"
+    t.integer  "resource_id"
   end
 
 end

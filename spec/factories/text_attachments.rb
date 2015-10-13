@@ -1,25 +1,20 @@
 # == Schema Information
 #
-# Table name: image_attachments
+# Table name: text_attachments
 #
 #  id            :integer          not null, primary key
 #  resource_type :string
 #  resource_id   :integer
-#  title         :string
-#  description   :string
+#  content       :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  image         :string
-#  row_order     :integer
 #
 
 FactoryGirl.define do
-  factory :image_attachment do
+  factory :text_attachment do
     resource_type "MyString"
-		resource_id 1
-		title "MyString"
-		description "MyString"
-		image "sritng"
+resource_id 1
+content "MyText"
   end
 
 end

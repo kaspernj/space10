@@ -19,12 +19,13 @@
 class Event < ActiveRecord::Base
 	validates_presence_of :title, :starts_at
 
-  belongs_to :address
-  has_many :image_attachments, as: :resource
-  has_many :registrations
+  belongs_to :address, dependent: :destroy
+  has_many :image_attachments, as: :resource, dependent: :destroy
+  has_many :registrations, dependent: :destroy
   has_many :users, through: :registrations
 
-  accepts_nested_attributes_for :address, :image_attachments
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :image_attachments, allow_destroy: true
 
   scope :published, -> { where('published = true AND publish_at < ?', DateTime.now) }
   scope :unpublished, -> { where('published = false OR publish_at > ?', DateTime.now) }

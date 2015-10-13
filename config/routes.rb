@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show] do
     resources :registrations
   end
+  resources :posts, only: [:index, :show]
 
   namespace :admin do
   	get "/", to: "static_pages#dashboard", as: "root"
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
       resources :registrations
       post 'confirm_registration', to: 'registrations#confirm_registration', as: 'confirm_registration'
     end
+    resources :posts
   end
 
   namespace :api do
