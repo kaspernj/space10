@@ -19,6 +19,11 @@
 	<%= f.text_area :excerpt, class: 'form-control' %>
 </div>
 
+<div class="form-group">
+	<%= f.label :content, "Primary content" %>
+	<%= f.text_area :content, class: 'form-control', data: { provider: 'summernote'} %>
+</div>
+
 <hr>
 
 <div class="sortable">
@@ -27,15 +32,39 @@
 	<% end %>
 
 	<div class="add_fields_here">
-		<%= link_to_add_fields 'Add image block', f, :image_blocks, { class: 'btn btn-default' } %>
-		<%= link_to_add_fields 'Add text block', f, :text_blocks, { class: 'btn btn-default' } %>
-		<%= link_to_add_fields 'Add image slider block', f, :image_slider_blocks, { class: 'btn btn-default' } %>
-		<%= link_to_add_fields 'Add video block', f, :video_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="icon-Photo"></i> Add image block'.html_safe, f, :image_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="icon-Text-Box"></i> Add text block'.html_safe, f, :text_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="icon-Photos"></i> Add image slider block'.html_safe, f, :image_slider_blocks, { class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="icon-Video"></i> Add video block'.html_safe, f, :video_blocks, { class: 'btn btn-default' } %>
 	</div>
 </div>
 
 <hr>
 
+<% if @post.publish_at.present? && @post.publish_at < DateTime.now  %>
+	<div class="checkbox">
+		<%= label_tag do %>
+			<%= f.check_box :published, id: "published" %> Publish
+		<% end %>
+	</div>
+<% end %>
+<div class="checkbox">
+	<% should_be_checked = (@post.publish_at.nil? || @post.publish_at < DateTime.now) ? false : true %>
+	<%= label_tag do %>
+		<%= check_box_tag :schedule_post, nil, should_be_checked, id: "schedule_post" %> Schedule
+	<% end %>
+</div>
+<div class="row" id="publish_at_form_group">
+	<div class="form-group col-md-4">
+		<div class="input-group">
+			<%= f.datetime_field :publish_at, value: (@post.publish_at.blank? ? '' : @post.publish_at.localtime.to_s(:formatted)), class: "form-control datetimepicker" %>	
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		</div>
+	</div>
+</div>
+
 <div class="form-group">
-	<%= f.submit "Publish now", class: 'btn btn-primary' %>
+	<%= f.submit "Save", class: "btn btn-default" %>
+	<%= f.submit "Schedule", class: "btn btn-primary" %>
+	<%= f.submit "Publish now", class: "btn btn-primary" unless (@post.published? && @post.publish_at && @post.publish_at < DateTime.now) %>
 </div>

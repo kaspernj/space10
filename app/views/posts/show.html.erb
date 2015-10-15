@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1><%= @post.title %></h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		Featured images here
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+		DATE
+	</div>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-12">
+				<p><strong><%= @post.excerpt %></strong></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<%= @post.content.html_safe %>
+			</div>
+		</div>
+	</div>
+</div>
+<% @post.content_blocks.each do |content_block| %>
+	<%= render content_block.type.underscore, object: content_block %>
+<% end %>

@@ -2,9 +2,18 @@ $(document).on('ready page:load', function () {
 	set_positions = function(el){
     // loop through and give each task a data-pos
     // attribute that holds its position in the DOM
-    el.closest('.sortable').find('.sortable_item').each(function(i){
-        $(this).find("input.row_order").first().attr('value',i+1);
-    });
+    console.log(el);
+    if (el !== undefined) {
+	    el.closest('.sortable').find('.sortable_item').each(function(i){
+	        $(this).find("input.row_order").first().attr('value',i+1);
+	    });
+	  } else {
+	  	$('.sortable').each(function(s){
+	  		$(this).find('.sortable_item').each(function(i){
+	        $(this).find("input.row_order").first().attr('value',i+1);
+	    	});
+	  	})
+	  }
 	};
 
 	init_sortable = function() {
@@ -23,6 +32,7 @@ $(document).on('ready page:load', function () {
 			ui.placeholder.width(ui.item.outerWidth());
 			ui.placeholder.css('margin', ui.item.css('margin'));
 		});
+		set_positions();
 	};
 
 	init_sortable();

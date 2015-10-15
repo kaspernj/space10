@@ -24,6 +24,12 @@ a:not([class]):hover:after {
 	border-width: 2px;
 }
 
+.input-group-btn .btn {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: -2px !important;
+}
+
 .note-editor {
 	border-color: $brand-primary;
 }

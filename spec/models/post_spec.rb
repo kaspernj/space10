@@ -7,6 +7,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  excerpt    :text
+#  content    :text
+#  publish_at :datetime
+#  published  :boolean
 #
 
 require 'rails_helper'
@@ -15,8 +18,9 @@ RSpec.describe Post, type: :model do
 	describe 'validations' do
 		it { should validate_presence_of :title }
 		it { should respond_to :excerpt }
-		# it { should respond_to :published }
-		# it { should respond_to :publish_at }
+		it { should respond_to :content }
+		it { should respond_to :published }
+		it { should respond_to :publish_at }
 	end
 
 	describe 'associations' do

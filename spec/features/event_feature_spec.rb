@@ -42,6 +42,7 @@ RSpec.describe 'events feature', type: :feature do
 			expect(Event.scheduled.count).to eq 1
 		end
 
+		it 'allows image attachements'
 		# it 'allows image attachement', js: true, focus: true do
 		# 	click_on 'Add image'
 

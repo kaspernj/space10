@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   resources :posts, only: [:index, :show]
 
+  post 'video_preview', to: 'video_preview#create', as: 'video_preview'
+
   namespace :admin do
   	get "/", to: "static_pages#dashboard", as: "root"
   	resources :events do

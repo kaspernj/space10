@@ -7,17 +7,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Space10", root_path, class: "navbar-brand" %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag 'logo.svg', height: "114" %>
+      <% end %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span id="clock">14.32</span></a></li>
+      <ul class="nav navbar-nav navbar-left">
         <% if signed_in? %>
-          <li><%= link_to "<i class='fa fa-sign-out'></i> Log out".html_safe, logout_path %></li>
+          <% if current_user.admin? %><li><%= link_to "<i class='fa fa-user-secret'></i>".html_safe, admin_root_path %></li><% end %>
+          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path %></li>
+          <li><%= link_to "<i class='fa fa-user'></i> Account".html_safe, "#" %></li>
         <% else %>
-          <li><%= link_to "<i class='fa fa-lock'></i> Log in".html_safe, login_path %></li>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li>
         <% end %>
         <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li>
+      </ul>
+      <ul class="nav navbar-nav primary-nav navbar-right">
+        <li><%= nav_link "Journal", posts_path %></li>
+        <li><%= nav_link "Program", "#" %></li>
+        <li><%= nav_link "Labs", "#" %></li>
+        <li><%= nav_link "Community", "#" %></li>
+        <li><%= nav_link "About", "#" %></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

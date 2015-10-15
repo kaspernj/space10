@@ -2,15 +2,17 @@
 #
 # Table name: video_attachments
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  description :string
-#  featured    :boolean
-#  provider    :string
-#  video_id    :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  video_url   :string
+#  id            :integer          not null, primary key
+#  title         :string
+#  description   :string
+#  featured      :boolean
+#  provider      :string
+#  video_id      :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  video_url     :string
+#  resource_type :string
+#  resource_id   :integer
 #
 
 FactoryGirl.define do

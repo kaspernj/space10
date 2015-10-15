@@ -5,14 +5,39 @@
 	<div class="panel-body">
 		<%= f.hidden_field :row_order, class: 'row_order' %>
 		<%= f.fields_for :video_attachment, (f.object.video_attachment || f.object.send('build_video_attachment')) do |builder| %>
-			<%= builder.label :title %>
-			<%= builder.text_field :title %>
-			<%= builder.label :video_url %>
-			<%= builder.text_field :video_url %>
-			<%= builder.label :provider %>
-			<%= builder.text_field :provider %>
-			<%= builder.label :video_id %>
-			<%= builder.text_field :video_id %>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= builder.label :video_url %>
+						<div class="input-group">
+							<%= builder.text_field :video_url, class: "form-control video_url_field" %>
+							<span class="input-group-btn">
+								<a href="#" class="btn btn-default" id="get_video_preview">Get info</a> 
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<%= builder.label :provider, "Provider and video id" %>
+						<%= builder.text_field :provider, readonly: true, class: "form-control provider_field" %>
+					</div>
+					<div class="form-group">
+						<%= builder.text_field :video_id, readonly: true, class: "form-control video_id_field" %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= builder.label :title %>
+						<%= builder.text_field :title, class: "form-control video_title_field" %>
+					</div>
+					<div class="form-group">
+						<%= builder.label :description %>
+						<%= builder.text_area :description, class: "form-control video_description_field" %>	
+					</div>
+					<div class="form-group">
+						<%= builder.hidden_field :image, class: 'video_image_field' %>
+					</div>
+				</div>
+			</div>
 		<% end %>
 	</div>
 </fieldset>
