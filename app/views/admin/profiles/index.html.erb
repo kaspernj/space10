@@ -1,0 +1,41 @@
+<% provide(:title, "All profiles") %>
+<div class="row">
+	<div class="col-md-8">
+		<h2>All profiles</h2>
+	</div>
+	<div class="col-md-4 text-right">
+		<%= link_to "New profile", new_admin_profile_path, class: 'btn btn-sm btn-default' %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive">
+  		<table class="table">
+  			<thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Updated at</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @profiles.each do |profile| %>
+	          <tr>
+	            <th scope="row"><%= profile.id %></th>
+	            <td><%= link_to profile.title, admin_profile_path(profile) %></td>
+	            <td><%= profile.type.underscore.humanize rescue '-' %></td>
+	            <td><%= profile.updated_at.to_s(:formatted) %></td>
+	            <td class="text-right">
+	            	<%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>
+	            	<%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_profile_path(profile) %>
+	            	<%= link_to '<i class="fa fa-fw fa-trash"></i>'.html_safe, admin_profile_path(profile), method: :delete, data: { confirm: 'Are you sure?' } %>
+	            </td>
+	          </tr>
+	        <% end %>
+        </tbody>
+  		</table>
+  	</div>
+	</div>
+</div>

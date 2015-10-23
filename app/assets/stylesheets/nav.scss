@@ -1,0 +1,43 @@
+.navbar-brand > img {
+  position: relative;
+  top:-20px;
+}
+
+.navbar-nav > li > a {
+  font-weight: bold;
+  &.active {
+    color: $navbar-default-link-active-color;
+  }
+}
+
+.primary-nav > li {
+  a {
+    padding-left: $gutter * 1.5;
+    &:before {
+      content: " ";
+      position: absolute;
+      top: $navbar-height/2 - ($gutter * 0.8);
+      left: 0;
+      right: $gutter/2;
+      border-top: 10px solid #ddd;
+    }
+    &.active:before, &:hover:before {
+      border-color: $brand-primary;
+    }
+  }
+}
+
+#admin_container {
+  h1:first-child, h2:first-child {
+    margin-top: 0;
+  }
+}
+
+#admin_nav {
+  li {
+    padding: 5px 0;
+    a.active {
+      font-weight: 600;
+    }
+  }
+}

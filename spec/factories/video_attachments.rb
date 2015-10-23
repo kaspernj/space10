@@ -13,6 +13,7 @@
 #  video_url     :string
 #  resource_type :string
 #  resource_id   :integer
+#  image         :string
 #
 
 FactoryGirl.define do

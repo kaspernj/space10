@@ -10,12 +10,12 @@ $nprogress-color: #000 !default;
 // //
 // //## Gray and brand colors for use across Bootstrap.
 
-// $gray-base:              #000 !default;
-// $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-// $gray-dark:              lighten($gray-base, 20%) !default;   // #333
-// $gray:                   lighten($gray-base, 33.5%) !default; // #555
-// $gray-light:             lighten($gray-base, 46.7%) !default; // #777
-// $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   #B3B3B3;
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           #FAFAFB;
 
 $brand-primary:         #000 !default;
 $brand-success:         #20c24e !default;
@@ -45,7 +45,7 @@ $link-hover-decoration: none !default;
 // //
 // //## Font, line-height, and color for body text, headings, and more.
 
-// $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  Helvetica, Arial, sans-serif !default;
 // $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 // //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -64,6 +64,7 @@ $font-size-h1:            floor(($font-size-base * 5)) !default; // ~36px
 
 // //** Unit-less `line-height` for use in components like buttons.
 // $line-height-base:        1.428571429 !default; // 20/14
+$line-height-base:        1.7142857143 !default; // 20/14
 // //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 // $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
@@ -149,7 +150,7 @@ $table-border-color:            #000 !default;
 // //
 // //## For each of Bootstrap's buttons, define text, background and border color.
 
-// $btn-font-weight:                normal !default;
+$btn-font-weight:                bold !default;
 
 $btn-default-color:              #333 !default;
 $btn-default-bg:                 #fff !default;
@@ -749,18 +750,18 @@ $panel-default-border:        #000 !default;
 // //##
 
 // //** Padding around the thumbnail image
-// $thumbnail-padding:           4px !default;
+$thumbnail-padding:           0px !default;
 // //** Thumbnail background color
 // $thumbnail-bg:                $body-bg !default;
 // //** Thumbnail border color
-// $thumbnail-border:            #ddd !default;
+$thumbnail-border:            none !default;
 // //** Thumbnail border radius
 // $thumbnail-border-radius:     $border-radius-base !default;
 
 // //** Custom text color for thumbnail captions
 // $thumbnail-caption-color:     $text-color !default;
 // //** Padding around the thumbnail caption
-// $thumbnail-caption-padding:   9px !default;
+$thumbnail-caption-padding:   0px !default;
 
 
 // //== Wells

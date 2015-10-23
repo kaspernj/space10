@@ -12,6 +12,8 @@
 #
 
 class ContentBlock < ActiveRecord::Base
+	validates_presence_of :type
+	
 	belongs_to :resource, polymorphic: true
 
 	default_scope { order(:row_order) }

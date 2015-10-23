@@ -24,7 +24,6 @@ class Authentication < ActiveRecord::Base
 			auth.oauth_token = omniauth['credentials']['token']
     	auth.oauth_expires_at = Time.at(omniauth['credentials']['expires_at'].to_i)
 			auth.user = User.from_omniauth(omniauth)
-			auth.save!
 		end
 	end
 end

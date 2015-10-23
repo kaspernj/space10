@@ -1,0 +1,13 @@
+<% provide(:title, "New lab") %>
+<div class="row">
+	<div class="col-md-12">
+		<h2>New lab</h2>
+		<%= form_for @lab, url: admin_labs_path, html: { multipart: true } do |f| %>
+			
+			<%= render 'form_fields', f: f %>
+
+			<%= f.submit 'Create lab', class: 'btn btn-default' %>
+			
+		<% end %>
+	</div>
+</div>

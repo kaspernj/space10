@@ -52,7 +52,7 @@ private
 
 		if params[:commit].downcase == "publish now"
 			return_params[:published] = true
-			return_params[:publish_at] = DateTime.now.strftime('%m/%d/%Y %H:%M')
+			return_params[:publish_at] = DateTime.now.to_s(:formatted)
 		elsif params[:commit].downcase == "schedule"
 			return_params[:published] = true
 		end

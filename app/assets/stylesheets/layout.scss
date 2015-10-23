@@ -1,5 +1,43 @@
 $gutter: $grid-gutter-width;
 
+.container-align-left {
+  max-width: 100%;
+  padding-right: $gutter/2;
+}
+
+.instagram-row {
+  a {
+    width: 25%;
+    display: block;
+    float: left;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+img.full_width {
+    max-width: 100%;
+  }
+
+.meta-text {
+  color: $gray;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: inherit;
+  margin: $gutter*0.8 0;
+}
+
+.bg-gray {
+  background: $gray-lighter;
+}
+
+.panel {
+  img {
+    max-width: 100%;
+  }
+}
+
 #flash_notice {
   @extend .alert;
   @extend .alert-info;
@@ -29,61 +67,8 @@ $gutter: $grid-gutter-width;
 }
 
 .vertical-divider {
-  width: 50%;
-  border: 10px solid black;
-  margin: $gutter 0 $gutter 0 -$gutter;
-}
-
-.navbar-brand > img {
-  position: relative;
-  top:-20px;
-}
-
-.navbar-nav > li > a {
-  font-weight: bold;
-  &.active {
-    color: $navbar-default-link-active-color;
-  }
-}
-
-.primary-nav > li {
-  a {
-    padding-left: $gutter * 1.5;
-    &:before {
-      content: " ";
-      position: absolute;
-      top: $navbar-height/2 - ($gutter * 0.8);
-      left: 0;
-      right: $gutter/2;
-      border-top: 10px solid #ddd;
-    }
-    &.active:before, &:hover:before {
-      border-color: $brand-primary;
-    }
-  }
-}
-
-footer {
-  color: white;
-  background-color: $brand-primary;
-  margin-top: $gutter;
-  padding-top: $gutter;
-  padding-bottom: $gutter;
-}
-
-#admin_container {
-  h1:first-child, h2:first-child {
-    margin-top: 0;
-  }
-}
-
-#admin_nav {
-  li {
-    padding: 5px 0;
-    a.active {
-      font-weight: 600;
-    }
-  }
+  border-top: 20px solid black;
+  margin: $gutter 0;
 }
 
 #publish_at_form_group {
@@ -95,10 +80,15 @@ input[value="Schedule"] {
 }
 
 .add_image {
-  height: 100px;
-  line-height: 100px;
+  height: 150px;
+  width: 150px;
+  line-height: 150px;
   vertical-align: middle;
   padding:0 20px;
+}
+
+.handle {
+  cursor: move;
 }
 
 .image_attachments {
@@ -115,9 +105,18 @@ input[value="Schedule"] {
       background-color: white;
       padding: 5px;
     }
+    .handle {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      line-height: 0.5em;
+      font-size: 0.8em;
+      background-color: white;
+      padding: 3px 5px; 
+    }
     img {
       border: 2px solid black;
-      min-height: 100px;
+      min-height: 150px;
       min-width: 50px;
       background-color: #eee;
     }
@@ -146,4 +145,9 @@ input[value="Schedule"] {
   cursor: pointer;
   opacity: 0;
   filter: alpha(opacity=0);
+}
+
+.content_block {
+  padding-top: $gutter*2;
+  padding-bottom: $gutter*2;
 }

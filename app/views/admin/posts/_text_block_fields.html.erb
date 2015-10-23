@@ -1,6 +1,10 @@
 <fieldset class="panel panel-default sortable_item">
 	<div class="panel-heading">
-		<h3 class="panel-title"><i class="fa fa-bars handle"></i> Text block</h3>
+		<h3 class="panel-title">
+			<%= f.hidden_field :_destroy, class: 'destroy' %>
+			<i class="fa fa-bars handle"></i> Text block
+			<a href="#" class="remove_fields pull-right" >&times;</a>
+		</h3>
 	</div>
 	<div class="panel-body">
 		<%= f.hidden_field :row_order, class: 'row_order' %>

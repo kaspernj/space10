@@ -1,0 +1,82 @@
+.posts.show, .events.show {
+  .text_block p {
+    font-size: 1.3em;
+    line-height: 2em;
+    margin-bottom: $gutter;
+  }
+  p {
+    &.excerpt {
+      font-size: 1.7em;
+      font-weight: bold;
+      line-height: 1.5em;
+      margin-bottom: $gutter;
+    }
+    &.date {
+      font-size: 1em;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding-top: 10px;
+      position: relative;
+      &:before {
+        content: " ";
+        border-top: 2px solid black;
+        width: 15px;
+        position: absolute;
+        margin-bottom: 15px;
+        top: 0;
+      }
+    }
+  }
+  blockquote {
+    border:none;
+    font-size: 2.9em;
+    font-weight: bold;
+    line-height: 1.1em;
+  }
+}
+
+.post-thumbnail {
+  border-left: 1px solid #ddd;
+  &:first-child {
+    border-left: none;
+  }
+}
+
+.event-heading {
+  h1 {
+    margin-top: -20%;
+    margin-bottom: $gutter;
+    padding: $gutter 1.5*$gutter;
+    background-color: white;
+  }
+}
+
+.event-date {
+  font-size: 14em;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.event-address {
+  font-size: 90%;
+}
+
+.lab {
+  margin: $gutter*4 0;
+}
+
+.labs.index {
+  h1 {
+    font-size: 12em;
+    line-height: 1.3em;
+    margin-bottom: $gutter*2;
+    margin-top: 0;
+    span {
+      border-bottom: 20px solid black;
+    }
+  }
+  .lab-comming {
+    opacity: 0.5;
+  }
+}

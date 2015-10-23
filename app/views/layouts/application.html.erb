@@ -1,38 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<%= render 'layouts/easteregg' %>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "Space10" %></title>
-
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-
+  <%= render 'layouts/head' %>
+  <body class="<%= controller_name %> <%= controller.action_name %>">
     <%= render 'layouts/navbar' %>
     
-    <div class="container">
-      
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}", class: "flash_#{name}" %>
-      <% end %>
-
-      <%= yield %>
-    </div>
-
-    <footer>
-      <div class="container">
-        <div class="col-md-3">SPACE10</div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-      </div>
-    </footer>
-
+    <%= render 'layouts/flash_messages' %>
+    <%= yield %>
+    
+    <%= render 'layouts/footer' %>
   </body>
 </html>

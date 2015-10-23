@@ -5,13 +5,14 @@ a {
 a:not([class]):after {
 	content: ' ';
 	position: absolute;
-	border-bottom: 1px dotted lighten($link-color,80%);
+	border-bottom: 0.5em solid #ddd;
 	left: 0;
 	right: 0;
-	bottom: -3px;
+	bottom: -0.3em;
+	z-index: -999;
 }
 a:not([class]):hover:after {
-	border-bottom: 1px dotted $link-color;
+	border-bottom: 1.5em solid #ddd;
 }
 
 .navbar, .dropdown-menu {
@@ -39,7 +40,6 @@ a:not([class]):hover:after {
 }
 
 .btn {
-	font-weight: 500;
 	text-transform: uppercase;
 }
 

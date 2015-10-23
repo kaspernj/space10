@@ -3,14 +3,13 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  first_name      :string
-#  last_name       :string
 #  email           :string
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
+#  name            :string
 #
 
 require 'rails_helper'
@@ -18,8 +17,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   
   describe 'validations' do
-  	it { should validate_presence_of :first_name }
-    it { should validate_presence_of :last_name }
+  	it { should respond_to :name }
     
     it { should validate_presence_of :password }
     it { should validate_length_of(:password).is_at_least(8) }
@@ -37,7 +35,7 @@ RSpec.describe User, type: :model do
 
   	it 'should validate case insensitive uniqueness' do
   		create(:user, email: "test@example.com", password: "12345678")
-  		expect(build(:user, email: "test@example.com")).to_not be_valid
+  		expect(build(:user, email: "Test@example.com")).to_not be_valid
   	end
 
     it 'should generate token before create' do
@@ -50,6 +48,10 @@ RSpec.describe User, type: :model do
     it { should have_many :authentications }
     it { should have_many :registrations }
     it { should have_many :events }
+
+    it { should have_many :profile_authorizations }
+    it { should have_one :personal_profile }
+    it { should have_many :company_profiles }
   end
 
 end

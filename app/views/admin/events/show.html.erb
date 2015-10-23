@@ -32,7 +32,7 @@
         <tbody>
         	<% @event.registrations.each do |r| %>
 						<th scope="row"><%= r.id %></th>
-						<td><%= r.user.full_name %></td>
+						<td><%= r.user.name %></td>
 						<td><%= r.created_at.localtime.to_s(:formatted) %></td>
 						<td><%= r.confirmation_status.capitalize %></td>
 						<td><%= link_to "#{r.confirmed? ? 'Unconfirm' : 'Confirm registration'}", admin_event_confirm_registration_path(id: r.id, event_id: r.event.id), method: :post, data: { confirm: "Are you sure you want to #{ r.confirmed? ? 'unconfirm' : 'confirm' } the registration?" } %></td>

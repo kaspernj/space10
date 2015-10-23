@@ -20,9 +20,14 @@ class SessionsController < ApplicationController
 	def create_with_omniauth
 		omniauth = request.env['omniauth.auth']
 		user = Authentication.from_omniauth(omniauth).user
-		sign_in(user)
-		flash[:success] = "Logged in successfully"
-		redirect_to root_path
+		if user.save
+			sign_in(user)
+			flash[:success] = "Logged in successfully"
+			redirect_to root_path
+		else
+			flash[:danger] = "Could not authenticate"
+			redirect_to new_user_path
+		end
 	end
 
 	def omniauth_failure

@@ -7,6 +7,5 @@ CarrierWave.configure do |config|
     :region                 => 'eu-west-1',
   }
   config.fog_directory  = ENV["AWS_S3_BUCKET"]
-  config.fog_public     = true
-  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
+  config.fog_public = true
 end

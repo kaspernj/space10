@@ -28,15 +28,20 @@ gem 'codemirror-rails'
 
 gem 'omniauth-facebook'
 
+# Image upload
 gem 'carrierwave'
 gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
 
+# API serialization
 gem 'active_model_serializers'
 
-gem 'nprogress-rails'
-
+# Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'
+
+gem 'httparty'
+
+gem 'faker'
 
 group :development, :test do
 	gem 'guard'

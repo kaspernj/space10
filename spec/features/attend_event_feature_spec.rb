@@ -19,16 +19,19 @@ RSpec.describe 'attend_event_feature', type: :feature do
 			before :each do
 				sign_in user
 			end
+			it 'should be possible to request a seat' do
+				visit new_event_registration_path(event)
+				expect(page).to have_content('Accept')
+				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
+				expect(Registration.last.confirmed?).to eq false
+			end
+
 			it 'should not be possible to request a seat on past event' do
 				event.update(starts_at: 2.days.ago.to_s(:formatted), ends_at: 3.days.ago.to_s(:formatted))
 				visit new_event_registration_path(event)
 				expect(current_path).to eq event_path(event)
 			end
-			it 'should be possible to request a seat' do
-				visit new_event_registration_path(event)
-				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
-				expect(Registration.last.confirmed?).to eq false
-			end
+			
 			it 'should not be possible to request multiple seats' do
 				visit new_event_registration_path(event)
 				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
@@ -45,7 +48,7 @@ RSpec.describe 'attend_event_feature', type: :feature do
 				sign_in admin
 				visit admin_event_path(event)
 
-				expect(page).to have_content(user.first_name)
+				expect(page).to have_content(user.name)
 				click_on 'Confirm registration'
 				expect(registration.reload.confirmed).to eq true
 			end

@@ -13,7 +13,14 @@
 #
 
 class Post < ActiveRecord::Base
+  include Planable
+  include Taggable
+  include Publishable
+  
 	validates_presence_of :title
+
+  has_many :image_attachments, as: :resource, dependent: :destroy
+  accepts_nested_attributes_for :image_attachments, allow_destroy: true
 
 	has_many :content_blocks, as: :resource
 	has_many :image_blocks, source: 'ContentBlock', as: :resource
@@ -27,26 +34,4 @@ class Post < ActiveRecord::Base
 	accepts_nested_attributes_for :text_blocks, allow_destroy: true
 	accepts_nested_attributes_for :video_blocks, allow_destroy: true
 
-	scope :published, -> { where('published = true AND publish_at < ?', DateTime.now) }
-  scope :unpublished, -> { where('published = false OR publish_at > ?', DateTime.now) }
-  scope :scheduled, -> { where('published = true AND publish_at > ?', DateTime.now) }
-
-  def status
-    if published? && publish_at < DateTime.now
-      :published
-    elsif published? && publish_at > DateTime.now
-      :scheduled
-    elsif !published?
-      :draft
-    end 
-  end
-
-  def publish_at=(date)
-   begin
-     parsed = DateTime.strptime(date + " CEST",'%m/%d/%Y %H:%M %Z')
-     super parsed
-   rescue
-     date         
-   end
-  end
 end

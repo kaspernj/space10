@@ -29,6 +29,10 @@ RSpec.describe Event, type: :model do
     it { should have_many :image_attachments }
     it { should have_many :registrations }
     it { should have_many :users }
+    it 'should not be possible to set end date prior til start date' do
+      event = build(:event, starts_at: 1.day.ago.to_s(:formatted), ends_at: 2.days.ago.to_s(:formatted))
+      expect(event).not_to be_valid
+    end
     
   	it 'has many speakers'
   	it 'has many registrations'

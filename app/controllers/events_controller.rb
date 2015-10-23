@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 	def index
-		@events = Event.published
+		@events = Event.published.future
+		@previous_events = Event.published.historic
 	end
 
 	def show

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :registrations
   end
   resources :posts, only: [:index, :show]
+  resources :profiles, only: [:index, :show]
+  resources :labs, only: [:index, :show]
+  resources :tags, only: [:index, :show]
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 
@@ -26,6 +29,9 @@ Rails.application.routes.draw do
       post 'confirm_registration', to: 'registrations#confirm_registration', as: 'confirm_registration'
     end
     resources :posts
+    resources :profiles
+    resources :labs
+    resources :tags
   end
 
   namespace :api do

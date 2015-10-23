@@ -15,4 +15,8 @@
 
 class Address < ActiveRecord::Base
 	has_one :event
+
+	def any_present?
+		[name, address_1, address_2, zipcode, city, country].any? { |w| w.present? }
+	end
 end

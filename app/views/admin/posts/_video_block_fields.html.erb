@@ -1,6 +1,10 @@
 <fieldset class="panel panel-default sortable_item">
 	<div class="panel-heading">
-		<h3 class="panel-title"><i class="fa fa-bars handle"></i> Video block</h3>
+		<h3 class="panel-title">
+			<%= f.hidden_field :_destroy, class: 'destroy' %>
+			<i class="fa fa-bars handle"></i> Video block
+			<a href="#" class="remove_fields pull-right" >&times;</a>
+		</h3>
 	</div>
 	<div class="panel-body">
 		<%= f.hidden_field :row_order, class: 'row_order' %>
@@ -12,7 +16,7 @@
 						<div class="input-group">
 							<%= builder.text_field :video_url, class: "form-control video_url_field" %>
 							<span class="input-group-btn">
-								<a href="#" class="btn btn-default" id="get_video_preview">Get info</a> 
+								<a href="#" class="btn btn-primary" id="get_video_preview">Get info</a> 
 							</span>
 						</div>
 					</div>

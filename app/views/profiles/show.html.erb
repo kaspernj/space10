@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-body" >
+							<%= image_tag @profile.image_attachment.image %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<p><strong><i class="fa fa-map-marker"></i> <%= @profile.location %></strong></p>
+					<h1><%= @profile.title %></h1>
+					<p><%= @profile.description %></p>
+				</div>
+		</div>
+	</div>
+</div> 

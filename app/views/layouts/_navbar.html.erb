@@ -8,15 +8,16 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'logo.svg', height: "114" %>
+        <%= image_tag 'logo.svg', height: "114", width: '94', id: 'svg_logo' %>
+        <%= image_tag 'logo.gif', height: "114", width: '94', id: 'gif_logo', style: "display:none;" %>
       <% end %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left">
         <% if signed_in? %>
           <% if current_user.admin? %><li><%= link_to "<i class='fa fa-user-secret'></i>".html_safe, admin_root_path %></li><% end %>
-          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path %></li>
-          <li><%= link_to "<i class='fa fa-user'></i> Account".html_safe, "#" %></li>
+          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
+          <li><%= link_to "<i class='fa icon-user'></i> Account".html_safe, "#" %></li>
         <% else %>
           <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li>
         <% end %>
@@ -24,9 +25,9 @@
       </ul>
       <ul class="nav navbar-nav primary-nav navbar-right">
         <li><%= nav_link "Journal", posts_path %></li>
-        <li><%= nav_link "Program", "#" %></li>
-        <li><%= nav_link "Labs", "#" %></li>
-        <li><%= nav_link "Community", "#" %></li>
+        <li><%= nav_link "Program", events_path %></li>
+        <li><%= nav_link "Labs", labs_path %></li>
+        <li><%= nav_link "Community", profiles_path %></li>
         <li><%= nav_link "About", "#" %></li>
       </ul>
     </div><!--/.nav-collapse -->

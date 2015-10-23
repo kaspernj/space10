@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014201716) do
+ActiveRecord::Schema.define(version: 20151020123748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 20151014201716) do
     t.integer  "row_order"
   end
 
+  create_table "labs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.boolean  "published"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -81,10 +91,42 @@ ActiveRecord::Schema.define(version: 20151014201716) do
     t.boolean  "published"
   end
 
+  create_table "profile_authorizations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.string   "type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.boolean  "published"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "confirmed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,14 +140,13 @@ ActiveRecord::Schema.define(version: 20151014201716) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "auth_token"
     t.boolean  "admin",           default: false
+    t.string   "name"
   end
 
   create_table "video_attachments", force: :cascade do |t|

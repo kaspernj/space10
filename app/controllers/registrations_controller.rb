@@ -47,7 +47,7 @@ private
 	def only_published_events
 		if @event.status != :published
 			flash[:danger] = "Event not found"
-			redirect_to @event
+			redirect_to events_path
 		end
 	end
 

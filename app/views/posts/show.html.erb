@@ -1,25 +1,29 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-8 col-md-offset-2 content_block">
 		<h1><%= @post.title %></h1>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
-		Featured images here
+	<div class="col-md-12 content_block">
+		<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+			<% @post.image_attachments.each do |attachment| %>
+				<div><%= image_tag attachment.image, height: "500" %></div>
+			<% end %>
+		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-2">
-		DATE
+	<div class="col-md-2 content_block">
+		<p class="date"><%= @post.publish_at.to_date.to_s(:formatted) %></p>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-8 content_block">
 		<div class="row">
 			<div class="col-md-12">
-				<p><strong><%= @post.excerpt %></strong></p>
+				<p class="excerpt"><%= @post.excerpt %></p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 text_block">
 				<%= @post.content.html_safe %>
 			</div>
 		</div>
@@ -28,3 +32,30 @@
 <% @post.content_blocks.each do |content_block| %>
 	<%= render content_block.type.underscore, object: content_block %>
 <% end %>
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="row">
+			<hr>
+			<% @posts.each do |post| %>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<%= image_tag post.image_attachments.first.image %>
+				<div class="caption">
+					<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
+					<h3><%= post.title %></h3>
+					<p><%= post.excerpt %></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<a href="#" class="btn btn-default">Load more</a>
+	</div>
+</div>

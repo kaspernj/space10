@@ -6,8 +6,7 @@ describe "Users api", type: :request do
 		it 'allows creation of user' do
 			user_params = {
 				"user" => {
-					"first_name" => "John",
-					"last_name" => "Doe",
+					"name" => "John",
 					"email" => "johndoe@example.com",
 					"password" => "foobar123",
 					"password_confirmation" => "foobar123"
@@ -18,7 +17,7 @@ describe "Users api", type: :request do
 
 			expect(response.status).to eq 201 # created
 			expect(response_body['auth_token']).to be_present
-	    expect(User.first.first_name).to eq 'John'
+	    expect(User.first.name).to eq 'John'
 		end
 	end
 
@@ -28,7 +27,7 @@ describe "Users api", type: :request do
 			get '/api/user', {}, request_headers(user: user)
 
 			expect(response.status).to eq 200 # ok
-			expect(response_body['first_name']).to eq(user.first_name)
+			expect(response_body['name']).to eq(user.name)
 		end
 
 		it "should not return user if unauthorized" do
@@ -40,10 +39,10 @@ describe "Users api", type: :request do
 
 	describe "PUT /api/user" do
 		before :each do
-			@user = create(:user, first_name: 'John')
+			@user = create(:user, name: 'John')
 			@user_params = {
 				"user" => {
-					"first_name" => "Frank"
+					"name" => "Frank"
 				}
 			}.to_json
 		end
@@ -52,7 +51,7 @@ describe "Users api", type: :request do
 			put '/api/user', @user_params, request_headers(user: @user)
 
 			expect(response.status).to eq 200 # ok
-			expect(response_body['first_name']).to eq('Frank')
+			expect(response_body['name']).to eq('Frank')
 		end
 
 		it "should not update user if unauthorized" do

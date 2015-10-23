@@ -1,9 +1,10 @@
-<fieldset class="file_upload event_image_attachment sortable_item handle">
-	<%= image_tag (f.object.image.present? ? f.object.image : "http://placehold.it/400x400?text=Choose+image"), height: "100", class: "image_preview" %>
+<fieldset class="file_upload sortable_item">
+	<%= image_tag (f.object.image.present? ? f.object.image : "fallback/300_default.png"), height: "100", class: "image_preview" %>
 	
 	<%= f.file_field :image, class: "upload upload_image" %>
 	<%= f.hidden_field :image_cache %>
 	<%= f.hidden_field :row_order, class: "row_order" %>
-	<%= f.hidden_field :_destroy %>
+	<%= f.hidden_field :_destroy, class: 'destroy' %>
+	<span class="handle"><i class="fa fa-bars"></i></span>
   <a href="#" class="remove_fields" >&times;</a>
 </fieldset>

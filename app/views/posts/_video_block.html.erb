@@ -1,5 +1,17 @@
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		<%= object.video_attachment.video_url %>
+	<div class="col-md-10 col-md-offset-1 content_block">
+		<div class="aspect-ratio r-16-9">
+			<div class="video-group">
+				<div class="video-poster" style="background-image: url(<%= object.video_attachment.image %>)">
+					<div class="video-overlay"></div>
+					<a href="#" class="video-play-button"><%= image_tag 'play.svg' %></a>
+				</div>
+				<div class="video-embed" data-embed-src="<%= object.video_attachment.embed_src %>">
+					<iframe width="640" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		<p class="meta-text"><%= [object.video_attachment.title, object.video_attachment.description].reject(&:blank?).join(" - ") %></p>
+		
 	</div>
 </div>

@@ -1,0 +1,12 @@
+<% @labs.each do |lab| %>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 text-center">
+			<div class="lab lab<%= lab.current? ? '-active' : '-comming' %>">
+				<p><strong><%= lab.timespan.html_safe %></strong></p>
+				<h1><span><%= lab.title %></span></h1>
+				<p class="lead"><%= lab.subtitle %></p>
+			</div>
+			<hr>
+		</div>
+	</div>
+<% end %>

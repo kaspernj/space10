@@ -10,13 +10,13 @@ RSpec.describe 'events feature', type: :feature do
 			expect(current_path).to eq new_admin_event_path
 
 			fill_in 'Title', with: 'Awesome event'
-			fill_in 'Starts at', with: DateTime.now.strftime('%m/%d/%Y %H:%M')
+			fill_in 'Starts at', with: DateTime.now.to_s(:formatted)
 		end
 
 		it 'allows admins to create an event' do
 			
 			fill_in 'Excerpt', with: 'Nothing but awesome'
-			fill_in 'Content', with: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, accusantium quia cum enim, vel quisquam eos voluptatum. Fugiat, temporibus tempora sint doloremque a distinctio quidem blanditiis quae ratione. Qui, distinctio.'
+			fill_in 'Primary content', with: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, accusantium quia cum enim, vel quisquam eos voluptatum. Fugiat, temporibus tempora sint doloremque a distinctio quidem blanditiis quae ratione. Qui, distinctio.'
 
 			fill_in 'Venue name', with: 'Space 10'
 			fill_in 'Address line 1', with: 'Koedbyen 10'
@@ -33,7 +33,7 @@ RSpec.describe 'events feature', type: :feature do
 		it "allows scheduling in the future", js: true do
 			
 			check 'Schedule'
-			fill_in 'event_publish_at', with: DateTime.tomorrow.strftime('%m/%d/%Y %H:%M')
+			fill_in 'event_publish_at', with: DateTime.tomorrow.to_s(:formatted)
 
 			click_on 'Schedule'
 
@@ -42,7 +42,7 @@ RSpec.describe 'events feature', type: :feature do
 			expect(Event.scheduled.count).to eq 1
 		end
 
-		it 'allows image attachements'
+		it 'allows featured image attachements'
 		# it 'allows image attachement', js: true, focus: true do
 		# 	click_on 'Add image'
 

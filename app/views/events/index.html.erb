@@ -1,0 +1,8 @@
+<% @events.each do |event| %>
+	<%= link_to event.title, event %>
+<% end %>
+
+<h3>Previous</h3>
+<% @previous_events.each do |event| %>
+	<%= link_to event.title, event %>
+<% end %>

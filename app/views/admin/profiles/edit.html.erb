@@ -1,0 +1,13 @@
+<% provide(:title, "Edit profile") %>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Edit profile</h2>
+		<%= form_for @profile, url: admin_profile_path(@profile), html: { multipart: true } do |f| %>
+			
+			<%= render 'form_fields', f: f %>
+
+			<%= f.submit 'Save', class: 'btn btn-default' %>
+			
+		<% end %>
+	</div>
+</div>

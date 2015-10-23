@@ -13,27 +13,19 @@
 #  video_url     :string
 #  resource_type :string
 #  resource_id   :integer
+#  image         :string
 #
 
 class VideoAttachment < ActiveRecord::Base
-	# validate :parse_url, if: :validate_video_url?
+	belongs_to :resource, polymorphic: true
 
+	validates_presence_of :provider, :video_id
 
-	# private
-
-	# def parse_url
-	# 	require 'oembed'
-	# 	OEmbed::Providers.register(OEmbed::Providers::Youtube, OEmbed::Providers::Vimeo)
-	# 	resource = OEmbed::Providers.get(self.video_url) rescue nil
-	# 	if resource
-	# 		self.provider = resource.provider_name
-	# 		self.video_id = resource.video_id
-	# 	else
-	# 		errors.add(:video_url, "could not be parsed")
-	# 	end
-	# end
-
-	# def validate_video_url?
-	# 	(new_record? || video_url_changed?)
-	# end
+	def embed_src
+		if provider.downcase == 'vimeo'
+			"//player.vimeo.com/video/#{video_id}?autoplay=1"
+		elsif provider.downcase == 'youtube'
+			"http://www.youtube.com/embed/#{video_id}?autoplay=1"
+		end
+	end
 end

@@ -93,6 +93,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
@@ -204,6 +206,9 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashie (3.4.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -243,7 +248,6 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    nprogress-rails (0.1.6.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -375,16 +379,17 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails
+  faker
   fog (~> 1.28.0)
   font-awesome-rails
   guard
   guard-livereload
   guard-rspec
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
   momentjs-rails (>= 2.9.0)
-  nprogress-rails
   omniauth-facebook
   pg
   rails (= 4.2.0)

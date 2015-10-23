@@ -1,0 +1,17 @@
+.slick-slide {
+  margin-left: $gutter/3;
+  opacity: 0.5;
+  position: relative;
+	h2 {
+		font-size: 2.7em;
+		position: absolute;
+		bottom: 20px;
+		left: 40px;
+		right: 20px;
+		color: white;
+	}
+}
+
+.slick-active {
+  opacity: 1;
+}

@@ -1,0 +1,13 @@
+<% provide(:title, "Edit lab") %>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Edit lab</h2>
+		<%= form_for @lab, url: admin_lab_path(@lab), html: { multipart: true } do |f| %>
+			
+			<%= render 'form_fields', f: f %>
+
+			<%= f.submit 'Save', class: 'btn btn-default' %>
+			
+		<% end %>
+	</div>
+</div>

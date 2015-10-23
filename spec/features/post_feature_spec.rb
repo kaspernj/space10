@@ -22,7 +22,7 @@ RSpec.describe 'Post feature', type: :feature do
 
 			it "allows scheduling in the future", js: true do
 				check 'Schedule'
-				fill_in 'post_publish_at', with: DateTime.tomorrow.strftime('%m/%d/%Y %H:%M')
+				fill_in 'post_publish_at', with: DateTime.tomorrow.to_s(:formatted)
 
 				click_on 'Schedule'
 
@@ -30,6 +30,10 @@ RSpec.describe 'Post feature', type: :feature do
 				expect(Post.published.count).to eq 0
 				expect(Post.scheduled.count).to eq 1
 			end
+
+			it 'allows featured image attachements'
+
+			
 		end
 	end
 end

@@ -2,7 +2,6 @@ $(document).on('ready page:load', function () {
 	set_positions = function(el){
     // loop through and give each task a data-pos
     // attribute that holds its position in the DOM
-    console.log(el);
     if (el !== undefined) {
 	    el.closest('.sortable').find('.sortable_item').each(function(i){
 	        $(this).find("input.row_order").first().attr('value',i+1);

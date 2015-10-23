@@ -3,14 +3,13 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  first_name      :string
-#  last_name       :string
 #  email           :string
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
+#  name            :string
 #
 
 class User < ActiveRecord::Base
@@ -23,13 +22,18 @@ class User < ActiveRecord::Base
 										format: { with: VALID_EMAIL_REGEX },
 										uniqueness: { case_sensitive: false }
 
-	validates_presence_of :first_name, :last_name
+	validates_presence_of :name
 
 	before_create { generate_token(:auth_token) }
 
-	has_many :authentications
-	has_many :registrations
+	has_many :authentications, dependent: :destroy
+	has_many :registrations, dependent: :destroy
 	has_many :events, through: :registrations
+
+	has_many :profile_authorizations, dependent: :destroy
+	has_many :company_profiles, through: :profile_authorizations
+
+	has_one :personal_profile
 
 	def generate_token(column)
 	  begin
@@ -40,18 +44,9 @@ class User < ActiveRecord::Base
 	def self.from_omniauth(omniauth)
 		find_or_initialize_by(email: omniauth['info']['email']).tap do |user|
 			user.email = omniauth['info']['email']
-			user.first_name = omniauth['info']['first_name']
-			user.last_name = omniauth['info']['last_name']
-			if user.new_record?
-				user.password = 'password123'
-				# send password in email
-			end
-			user.save!
+			user.name = omniauth['info']['name']
+			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end
-	end
-
-	def full_name
-		[first_name, last_name].reject(&:empty?).join(' ')
 	end
 
 	def validate_password?

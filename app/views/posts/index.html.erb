@@ -1,3 +1,78 @@
-<% @posts.each do |post| %>
-	<%= link_to post.title, post %>
-<% end %>
+<div class="container-align-left">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+				<% @posts.limit(3).each do |post| %>
+					<%= link_to post do %>
+						<%= image_tag post.image_attachments.first.image, height: "500" %>
+						<h2><%= post.title %></h2>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @posts.offset(3).limit(2).each do |post| %>
+					<div class="col-md-6 post-thumbnail">
+						<div class="thumbnail">
+							<%= image_tag post.image_attachments.first.image_url(:thumbnail) %>
+							<div class="caption">
+								<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
+								<h3><%= post.title %></h3>
+								<p><%= post.excerpt %></p>
+								<p class="meta-text">&mdash; <%= time_ago_in_words post.publish_at %> ago</p>
+							</div>	
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @posts.offset(5).limit(3).each do |post| %>
+					<div class="col-md-4 post-thumbnail">
+						<div class="thumbnail">
+							<%= image_tag post.image_attachments.first.image_url(:thumbnail) %>
+							<div class="caption">
+								<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
+								<h3><%= post.title %></h3>
+								<p><%= truncate(post.excerpt, length: 150) %></p>
+								<p class="meta-text">&mdash; <%= time_ago_in_words post.publish_at %> ago</p>
+							</div>	
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="bg-gray">
+	<div class="container">
+		<div class="row content_block">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>#freshlivinglab</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 instagram-row">
+			<% @instagram_photos.first(4).each do |photo| %>
+				<%= link_to photo["link"], class: 'instagram_photo',target: '_blank' do %>
+					<%= image_tag photo["images"]["standard_resolution"]["url"] %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

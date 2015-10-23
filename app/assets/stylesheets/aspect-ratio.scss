@@ -1,0 +1,17 @@
+.aspect-ratio {
+	position: relative;
+	width: 100%;
+}
+
+.aspect-ratio > div {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.r-16-9 {
+	padding-bottom: 56.25%;
+}
+
+.r-4-3 {
+	padding-bottom: 75%;
+}

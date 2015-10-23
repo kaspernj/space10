@@ -1,7 +1,7 @@
 # Date
 # ----------------------------
-Date::DATE_FORMATS[:formatted] = "%e %B, %Y" 
+Date::DATE_FORMATS[:formatted] = "%B %e, %Y" 
 
 # DateTime / Time
 # ----------------------------
-Time::DATE_FORMATS[:formatted] = "%m/%d/%Y %H:%M" 
+Time::DATE_FORMATS[:formatted] = "%d/%m/%Y %H:%M" 

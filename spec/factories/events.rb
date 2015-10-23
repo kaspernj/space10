@@ -24,7 +24,7 @@ FactoryGirl.define do
 		starts_at 2.days.from_now.to_s(:formatted)
 		ends_at 3.days.from_now.to_s(:formatted)
 		published true
-		publish_at DateTime.now.to_s(:formatted)
+		publish_at 1.day.ago.to_s(:formatted)
   end
 
 end

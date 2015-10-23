@@ -15,7 +15,7 @@ class Admin::PostsController < AdminController
 	end
 
 	def index
-		@posts = Post.all
+		@posts = Post.all.order('updated_at DESC')
 	end
 
 	def edit
@@ -41,12 +41,12 @@ class Admin::PostsController < AdminController
 	private
 
 	def post_params
-		content_block = :id, :type, :resource_type, :resource_id, :row_order
+		content_block = :id, :type, :resource_type, :resource_id, :row_order, :_destroy
 		image_attachment = :id, :resource_type, :resource_id, :image, :image_cache, :row_order, :_destroy
 		text_attachment = :id, :resource_type, :resource_id, :content
 		video_attachment = :id, :resource_type, :resource_id, :title, :description, :video_url, :provider, :video_id, :image
 
-		return_params = params.require(:post).permit(:title, :excerpt, :content, :published, :publish_at,
+		return_params = params.require(:post).permit(:title, :excerpt, :tag_tokens, :content, :published, :publish_at, image_attachments_attributes: [image_attachment],
 			content_blocks_attributes: [content_block, 
 				image_attachments_attributes: [image_attachment], 
 				image_attachment_attributes: [image_attachment],
@@ -61,7 +61,7 @@ class Admin::PostsController < AdminController
 		
 		if params[:commit].downcase == "publish now"
 			return_params[:published] = true
-			return_params[:publish_at] = DateTime.now.strftime('%m/%d/%Y %H:%M')
+			return_params[:publish_at] = DateTime.now.to_s(:formatted)
 		elsif params[:commit].downcase == "schedule"
 			return_params[:published] = true
 		end

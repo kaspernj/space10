@@ -35,7 +35,7 @@
 //= require codemirror/modes/php
 //= require summernote
 //= require instafeed.min
-//= require turbolinks
-//= require nprogress
-//= require nprogress-turbolinks
+//= require slick.min
+//= require jquery.tokeninput.min
 //= require_tree .
+//= require turbolinks
