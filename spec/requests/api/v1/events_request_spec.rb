@@ -29,9 +29,9 @@ describe "Events api", type: :request do
 					'title' => event.title,
 					'excerpt' => event.excerpt,
 					'content' => event.content,
-					'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
-					'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted),
-					'published_at' => event.published_at.in_time_zone('Copenhagen').to_s(:formatted)
+					'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+					'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+					'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
 				}
 			)
 		end

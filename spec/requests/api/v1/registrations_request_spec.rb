@@ -19,8 +19,10 @@ describe "Registrations api", type: :request do
 							'id' => event.id,
 							'title' => event.title,
 							'excerpt' => event.excerpt,
-							'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
-							'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+							'content' => event.content,
+							'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+							'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+							'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
 						},
 				}]
 			)
@@ -40,8 +42,10 @@ describe "Registrations api", type: :request do
 							'id' => event.id,
 							'title' => event.title,
 							'excerpt' => event.excerpt,
-							'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
-							'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+							'content' => event.content,
+							'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+							'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+							'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
 						},
 				}
 			)
@@ -77,8 +81,10 @@ describe "Registrations api", type: :request do
 							'id' => another_event.id,
 							'title' => another_event.title,
 							'excerpt' => another_event.excerpt,
-							'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
-							'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+							'content' => another_event.content,
+							'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').iso8601,
+							'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').iso8601,
+							'published_at' => another_event.published_at.in_time_zone('Copenhagen').iso8601
 						},
 				}
 			)

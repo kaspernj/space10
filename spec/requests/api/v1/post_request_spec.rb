@@ -29,7 +29,7 @@ describe "Posts api", type: :request do
 					'excerpt' => post.excerpt,
 					'title' => post.title,
 					'content' => post.content,
-					'published_at' => post.published_at.in_time_zone('Copenhagen').to_s(:formatted)
+					'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601
 				}
 			)
 		end

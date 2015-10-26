@@ -16,6 +16,10 @@ Features
 
 All API access is over HTTPS, and accessed from the +space10-staging.herokuapp.com/api+ endpoint. All data is sent and received as JSON.
 
+All timestamps are returned in ISO 8601 format:
+
+  YYYY-MM-DDTHH:MM:SSZ
+
 
 === Authentication
 
@@ -62,7 +66,6 @@ Example:
   Content-Length: 0
   Set-Cookie: request_method=HEAD; path=/
   Via: 1.1 vegur
-_17Nr-EuuTnLk-b34D8kZA
 
 ==== User-authentication required
 
