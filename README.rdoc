@@ -109,12 +109,21 @@ Endpoints that are protected with HTTP Token Authentication:
   get '/api/user/registrations/:id'
   delete '/api/user/registrations/:id'
 
-=== Endpoints
+=== API index
 
 - {Users}[https://github.com/danielfriis/space10#users]
+- {Events}[https://github.com/danielfriis/space10#events]
+- {Event registrations}[https://github.com/danielfriis/space10#event-registrations]
+- {Posts}[https://github.com/danielfriis/space10#posts]
+- {Profiles}[https://github.com/danielfriis/space10#profiles]
 
 
 === Users
+
+- {Create user}[https://github.com/danielfriis/space10#create-user]
+- {Authenticate user}[https://github.com/danielfriis/space10#authenticate-user]
+- {Get authenticated user}[https://github.com/danielfriis/space10#get-authenticated-user]
+- {Update user}[https://github.com/danielfriis/space10#update-user]
 
 ==== Create user
 
