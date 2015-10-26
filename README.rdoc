@@ -23,11 +23,11 @@ There are two types of endpoints. One for non-authenticated users and one where 
 
 ==== User-authentication not required
 
-	post /api/users
-	post /api/authenticate
+  post /api/users
+  post /api/authenticate
 
 
 ==== User-authentication required
-
-	get /api/user
-	put /api/user
+ 
+  get /api/user
+  put /api/user
