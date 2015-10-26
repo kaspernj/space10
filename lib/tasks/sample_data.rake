@@ -24,7 +24,7 @@ namespace :db do
 
 				3.times do |a|
 					post.image_attachments.new.tap do |attachment|
-						attachment.image = File.open(File.join(Rails.root, "spec/factories/images/space_#{rand(14) + 1}.jpg"))
+						attachment.image = File.open(File.join(Rails.root, "spec/factories/images/space_#{i + a + 1}.jpg"))
 					end
 				end
 
