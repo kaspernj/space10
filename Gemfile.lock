@@ -80,6 +80,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     database_cleaner (1.5.0)
+    deep_merge (1.0.1)
     diff-lcs (1.2.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -378,6 +379,7 @@ DEPENDENCIES
   codemirror-rails
   coffee-rails (~> 4.1.0)
   database_cleaner
+  deep_merge
   factory_girl_rails
   faker
   fog (~> 1.28.0)

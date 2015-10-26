@@ -2,7 +2,12 @@ $gutter: $grid-gutter-width;
 
 .container-align-left {
   max-width: 100%;
-  padding-right: $gutter/2;
+  & > .row {
+    margin: 0;
+    & > .col-md-12 {
+      padding: 0;
+    }
+  }
 }
 
 .instagram-row {
@@ -19,14 +24,6 @@ $gutter: $grid-gutter-width;
 img.full_width {
     max-width: 100%;
   }
-
-.meta-text {
-  color: $gray;
-  font-size: 0.8em;
-  font-weight: bold;
-  line-height: inherit;
-  margin: $gutter*0.8 0;
-}
 
 .bg-gray {
   background: $gray-lighter;

@@ -1,43 +1,29 @@
-<div class="row">
-	<div class="col-md-10">
-		<%= image_tag @event.feature_image, class: "full_width" %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<%= image_tag @event.feature_image, class: "full_width" %>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-7 col-md-offset-1 event-heading"><h1><%= @event.title %></h1></div>
-</div>
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<p class="excerpt"><%= @event.excerpt %></p>
+	<div class="row">
+		<div class="col-md-7 col-md-offset-1 event-heading"><h1><%= @event.title %></h1></div>
 	</div>
-</div>
-<div class="row">
-	<div class="col-xs-6 vertical-divider"></div>
-</div>
-<div class="row">
-	<div class="col-md-6 col-md-offset-2 text_block">
-		<p><%=raw @event.content %></p>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<p class="excerpt"><%= @event.excerpt %></p>
+		</div>
 	</div>
-	<div class="col-md-4">
-		<p class="event-date"><%= @event.starts_at.strftime("%d") %></p>
-		<p class="date"><%= @event.starts_at.strftime("%B") %></p>
-		<% if @event.address.present? && @event.address.any_present? %>
-			<p class="event-address">
-				Address <br>
-				<%= @event.address.name.present? ? (@event.address.name + "<br>").html_safe : '' %>
-				<%= @event.address.address_1.present? ? (@event.address.address_1 + "<br>").html_safe : '' %>
-				<%= @event.address.address_2.present? ? (@event.address.address_2 + "<br>").html_safe : '' %>
-				<%= @event.address.zipcode.present? ? (@event.address.zipcode).html_safe : '' %>
-				<%= @event.address.city.present? ? (@event.address.city + "<br>").html_safe : '' %>
-				<%= @event.address.country.present? ? (@event.address.country + "<br>").html_safe : '' %>
-			</p>
-		<% end %>
-		<p class="event-address">
-			Time <br>
-			<%= @event.timespan %>
-		</p>
-		<% if @event.published? && !@event.historic? %>
-			<%= link_to "Attend", new_event_registration_path(@event), class: 'btn btn-default' %>
-		<% end %>
+	<div class="row">
+		<div class="col-xs-6 vertical-divider"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2 text_block">
+			<p><%=raw @event.content %></p>
+		</div>
+		<div class="col-md-4">
+			<%= render 'event_info', event: @event %>
+			<% if @event.published? && !@event.historic? %>
+				<%= link_to "Attend", new_event_registration_path(@event), class: 'btn btn-default' %>
+			<% end %>
+		</div>
 	</div>
 </div>

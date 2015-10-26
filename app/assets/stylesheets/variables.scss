@@ -13,8 +13,9 @@ $nprogress-color: #000 !default;
 $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   #B3B3B3;
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray:              		 lighten($gray-base, 33%) !default;
+// $gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-light:             #B3B3B3;
 $gray-lighter:           #FAFAFB;
 
 $brand-primary:         #000 !default;

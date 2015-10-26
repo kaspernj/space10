@@ -1,0 +1,6 @@
+posts:
+  index:
+    featured_tag: 'freshlivinglab'
+    another_thing: 'yes'
+  edit:
+    something: 'editable'

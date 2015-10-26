@@ -1,4 +1,5 @@
 require 'instagram_api'
+
 class PostsController < ApplicationController
 
 	def index

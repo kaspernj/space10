@@ -32,9 +32,12 @@ Rails.application.routes.draw do
     resources :profiles
     resources :labs
     resources :tags
+    
+    get 'edit_settings', to: 'settings#edit', as: 'edit_settings'
+    put 'update_settings', to: 'settings#update', as: 'update_settings'
   end
 
-  namespace :api do
+  namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       post 'users', to: 'users#create'
       get 'user', to: 'users#show'

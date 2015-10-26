@@ -27,7 +27,8 @@ RSpec.describe 'attend_event_feature', type: :feature do
 			end
 
 			it 'should not be possible to request a seat on past event' do
-				event.update(starts_at: 2.days.ago.to_s(:formatted), ends_at: 3.days.ago.to_s(:formatted))
+				event.update(starts_at: 3.days.ago.to_s(:formatted), ends_at: 2.days.ago.to_s(:formatted))
+				expect(event.historic?).to eq true
 				visit new_event_registration_path(event)
 				expect(current_path).to eq event_path(event)
 			end

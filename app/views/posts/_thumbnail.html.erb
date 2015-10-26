@@ -1,0 +1,11 @@
+<div class="thumbnail">
+	<%= link_to post do %>
+		<%= image_tag post.image_attachments.first.image_url(:thumbnail) %>
+		<div class="caption">
+			<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
+			<h3><%= post.title %></h3>
+			<p><%= truncate(post.excerpt, length: 180) %></p>
+			<p class="meta-text">&mdash; <%= time_ago_in_words post.publish_at %> ago</p>
+		</div>	
+	<% end %>
+</div>

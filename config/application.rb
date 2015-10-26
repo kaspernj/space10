@@ -22,6 +22,8 @@ module Space10
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.cache_store = :file_store, '/tmp/cache/'
     
     # Loads environment variables in development mode
     config.before_configuration do

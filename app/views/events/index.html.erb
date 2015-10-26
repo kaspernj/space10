@@ -1,8 +1,24 @@
-<% @events.each do |event| %>
-	<%= link_to event.title, event %>
-<% end %>
+<div class="container">
+	<% @events.each do |event| %>
+		<div class="row">
+			<div class="col-md-11 col-md-offset-1">
+				<%= image_tag event.image_attachments.first.image, class: 'full_width' %>
+				<div class="row content_block">
+					<div class="col-md-7 <%= cycle('','col-md-push-5', name: 'one') %>">
+						<h1><%= link_to event.title, event, class: 'heading' %></h1>
+						<p class="excerpt"><%= event.excerpt %></p>
+						<%= link_to "Read more", event, class: 'btn btn-lg btn-default' %>
+					</div>
+					<div class="col-md-5 <%= cycle('','col-md-pull-7', name: 'two') %> event-info">
+						<%= render 'event_info', event: event %>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
 
-<h3>Previous</h3>
-<% @previous_events.each do |event| %>
-	<%= link_to event.title, event %>
-<% end %>
+	<h3>Previous</h3>
+	<% @previous_events.each do |event| %>
+		<%= link_to event.title, event %>
+	<% end %>
+</div>

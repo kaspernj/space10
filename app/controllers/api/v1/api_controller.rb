@@ -5,15 +5,16 @@ class Api::V1::ApiController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  def not_found
-    render json: { errors: ["Not found"] }, status: 404
-  end
 
   def default_serializer_options
 	  {root: false}
 	end
 
 	private
+
+  def not_found(error)
+    render :json => {:error => error.message}, :status => :not_found
+  end
 
 	def destroy_session
     request.session_options[:skip] = true

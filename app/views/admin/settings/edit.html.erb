@@ -1,0 +1,6 @@
+<%= form_for :settings, method: :put, url: admin_update_settings_path do |f| %>
+	<% @settings.each do |key,value| %>
+		<%= render 'key_value_fields', key: key, value: value, f: f, head_start: 1 %>
+	<% end %>
+	<%= f.submit 'Save', class: 'btn btn-default' %>
+<% end %>

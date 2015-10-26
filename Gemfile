@@ -39,7 +39,11 @@ gem 'active_model_serializers'
 # Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'
 
+# External api comm - e.g. instagram
 gem 'httparty'
+
+# This is for app_wide settings
+gem "deep_merge", :require => 'deep_merge/rails_compat'
 
 gem 'faker'
 

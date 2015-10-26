@@ -1,3 +1,5 @@
-<% @profiles.each do |profile| %>
-	<%= link_to profile.title, profile_path(profile) %>
-<% end %>
+<div class="container">
+	<% @profiles.each do |profile| %>
+		<%= link_to profile.title, profile_path(profile) %>
+	<% end %>
+</div>

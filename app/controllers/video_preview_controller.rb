@@ -5,6 +5,7 @@ class VideoPreviewController < ApplicationController
 		resource = OEmbed::Providers.get(params[:video_url])
 		if resource.provider_name.downcase == 'youtube'
 			resource.fields['video_id'] = params[:video_url].match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i)[1]
+			resource.fields['thumbnail_url'] = "http://img.youtube.com/vi/#{resource.fields['video_id']}/maxresdefault.jpg"
 		end
 		render json: resource.fields, status: 200
 	end

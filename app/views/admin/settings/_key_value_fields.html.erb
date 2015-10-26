@@ -1,0 +1,18 @@
+<% if value.is_a? Hash %>
+	<h<%= head_start += 1 %>><%= key %></h<%= head_start%>>
+	<%= f.fields_for key do |f| %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<% value.each do |key,value| %>
+					<%= render 'key_value_fields', key: key, value: value, f: f, head_start: head_start %>
+				<% end %>		
+			</div>
+		</div>
+		
+	<% end %>
+<% else %>
+	<div class="form-group">
+		<%= f.label key %>
+		<%= f.text_field key, value: value, class: 'form-control' %>
+	</div>
+<% end %>

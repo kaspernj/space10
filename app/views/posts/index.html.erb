@@ -18,15 +18,7 @@
 			<div class="row content_block">
 				<% @posts.offset(3).limit(2).each do |post| %>
 					<div class="col-md-6 post-thumbnail">
-						<div class="thumbnail">
-							<%= image_tag post.image_attachments.first.image_url(:thumbnail) %>
-							<div class="caption">
-								<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
-								<h3><%= post.title %></h3>
-								<p><%= post.excerpt %></p>
-								<p class="meta-text">&mdash; <%= time_ago_in_words post.publish_at %> ago</p>
-							</div>	
-						</div>
+						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
 			</div>
@@ -37,15 +29,7 @@
 			<div class="row content_block">
 				<% @posts.offset(5).limit(3).each do |post| %>
 					<div class="col-md-4 post-thumbnail">
-						<div class="thumbnail">
-							<%= image_tag post.image_attachments.first.image_url(:thumbnail) %>
-							<div class="caption">
-								<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
-								<h3><%= post.title %></h3>
-								<p><%= truncate(post.excerpt, length: 150) %></p>
-								<p class="meta-text">&mdash; <%= time_ago_in_words post.publish_at %> ago</p>
-							</div>	
-						</div>
+						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
 			</div>
@@ -58,9 +42,29 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>#freshlivinglab</h3>
+						<h3>#<%= Settings.get['posts']['index']['featured_tag'] %></h3>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<%= render 'posts/video_block', object: VideoBlock.last %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @posts.offset(8).limit(2).each do |post| %>
+					<div class="col-md-6 post-thumbnail">
+						<%= render 'thumbnail', post: post %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -73,6 +77,19 @@
 					<%= image_tag photo["images"]["standard_resolution"]["url"] %>
 				<% end %>
 			<% end %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @posts.offset(7).limit(3).each do |post| %>
+					<div class="col-md-4 post-thumbnail">
+						<%= render 'thumbnail', post: post %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
