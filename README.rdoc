@@ -115,6 +115,7 @@ Endpoints that are protected with HTTP Token Authentication:
 ==== Create user
 
   post /api/users
+  Authorization: Basic USERNAME:PASSWORD
 
 *Parameters*
 
@@ -141,4 +142,16 @@ Status: +200+
 ==== Get authenticated user
 
   get /api/user
+  Authorization: Token token=AUTH_TOKEN
+
+*Response*
+
+  {
+    'id' => user.id,
+    'auth_token' => user.auth_token,
+    'name' => user.name,
+    'email' => user.email,
+    'personal_profile' => [],
+    'company_profiles' => []
+  }
 
