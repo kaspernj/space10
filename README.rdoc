@@ -28,10 +28,12 @@ There are two types of endpoints. One for non-authenticated users and one where 
 
 
 ==== User-authentication required
- 
+
+  # User 
   get '/api/user'
   put '/api/user'
   
+  # Registrations
   get 'api/user/registrations'
   post 'api/user/registrations'
   get 'api/user/registrations/:id'
