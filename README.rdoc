@@ -12,6 +12,22 @@ Features
 
 == API
 
-=== Authenticate
+=== Schema
 
 All API access is over HTTPS, and accessed from the +space10-staging.herokuapp.com/api+ endpoint. All data is sent and received as JSON.
+
+
+=== Endpoints
+
+There are two types of endpoints. One for non-authenticated users and one where user authentication is required.
+
+==== User-authentication not required
+
++post /api/users+
++post /api/authenticate+
+
+
+==== User-authentication required
+
++get /api/user+
++put /api/user+
