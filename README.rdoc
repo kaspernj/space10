@@ -109,6 +109,11 @@ Endpoints that are protected with HTTP Token Authentication:
   get '/api/user/registrations/:id'
   delete '/api/user/registrations/:id'
 
+=== Endpoints
+
+- {Users}[#users]
+- {Users}[#users]
+
 
 === Users
 
@@ -137,7 +142,7 @@ Endpoints that are protected with HTTP Token Authentication:
     'email' => 'johndoe@example.com'
   }
 
-=== Authenticate user
+==== Authenticate user
 
   post /api/authenticate
   Authorization: Basic USERNAME:PASSWORD
@@ -193,5 +198,4 @@ Endpoints that are protected with HTTP Token Authentication:
     'name' => 'Frank',
     'email' => user.email
   }
-
 
