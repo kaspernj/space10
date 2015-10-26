@@ -130,13 +130,32 @@ Endpoints that are protected with HTTP Token Authentication:
 
 *Response*
 
-Status: +200+
-
   {
     'id' => 1,
     'auth_token' => AUTH_TOKEN,
     'name' => 'John',
     'email' => 'johndoe@example.com'
+  }
+
+=== Authenticate user
+
+  post /api/authenticate
+  Authorization: Basic USERNAME:PASSWORD
+
+*Parameters*
+
+  {
+    "email" => user.email,
+    "password" => password
+  }
+
+*Response*
+
+  {
+    'id' => user.id,
+    'auth_token' => user.auth_token,
+    'name' => user.name,
+    'email' => user.email
   }
 
 ==== Get authenticated user
@@ -154,4 +173,25 @@ Status: +200+
     'personal_profile' => [],
     'company_profiles' => []
   }
+
+==== Update user
+
+  put /api/user
+  Authorization: Token token=AUTH_TOKEN
+
+*Parameters*
+
+  "user" => {
+    "name" => "Frank"
+  }
+
+*Response*
+
+  {
+    'id' => user.id,
+    'auth_token' => user.auth_token,
+    'name' => 'Frank',
+    'email' => user.email
+  }
+
 

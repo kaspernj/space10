@@ -14,7 +14,14 @@ describe "Authenticate api", type: :request do
 			post '/api/authenticate', credentials, request_headers
 
 			expect(response.status).to eq 200
-			expect(response_body['auth_token']).to eq(user.auth_token)
+			expect(response_body).to eq(
+				{
+					'id' => user.id,
+					'auth_token' => user.auth_token,
+					'name' => user.name,
+					'email' => user.email
+				}
+			)
 		end
 
 		it "should not return auth_token on invalid credentials" do
