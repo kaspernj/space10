@@ -37,7 +37,7 @@
 </div>
 <div class="container">
 	<% @post.content_blocks.each do |content_block| %>
-		<%= render content_block.type.underscore, object: content_block %>
+		<%= render "posts/#{content_block.type.underscore}", object: content_block %>
 	<% end %>
 </div>
 
@@ -47,10 +47,10 @@
 			<div class="row">
 				<hr>
 				<% @posts.each do |post| %>
-			<div class="col-md-4">
-				<%= render 'thumbnail', post: post %>
-			</div>
-		<% end %>
+					<div class="col-md-4">
+						<%= render 'posts/thumbnail', post: post %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

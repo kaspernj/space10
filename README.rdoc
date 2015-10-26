@@ -17,7 +17,7 @@ Features
 All API access is over HTTPS, and accessed from the +space10-staging.herokuapp.com/api+ endpoint. All data is sent and received as JSON.
 
 
-=== Endpoints
+=== Authentication
 
 There are two types of endpoints. One for non-authenticated users and one where user authentication is required.
 
@@ -35,8 +35,16 @@ Endpoints where user authentication is not required uses HTTP Basic Authenticati
   post '/api/authenticate'
 
   # Events
-  get 'events'
-  get 'events/:id'
+  get '/api/events'
+  get '/api/events/:id'
+
+  # Posts
+  get '/api/posts'
+  get '/api/posts/:id'
+
+  # Profiles
+  get '/api/profiles'
+  get '/api/profiles/:id'
 
 
 ==== User-authentication required
@@ -50,7 +58,7 @@ Endpoints where user authentication is not required uses a HTTP token Authentica
   put '/api/user'
   
   # Registration management
-  get 'api/user/registrations'
-  post 'api/user/registrations'
-  get 'api/user/registrations/:id'
-  delete 'api/user/registrations/:id'
+  get '/api/user/registrations'
+  post '/api/user/registrations'
+  get '/api/user/registrations/:id'
+  delete '/api/user/registrations/:id'

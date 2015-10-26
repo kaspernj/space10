@@ -15,9 +15,15 @@ describe "Users api", type: :request do
 
 			post '/api/users', user_params, request_headers
 
-			expect(response.status).to eq 201 # created
-			expect(response_body['auth_token']).to be_present
-	    expect(User.first.name).to eq 'John'
+			expect(response.status).to eq 200 # created
+			expect(response_body).to eq (
+				{
+					'id' => User.last.id,
+					'auth_token' => User.last.auth_token,
+					'name' => 'John',
+					'email' => 'johndoe@example.com'
+				}
+			)
 		end
 	end
 
@@ -27,7 +33,16 @@ describe "Users api", type: :request do
 			get '/api/user', {}, request_headers(user: user)
 
 			expect(response.status).to eq 200 # ok
-			expect(response_body['name']).to eq(user.name)
+			expect(response_body).to eq(
+				{
+					'id' => user.id,
+					'auth_token' => user.auth_token,
+					'name' => user.name,
+					'email' => user.email,
+					'personal_profile' => [],
+					'company_profiles' => []
+				}
+			)
 		end
 
 		it "should not return user if unauthorized" do
@@ -51,7 +66,14 @@ describe "Users api", type: :request do
 			put '/api/user', @user_params, request_headers(user: @user)
 
 			expect(response.status).to eq 200 # ok
-			expect(response_body['name']).to eq('Frank')
+			expect(response_body).to eq(
+				{
+					'id' => @user.id,
+					'auth_token' => @user.auth_token,
+					'name' => 'Frank',
+					'email' => @user.email
+				}
+			)
 		end
 
 		it "should not update user if unauthorized" do

@@ -62,6 +62,10 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def published_at
+    publish_at
+  end
+
 private
 
   def end_date_after_start_date

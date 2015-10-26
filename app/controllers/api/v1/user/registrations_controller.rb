@@ -2,17 +2,17 @@ class Api::V1::User::RegistrationsController < Api::V1::ApiController
 	before_filter :authenticate_api_user
 
 	def index
-		render json: @user.registrations, status: 200
+		@registrations = @user.registrations
 	end
 
 	def show
-		render json: @user.registrations.find(params[:id]), status: 200
+		@registration = @user.registrations.find(params[:id])
 	end
 
 	def create
 		@registration = Registration.new(registration_params)
 		if @registration.save
-			render json: @registration, status: 201
+			@registration
 		else
 			render json: { errors: @registration.errors.full_messages }, status: 422
 		end

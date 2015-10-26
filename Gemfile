@@ -34,7 +34,7 @@ gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
 
 # API serialization
-gem 'active_model_serializers'
+# gem 'active_model_serializers'
 
 # Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'

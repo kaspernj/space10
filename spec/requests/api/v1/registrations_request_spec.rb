@@ -11,7 +11,19 @@ describe "Registrations api", type: :request do
 			get '/api/user/registrations', {}, request_headers(user: user)
 			
 			expect(response.status).to eq 200 # ok
-			expect(response_body.map{|r| r['event']['id']}).to eq([event.id])
+			expect(response_body).to eq(
+				[{
+					'id' => registration.id,
+					'confirmation_status' => 'unconfirmed',
+					'event' => {
+							'id' => event.id,
+							'title' => event.title,
+							'excerpt' => event.excerpt,
+							'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
+							'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+						},
+				}]
+			)
 		end
 	end
 
@@ -20,7 +32,19 @@ describe "Registrations api", type: :request do
 			get "/api/user/registrations/#{registration.id}", {}, request_headers(user: user)
 			
 			expect(response.status).to eq 200 # ok
-			expect(response_body['event']['id']).to eq(event.id)
+			expect(response_body).to eq(
+				{
+					'id' => registration.id,
+					'confirmation_status' => 'unconfirmed',
+					'event' => {
+							'id' => event.id,
+							'title' => event.title,
+							'excerpt' => event.excerpt,
+							'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
+							'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+						},
+				}
+			)
 		end
 
 		it 'should return 404 for requested registration not made by authenticated user' do
@@ -44,8 +68,20 @@ describe "Registrations api", type: :request do
 
 			post "/api/user/registrations", registration_params, request_headers(user: user)
 
-			expect(response.status).to eq 201 # created
-			expect(response_body['user_id']).to eq user.id
+			expect(response.status).to eq 200 # created
+			expect(response_body).to eq (
+				{
+					'id' => Registration.last.id,
+					'confirmation_status' => 'unconfirmed',
+					'event' => {
+							'id' => another_event.id,
+							'title' => another_event.title,
+							'excerpt' => another_event.excerpt,
+							'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
+							'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').to_s(:formatted)
+						},
+				}
+			)
 		end
 	end
 

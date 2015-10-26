@@ -34,4 +34,8 @@ class Post < ActiveRecord::Base
 	accepts_nested_attributes_for :text_blocks, allow_destroy: true
 	accepts_nested_attributes_for :video_blocks, allow_destroy: true
 
+	def published_at
+		publish_at		
+	end
+
 end

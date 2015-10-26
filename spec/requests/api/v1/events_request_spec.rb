@@ -23,7 +23,17 @@ describe "Events api", type: :request do
 			get "/api/events/#{event.id}", {}, request_headers
 
 			expect(response.status).to eq 200
-			expect(response_body['title']).to eq event.title
+			expect(response_body).to eq (
+				{
+					'id' => event.id,
+					'title' => event.title,
+					'excerpt' => event.excerpt,
+					'content' => event.content,
+					'starts_at' => event.starts_at.in_time_zone('Copenhagen').to_s(:formatted),
+					'ends_at' => event.ends_at.in_time_zone('Copenhagen').to_s(:formatted),
+					'published_at' => event.published_at.in_time_zone('Copenhagen').to_s(:formatted)
+				}
+			)
 		end
 	end
 

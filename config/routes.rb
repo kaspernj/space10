@@ -56,6 +56,12 @@ Rails.application.routes.draw do
 
       get 'events', to: 'events#index'
       get 'events/:id', to: 'events#show'
+
+      get 'posts', to: 'posts#index'
+      get 'posts/:id', to: 'posts#show'
+
+      get 'profiles', to: 'profiles#index'
+      get 'profiles/:id', to: 'profiles#show'
     end
   end
 

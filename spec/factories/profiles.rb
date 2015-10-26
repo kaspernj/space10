@@ -16,9 +16,10 @@
 FactoryGirl.define do
   factory :profile do
     title "MyString"
-description "MyText"
-location "MyString"
-type ""
+		description "MyText"
+		location "MyString"
+		type ""
+		published true
   end
 
 end

@@ -11,5 +11,5 @@
 
 class ProfileAuthorization < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :company_profile
+	belongs_to :company_profile, foreign_key: 'profile_id'
 end

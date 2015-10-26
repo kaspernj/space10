@@ -14,6 +14,6 @@
 #
 
 class CompanyProfile < Profile
-	has_many :profile_authorizations
+	has_many :profile_authorizations, as: :profile
 	has_many :users, through: :profile_authorizations
 end
