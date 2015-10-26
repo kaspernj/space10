@@ -111,7 +111,7 @@ Endpoints that are protected with HTTP Token Authentication:
 
 === Endpoints
 
-{Users}[https://github.com/danielfriis/space10#users]
+- {Users}[https://github.com/danielfriis/space10#users]
 
 
 === Users
