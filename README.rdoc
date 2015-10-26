@@ -29,24 +29,6 @@ There are two types of endpoints. One for non-authenticated users and one where 
 
 Endpoints where user authentication is not required are protected with HTTP Basic Authentication.
 
-  # Create user
-  post '/api/users'
-
-  # Authenticate / get auth_token
-  post '/api/authenticate'
-
-  # Events
-  get '/api/events'
-  get '/api/events/:id'
-
-  # Posts
-  get '/api/posts'
-  get '/api/posts/:id'
-
-  # Profiles
-  get '/api/profiles'
-  get '/api/profiles/:id'
-
 Example:
 
   $ curl -I -u USERNAME:PASSWORD https://space10-staging.herokuapp.com/api/events
@@ -67,19 +49,29 @@ Example:
   Set-Cookie: request_method=HEAD; path=/
   Via: 1.1 vegur
 
+Endpoints that are protected with HTTP Basic Authentication:
+
+  # Create user
+  post '/api/users'
+
+  # Authenticate / get auth_token
+  post '/api/authenticate'
+
+  # Events
+  get '/api/events'
+  get '/api/events/:id'
+
+  # Posts
+  get '/api/posts'
+  get '/api/posts/:id'
+
+  # Profiles
+  get '/api/profiles'
+  get '/api/profiles/:id'
+
 ==== User-authentication required
 
-Endpoints where user authentication is not required are protected with HTTP token Authentication.
-
-  # Authenticated user
-  get '/api/user'
-  put '/api/user'
-  
-  # Registrations
-  get '/api/user/registrations'
-  post '/api/user/registrations'
-  get '/api/user/registrations/:id'
-  delete '/api/user/registrations/:id'
+Endpoints where user authentication is not required are protected with HTTP Token Authentication.
 
 Example:
 
@@ -100,6 +92,21 @@ Example:
   Content-Length: 0
   Set-Cookie: request_method=HEAD; path=/
   Via: 1.1 vegur
+
+Endpoints that are protected with HTTP Token Authentication:
+
+  # Authenticated user
+  get '/api/user'
+  put '/api/user'
+  
+  # Registrations
+  get '/api/user/registrations'
+  post '/api/user/registrations'
+  get '/api/user/registrations/:id'
+  delete '/api/user/registrations/:id'
+
+
+=== Users
 
 
 
