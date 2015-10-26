@@ -114,7 +114,7 @@ Endpoints that are protected with HTTP Token Authentication:
 
 ==== Create user
 
-+post /api/users+
+===== +post /api/users+
 
   {
     "user" => {
