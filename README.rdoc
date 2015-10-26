@@ -51,15 +51,15 @@ Example:
 
 Endpoints that are protected with HTTP Basic Authentication:
 
-  # Create user
-  post '/api/users'
+* Create user *
+- post '/api/users'
 
-  # Authenticate / get auth_token
-  post '/api/authenticate'
+* Authenticate / get auth_token *
+- post '/api/authenticate'
 
-  # Events
-  get '/api/events'
-  get '/api/events/:id'
+*Events*
+- get '/api/events'
+- get '/api/events/:id'
 
   # Posts
   get '/api/posts'
