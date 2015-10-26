@@ -50,7 +50,7 @@ Rails.application.routes.draw do
         delete 'registrations/:id', to: 'registrations#destroy'
       end
 
-      post 'authenticate', to: 'sessions#new'
+      post 'authenticate', to: 'sessions#create'
       get 'auth/:provider/callback', to: 'sessions#create_with_omniauth'
       get 'auth/failure', to: 'sessions#omniauth_failure'
 
