@@ -14,4 +14,4 @@ Features
 
 === Authenticate
 
-  post 'api/authenticate'
+All API access is over HTTPS, and accessed from the `space10-staging.herokuapp.com/api` endpoint. All data is sent and received as JSON.
