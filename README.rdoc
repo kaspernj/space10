@@ -16,6 +16,10 @@ Features
 
 All API access is over HTTPS, and accessed from the +space10-staging.herokuapp.com/api+ endpoint. All data is sent and received as JSON.
 
+The +Accept+ header allows you to specify a version - currently only +v1+:
+
+  'Accept: application/vnd.space10.v1'
+
 All timestamps are returned in ISO 8601 format:
 
   YYYY-MM-DDTHH:MM:SSZ
@@ -51,15 +55,15 @@ Example:
 
 Endpoints that are protected with HTTP Basic Authentication:
 
-* Create user *
-- post '/api/users'
+  # Create user
+  post '/api/users'
 
-* Authenticate / get auth_token *
-- post '/api/authenticate'
+  # Authenticate / get auth_token
+  post '/api/authenticate'
 
-*Events*
-- get '/api/events'
-- get '/api/events/:id'
+  # Events
+  get '/api/events'
+  get '/api/events/:id'
 
   # Posts
   get '/api/posts'
@@ -108,5 +112,28 @@ Endpoints that are protected with HTTP Token Authentication:
 
 === Users
 
+==== Create user
+
+  post /api/users
+
+  {
+    "user" => {
+      "name" => "John",
+      "email" => "johndoe@example.com",
+      "password" => "foobar123",
+      "password_confirmation" => "foobar123"
+    }
+  }
+
+*Response*
+
+Status: +200+
+
+  {
+    'id' => 1,
+    'auth_token' => AUTH_TOKEN,
+    'name' => 'John',
+    'email' => 'johndoe@example.com'
+  }
 
 
