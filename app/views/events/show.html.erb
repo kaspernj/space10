@@ -20,7 +20,7 @@
 			<p><%=raw @event.content %></p>
 		</div>
 		<div class="col-md-4">
-			<%= render 'event_info', event: @event %>
+			<%= render 'events/event_info', event: @event %>
 			<% if @event.published? && !@event.historic? %>
 				<%= link_to "Attend", new_event_registration_path(@event), class: 'btn btn-default' %>
 			<% end %>

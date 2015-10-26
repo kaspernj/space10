@@ -6,6 +6,10 @@ class Api::V1::EventsController < Api::V1::ApiController
 	end
 
 	def show
-		render json: Event.find(params[:id]), status: 200
+		@event = Event.find(params[:id])
+		respond_to do |format|
+	    format.html { render 'events/show' }
+	    format.json { render json: @event }
+	  end
 	end
 end

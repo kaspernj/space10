@@ -1,4 +1,4 @@
-== SPACE 10
+= SPACE 10
 
 This is the platform powering SPACE 10.
 
@@ -9,3 +9,9 @@ Features
 * Versioned API
 * Admin area
 * Modular content block system for posts
+
+== API
+
+=== Authenticate
+
+  post 'api/authenticate'

@@ -3,6 +3,8 @@ class Api::V1::ApiController < ApplicationController
 
   before_action :destroy_session
 
+  layout 'api_v1_application'
+
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
 
