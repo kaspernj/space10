@@ -23,17 +23,33 @@ There are two types of endpoints. One for non-authenticated users and one where 
 
 ==== User-authentication not required
 
+Endpoints where user authentication is not required uses HTTP Basic Authentication.
+
+  $ curl -u USERNAME:PASSWORD https://space10-staging.herokuapp.com/api/events
+
+
+  # Create user
   post '/api/users'
+
+  # Authenticate
   post '/api/authenticate'
+
+  # Events
+  get 'events'
+  get 'events/:id'
 
 
 ==== User-authentication required
 
-  # User 
+Endpoints where user authentication is not required uses a HTTP token Authentication.
+
+  $ curl -H 'Authorization: Token token=AUTH_TOKEN' https://space10-staging.herokuapp.com/api/user
+
+  # User management
   get '/api/user'
   put '/api/user'
   
-  # Registrations
+  # Registration management
   get 'api/user/registrations'
   post 'api/user/registrations'
   get 'api/user/registrations/:id'
