@@ -1,10 +1,11 @@
 $(document).on('ready page:load', function () {
 	$('.slick-variable-width').slick({
-	  dots: false,
 	  infinite: true,
 	  centerMode: false,
 	  variableWidth: true,
 	  arrows: false,
-	  lazyload: 'ondemand'
+	  dots: false,
+	  initialSlide: -1,
+	  lazyLoad: 'ondemand',
 	});
 });
