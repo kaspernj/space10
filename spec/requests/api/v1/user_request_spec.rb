@@ -8,8 +8,7 @@ describe "Users api", type: :request do
 				"user" => {
 					"name" => "John",
 					"email" => "johndoe@example.com",
-					"password" => "foobar123",
-					"password_confirmation" => "foobar123"
+					"password" => "foobar123"
 				}
 			}.to_json
 

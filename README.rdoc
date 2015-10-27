@@ -116,14 +116,10 @@ Endpoints that are protected with HTTP Token Authentication:
 - {Event registrations}[https://github.com/danielfriis/space10#event-registrations]
 - {Posts}[https://github.com/danielfriis/space10#posts]
 - {Profiles}[https://github.com/danielfriis/space10#profiles]
+- {Beacons}[https://github.com/danielfriis/space10#beacons]
 
 
 === Users
-
-- {Create user}[https://github.com/danielfriis/space10#create-user]
-- {Authenticate user}[https://github.com/danielfriis/space10#authenticate-user]
-- {Get authenticated user}[https://github.com/danielfriis/space10#get-authenticated-user]
-- {Update user}[https://github.com/danielfriis/space10#update-user]
 
 ==== Create user
 
@@ -136,8 +132,7 @@ Endpoints that are protected with HTTP Token Authentication:
     "user" => {
       "name" => "John",
       "email" => "johndoe@example.com",
-      "password" => "foobar123",
-      "password_confirmation" => "foobar123"
+      "password" => "foobar123"
     }
   }
 
@@ -206,4 +201,232 @@ Endpoints that are protected with HTTP Token Authentication:
     'name' => 'Frank',
     'email' => user.email
   }
+
+=== Events
+
+==== Get all events
+
+  get /api/events
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  [
+    {
+      'id' => 1,
+      'title' => event.title,
+      'excerpt' => event.excerpt,
+      'content' => event.content,
+      'starts_at' => event.starts_at,
+      'ends_at' => event.ends_at,
+      'published_at' => event.published_at
+    },
+    {
+      'id' => 2,
+      'title' => event.title,
+      'excerpt' => event.excerpt,
+      'content' => event.content,
+      'starts_at' => event.starts_at,
+      'ends_at' => event.ends_at,
+      'published_at' => event.published_at
+    }
+  ]
+
+==== Get specific event
+
+  get /api/events/:id
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  {
+    'id' => event.id,
+    'title' => event.title,
+    'excerpt' => event.excerpt,
+    'content' => event.content,
+    'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+    'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+    'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
+  }
+
+==== Get authenticated user's events
+
+  get /api/user/registrations
+  Authorization: Token token=AUTH_TOKEN
+
+*Response*
+
+  [
+    {
+      'id' => 1,
+      'confirmation_status' => 'unconfirmed',
+      'event' => {
+          'id' => 1,
+          'title' => event.title,
+          'excerpt' => event.excerpt,
+          'content' => event.content,
+          'starts_at' => event.starts_at,
+          'ends_at' => event.ends_at,
+          'published_at' => event.published_at
+        },
+    },
+    {
+      'id' => 2,
+      'confirmation_status' => 'unconfirmed',
+      'event' => {
+          'id' => 2,
+          'title' => event.title,
+          'excerpt' => event.excerpt,
+          'content' => event.content,
+          'starts_at' => event.starts_at,
+          'ends_at' => event.ends_at,
+          'published_at' => event.published_at
+        },
+    }
+  ]
+
+==== Get specific registration of authenticated user
+
+  get /api/user/registrations/:id
+  Authorization: Token token=AUTH_TOKEN
+
+  {
+    'id' => registration.id,
+    'confirmation_status' => 'unconfirmed',
+    'event' => {
+        'id' => event.id,
+        'title' => event.title,
+        'excerpt' => event.excerpt,
+        'content' => event.content,
+        'starts_at' => event.starts_at,
+        'ends_at' => event.ends_at,
+        'published_at' => event.published_at
+      },
+  }
+
+==== Request seat at event
+
+  post /api/user/registrations
+  Authorization: Token token=AUTH_TOKEN
+
+*Paramters*
+
+  "registration" => {
+    "user_id" => user.id,
+    "event_id" => event.id
+  }
+
+*Response*
+
+  {
+    'id' => registration.id,
+    'confirmation_status' => 'unconfirmed',
+    'event' => {
+        'id' => event.id,
+        'title' => event.title,
+        'excerpt' => event.excerpt,
+        'content' => event.content,
+        'starts_at' => event.starts_at,
+        'ends_at' => event.ends_at,
+        'published_at' => event.published_at
+      },
+  }
+
+==== Remove registration
+
+  delete /api/user/registrations/:id
+  Authorization: Token token=AUTH_TOKEN
+
+*Response*
+
+  Status: 200 OK
+
+
+=== Posts
+
+==== Get all posts
+
+  get /api/posts
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  [
+    {
+      'id' => post.id,
+      'excerpt' => post.excerpt,
+      'title' => post.title,
+      'content' => post.content,
+      'published_at' => post.published_at
+    },
+    {
+      'id' => post.id,
+      'excerpt' => post.excerpt,
+      'title' => post.title,
+      'content' => post.content,
+      'published_at' => post.published_at
+    }
+  ]
+
+==== Get specific post
+
+  get /api/posts/:id
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  {
+    'id' => post.id,
+    'excerpt' => post.excerpt,
+    'title' => post.title,
+    'content' => post.content,
+    'published_at' => post.published_at
+  }
+
+=== Profiles
+
+==== Get all profiles
+
+  get /api/profiles
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  [
+    {
+      'id' => profile.id,
+      'title' => profile.title,
+      'type' => profile.type,
+      'description' => profile.description,
+      'location' => profile.location,
+      'tags' => []
+    },
+    {
+      'id' => profile.id,
+      'title' => profile.title,
+      'type' => profile.type,
+      'description' => profile.description,
+      'location' => profile.location,
+      'tags' => []
+    }
+  ]
+
+==== Get specific profile
+
+  get /api/profiles/:id
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  {
+    'id' => profile.id,
+    'title' => profile.title,
+    'type' => profile.type,
+    'description' => profile.description,
+    'location' => profile.location,
+    'tags' => []
+  }
+
+
+=== Beacons
 
