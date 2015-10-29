@@ -6,7 +6,20 @@ class PostsController < ApplicationController
 		@posts = Post.published
 		@instagram_photos = InstagramApi.new.photos('space10')
 		@featured_tag = Settings.get['posts']['index']['featured_tag']
-		@featured_posts = @posts.where_tagged_with(@featured_tag)
+		
+		featured_posts = @posts.where_tagged_with(@featured_tag)
+		featured_posts_count = featured_posts.count
+		case
+			when featured_posts_count > 6
+				@featured_posts = featured_posts.limit(6)
+			when featured_posts_count == 5
+				@featured_posts = featured_posts.limit(4)
+			when featured_posts_count < 3
+				@featured_posts = []
+			else
+				@featured_posts = featured_posts
+		end
+		@featured_posts_count = @featured_posts.count
 	end
 
 	def show
