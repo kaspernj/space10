@@ -1,10 +1,98 @@
-<div id="instafeed"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-11 col-md-offset-1">
+			<div class="row">
+				<div class="col-md-5">
+					<h1 class="heading">A future- <br>living lab and exhibition space</h1>
+				</div>
+				<div class="col-md-7">
+					<%= image_tag @posts.first.image_attachments.last.image_url(:medium), class: "full_width" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row content_block">
+		<div class="col-md-8 content_block space-description">
+			<p class="lead"><strong>Space10 is located in the heart of Copenhagen. A space for exploration and inspiration rooted in the idea that together we can co-create a better everyday life for the many people.</strong></p>
+		</div>
+		<div class="col-md-4 content_block text-center current-lab">
+			<p class="meta-text">Next up</p>
+			<p class="lead"><strong><%= @current_lab.title %></strong></p>
+			<p class="meta-text"><%= @current_lab.timespan.html_safe %></p>
+		</div>
+	</div>
+</div>
 
-<script type="text/javascript">
-    var feed = new Instafeed({
-        get: 'tagged',
-        tagName: 'space10',
-        clientId: '7b508c78c7f24210966997d1d5f279ea'
-    });
-    feed.run();
-</script>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2>Space Journal <span>Latest</span></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @posts.each do |post| %>
+					<div class="col-md-4 post-thumbnail">
+						<%= render 'posts/thumbnail', post: post %>
+					</div>
+				<% end %>
+			</div>
+			<div class="row text-center">
+				<%= link_to "View all", posts_path, class: 'btn btn-lg btn-default' %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% if @instagram_photos %>
+	<div class="container">
+		<div class="row content_block">
+			<div class="col-md-12 content_block instagram-row">
+				<% @instagram_photos.first(6).each do |photo| %>
+					<%= link_to photo["link"], class: 'col-xs-4 col-md-2 instagram-photo-container', target: '_blank' do %>
+						<% photo_url = photo["images"]["standard_resolution"]["url"] %>
+						<div class="instagram-photo aspect-ratio r-1-1" style="background-image: url('<%= photo_url %>');"></div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2>Space Program <span>Latest</span></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% @events.each do |event| %>
+					<div class="col-md-6 event-small">
+						<%= render 'events/event_small', event: event %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container profiles_block">
+	<hr>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2>Latest Collaborators</span></h2>
+		</div>
+	</div>
+	<div class="row content_block">
+		<% @profiles.each do |profile| %>
+			<div class="col-md-3">
+				<%= image_tag profile.image_attachment.image_url(:square), class: "full_width" %>
+				<p><strong><%= profile.title %></strong></p>
+				<p class="meta-text"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
+			</div>
+		<% end %>
+	</div>
+</div>

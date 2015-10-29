@@ -90,7 +90,7 @@
 	<div class="row content_block">
 		<div class="col-md-12 instagram-row">
 			<% @instagram_photos.first(4).each do |photo| %>
-				<%= link_to photo["link"], class: 'instagram-photo-container',target: '_blank' do %>
+				<%= link_to photo["link"], class: 'col-xs-6 col-md-3 instagram-photo-container',target: '_blank' do %>
 					<% photo_url = photo["images"]["standard_resolution"]["url"] %>
 					<div class="instagram-photo aspect-ratio r-1-1" style="background-image: url('<%= photo_url %>');"></div>
 				<% end %>

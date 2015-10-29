@@ -18,6 +18,7 @@ class Lab < ActiveRecord::Base
 	validate :end_date_after_start_date
 
 	scope :published, -> { where('published = true') }
+	default_scope { order('starts_at asc') }
 
 	def timespan
 		if starts_at.present? && ends_at.present?

@@ -1,0 +1,47 @@
+.static_pages {
+	h2 {
+		@extend h1;
+		span {
+			color: $gray-light;
+		}
+	}
+	.profiles_block {
+		p {
+			margin: $gutter/2 0;
+		}
+		h2 {
+			padding-top: $gutter;
+			// border-top: 1px solid $gray-little-lighter;
+		}
+	}
+	h1.heading {
+		padding-top: $gutter*2;
+		margin-top: $gutter*4;
+		position: relative;
+		font-size: 65px;
+		&:after {
+			content: " ";
+			border-top: 20px solid black;
+			position: absolute;
+			left: -$gutter*4;
+			right: -$gutter*4;
+			top:0;
+			z-index: 9999;
+		}
+	}
+	.space-description {
+		padding-right: $gutter*3;
+	}
+	.current-lab {
+		p {
+			margin: $gutter/2 0;
+		}
+		.meta-text:first-child {
+			margin-top: 0;
+		}
+		p.lead {
+			margin: 0;
+		}
+		border-left: 1px solid $gray-little-lighter;
+	}
+}

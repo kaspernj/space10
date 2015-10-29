@@ -34,7 +34,6 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote
-//= require instafeed.min
 //= require slick.min
 //= require jquery.tokeninput.min
 //= require_tree .
