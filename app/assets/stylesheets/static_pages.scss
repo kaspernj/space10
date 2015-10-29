@@ -14,23 +14,23 @@
 			// border-top: 1px solid $gray-little-lighter;
 		}
 	}
-	h1.heading {
-		padding-top: $gutter*2;
-		margin-top: $gutter*4;
-		position: relative;
-		font-size: 65px;
-		&:after {
-			content: " ";
-			border-top: 20px solid black;
-			position: absolute;
-			left: -$gutter*4;
-			right: -$gutter*4;
-			top:0;
-			z-index: 9999;
+	@media (max-width: $screen-xs-max) {
+		.space-description .lead {
+			font-size: 2em;
 		}
 	}
-	.space-description {
-		padding-right: $gutter*3;
+	@media (min-width: $screen-sm-min) {
+		.space-description {
+			padding-right: $gutter*3;
+		}
+	}
+	@media (max-width: $screen-xs-max) {
+		.current-lab {
+			font-size: 2em;
+			.lead {
+				font-size: 1.5em;
+			}
+		}
 	}
 	.current-lab {
 		p {
@@ -43,5 +43,42 @@
 			margin: 0;
 		}
 		border-left: 1px solid $gray-little-lighter;
+	}
+
+	h1.heading {
+		position: relative;
+		&:after {
+			content: " ";
+			position: absolute;
+			z-index: 9999;
+		}
+	}
+	@media (max-width: $screen-xs-max) {
+		h1.heading {
+			margin-top: 0;
+			padding-top: $gutter;
+			margin-left: $gutter;
+			padding-left: $gutter;
+			font-size: 55px;
+			&:after {
+				top: -$gutter*2;
+				left: 0;
+				bottom: 0;
+				border-left: 10px solid black;
+			}
+		}
+	}
+	@media (min-width: $screen-sm-min) {
+		h1.heading {
+			margin-top: $gutter*4;
+			padding-top: $gutter*2;
+			font-size: 65px;
+			&:after {
+				top: 0;
+				left: -$gutter*4;
+				right: -$gutter*4;
+				border-top: 20px solid black;
+			}
+		}
 	}
 }

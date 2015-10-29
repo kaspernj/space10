@@ -2,11 +2,11 @@
 	<div class="row">
 		<div class="col-md-11 col-md-offset-1">
 			<div class="row">
-				<div class="col-md-5">
-					<h1 class="heading">A future- <br>living lab and exhibition space</h1>
-				</div>
-				<div class="col-md-7">
+				<div class="col-md-7 col-md-push-5">
 					<%= image_tag @posts.first.image_attachments.last.image_url(:medium), class: "full_width" %>
+				</div>
+				<div class="col-md-5 col-md-pull-7">
+					<h1 class="heading">A future- <br>living lab and exhibition space</h1>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-xs-10 col-xs-offset-1">
 			<div class="row content_block">
 				<% @events.each do |event| %>
 					<div class="col-md-6 event-small">
