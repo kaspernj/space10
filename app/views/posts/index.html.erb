@@ -4,7 +4,7 @@
 			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
 				<% @posts.limit(3).each do |post| %>
 					<%= link_to post do %>
-						<%= image_tag post.image_attachments.first.image, height: "500" %>
+						<%= image_tag post.image_attachments.first.image_url(:large), height: "500" %>
 						<h2><%= post.title %></h2>
 					<% end %>
 				<% end %>
@@ -49,7 +49,7 @@
 					<div class="row">
 						<% @featured_posts.each do |post| %>
 							<div class="col-md-<%= 12/@featured_posts_count %> post-miniature">
-								<%= image_tag post.featured_image.image_url(:thumbnail), class: "full_width" %>
+								<%= image_tag post.featured_image.image_url(:medium), class: "full_width" %>
 								<p class="meta-text">&mdash; <%= post.title %></p>
 								<p><%= post.excerpt %></p>
 							</div>
@@ -65,7 +65,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<%= render 'posts/featured_videos', object: VideoBlock.find(1) %>
+			<%= render 'posts/featured_videos', object: VideoBlock.last %>
 		</div>
 	</div>
 </div>

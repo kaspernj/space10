@@ -2,7 +2,7 @@
 	<div class="col-md-12 content_block">
 		<div class="slick-variable-width" data-slick='{"slidesToShow": 2, "slidesToScroll": 1}'>
 			<% object.image_attachments.each do |attachment| %>
-				<div><%= image_tag attachment.image, height: "300" %></div>
+				<div><%= image_tag attachment.image_url(:medium), height: "300" %></div>
 			<% end %>
 		</div>
 	</div>
