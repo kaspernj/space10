@@ -14,5 +14,4 @@
 class VideoBlock < ContentBlock
 	has_one :video_attachment, as: :resource, dependent: :destroy
 	accepts_nested_attributes_for :video_attachment, allow_destroy: true
-
 end

@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   has_many :image_attachments, as: :resource, dependent: :destroy
   accepts_nested_attributes_for :image_attachments, allow_destroy: true
 
-	has_many :content_blocks, as: :resource
+	has_many :content_blocks, as: :resource, dependent: :destroy
 	has_many :image_blocks, source: 'ContentBlock', as: :resource
 	has_many :image_slider_blocks, source: 'ContentBlock', as: :resource
 	has_many :text_blocks, source: 'ContentBlock', as: :resource
@@ -36,6 +36,10 @@ class Post < ActiveRecord::Base
 
 	def published_at
 		publish_at		
+	end
+
+	def featured_image
+		image_attachments.first
 	end
 
 end

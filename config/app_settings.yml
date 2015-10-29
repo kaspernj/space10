@@ -1,7 +1,7 @@
 --- !ruby/hash:ActionController::Parameters
 posts: !ruby/hash:ActionController::Parameters
   index: !ruby/hash:ActionController::Parameters
-    featured_tag: freshlivinglab
+    featured_tag: space10
     okay: 'yes'
     another_thing: 'yes'
   show: !ruby/hash:ActionController::Parameters

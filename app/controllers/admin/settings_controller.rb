@@ -5,6 +5,6 @@ class Admin::SettingsController < AdminController
 
 	def update
 		Settings.update(params['settings'])
-		redirect_to admin_settings_path
+		redirect_to admin_edit_settings_path
 	end
 end

@@ -36,24 +36,35 @@
 		</div>
 	</div>
 </div>
+<% if @featured_tag && @featured_posts.any? %>
 <div class="bg-gray">
 	<div class="container">
 		<div class="row content_block">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>#<%= Settings.get['posts']['index']['featured_tag'] %></h3>
+						<h3>#<%= @featured_tag %></h3>
 					</div>
+				</div>
+				<div class="row">
+					<% @featured_posts.each do |post| %>
+						<div class="col-md-3 post-miniature">
+							<%= image_tag post.featured_image.image_url(:thumbnail), class: "full_width" %>
+							<p class="meta-text">&mdash; <%= post.title %></p>
+							<p><%= post.excerpt %></p>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<% end %>
 <% if VideoBlock.any? %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<%= render 'posts/video_block', object: VideoBlock.last %>
+			<%= render 'posts/featured_videos', object: VideoBlock.find(1) %>
 		</div>
 	</div>
 </div>
@@ -72,11 +83,12 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="row content_block">
 		<div class="col-md-12 instagram-row">
 			<% @instagram_photos.first(4).each do |photo| %>
-				<%= link_to photo["link"], class: 'instagram_photo',target: '_blank' do %>
-					<%= image_tag photo["images"]["standard_resolution"]["url"] %>
+				<%= link_to photo["link"], class: 'instagram-photo-container',target: '_blank' do %>
+					<% photo_url = photo["images"]["standard_resolution"]["url"] %>
+					<div class="instagram-photo aspect-ratio r-1-1" style="background-image: url('<%= photo_url %>');"></div>
 				<% end %>
 			<% end %>
 		</div>

@@ -59,6 +59,14 @@
     border-left: none;
   }
 }
+.post-miniature {
+  .meta-text {
+    margin: $gutter/2 0;
+  }
+  p {
+    font-size: 0.9em;
+  }
+}
 
 .events.show .event-heading {
   h1 {
