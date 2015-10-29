@@ -5,7 +5,7 @@
 				<div class="event-images">
 					<%= image_tag event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url, class: 'full_width' %>
 					<% if event.secondary_image.present? %>
-						<%= image_tag event.featured_image.image_url, class: 'featured-image' %>
+						<%= image_tag event.featured_image.image_url, class: "featured-image #{cycle('featured-image-right','featured-image-left',name: 'four')}" %>
 					<% end %>
 				</div>
 				<div class="row content_block">

@@ -43,9 +43,14 @@
   position: relative;
   .featured-image {
     position: absolute;
-    right: $gutter*4;
     bottom: -$gutter*4;
     width: 70%;
+  }
+  .featured-image-right {
+    right: $gutter*4;
+  }
+  .featured-image-left {
+    left: $gutter*4;
   }
 }
 
