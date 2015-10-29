@@ -73,3 +73,9 @@
 		padding-bottom: $gutter*3; 
 	}
 }
+
+@media (max-width: $screen-xs-max) {
+		p.profile-heading {
+			line-height: 1.4em;
+		}
+	}
