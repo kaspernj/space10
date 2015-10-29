@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def show
-		@profile = Profile.find(params[:id])
+		@profile = Profile.published.find(params[:id])
+		@profiles = Profile.published.paginate(:page => params[:page], :per_page => 8)
 	end
 end

@@ -14,10 +14,6 @@
 	h1 {
 		font-size: 7em;
 	}
-	.join-us {
-		padding-top: $gutter*5; 
-		padding-bottom: $gutter*3; 
-	}
 }
 
 .community-profiles {
@@ -33,6 +29,13 @@
 	.meta-text {
 		margin: 0;
 	}
+}
+
+.community-profile {
+	.meta-text {
+		font-size: 1.2em;
+	}
+	padding-bottom: $gutter*2;
 }
 
 .profiles {
@@ -64,5 +67,9 @@
 			padding-left: 40px;
 			padding-right: 40px;
 		}
+	}
+	.join-us {
+		padding-top: $gutter*5; 
+		padding-bottom: $gutter*3; 
 	}
 }
