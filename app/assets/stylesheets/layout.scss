@@ -18,6 +18,14 @@ img.full_width {
   background: $gray-lighter;
 }
 
+.bg-black {
+  background: black;
+  color: white;
+  a {
+    color: white;
+  }
+}
+
 .panel {
   img {
     max-width: 100%;

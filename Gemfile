@@ -47,6 +47,8 @@ gem "deep_merge", :require => 'deep_merge/rails_compat'
 
 gem 'faker'
 
+gem 'will_paginate', '~> 3.0.6'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

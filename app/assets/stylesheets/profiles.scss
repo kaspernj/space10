@@ -1,0 +1,68 @@
+.profiles.index {
+	.hero-image {
+		width: 110%;
+		float: right;
+	}
+	.hero-block {
+		padding-bottom: $gutter*2;
+		h1 {
+			font-size: 9em;
+			line-height: 0.9em;
+			margin-top: $gutter*3;
+		}
+	}
+	h1 {
+		font-size: 7em;
+	}
+	.join-us {
+		padding-top: $gutter*5; 
+		padding-bottom: $gutter*3; 
+	}
+}
+
+.community-profiles {
+	padding-top: $gutter;
+	padding-bottom: $gutter;
+	img {
+		display: block;
+	}
+	h4 {
+		font-size: 0.8em;
+		margin-top: 20px;
+	}
+	.meta-text {
+		margin: 0;
+	}
+}
+
+.profiles {
+	.pagination {
+		a {
+			background-color: $gray-little-lighter;
+		}
+		a, a:focus, a:hover {
+			border: none;
+			color: black;
+			margin-right: 5px;
+			padding: 16px 22px;
+			font-weight: bold;
+			font-size: 0.8em;
+			&:after {
+				border:none;
+			}
+		}
+		& > li.disabled > a {
+			color: $gray-light;
+		}
+		& > li > a:hover {
+			background-color: lighten($gray-light,10%);
+		}
+		li.active a {
+			background-color: $gray-light;
+		}
+		li.prev a, li.next a {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+	}
+}

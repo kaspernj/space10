@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 	def index
-		@profiles = Profile.published
+		@profiles = Profile.published.paginate(:page => params[:page], :per_page => 8)
 	end
 
 	def show

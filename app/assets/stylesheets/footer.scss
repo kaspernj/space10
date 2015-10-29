@@ -1,8 +1,9 @@
 footer {
+
   color: white;
   font-weight: bold;
   background-color: $brand-primary;
-  margin-top: $gutter;
+  margin-top: $gutter*4;
   padding-top: $gutter;
   padding-bottom: $gutter;
   a, a:hover, a:focus {
