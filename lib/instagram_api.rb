@@ -8,8 +8,7 @@ class InstagramApi
 		end
 	end
 
-	def photos(user)
-		user = '214647329'
+	def user_photos(user)
 		url = "https://api.instagram.com/v1/users/#{user}/media/recent?access_token=#{ENV['INSTAGRAM_ACCESS_TOKEN']}"
 		Rails.cache.fetch(url, expires: 1.hour) do
 			HTTParty.get(url)['meta']['code'] == 200 ? HTTParty.get(url)['data'] : nil rescue nil

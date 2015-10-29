@@ -10,12 +10,3 @@ footer {
     font-weight: bold;
   }
 }
-
-.row-eq{
-    overflow: hidden; 
-}
-
-[class*="col-eq"]{
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
-}

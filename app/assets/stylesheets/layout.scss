@@ -137,3 +137,12 @@ input[value="Schedule"] {
   padding-top: $gutter*2;
   padding-bottom: $gutter*2;
 }
+
+.row-eq{
+  overflow: hidden; 
+}
+
+[class*="col-eq"]{
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}

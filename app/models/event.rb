@@ -34,6 +34,8 @@ class Event < ActiveRecord::Base
   scope :future, -> { where("starts_at > :d AND (ends_at IS NULL OR ends_at > :d)", d: Time.current) }
   scope :historic, -> { where("starts_at < :d AND (ends_at IS NULL OR ends_at < :d)", d: Time.current) }
 
+  default_scope { order("starts_at desc") }
+
   def historic?
     if starts_at < Time.current && (ends_at == nil || ends_at < Time.current)
       return true
@@ -42,12 +44,20 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def feature_image
-    if image_attachments.any?
-      image_attachments.first.image
+  def featured_image
+    image_attachments.first
+  end
+
+  def featured_image_url(size = nil)
+    if featured_image.present?
+      featured_image.image_url(size)
     else
-      "fallback/medium_default.png"
+      "fallback/" + [size, "default.png"].compact.join('_')
     end
+  end
+
+  def secondary_image
+    image_attachments.second
   end
 
   def timespan

@@ -1,0 +1,69 @@
+.events.index {
+  .event-info {
+    border-left: 20px solid black;
+    padding-left: 40px;
+    padding-top: 400px;
+    &.col-md-pull-7 {
+      text-align: right;
+      border-left: 0;
+      padding-left: 0;
+      border-right: 20px solid black;
+      padding-right: 40px;
+      p.date:before {
+        right: 0;
+      }
+    }
+  }
+  h2 {
+    @extend h1;
+  }
+}
+
+.events.show .event-heading {
+  h1 {
+    margin-top: -20%;
+    margin-bottom: $gutter;
+    padding: $gutter 1.5*$gutter;
+    background-color: white;
+  }
+}
+
+.event-date {
+  font-size: 14em;
+  line-height: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.event-address {
+  font-size: 90%;
+}
+
+.event-images {
+  position: relative;
+  .featured-image {
+    position: absolute;
+    right: $gutter*4;
+    bottom: -$gutter*4;
+    width: 70%;
+  }
+}
+
+.event-small {
+  position: relative;
+  .event-date {
+    font-size: 7em;
+    margin-top: $gutter*2;
+  }
+  .date {
+    margin-bottom: 0;
+  }
+  .col-xs-3:after {
+    content: " ";
+    border-left: 12px solid black;
+    position: absolute;
+    left: -$gutter;
+    top: -$gutter;
+    bottom: 0;
+  }
+}
