@@ -5,6 +5,11 @@
 			color: $gray-light;
 		}
 	}
+	@media (max-width: $screen-xs-max) {
+		h2 {
+			font-size: 2em;
+		}
+	}
 	.profiles_block {
 		p {
 			margin: $gutter/2 0;
@@ -16,7 +21,7 @@
 	}
 	@media (max-width: $screen-xs-max) {
 		.space-description .lead {
-			font-size: 2em;
+			font-size: 1.6em;
 		}
 	}
 	@media (min-width: $screen-sm-min) {
@@ -26,9 +31,9 @@
 	}
 	@media (max-width: $screen-xs-max) {
 		.current-lab {
-			font-size: 2em;
+			font-size: 1.3em;
 			.lead {
-				font-size: 1.5em;
+				font-size: 1.8em;
 			}
 		}
 	}
@@ -59,7 +64,7 @@
 			padding-top: $gutter;
 			margin-left: $gutter;
 			padding-left: $gutter;
-			font-size: 55px;
+			font-size: 40px;
 			&:after {
 				top: -$gutter*2;
 				left: 0;

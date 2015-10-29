@@ -50,7 +50,7 @@
 		<div class="row content_block">
 			<div class="col-md-12 content_block instagram-row">
 				<% @instagram_photos.first(6).each do |photo| %>
-					<%= link_to photo["link"], class: 'col-xs-4 col-md-2 instagram-photo-container', target: '_blank' do %>
+					<%= link_to photo["link"], class: 'col-xs-6 col-md-2 instagram-photo-container', target: '_blank' do %>
 						<% photo_url = photo["images"]["standard_resolution"]["url"] %>
 						<div class="instagram-photo aspect-ratio r-1-1" style="background-image: url('<%= photo_url %>');"></div>
 					<% end %>
@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
 				<% @events.each do |event| %>
 					<div class="col-md-6 event-small">
@@ -88,7 +88,7 @@
 	</div>
 	<div class="row content_block">
 		<% @profiles.each do |profile| %>
-			<div class="col-md-3">
+			<div class="col-xs-6 col-md-3">
 				<%= image_tag profile.image_attachment.image_url(:square), class: "full_width" %>
 				<p><strong><%= profile.title %></strong></p>
 				<p class="meta-text"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
