@@ -1,5 +1,14 @@
 module ApplicationHelper
 
+  def full_title(title)
+    base_title = "Space 10"
+    if title.present?
+      title + " | " + base_title
+    else
+      base_title
+    end
+  end
+
 	def nav_link(text, link_path, options={})
 		classes = (options[:class] || '')
 		current_path_controller = Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:controller]
