@@ -13,9 +13,8 @@
 #
 
 class Post < ActiveRecord::Base
-  include Planable
   include Taggable
-  include Publishable
+  include Schedulable
   
 	validates_presence_of :title
 
@@ -33,12 +32,6 @@ class Post < ActiveRecord::Base
 	accepts_nested_attributes_for :image_slider_blocks, allow_destroy: true
 	accepts_nested_attributes_for :text_blocks, allow_destroy: true
 	accepts_nested_attributes_for :video_blocks, allow_destroy: true
-
-	default_scope { order('publish_at desc') }
-
-	def published_at
-		publish_at		
-	end
 
 	def featured_image
 		image_attachments.first

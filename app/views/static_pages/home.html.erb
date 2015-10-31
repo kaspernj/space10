@@ -1,9 +1,10 @@
+<% if @posts.any? && @events.any? && @current_lab.present? %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-11 col-md-offset-1">
 			<div class="row">
 				<div class="col-md-7 col-md-push-5">
-					<%= image_tag @posts.first.image_attachments.last.image_url(:medium), class: "full_width" %>
+					<%= image_tag @posts.first.featured_image.image_url(:medium), class: "full_width" %>
 				</div>
 				<div class="col-md-5 col-md-pull-7">
 					<h1 class="heading">A future- <br>living lab and exhibition space</h1>
@@ -16,7 +17,7 @@
 			<p class="lead"><strong>Space10 is located in the heart of Copenhagen. A space for exploration and inspiration rooted in the idea that together we can co-create a better everyday life for the many people.</strong></p>
 		</div>
 		<div class="col-md-4 content_block text-center current-lab">
-			<p class="meta-text">Next up</p>
+			<p class="meta-text"><%= @current_lab.current? ? "Currently exploring" : "Next up" %></p>
 			<p class="lead"><strong><%= @current_lab.title %></strong></p>
 			<p class="meta-text"><%= @current_lab.timespan.html_safe %></p>
 		</div>
@@ -63,7 +64,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<h2>Space Program <span>Latest</span></h2>
+			<h2>Space Program <span>Upcomming</span></h2>
 		</div>
 	</div>
 	<div class="row">
@@ -96,3 +97,4 @@
 		<% end %>
 	</div>
 </div>
+<% end %>

@@ -18,7 +18,7 @@
 
 class Event < ActiveRecord::Base
   include Planable
-  include Publishable
+  include Schedulable
 
 	validates_presence_of :title, :starts_at
   validate :end_date_after_start_date
@@ -31,18 +31,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :image_attachments, allow_destroy: true
 
-  scope :future, -> { where("starts_at > :d AND (ends_at IS NULL OR ends_at > :d)", d: Time.current) }
-  scope :historic, -> { where("starts_at < :d AND (ends_at IS NULL OR ends_at < :d)", d: Time.current) }
-
-  default_scope { order("starts_at desc") }
-
-  def historic?
-    if starts_at < Time.current && (ends_at == nil || ends_at < Time.current)
-      return true
-    else
-      return false
-    end
-  end
 
   def featured_image
     image_attachments.first
@@ -69,19 +57,6 @@ class Event < ActiveRecord::Base
       end
     else
       starts_at.strftime("%I.%M%p")
-    end
-  end
-
-  def published_at
-    publish_at
-  end
-
-private
-
-  def end_date_after_start_date
-    return if [starts_at.blank?, ends_at.blank?].any?
-    if ends_at < starts_at
-      errors.add(:ends_at, 'must be greater than the start date')
     end
   end
 

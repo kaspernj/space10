@@ -32,8 +32,25 @@
 	@media (max-width: $screen-xs-max) {
 		.current-lab {
 			font-size: 1.3em;
+			position: relative;
 			.lead {
 				font-size: 1.8em;
+			}
+			&:before {
+				content: " ";
+				border-top: 1px solid $gray-little-lighter;
+				position: absolute;
+				top: 0;
+				right: 35%;
+				left: 35%;
+			}
+			&:after {
+				content: " ";
+				border-top: 1px solid $gray-little-lighter;
+				position: absolute;
+				bottom: 0;
+				right: 35%;
+				left: 35%;
 			}
 		}
 	}
