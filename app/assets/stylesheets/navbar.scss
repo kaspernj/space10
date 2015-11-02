@@ -5,6 +5,9 @@
 }
 
 @media (max-width: $screen-xs-max) {
+  a {
+    font-size: 18px;
+  }
   .navbar-header {
     float: left;
   }
@@ -14,10 +17,8 @@
   .nav > li {
     float: left;
   }
-  .navbar-default {
-    .navbar {
-      margin-bottom: $gutter/2;
-    }
+  .navbar-default.navbar {
+    margin-bottom: $gutter/2;
   }
   .navbar-fixed-bottom {
     min-height: 30px;

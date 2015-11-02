@@ -46,3 +46,7 @@ a:not([class]):hover:after {
 		font-size: $font-size-h1*0.6;
 	}
 }
+
+hr {
+	border-top: 2px solid $gray-little-lighter;
+}

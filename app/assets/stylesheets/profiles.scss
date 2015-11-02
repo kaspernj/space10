@@ -3,6 +3,11 @@
 		width: 110%;
 		float: right;
 	}
+	@media (max-width: $screen-xs-max) {
+		.hero-image {
+			width: 100%;
+		}
+	}
 	.hero-block {
 		padding-bottom: $gutter*2;
 		h1 {
@@ -10,9 +15,20 @@
 			line-height: 0.9em;
 			margin-top: $gutter*3;
 		}
+		@media (max-width: $screen-xs-max) {
+			h1 {
+				font-size: 5em;
+				margin-top: -$gutter*2;
+			}	
+		}
 	}
 	h1 {
 		font-size: 7em;
+	}
+	@media (max-width: $screen-xs-max) {
+		h1 {
+			font-size: 3em;
+		}
 	}
 }
 

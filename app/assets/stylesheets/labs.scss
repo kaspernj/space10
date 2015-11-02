@@ -1,0 +1,27 @@
+.lab {
+  margin: $gutter*4 0;
+}
+
+.labs.index {
+  h1 {
+    font-size: 12em;
+    line-height: 1.3em;
+    margin-bottom: $gutter*2;
+    margin-top: 0;
+    span {
+      border-bottom: 20px solid black;
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    h1 {
+      font-size: 4em;
+      line-height: 1.5em;
+      span {
+        border-bottom: 10px solid black;
+      }
+    }
+  }
+  .lab-comming {
+    opacity: 0.5;
+  }
+}
