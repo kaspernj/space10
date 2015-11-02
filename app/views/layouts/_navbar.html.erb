@@ -1,19 +1,14 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'logo.svg', height: "114", width: '94', id: 'svg_logo' %>
+        <%= image_tag 'logo.svg', height: "114", width: '94', id: 'svg_logo', class: 'hidden-xs' %>
+        <%= image_tag 'logo_wo_text.svg', width: '60', class: 'visible-xs-block' %>
         <%= image_tag 'logo.gif', height: "114", width: '94', id: 'gif_logo', style: "display:none;" %>
       <% end %>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-left">
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-left hidden-xs">
         <% if signed_in? %>
           <% if current_user.admin? %><li><%= link_to "<i class='fa fa-user-secret'></i>".html_safe, admin_root_path %></li><% end %>
           <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
@@ -23,13 +18,39 @@
         <% end %>
         <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li>
       </ul>
-      <ul class="nav navbar-nav primary-nav navbar-right">
+      <ul class="nav navbar-nav primary-nav navbar-right hidden-xs">
         <li><%= nav_link "Journal", posts_path %></li>
         <li><%= nav_link "Program", events_path %></li>
         <li><%= nav_link "Labs", labs_path %></li>
         <li><%= nav_link "Community", profiles_path %></li>
         <li><%= nav_link "About", "#" %></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right visible-xs-block">
+        <% if signed_in? %>
+          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
+          <li><%= link_to "<i class='fa icon-user'></i> #{current_user.name}".html_safe, "#" %></li>
+        <% else %>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li>
+        <% end %>
+      </ul>
     </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<nav class="navbar navbar-inverse navbar-fixed-bottom visible-xs-block">
+  <div class="container">
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_section %> <i class="fa fa-chevron-down"></i> </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Journal", posts_path %></li>
+            <li><%= link_to "Program", events_path %></li>
+            <li><%= link_to "Labs", labs_path %></li>
+            <li><%= link_to "Community", profiles_path %></li>
+            <li><%= link_to "About", "#" %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

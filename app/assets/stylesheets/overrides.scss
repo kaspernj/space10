@@ -15,12 +15,6 @@ a:not([class]):hover:after {
 	border-bottom: 1.5em solid #ddd;
 }
 
-.navbar, .dropdown-menu {
-	a:after, a:hover:after {
-		border: none;
-	}
-}
-
 .form-control, .btn, .input-group-addon, .note-editor, .list-group .list-group-item {
 	border-width: 2px;
 }
