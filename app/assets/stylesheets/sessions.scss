@@ -15,26 +15,26 @@
   }
 }
 
-body.sessions.new, body.users.new {
-    display: table;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  .container {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  .row {
-    margin-left: auto;
-    margin-right: auto;
-    @media (min-width: $screen-sm-min) {
-      width: $container-sm;
-    }
-    @media (min-width: $screen-md-min) {
-      width: $container-md;
-    }
-    @media (min-width: $screen-lg-min) {
-      width: $container-lg;
-    }
-  }
-}
+// body.sessions.new, body.users.new {
+//     display: table;
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//   .container {
+//     display: table-cell;
+//     vertical-align: middle;
+//   }
+//   .row {
+//     margin-left: auto;
+//     margin-right: auto;
+//     @media (min-width: $screen-sm-min) {
+//       width: $container-sm;
+//     }
+//     @media (min-width: $screen-md-min) {
+//       width: $container-md;
+//     }
+//     @media (min-width: $screen-lg-min) {
+//       width: $container-lg;
+//     }
+//   }
+// }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :only_new_users
+	before_filter :only_new_users, only: [:new, :create]
 	layout 'clean_application', only: :new
 
 	def new
@@ -18,6 +18,37 @@ class UsersController < ApplicationController
 		else
 			render action: 'new'
 		end
+	end
+
+	def show
+		@user = User.find(params[:id])
+		respond_to do |format|
+      format.html
+      format.js
+    end
+	end
+
+	def edit
+		@user = User.find(params[:id])
+		respond_to do |format|
+      format.html
+      format.js
+    end
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update(user_params)
+			respond_to do |format|
+	      format.html { redirect_to edit_user_path(@user) }
+	      format.js
+	    end
+	  else
+	  	respond_to do |format|
+	      format.html { render :edit }
+	      format.js
+	    end
+	  end
 	end
 
 private

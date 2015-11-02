@@ -17,7 +17,7 @@
 		<div class="form-group">
 	<%= f.label :starts_at %>
 	<div class="input-group">
-			<%= f.datetime_field :starts_at, value: (@event.starts_at.blank? ? '' : @event.starts_at.to_s(:formatted)), placeholder: "#{DateTime.now.to_s(:formatted)}", class: "form-control datetimepicker" %>	
+			<%= f.datetime_field :starts_at, value: (@event.starts_at.blank? ? '' : @event.starts_at.to_s(:formatted)), placeholder: "#{Time.zone.now.to_s(:formatted)}", class: "form-control datetimepicker" %>	
 			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 		</div>
 	</div>

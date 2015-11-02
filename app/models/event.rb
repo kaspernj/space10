@@ -48,6 +48,10 @@ class Event < ActiveRecord::Base
     image_attachments.second
   end
 
+  def fully_booked?
+    (max_registrations || 0) > 0 && max_registrations < registrations.confirmed.count
+  end
+
   def timespan
     if ends_at.present?
       if starts_at.to_date == ends_at.to_date

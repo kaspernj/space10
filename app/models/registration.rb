@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  event_id   :integer
-#  confirmed  :boolean
+#  confirmed  :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -19,9 +19,10 @@ class Registration < ActiveRecord::Base
 	scope :confirmed, -> { where(confirmed: true) }
 
 	def confirmation_status
-		case confirmed
-		when true
+		if confirmed?
 			:confirmed
+		elsif !self.confirmed? && event.fully_booked?
+			:waiting
 		else
 			:unconfirmed
 		end

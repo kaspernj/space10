@@ -21,6 +21,4 @@ class ImageAttachment < ActiveRecord::Base
 	validates_presence_of :image
 
 	default_scope { order(:row_order) }
-
-
 end

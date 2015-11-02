@@ -10,9 +10,11 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
+#  image           :string
 #
 
 class User < ActiveRecord::Base
+	mount_uploader :image, AvatarUploader
 	has_secure_password validations: :validate_password?
 	validates_length_of :password, minimum: 8, if: :validate_password?
 
@@ -28,7 +30,8 @@ class User < ActiveRecord::Base
 
 	has_many :authentications, dependent: :destroy
 	has_many :registrations, dependent: :destroy
-	has_many :events, through: :registrations
+	has_many :events,  -> { current_or_future }, through: :registrations
+	has_many :historic_events,  -> { historic }, through: :registrations, class_name: 'Event'
 
 	has_many :profile_authorizations, dependent: :destroy
 	has_many :company_profiles, through: :profile_authorizations
@@ -45,6 +48,7 @@ class User < ActiveRecord::Base
 		find_or_initialize_by(email: omniauth['info']['email']).tap do |user|
 			user.email = omniauth['info']['email']
 			user.name = omniauth['info']['name']
+			user.remote_image_url = omniauth['info']['image'] if user.image.blank?
 			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end
 	end

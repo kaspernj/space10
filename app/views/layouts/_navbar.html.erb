@@ -12,7 +12,7 @@
         <% if signed_in? %>
           <% if current_user.admin? %><li><%= link_to "<i class='fa fa-user-secret'></i>".html_safe, admin_root_path %></li><% end %>
           <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
-          <li><%= link_to "<i class='fa icon-user'></i> Account".html_safe, "#" %></li>
+          <li><%= link_to "<i class='fa icon-user'></i> Account".html_safe, edit_user_path(current_user), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
         <% else %>
           <!-- <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li> -->
           <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>

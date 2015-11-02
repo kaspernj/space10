@@ -18,7 +18,7 @@ describe 'user creation', type: :feature do
 		it 'allows visitors to sign up with facebook' do
 			omniauth_facebook_hash
 			visit new_user_path
-			click_on 'Sign up with Facebook'
+			click_on 'Join with Facebook'
 			
 			expect(page).to have_content('Logged in successfully')
 			expect(page).to have_content('Account')
@@ -27,21 +27,34 @@ describe 'user creation', type: :feature do
 		it 'handles authentication failure' do
 			OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 			visit new_user_path
-			click_on 'Sign up with Facebook'
+			click_on 'Join with Facebook'
 
 			expect(page).to have_content('Authentication failed')
 		end
 	end
 
-	describe 'when signed in' do
+	context 'signed in' do
 		before :each do
-			user = create(:user)
-			sign_in user
+			@user = create(:user)
+			sign_in @user
 		end
 
 		it 'do not allow to create new user' do
 			visit new_user_path
 			expect(current_path).to eq root_path
+		end
+
+		describe "user update" do
+			it 'allows update', js: true do
+				click_on 'Account'
+				expect(page).to have_content @user.name
+				
+				fill_in 'user[name]', with: "Mouwgli"
+				click_on "Save"
+
+				expect(page).to have_content "Mouwgli"
+				expect(@user.reload.name).to eq "Mouwgli"
+			end
 		end
 	end
 

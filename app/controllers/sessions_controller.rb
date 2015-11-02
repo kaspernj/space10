@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
 			redirect_to root_path
 		else
 			flash[:danger] = "Could not authenticate"
-			redirect_to new_user_path
+			render :new
 		end
 	end
 

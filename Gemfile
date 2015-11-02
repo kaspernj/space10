@@ -49,6 +49,8 @@ gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'simple_form'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

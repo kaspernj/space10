@@ -1,0 +1,54 @@
+<div class="manage-user">
+<div class="row">
+  <div class="col-md-3">
+    <h2><%= user.name %></h2>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <%= simple_form_for user, remote: true do |f| %>
+        <div class="col-md-4">
+          <fieldset class="file_upload">
+            <%= image_tag f.object.image_url(:medium), class: "image_preview full_width" %>
+            
+            <%= f.file_field :image, class: "upload upload_image" %>
+            <%= f.hidden_field :image_cache %>
+          </fieldset>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :name, label: false, placeholder: 'Name' %>
+          <%= f.input :email, label: false, placeholder: 'Email' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :password, label: false, placeholder: "Change password" %>
+          <%= f.button :submit, "Save", class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row content_block">
+  <div class="col-md-3">
+    <h2>My <br>Events</h2>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <% user.events.each do |event| %>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <div class="aspect-ratio r-16-9">
+              <div class="centered_container background-cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
+                <span class="centered btn btn-inverse">
+                  <%= user.registrations.find_by(event: event).confirmation_status.capitalize %>
+                </span>
+              </div>
+            </div>
+            <div class="caption">
+              <h4><%= event.title %></h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

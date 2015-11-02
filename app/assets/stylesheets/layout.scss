@@ -53,7 +53,7 @@ img.full_width {
   margin-top: 10px;
 }
 
-.field_with_errors {
+.has-error {
 	color: $brand-danger;
 	input {
 		border-color: $brand-danger;
@@ -160,4 +160,43 @@ input[value="Schedule"] {
 [class*="col-eq"]{
   margin-bottom: -99999px;
   padding-bottom: 99999px;
+}
+
+.centered_container {
+  text-align: center;
+}
+
+.centered_cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+ 
+.centered_container:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+  margin-right: -0.25em;
+ }
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.background-cover {
+  background-size: cover;
+  background-position: center center;
+}
+
+.btn-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+  &:hover, &:focus {
+    color: #fff;
+  }
 }
