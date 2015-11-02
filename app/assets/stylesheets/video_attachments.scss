@@ -43,3 +43,21 @@
 		margin-top: -75px;
 	}
 }
+
+@media (max-width: $screen-xs-max) {
+	.video-poster {
+		.video-title {
+			bottom: 5px;
+			left: 5px;
+			h3 {
+				margin: 0;
+				font-size: 1.5em;
+			}
+		}
+	}
+	.video-play-button img {
+		height: 50px;
+		margin-left: -20px;
+		margin-top: -25px;
+	}
+}

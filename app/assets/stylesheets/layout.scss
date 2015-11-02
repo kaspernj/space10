@@ -146,6 +146,13 @@ input[value="Schedule"] {
   padding-bottom: $gutter*2;
 }
 
+@media (max-width: $screen-xs-max) {
+  .content_block {
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+  }  
+}
+
 .row-eq{
   overflow: hidden; 
 }

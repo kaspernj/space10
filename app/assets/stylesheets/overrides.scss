@@ -46,3 +46,9 @@ a:not([class]):hover:after {
 .panel:not(.note-editor) {
 	border-width: 10px;
 }
+
+@media (max-width: $screen-xs-max) {
+	h1 {
+		font-size: $font-size-h1*0.6;
+	}
+}

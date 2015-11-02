@@ -35,6 +35,17 @@
   }
 }
 
+@media (max-width: $screen-xs-max) {
+  .posts.show, .events.show, .events.index, .static_pages {
+    p.excerpt {
+      line-height: 1.3em;
+    }
+    .text_block p {
+      line-height: 1.5em;
+    }
+  }
+}
+
 .post-thumbnail {
   border-left: 1px solid #ddd;
   &:first-child {

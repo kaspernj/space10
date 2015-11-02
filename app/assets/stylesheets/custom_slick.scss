@@ -12,6 +12,17 @@
 	}
 }
 
+@media (max-width: $screen-xs-max) {
+  .slick-slide {
+    &> img {
+      height: 240px;
+    }
+    h2 {
+      font-size: 2em;
+    }
+  }
+}
+
 .slick-active {
   opacity: 1;
 }
