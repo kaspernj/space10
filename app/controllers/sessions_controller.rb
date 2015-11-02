@@ -3,7 +3,10 @@ class SessionsController < ApplicationController
 	layout 'clean_application'
 
 	def new
-		
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def create

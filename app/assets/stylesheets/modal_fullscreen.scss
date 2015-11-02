@@ -4,7 +4,10 @@
     overflow: auto;
   }
   .close {
-    font-size: 120px;
+    font-size: 60px;
+    @media (min-width: $screen-md-min) {
+      font-size: 120px;
+    }
     &:after {
       clear: both;
     }
