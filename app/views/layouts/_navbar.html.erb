@@ -14,7 +14,8 @@
           <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
           <li><%= link_to "<i class='fa icon-user'></i> Account".html_safe, "#" %></li>
         <% else %>
-          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li>
+          <!-- <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li> -->
+          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, "#", data: {toggle: "modal", target: "#modal-fullscreen"} %></li>
         <% end %>
         <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li>
       </ul>

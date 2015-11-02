@@ -1,0 +1,18 @@
+.btn-facebook {
+  position: relative;
+  text-align: left;
+  i.fa {
+    margin-right: $gutter/2;
+    padding-right: $gutter*0.8;
+    position: relative;
+    &:after {
+      content: " ";
+      position: absolute;
+      border-right: 2px solid lighten(#000,15%);
+      top: -15px;
+      bottom: -15px;
+      right:0;
+    }
+  }
+  text-transform: none;
+}

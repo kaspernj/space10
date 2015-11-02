@@ -1,0 +1,16 @@
+<!-- Modal fullscreen -->
+<div class="modal modal-fullscreen fade" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= link_to "&times;".html_safe, '#', class: 'close', data: { dismiss: 'modal' } %>
+        <!-- <h4 class="modal-title" id="myModalLabel">Login</h4> -->
+      </div>
+      <div class="modal-body login-content">
+        <div class="row">
+          <%= render 'sessions/login' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

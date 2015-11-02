@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 	before_filter :only_new_users, except: :destroy
+	layout 'clean_application'
 
 	def new
 		

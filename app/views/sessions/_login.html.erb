@@ -1,0 +1,21 @@
+<div class="col-md-3 text-center">
+  <%= link_to root_path do %>
+    <%= image_tag 'text-logo.svg' %>
+  <% end %>
+  <%= link_to '<i class="fa fa-facebook"></i> Log in with Facebook'.html_safe, '/auth/facebook', class: "btn btn-lg btn-primary btn-facebook" %>
+  <p class="meta-text">Or with email</p>
+  <%= form_for :session, url: sessions_path do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Log in", class: "btn btn-default" %>
+    </div>
+    <%= link_to "Don't have an account?", new_user_path %>
+  <% end %>
+</div>

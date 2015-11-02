@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :only_new_users
+	layout 'clean_application', only: :new
 
 	def new
 		@user = User.new

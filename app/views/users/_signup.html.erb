@@ -1,0 +1,40 @@
+<div class="col-md-3 text-center">
+  <%= link_to root_path do %>
+    <%= image_tag 'text-logo.svg' %>
+  <% end %>
+  <%= link_to '<i class="fa fa-facebook"></i> Join with Facebook'.html_safe, '/auth/facebook', class: "btn btn-lg btn-primary btn-facebook" %>
+  <p class="meta-text">Or with email</p>
+
+  <%= form_for (@user || User.new) do |f| %>
+    <% if @user && @user.errors.any? %>
+      <div class="alert alert-danger">
+        <p>Oops! Something went wrong. Try again!</p>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.submit "Create user", class: "btn btn-default" %>
+    </div>
+    <%= link_to "Already have an account?", login_path %>
+  <% end %>
+</div>
