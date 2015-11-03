@@ -172,6 +172,9 @@ input[value="Schedule"] {
   right: 0;
   top: 0;
   bottom: 0;
+  @media (max-width: $screen-xs-max) {
+    position: relative;
+  }
 }
  
 .centered_container:before {
