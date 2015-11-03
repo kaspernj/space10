@@ -157,12 +157,15 @@ input[value="Schedule"] {
 }
 
 .row-eq{
-  overflow: hidden; 
+  display: table;
 }
 
 [class*="col-eq"]{
-  margin-bottom: -99999px;
-  padding-bottom: 99999px;
+  float: none;
+  display: table-cell;
+}
+[class*="col-bottom"]{
+  vertical-align: bottom;
 }
 
 .centered_container {
@@ -210,5 +213,11 @@ input[value="Schedule"] {
   @media (max-width: $screen-xs-max) {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+.space-footer-info {
+  img {
+    margin-bottom: $gutter/2;
   }
 }

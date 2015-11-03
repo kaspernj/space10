@@ -1,6 +1,26 @@
 posts:
   index:
     featured_tag: 'freshlivinglab'
-    another_thing: 'yes'
-  edit:
-    something: 'editable'
+social_media:
+  instagram: ''
+  facebook: ''
+  youtube: ''
+  twitter: ''
+  linkedin: ''
+footer:
+  links:
+    first:
+      title: ''
+      link: ''
+    second:
+      title: ''
+      link: ''
+    third:
+      title: ''
+      link: ''
+    fourth:
+      title: ''
+      link: ''
+    fifth:
+      title: ''
+      link: ''

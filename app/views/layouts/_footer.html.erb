@@ -3,10 +3,11 @@
     <div class="row">
     	<div class="col-md-3">
 	    	<ul class="list-unstyled">
-	    		<li><%= link_to "About", '#' %></li>
-	    		<li><%= link_to "App", '#' %></li>
-	    		<li><%= link_to "Press", '#' %></li>
-	    		<li><%= link_to "Link", '#' %></li>
+	    		<% Settings.get['footer']['links'].each do |link| %>
+            <% if link[1]['title'].present? %>
+              <li><%= link_to link[1]['title'], link[1]['link'], target: '_blank' %></li>
+            <% end %>
+          <% end %>
 	    	</ul>
 	    </div>
 	    <div class="col-md-3">
@@ -19,24 +20,27 @@
 	    <div class="col-md-3"></div>
 	    <div class="col-md-3 text-right"><%= link_to "Back to top", '#' %></div>
     </div>
-    <div class="row">
-    	<div class="col-md-6">
-    		<ul class="list-unstyled list-inline">
-    			<li><%= link_to '<i class="fa fa-lg fa-fw fa-instagram"></i>'.html_safe, '#' %></li>
-    			<li><%= link_to '<i class="fa fa-lg fa-fw fa-youtube-play"></i>'.html_safe, '#' %></li>
-    			<li><%= link_to '<i class="fa fa-lg fa-fw fa-linkedin"></i>'.html_safe, '#' %></li>
-    			<li><%= link_to '<i class="fa fa-lg fa-fw fa-twitter"></i>'.html_safe, '#' %></li>
-    		</ul>
+    <div class="row row-eq">
+    	<div class="col-md-6 col-eq col-bottom">
+    		<div class="social-media">
+          <ul class="list-unstyled list-inline">
+            <% Settings.get['social_media'].each do |k,v| %>
+              <% if v.present? %>
+                <li><%= link_to "<i class='fa fa-lg fa-fw fa-#{k}'></i>".html_safe, "#{v}", target: '_blank' %></li>
+              <% end %>
+            <% end %>
+          </ul>  
+        </div>
     	</div>
-    	<div class="col-md-6">
-    		<div class="row">
-    			<span class="pull-right">
-    				Space 10 <br>
-    				Flæsketorvet 10<br>
-    				1711 Copenhagen V<br>
-    				Denmark
-    			</span>
-    		</div>
+    	<div class="col-md-6 col-eq col-bottom">
+    			<div class="pull-right space-footer-info">
+    				<%= image_tag 'text-logo-white.svg', width: "135" %>
+    				<p>
+              Flæsketorvet 10<br>
+              1711 Copenhagen V<br>
+              Denmark    
+            </p>
+    			</div>
     	</div>
     </div>
   </div>

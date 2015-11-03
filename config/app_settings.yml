@@ -2,9 +2,26 @@
 posts: !ruby/hash:ActionController::Parameters
   index: !ruby/hash:ActionController::Parameters
     featured_tag: space10
-    okay: 'yes'
-    another_thing: 'yes'
-  show: !ruby/hash:ActionController::Parameters
-    another: Hey
-  edit: !ruby/hash:ActionController::Parameters
-    something: editable
+social_media: !ruby/hash:ActionController::Parameters
+  instagram: https://instagram.com/space10_journal/
+  facebook: https://instagram.com/space10_journal/
+  youtube: https://instagram.com/space10_journal/
+  twitter: https://instagram.com/space10_journal/
+  linkedin: https://instagram.com/space10_journal/
+footer: !ruby/hash:ActionController::Parameters
+  links: !ruby/hash:ActionController::Parameters
+    first: !ruby/hash:ActionController::Parameters
+      title: About
+      link: "#"
+    second: !ruby/hash:ActionController::Parameters
+      title: App
+      link: "#"
+    third: !ruby/hash:ActionController::Parameters
+      title: Terms
+      link: "#"
+    fourth: !ruby/hash:ActionController::Parameters
+      title: ''
+      link: ''
+    fifth: !ruby/hash:ActionController::Parameters
+      title: ''
+      link: ''
