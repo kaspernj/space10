@@ -1,20 +1,27 @@
+<% content_for :title, "Program" %>
+
 <div class="container">
 	<% @events.each do |event| %>
 		<div class="row">
 			<div class="col-md-11 <%= cycle('col-md-offset-1','', name: 'one') %>">
+				<%= link_to event do %>
 				<div class="event-images">
 					<%= image_tag event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url, class: 'full_width' %>
 					<% if event.secondary_image.present? %>
 						<%= image_tag event.featured_image.image_url, class: "featured-image #{cycle('featured-image-right','featured-image-left',name: 'four')}" %>
 					<% end %>
 				</div>
+				<% end %>
 				<div class="row content_block">
 					<div class="col-md-7 <%= cycle('','col-md-push-5', name: 'two') %>">
-						<h1><%= link_to event.title, event, class: 'heading' %></h1>
+						<h1><%= event.title %></h1>
 						<p class="excerpt"><%= event.excerpt %></p>
+						<%= link_to "Read more", event, class: 'btn btn-lg btn-default hidden-xs' %>
+					</div>
+					<div class="col-xs-6 visible-xs-block">
 						<%= link_to "Read more", event, class: 'btn btn-lg btn-default' %>
 					</div>
-					<div class="col-md-5 <%= cycle('','col-md-pull-7', name: 'three') %> event-info">
+					<div class="col-md-5 col-xs-6 <%= cycle('','col-md-pull-7', name: 'three') %> event-info">
 						<%= render 'event_info', event: event %>
 					</div>
 				</div>

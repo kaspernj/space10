@@ -1,4 +1,6 @@
-<%= image_tag event.featured_image_url(:medium), class: "full_width" %>
+<%= link_to event do %>
+  <%= image_tag event.featured_image_url(:medium), class: "full_width" %>
+<% end %>
 <div class="row">
 	<div class="col-xs-7 col-md-6 event-info-primary">
 		<h3><%= link_to event.title, event, class: 'heading' %></h3>

@@ -63,6 +63,9 @@ img.full_width {
 .vertical-divider {
   border-top: 20px solid black;
   margin: $gutter 0;
+  @media (max-width: $screen-xs-max) {
+    border-top: 10px solid black;
+  }
 }
 
 #publish_at_form_group {
@@ -201,5 +204,11 @@ input[value="Schedule"] {
   border-color: #fff;
   &:hover, &:focus {
     color: #fff;
+  }
+}
+.col-xs-no-padding {
+  @media (max-width: $screen-xs-max) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

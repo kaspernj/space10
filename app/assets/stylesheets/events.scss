@@ -1,8 +1,28 @@
 .events.index {
-  .event-info {
-    border-left: 20px solid black;
-    padding-left: 40px;
-    padding-top: 400px;
+  h2 {
+    @extend h1;
+  }
+  h1 {
+    margin-bottom: $gutter;
+  }
+}
+
+.event-info {
+  border-left: 20px solid black;
+  padding-left: 40px;
+  padding-top: 400px;
+  @media (max-width: $screen-xs-max) {
+    border-left: 10px solid black;
+    padding-left: 20px;
+    padding-top: $gutter*2;
+    .event-date {
+      font-size: 7em;
+    }
+    .event-address {
+      display: none;
+    }
+  }
+  @media (min-width: $screen-xs-min) {
     &.col-md-pull-7 {
       text-align: right;
       border-left: 0;
@@ -14,10 +34,9 @@
       }
     }
   }
-  h2 {
-    @extend h1;
-  }
 }
+
+
 
 .events.show .event-heading {
   h1 {
@@ -25,13 +44,27 @@
     margin-bottom: $gutter;
     padding: $gutter 1.5*$gutter;
     background-color: white;
+    @media (max-width: $screen-xs-max) {
+      margin-top: -15%;
+      margin-bottom: $gutter;
+      padding: $gutter/2;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
 }
+
 .event-date {
   font-size: 14em;
   line-height: 1em;
   font-weight: 600;
   margin-bottom: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+  .event-date {
+    font-size: 7em;
+  }
 }
 
 .event-address {
@@ -44,14 +77,25 @@
     position: absolute;
     bottom: -$gutter*4;
     width: 70%;
+    @media (max-width: $screen-xs-max) {
+      width: 80%;
+      bottom: -$gutter;
+    }
   }
   .featured-image-right {
     right: $gutter*4;
+    @media (max-width: $screen-xs-max) {
+      right: $gutter/2;
+    }
   }
   .featured-image-left {
     left: $gutter*4;
+    @media (max-width: $screen-xs-max) {
+      left: $gutter/2;
+    }
   }
 }
+
 @media (max-width: $screen-xs-max) {
   .event-small {
     position: relative;
