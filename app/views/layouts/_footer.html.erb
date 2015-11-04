@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="row">
-    	<div class="col-md-3">
+    	<div class="col-md-3 col-xs-6">
 	    	<ul class="list-unstyled">
 	    		<% Settings.get['footer']['links'].each do |link| %>
             <% if link[1]['title'].present? %>
@@ -10,19 +10,35 @@
           <% end %>
 	    	</ul>
 	    </div>
-	    <div class="col-md-3">
+      <div class="col-md-3 col-md-push-6 col-xs-6 text-right"><%= link_to "Back to top", '#' %></div>
+	    <div class="col-md-3 col-xs-12 col-md-pull-3">
 	    	<div class="row">
-	    		<div class="col-md-6">Newsletter</div>
-	    		<div class="col-md-6">
+	    		<div class="col-md-4">Newsletter</div>
+	    		<div class="col-md-8">
+            <%= simple_form_for :subscriber do |s| %>
+              <%= s.input :email, label: false, placeholder: "Email" %>
+              <%= s.input :name, label: false, placeholder: "Name" %>
+              <%= s.button :submit, "Submit", class: 'btn btn-block btn-default' %>
+            <% end %>
 	    		</div>
 	    	</div>
 	    </div>
-	    <div class="col-md-3"></div>
-	    <div class="col-md-3 text-right"><%= link_to "Back to top", '#' %></div>
+	    <div class="col-md-3 col-md-pull-3"></div>
+	    
     </div>
-    <div class="row row-eq">
-    	<div class="col-md-6 col-eq col-bottom">
-    		<div class="social-media">
+    <div class="row row-eq-md">
+    	<div class="col-md-6 col-md-push-6 col-eq-md col-bottom">
+  			<div class="space-footer-info">
+  				<%= image_tag 'text-logo-white.svg', width: "135" %>
+  				<p>
+            Flæsketorvet 10<br>
+            1711 Copenhagen V<br>
+            Denmark    
+          </p>
+  			</div>
+    	</div>
+      <div class="col-md-6 col-md-pull-6 col-eq-md col-bottom">
+        <div class="social-media">
           <ul class="list-unstyled list-inline">
             <% Settings.get['social_media'].each do |k,v| %>
               <% if v.present? %>
@@ -31,17 +47,7 @@
             <% end %>
           </ul>  
         </div>
-    	</div>
-    	<div class="col-md-6 col-eq col-bottom">
-    			<div class="pull-right space-footer-info">
-    				<%= image_tag 'text-logo-white.svg', width: "135" %>
-    				<p>
-              Flæsketorvet 10<br>
-              1711 Copenhagen V<br>
-              Denmark    
-            </p>
-    			</div>
-    	</div>
+      </div>
     </div>
   </div>
 </footer>

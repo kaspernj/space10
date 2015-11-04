@@ -157,14 +157,44 @@ input[value="Schedule"] {
 }
 
 .row-eq{
-  display: table;
+  &-xs {
+    @media (min-width: $screen-xs-min) {
+      display: table;
+    }
+  }
+  &-sm {
+    @media (min-width: $screen-sm-min) {
+      display: table;
+    }
+  }
+  &-md {
+    @media (min-width: $screen-md-min) {
+      display: table;
+    }
+  }
 }
 
-[class*="col-eq"]{
-  float: none;
-  display: table-cell;
+.col-eq {
+  &-xs {
+    @media (min-width: $screen-xs-min) {
+      float: none;
+      display: table-cell;
+    }
+  }
+  &-sm {
+    @media (min-width: $screen-sm-min) {
+      float: none;
+      display: table-cell;
+    }
+  }
+  &-md {
+    @media (min-width: $screen-md-min) {
+      float: none;
+      display: table-cell;
+    }
+  }
 }
-[class*="col-bottom"]{
+.col-bottom {
   vertical-align: bottom;
 }
 
@@ -213,11 +243,5 @@ input[value="Schedule"] {
   @media (max-width: $screen-xs-max) {
     padding-left: 0;
     padding-right: 0;
-  }
-}
-
-.space-footer-info {
-  img {
-    margin-bottom: $gutter/2;
   }
 }

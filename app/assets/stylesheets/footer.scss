@@ -1,5 +1,4 @@
 footer {
-
   color: white;
   font-weight: bold;
   background-color: $brand-primary;
@@ -9,5 +8,31 @@ footer {
   a, a:hover, a:focus {
     color: white;
     font-weight: bold;
+  }
+  .form-control {
+    background-color: black;
+    border-color: white;
+    color: white;
+    &:focus {
+      border-color: white;
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    .col-xs-12 {
+      clear:both;
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    #mc_embed_signup {
+      margin-top: $gutter/2;
+    }
+  }
+  .space-footer-info {
+    img {
+      margin: $gutter/2 0;
+    }
+    @media (min-width: $screen-sm-min) {
+      float: right;
+    }
   }
 }
