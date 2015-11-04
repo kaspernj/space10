@@ -16,7 +16,7 @@ def omniauth_facebook_hash
         'name' => 'John Doe',
         'first_name' => 'John',
         'last_name' => 'Doe',
-        'image' => 'mock_user_thumbnail_url'
+        'image' => 'https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg'
       },
       'credentials' => {
         'token' => 'mock_token',
@@ -24,3 +24,18 @@ def omniauth_facebook_hash
       }
     }
 end
+
+def last_email
+  ActionMailer::Base.deliveries.last
+end
+
+# def work_off
+#   Delayed::Job.all.each do |job|
+#     job.payload_object.perform
+#     job.destroy
+#   end
+# end
+
+# def delayed_jobs
+#   Delayed::Job.all.count
+# end

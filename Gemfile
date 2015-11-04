@@ -51,6 +51,8 @@ gem 'will_paginate', '~> 3.0.6'
 
 gem 'simple_form'
 
+gem 'mandrill-api'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

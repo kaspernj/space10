@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :name
 
 	before_create { generate_token(:auth_token) }
+	after_create :deliver_welcome_mail
 
 	has_many :authentications, dependent: :destroy
 	has_many :registrations, dependent: :destroy
@@ -55,6 +56,10 @@ class User < ActiveRecord::Base
 
 	def validate_password?
 		(new_record? || password_digest_changed?)
+	end
+
+	def deliver_welcome_mail
+		UserMailer.welcome(self.id).deliver_now
 	end
 
 end

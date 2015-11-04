@@ -20,7 +20,7 @@ describe 'user authentication', type: :feature do
 		sign_in(user)
 
 		visit root_path
-		page.find("#logout").click
+		page.first("#logout").click
 
 		expect(page).to have_content("Logged out successfully")
 	end

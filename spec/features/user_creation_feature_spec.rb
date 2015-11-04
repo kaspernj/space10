@@ -11,6 +11,7 @@ describe 'user creation', type: :feature do
 		click_on "Create user"
 
 		expect(page).to have_content('Signed up successfully')
+		expect(last_email.to).to include 'John@email.com'
 		expect(page).to have_content('Account')
 	end
 
