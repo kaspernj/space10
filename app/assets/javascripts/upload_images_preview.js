@@ -1,5 +1,5 @@
 $(document).on('ready page:load', function () {
-  $('form').on('click', '.upload_image', function (event) {
+  $('body').on('click', '.upload_image', function (event) {
     $(".upload_image").on('change', function () {
       var uploader = $(this);
       console.log("done");

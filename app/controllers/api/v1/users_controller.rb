@@ -3,7 +3,7 @@ class Api::V1::UsersController < Api::V1::ApiController
 	before_filter :authenticate_api_user, only: [:show, :update]
 
 	def create
-		@user = User.create!(user_params)
+		@user = User.new(user_params)
 		if @user.save
 			@user
 		else

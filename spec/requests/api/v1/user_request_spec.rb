@@ -38,7 +38,14 @@ describe "Users api", type: :request do
 					'auth_token' => user.auth_token,
 					'name' => user.name,
 					'email' => user.email,
-					'personal_profile' => [],
+					'personal_profile' => {
+						'id' => user.personal_profile.id,
+						'type' => user.personal_profile.type,
+						'title' => user.name,
+						'description' => nil,
+						'location' => nil,
+						'tags' => []
+						},
 					'company_profiles' => []
 				}
 			)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102203404) do
+ActiveRecord::Schema.define(version: 20151105060842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20151102203404) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.boolean  "published"
+    t.string   "image"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -147,7 +148,6 @@ ActiveRecord::Schema.define(version: 20151102203404) do
     t.string   "auth_token"
     t.boolean  "admin",           default: false
     t.string   "name"
-    t.string   "image"
   end
 
   create_table "video_attachments", force: :cascade do |t|

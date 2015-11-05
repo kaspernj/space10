@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  user_id     :integer
 #  published   :boolean
+#  image       :string
 #
 
 require 'rails_helper'
@@ -22,6 +23,5 @@ RSpec.describe Profile, type: :model do
   end
 
   describe 'associations' do
-  	it { should have_one :image_attachment }
   end
 end

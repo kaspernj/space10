@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  user_id     :integer
 #  published   :boolean
+#  image       :string
 #
 
 FactoryGirl.define do

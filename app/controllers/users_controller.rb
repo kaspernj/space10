@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		@user.build_personal_profile if @user.personal_profile.blank?
 		respond_to do |format|
       format.html
       format.js
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
 private
 
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, personal_profile_attributes: [:id, :image, :image_cache])
 	end
 
 	def only_new_users

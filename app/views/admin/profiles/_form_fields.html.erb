@@ -38,15 +38,13 @@
 	</div>
 	<div class="col-md-4">
 		<div class="form-group">
-			<%= f.fields_for :image_attachment, (f.object.image_attachment || f.object.send('build_image_attachment')) do |builder| %>
-				<%= f.label :image_attachment %>
-				<fieldset class="file_upload">
-					<%= image_tag (builder.object.image.present? ? builder.object.image : "http://placehold.it/400x400?text=Choose+image"), width: "100%", class: "image_preview" %>
-					
-					<%= builder.file_field :image, class: "upload upload_image" %>
-					<%= builder.hidden_field :image_cache %>
-				</fieldset>
-			<% end %>
+			<%= f.label :image %>
+			<fieldset class="file_upload">
+				<%= image_tag f.object.image_url(:medium), class: "image_preview full_width" %>
+				
+				<%= f.file_field :image, class: "upload upload_image" %>
+				<%= f.hidden_field :image_cache %>
+			</fieldset>
 		</div>
 	</div>
 </div>

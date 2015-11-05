@@ -41,6 +41,6 @@ class Admin::ProfilesController < AdminController
 
 	def profile_params
 		type = params[:profile_type] || 'profile'
-		params.require(type.underscore.to_sym).permit(:id, :type, :title, :location, :tag_tokens, :description, :published, image_attachment_attributes: [:id, :resource_type, :resource_id, :image, :image_cache, :_destroy])
+		params.require(type.underscore.to_sym).permit(:id, :type, :image, :title, :location, :tag_tokens, :description, :published)
 	end
 end

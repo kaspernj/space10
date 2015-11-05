@@ -14,7 +14,7 @@ RSpec.describe 'Profile feature', type: :feature do
 			fill_in 'Description', with: 'A film production company'
 			fill_in 'Location', with: 'Los Angeles, California'
 
-			page.attach_file "profile[image_attachment_attributes][image]", Rails.root + 'spec/factories/images/image_1.jpg'
+			page.attach_file "profile[image]", Rails.root + 'spec/factories/images/image_1.jpg'
 
 			check 'Publish'
 			click_on 'Create profile'

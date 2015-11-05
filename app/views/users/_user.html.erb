@@ -5,15 +5,27 @@
   </div>
   <div class="col-md-8">
     <div class="row">
-      <%= simple_form_for user, remote: true do |f| %>
+      <%= simple_form_for user, remote: true, authenticity_token: true do |f| %>
+        <% if user.errors.any? %>
+  <div class="alert alert-danger">
+    <p>Oops! Something went wrong. Try again!</p>
+    <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
         <div class="col-md-4">
           <div class="form-group">
-            <div class="file_upload">
-              <%= image_tag f.object.image_url(:medium), class: "image_preview full_width" %>
-              
-              <%= f.file_field :image, class: "upload upload_image" %>
-              <%= f.hidden_field :image_cache %>
-            </div>
+            <%= f.simple_fields_for :personal_profile do |profile| %>
+              <div class="file_upload">
+                <%= image_tag profile.object.image_url(:medium), class: "image_preview full_width" %>
+                
+                <%= profile.file_field :image, class: "upload upload_image" %>
+                <%= profile.hidden_field :image_cache %>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="col-md-4">

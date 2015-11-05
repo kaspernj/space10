@@ -13,6 +13,7 @@ describe 'user creation', type: :feature do
 		expect(page).to have_content('Signed up successfully')
 		expect(last_email.to).to include 'John@email.com'
 		expect(page).to have_content('Account')
+		expect(User.last.personal_profile.title).to eq User.last.name
 	end
 
 	context "with facebook" do
@@ -51,10 +52,13 @@ describe 'user creation', type: :feature do
 				expect(page).to have_content @user.name
 				
 				fill_in 'user[name]', with: "Mouwgli"
+				page.attach_file "user[personal_profile_attributes][image]", Rails.root + 'spec/factories/images/image_1.jpg'
+
 				click_on "Save"
 
 				expect(page).to have_content "Mouwgli"
 				expect(@user.reload.name).to eq "Mouwgli"
+				expect(@user.reload.personal_profile.image).not_to eq nil
 			end
 		end
 	end

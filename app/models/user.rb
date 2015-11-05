@@ -10,11 +10,9 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
-#  image           :string
 #
 
 class User < ActiveRecord::Base
-	mount_uploader :image, AvatarUploader
 	has_secure_password validations: :validate_password?
 	validates_length_of :password, minimum: 8, if: :validate_password?
 
@@ -28,6 +26,7 @@ class User < ActiveRecord::Base
 
 	before_create { generate_token(:auth_token) }
 	after_create :deliver_welcome_mail
+	after_save :update_personal_profile
 
 	has_many :authentications, dependent: :destroy
 	has_many :registrations, dependent: :destroy
@@ -38,6 +37,7 @@ class User < ActiveRecord::Base
 	has_many :company_profiles, through: :profile_authorizations
 
 	has_one :personal_profile
+	accepts_nested_attributes_for :personal_profile
 
 	def generate_token(column)
 	  begin
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 		find_or_initialize_by(email: omniauth['info']['email']).tap do |user|
 			user.email = omniauth['info']['email']
 			user.name = omniauth['info']['name']
-			user.remote_image_url = omniauth['info']['image'] if user.image.blank?
+			user.personal_profile = PersonalProfile.from_omniauth(user, omniauth)
 			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end
 	end
@@ -60,6 +60,13 @@ class User < ActiveRecord::Base
 
 	def deliver_welcome_mail
 		UserMailer.welcome(self.id).deliver_now
+	end
+
+	def update_personal_profile
+		PersonalProfile.find_or_initialize_by(user: self).tap do |profile|
+			profile.title = self.name
+			profile.save
+		end
 	end
 
 end

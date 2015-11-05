@@ -49,7 +49,9 @@ gem 'faker'
 
 gem 'will_paginate', '~> 3.0.6'
 
+# Forms
 gem 'simple_form'
+gem 'remotipart', '~> 1.2'
 
 gem 'mandrill-api'
 

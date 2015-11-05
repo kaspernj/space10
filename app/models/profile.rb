@@ -11,15 +11,14 @@
 #  updated_at  :datetime         not null
 #  user_id     :integer
 #  published   :boolean
+#  image       :string
 #
 
 class Profile < ActiveRecord::Base
 	include Taggable
+  mount_uploader :image, AvatarUploader
 	
 	validates_presence_of :title, :type
-
-	has_one :image_attachment, as: :resource, dependent: :destroy
-	accepts_nested_attributes_for :image_attachment, allow_destroy: true
 
 	scope :published, -> { where('published = true') }
 end

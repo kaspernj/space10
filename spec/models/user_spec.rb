@@ -10,7 +10,6 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
-#  image           :string
 #
 
 require 'rails_helper'
