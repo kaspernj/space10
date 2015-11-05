@@ -6,6 +6,7 @@ RSpec.describe 'attend_event_feature', type: :feature do
 	describe 'requesting a seat' do
 
 		let!(:user) { create(:user) }
+		let!(:admin) { create(:user, admin: true) }
 		let!(:event) { create(:event) }
 
 		context 'not signed in' do
@@ -45,13 +46,13 @@ RSpec.describe 'attend_event_feature', type: :feature do
 		describe 'accepting seat requests' do
 			it 'should be possible to accept seat requests' do
 				registration = create(:registration, user: user, event: event)
-				admin = create(:user, admin: true)
 				sign_in admin
 				visit admin_event_path(event)
 
 				expect(page).to have_content(user.name)
 				click_on 'Confirm registration'
 				expect(registration.reload.confirmed).to eq true
+				expect(last_email.to).to include user.email
 			end
 		end
 

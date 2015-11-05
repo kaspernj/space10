@@ -19,4 +19,8 @@ class Address < ActiveRecord::Base
 	def any_present?
 		[name, address_1, address_2, zipcode, city, country].any? { |w| w.present? }
 	end
+
+  def html_address
+    [name, address_1, address_2, zipcode, city, country].compact.reject!(&:blank?).join("<br>")
+  end
 end

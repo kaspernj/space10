@@ -4,16 +4,21 @@ class Admin::RegistrationsController < AdminController
 		@registration = Registration.find(params[:id])
 		if @registration.update(registration_params)
 			flash[:success] = "Registration updated"
-			redirect_to admin_event_path(@registration.event)
 		else
-			redirect_to admin_event_path(@registration.event)
+			flash[:danger] = "Registration could not be updated"
 		end
+		redirect_to admin_event_path(@registration.event)
 	end
 
 	def confirm_registration
 		@registration = Registration.find(params[:id])
-		@registration.confirmed? ? @registration.update_attributes(confirmed: false) : @registration.update_attributes(confirmed: true)
-		@registration.save ? flash[:success] = "Registration updated" : flash[:danger] = "Registration could not be updated"
+		@registration.update_attributes(confirmed: true)
+		if @registration.save
+			UserMailer.confirm_registration(@registration.user.id, @registration.event.id).deliver_now
+			flash[:success] = "Registration confirmed"
+		else
+			flash[:danger] = "Registration could not be updated"
+		end
 		redirect_to admin_event_path(@registration.event)
 	end
 
