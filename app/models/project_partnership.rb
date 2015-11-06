@@ -8,11 +8,12 @@
 #  partner_id    :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  person_id     :integer
+#  type          :string
 #
 
 class ProjectPartnership < ActiveRecord::Base
   belongs_to :resource, polymorphic: true
-  belongs_to :project_partner, foreign_key: 'partner_id', class_name: 'CompanyProfile'
 
-  validates_presence_of :resource_id, :resource_type, :partner_id
+  validates_presence_of :resource_id, :resource_type
 end

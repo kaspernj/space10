@@ -46,11 +46,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
-				<% if @post.project_partners.any? %>
-					<div class="col-md-4">
+			<div class="row content_block project_partnerships_block">
+				<% if (@post.project_partners.any?) || (@post.project_partners_text.present?) %>
+					<div class="col-md-4 project_partnership_content">
 						<h3>Project partners</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolor rerum, harum. Recusandae ut beatae rerum facilis quibusdam cumque, nesciunt molestiae corporis omnis aut sit, qui voluptates doloribus, iusto repudiandae?</p>
+						<%= content_tag :p, @post.try(:project_partners_text) %>
 						<div class="row">
 							<% @post.project_partners.each do |p| %>
 								<div class="col-md-6">
@@ -60,13 +60,28 @@
 								</div>
 							<% end %>
 						</div>
-						
+					</div>
+				<% end %>
+				<% if (@post.project_people.any?) || (@post.project_people_text.present?) %>
+					<div class="col-md-4 project_partnership_content">
+						<h3><%= @post.project_people.pluck(:title).map{|t| t.split(" ").first }.to_sentence(last_word_connector: ' & ') %></h3>
+						<%= content_tag :p, @post.try(:project_people_text) %>
+						<% @post.project_people.each do |p| %>
+							<%= link_to profile_path(p), class: 'no-link-style' do %>
+								<%= image_tag p.image_url(:thumbnail), width: '60', class: "img-circle" %>
+							<% end %>
+						<% end %>
 					</div>
 				<% end %>
 				<% if @post.lab.present? %>
-					<div class="col-md-4">
+					<div class="col-md-4 project_partnership_content">
 						<h3><%= @post.lab.title %></h3>
 						<p><%= @post.lab.subtitle %></p>
+						<div class="row">
+							<div class="col-md-8">
+								<%= image_tag 'text-logo.svg', class: "full_width" %>
+							</div>
+						</div>
 					</div>
 				<% end %>
 			</div>

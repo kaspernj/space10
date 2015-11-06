@@ -12,12 +12,8 @@
 #  type          :string
 #
 
-require 'rails_helper'
+class CompanyPartnership < ProjectPartnership
+  belongs_to :project_partner, foreign_key: 'partner_id', class_name: 'CompanyProfile'
 
-RSpec.describe ProjectPartnership, type: :model do
-  describe 'validations' do
-    it { should validate_presence_of :resource_id }
-    it { should validate_presence_of :resource_type }
-    it { should validate_presence_of :partner_id }
-  end
+  validates_presence_of :partner_id
 end

@@ -245,3 +245,22 @@ input[value="Schedule"] {
     padding-right: 0;
   }
 }
+
+.project_partnerships_block {
+  h3 {
+    font-size: 22px;
+  }
+  .project_partnership_content {
+    padding: 0 $gutter*2;
+    border-left: 1px solid $gray-little-lighter;
+    border-right: 1px solid $gray-little-lighter;
+    &:first-child {
+      padding-left: $gutter/2;
+      border: none;
+    }
+    &:last-child {
+      padding-right: $gutter/2;
+      border: none;
+    }
+  }
+}

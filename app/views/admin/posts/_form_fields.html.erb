@@ -41,11 +41,26 @@
 <hr>
 <div class="form-group">
 	<%= label_tag :project_partners %>
+	<div class="form-group">
+		<%= f.text_area :project_partners_text, class: 'form-control', placeholder: "About the partners" %>
+	</div>
 	<div class="clearfix"></div>
-	<%= f.fields_for :project_partnerships do |builder| %>
-		<%= render 'project_partnership_fields', f: builder %>
+	<%= f.fields_for :company_partnerships do |builder| %>
+		<%= render 'company_partnership_fields', f: builder %>
 	<% end %>
-	<%= link_to_add_fields "Add project partner", f, :project_partnerships, {:class => 'add_fields_here btn btn-default'} %>
+	<%= link_to_add_fields "Add project partner", f, :company_partnerships, {:class => 'add_fields_here btn btn-default'} %>
+</div>
+<hr>
+<div class="form-group">
+	<%= label_tag :project_people %>
+	<div class="form-group">
+		<%= f.text_area :project_people_text, class: 'form-control', placeholder: "About the people" %>
+	</div>
+	<div class="clearfix"></div>
+	<%= f.fields_for :person_partnerships do |builder| %>
+		<%= render 'person_partnership_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Add project person", f, :person_partnerships, {:class => 'add_fields_here btn btn-default'} %>
 </div>
 <hr>
 <div class="form-group">
