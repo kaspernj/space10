@@ -10,6 +10,7 @@
 #  content    :text
 #  publish_at :datetime
 #  published  :boolean
+#  lab_id     :integer
 #
 
 class Post < ActiveRecord::Base
@@ -32,6 +33,12 @@ class Post < ActiveRecord::Base
 	accepts_nested_attributes_for :image_slider_blocks, allow_destroy: true
 	accepts_nested_attributes_for :text_blocks, allow_destroy: true
 	accepts_nested_attributes_for :video_blocks, allow_destroy: true
+
+  has_many :project_partnerships, as: :resource, dependent: :destroy
+  accepts_nested_attributes_for :project_partnerships, allow_destroy: true
+  has_many :project_partners, through: :project_partnerships
+
+  belongs_to :lab
 
 	def featured_image
 		image_attachments.first

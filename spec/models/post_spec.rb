@@ -10,6 +10,7 @@
 #  content    :text
 #  publish_at :datetime
 #  published  :boolean
+#  lab_id     :integer
 #
 
 require 'rails_helper'
@@ -34,5 +35,10 @@ RSpec.describe Post, type: :model do
 		it { should have_many :taggings }
 		it { should have_many :tags }
 		# it { should have_many :authors }
+
+		it { should have_many :project_partnerships }
+		it { should have_many :project_partners }
+
+		it { should belong_to :lab }
 	end
 end

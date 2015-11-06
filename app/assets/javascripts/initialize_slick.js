@@ -5,7 +5,7 @@ $(document).on('ready page:load', function () {
 	  variableWidth: true,
 	  arrows: false,
 	  dots: false,
-	  initialSlide: -1,
+	  initialSlide: 0,
 	  lazyLoad: 'ondemand'
 	});
 	$('body').on('click', '.slick-slide:not(.slick-active)', function(){

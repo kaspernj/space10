@@ -6,16 +6,6 @@
   <div class="col-md-8">
     <div class="row">
       <%= simple_form_for user, remote: true, authenticity_token: true do |f| %>
-        <% if user.errors.any? %>
-  <div class="alert alert-danger">
-    <p>Oops! Something went wrong. Try again!</p>
-    <ul>
-      <% user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
         <div class="col-md-4">
           <div class="form-group">
             <%= f.simple_fields_for :personal_profile do |profile| %>
@@ -31,10 +21,15 @@
         <div class="col-md-4">
           <%= f.input :name, label: false, placeholder: 'Name' %>
           <%= f.input :email, label: false, placeholder: 'Email' %>
+          <%= f.input :password, label: false, placeholder: "Change password" %>
         </div>
         <div class="col-md-4">
-          <%= f.input :password, label: false, placeholder: "Change password" %>
+          <%= f.simple_fields_for :personal_profile do |profile| %>
+            <%= profile.input :location, label: false, placeholder: 'Location' %>
+            <%= profile.input :description, label: false, placeholder: 'Bio' %>
+          <% end %>
           <%= f.button :submit, "Save", class: 'btn btn-default' %>
+          <div class="loading-indicator" style="display:none;"><i class="fa fa-spinner fa-pulse"></i></div>
         </div>
       <% end %>
     </div>
@@ -60,6 +55,13 @@
               <h4><%= event.title %></h4>
             </div>
           </div>
+        </div>
+      <% end %>
+      <% if user.events.empty? %>
+        <div class="col-md-12">
+          <p >
+            You have not registered for any events. <%= link_to "See what's upcomming up.", events_path %>.
+          </p>        
         </div>
       <% end %>
     </div>

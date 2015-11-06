@@ -13,7 +13,7 @@ class UserMailer < BaseMandrillMailer
   def confirm_registration(user_id, event_id)
     user = User.find(user_id)
     event = Event.find(event_id)
-    subject = "Welcome to Space 10!"
+    subject = "Your registration has been confirmed"
     merge_vars = {
       "FNAME" => user.name,
       "EVENT_TITLE" => event.title,

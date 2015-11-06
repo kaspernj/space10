@@ -1,4 +1,4 @@
-<% if @posts.any? && @events.any? && @current_lab.present? %>
+<% if @posts.any? && @current_lab.present? %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-11 col-md-offset-1">
@@ -73,6 +73,13 @@
 				<% @events.each do |event| %>
 					<div class="col-md-6 event-small">
 						<%= render 'events/event_small', event: event %>
+					</div>
+				<% end %>
+				<% if @events.empty? %>
+					<div class="col-md-12 text-center">
+						<p class="lead">
+							No upcomming events. Stay tuned.
+						</p>
 					</div>
 				<% end %>
 			</div>

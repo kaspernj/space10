@@ -1,3 +1,5 @@
+<% content_for :title, @post.title %>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 content_block">
@@ -44,8 +46,32 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block">
+				<% if @post.project_partners.any? %>
+					<div class="col-md-4">
+						<h3>Project partners</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolor rerum, harum. Recusandae ut beatae rerum facilis quibusdam cumque, nesciunt molestiae corporis omnis aut sit, qui voluptates doloribus, iusto repudiandae?</p>
+						<div class="row">
+							<% @post.project_partners.each do |p| %>
+								<div class="col-md-6">
+									<%= link_to profile_path(p), class: 'no-link-style' do %>
+										<%= image_tag p.logo_url(:medium), class: "full_width" %>
+									<% end %>
+								</div>
+							<% end %>
+						</div>
+						
+					</div>
+				<% end %>
+				<% if @post.lab.present? %>
+					<div class="col-md-4">
+						<h3><%= @post.lab.title %></h3>
+						<p><%= @post.lab.subtitle %></p>
+					</div>
+				<% end %>
+			</div>
 			<div class="row">
-				<hr>
+				<div class="col-md-12"><hr></div>
 				<% @posts.each do |post| %>
 					<div class="col-md-4">
 						<%= render 'posts/thumbnail', post: post %>

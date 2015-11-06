@@ -37,14 +37,31 @@
 		</div>
 	</div>
 	<div class="col-md-4">
-		<div class="form-group">
-			<%= f.label :image %>
-			<fieldset class="file_upload">
-				<%= image_tag f.object.image_url(:medium), class: "image_preview full_width" %>
-				
-				<%= f.file_field :image, class: "upload upload_image" %>
-				<%= f.hidden_field :image_cache %>
-			</fieldset>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<%= f.label :image %>
+					<fieldset class="file_upload">
+						<%= image_tag f.object.image_url(:medium), class: "image_preview full_width" %>
+						
+						<%= f.file_field :image, class: "upload upload_image" %>
+						<%= f.hidden_field :image_cache %>
+					</fieldset>
+				</div>
+			</div>
+			<% if f.object.type == 'CompanyProfile' %>
+				<%= f.fields_for :logo_attachment, (f.object.logo_attachment || f.object.send('build_logo_attachment')) do |builder| %>
+					<div class="col-md-12">
+						<%= builder.label :image, "Logo" %>
+						<fieldset class="file_upload">
+							<%= image_tag (builder.object.image.present? ? builder.object.image_url(:medium) : "http://placehold.it/400x400?text=Choose+image"), class: "image_preview full_width" %>
+							
+							<%= builder.file_field :image, class: "upload upload_image" %>
+							<%= builder.hidden_field :image_cache %>
+						</fieldset>
+					</div>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>

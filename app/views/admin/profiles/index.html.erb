@@ -17,6 +17,7 @@
             <th>Title</th>
             <th>Type</th>
             <th>Updated at</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
@@ -26,7 +27,8 @@
 	            <th scope="row"><%= profile.id %></th>
 	            <td><%= link_to profile.title, admin_profile_path(profile) %></td>
 	            <td><%= profile.type.underscore.humanize rescue '-' %></td>
-	            <td><%= profile.updated_at.to_s(:formatted) %></td>
+              <td><%= profile.updated_at.to_s(:formatted) %></td>
+	            <td><%= profile.published? ? 'Published' : 'Unpublished' %></td>
 	            <td class="text-right">
 	            	<%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>
 	            	<%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_profile_path(profile) %>

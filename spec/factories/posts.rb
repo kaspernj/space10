@@ -10,6 +10,7 @@
 #  content    :text
 #  publish_at :datetime
 #  published  :boolean
+#  lab_id     :integer
 #
 
 FactoryGirl.define do
