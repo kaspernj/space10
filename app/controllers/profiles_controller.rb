@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 	def index
-		@profiles = Profile.published.paginate(:page => params[:page], :per_page => 8)
+    @q = Profile.published.ransack(params[:q])
+		@profiles = @q.result.includes(:tags).paginate(:page => params[:page], :per_page => 2)
 	end
 
 	def show

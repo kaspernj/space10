@@ -55,6 +55,8 @@ gem 'remotipart', '~> 1.2'
 
 gem 'mandrill-api'
 
+gem 'ransack'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'
