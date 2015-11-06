@@ -15,6 +15,14 @@ a:not([class]):hover:after {
 	border-bottom: 1.5em solid #ddd;
 }
 
+input, select {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
 .form-control, .btn, .input-group-addon, .note-editor, .list-group .list-group-item {
 	border-width: 2px;
 }
@@ -49,4 +57,22 @@ a:not([class]):hover:after {
 
 hr {
 	border-top: 2px solid $gray-little-lighter;
+}
+
+div.form-select {
+  position: relative;
+}
+select.form-control {
+	-webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   cursor:pointer;
+   &+ span.caret {
+   	position: absolute;
+   	right: $gutter/2;
+		top: 0;
+		bottom: 0;
+		margin-top: auto;
+		margin-bottom: auto;
+   }
 }

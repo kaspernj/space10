@@ -54,18 +54,30 @@
 	padding-bottom: $gutter*2;
 }
 
-.profiles {
-	.pagination {
-		a {
+.community-controls {
+	font-weight: bold;
+	font-size: 11px;
+	p, select {
+		padding: $gutter/2;
+		height: auto;
+		border: none;
+		font-size: 11px;
+	}
+	.pagination a, select {
 			background-color: $gray-little-lighter;
 		}
+	.pagination, p, .form-group {
+		margin: $gutter/2 0;
+	}
+}
+
+.profiles {
+	.pagination {
 		a, a:focus, a:hover {
 			border: none;
 			color: black;
 			margin-right: 5px;
 			padding: 16px 22px;
-			font-weight: bold;
-			font-size: 0.8em;
 			&:after {
 				border:none;
 			}

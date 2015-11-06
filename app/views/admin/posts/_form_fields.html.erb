@@ -65,7 +65,10 @@
 <hr>
 <div class="form-group">
 	<%= f.label :lab_id %>
-	<%= f.select :lab_id, Lab.published.pluck(:title,:id), {include_blank: "Select lab"}, {class: 'form-control'} %>
+	<div class="form-select">
+		<%= f.select :lab_id, Lab.published.pluck(:title,:id), {include_blank: "Select lab"}, {class: 'form-control'} %>
+		<span class="caret"></span>
+	</div>
 </div>
 
 <hr>

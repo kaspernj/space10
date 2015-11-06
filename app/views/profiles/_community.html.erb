@@ -1,5 +1,22 @@
-<div class="bg-gray">
+<div class="bg-gray community-controls">
 	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<p>Filter/Sort</p>
+			</div>
+			<%= search_form_for @q, class: 'auto_submit' do |f| %>
+				<div class="col-md-4">
+					<div class="form-group">
+						<div class="form-select">
+							<%= f.collection_select :tags_id_eq, Tag.all, :id, :title, {include_blank: 'Show all'}, {class: 'form-control'} %>
+							<span class="caret"></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
 <div class="bg-black">
@@ -17,7 +34,7 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray">
+<div class="bg-gray community-controls">
 	<div class="container">
 		<div class="row text-center">
 			<%= will_paginate @profiles, :previous_label => 'Previous', :next_label => 'Next' %>
