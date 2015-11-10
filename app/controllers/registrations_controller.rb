@@ -20,6 +20,11 @@ class RegistrationsController < ApplicationController
 	def create
 		@registration = current_user.registrations.new(event: @event)
 		if @registration.save
+			if @registration.event.fully_booked?
+				UserMailer.waiting_registration(@registration.user.id, @registration.event.id).deliver_now
+			else
+				UserMailer.unconfirmed_registration(@registration.user.id, @registration.event.id).deliver_now
+			end
 			flash[:success] = "Seat requested"
 			redirect_to [@event, @registration]
 		else

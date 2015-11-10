@@ -25,6 +25,7 @@ RSpec.describe 'attend_event_feature', type: :feature do
 				expect(page).to have_content('Accept')
 				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
 				expect(Registration.last.confirmed?).to eq false
+				expect(last_email.to).to include user.email
 			end
 
 			it 'should not be possible to request a seat on past event' do

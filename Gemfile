@@ -56,7 +56,11 @@ gem 'remotipart', '~> 1.2'
 
 gem 'mandrill-api'
 
+# Search
 gem 'ransack'
+
+# Jquery UI
+gem 'jquery-ui-rails'
 
 group :development, :test do
 	gem 'guard'
