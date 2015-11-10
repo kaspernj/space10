@@ -35,6 +35,17 @@ describe 'user creation', type: :feature do
 		end
 	end
 
+	context 'with linkedin' do
+		it 'allows visitors to sign up with linkedin' do
+			omniauth_linkedin_hash
+			visit new_user_path
+			click_on 'Join with LinkedIn'
+			
+			expect(page).to have_content('Logged in successfully')
+			expect(page).to have_content('Account')
+		end
+	end
+
 	context 'signed in' do
 		before :each do
 			@user = create(:user)

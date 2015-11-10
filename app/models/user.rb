@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 	def self.from_omniauth(omniauth)
 		find_or_initialize_by(email: omniauth['info']['email']).tap do |user|
 			user.email = omniauth['info']['email']
-			user.name = omniauth['info']['name']
+			user.name = (omniauth['info']['name'] || [omniauth['info']['first_name'],omniauth['info']['last_name']].join(" "))
 			user.personal_profile = PersonalProfile.from_omniauth(user, omniauth)
 			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end

@@ -27,6 +27,7 @@ gem 'summernote-rails'
 gem 'codemirror-rails'
 
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 
 # Image upload
 gem 'carrierwave'

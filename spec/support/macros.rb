@@ -25,6 +25,23 @@ def omniauth_facebook_hash
     }
 end
 
+def omniauth_linkedin_hash
+  OmniAuth.config.mock_auth[:linkedin] = {
+      'provider' => 'linkedin',
+      'uid' => '123545',
+      'info' => {
+        'email' => 'johndoe@example.com',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'image' => 'https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg'
+      },
+      'credentials' => {
+        'token' => 'mock_token',
+        'expires_at' => '1321747205'
+      }
+    }
+end
+
 def last_email
   ActionMailer::Base.deliveries.last
 end
