@@ -55,19 +55,35 @@
 }
 
 .community-controls {
-	font-weight: bold;
-	font-size: 11px;
-	p, select {
+	p, select, .pagination, button {
+		font-weight: bold;
+		font-size: 11px;
+	}
+	p, select, button {
+		color: black;
 		padding: $gutter/2;
 		height: auto;
 		border: none;
-		font-size: 11px;
+		text-transform: none;
 	}
-	.pagination a, select {
+	button[disabled] {
+		color: $gray-light;
+		cursor: not-allowed;
+		opacity: 1;
+		filter: alpha(opacity=100);
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.pagination a, select, button {
 			background-color: $gray-little-lighter;
 		}
-	.pagination, p, .form-group {
+	.pagination, p, .form-group, button {
 		margin: $gutter/2 0;
+	}
+	form .col-md-5 .col-md-6:first-child, form .col-md-5 .col-xs-6:first-child {
+		select, button {
+			background-color: #d3d3d3;
+		}
 	}
 }
 
@@ -89,11 +105,11 @@
 			background-color: lighten($gray-light,10%);
 		}
 		li.active a {
-			background-color: $gray-light;
+			background-color: #d3d3d3;
 		}
 		li.prev a, li.next a {
-			padding-left: 40px;
-			padding-right: 40px;
+			padding-left: $gutter*2;
+			padding-right: $gutter*2;
 		}
 	}
 	.join-us {

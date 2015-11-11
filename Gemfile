@@ -62,6 +62,9 @@ gem 'ransack'
 # Jquery UI
 gem 'jquery-ui-rails'
 
+# Geocode
+gem 'geocoder'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

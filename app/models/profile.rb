@@ -17,6 +17,8 @@
 class Profile < ActiveRecord::Base
 	include Taggable
   mount_uploader :image, AvatarUploader
+  geocoded_by :location
+  after_validation :geocode, if: lambda{ |obj| obj.location_changed? }
 	
 	validates_presence_of :title, :type
 

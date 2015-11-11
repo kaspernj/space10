@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/autocomplete
 //= require jquery.remotipart
 //= require html.sortable.min
 //= require bootstrap-sprockets

@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-4">
           <%= f.simple_fields_for :personal_profile do |profile| %>
-            <%= profile.input :location, label: false, placeholder: 'Location' %>
+            <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'autocomplete', id: 'gmaps-input-address'} %>
             <%= profile.input :description, label: false, placeholder: 'Bio' %>
           <% end %>
           <%= f.button :submit, "Save", class: 'btn btn-default' %>

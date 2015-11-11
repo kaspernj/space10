@@ -20,7 +20,8 @@ class PersonalProfile < Profile
   def self.from_omniauth(user,omniauth)
     find_or_initialize_by(user: user).tap do |profile|
       profile.title = user.name if profile.title.blank?
-      profile.remote_image_url = omniauth['info']['image'] if profile.image.blank?
+      profile.remote_image_url = (omniauth['extra']['raw_info']['pictureUrls']['values'].first rescue omniauth['info']['image']) if profile.image.blank?
+      profile.location = (omniauth['info']['location']['name'] rescue omniauth['info']['location']) if profile.location.blank?
     end
   end
 end

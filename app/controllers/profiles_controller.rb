@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
 	def index
-    @q = Profile.published.ransack(params[:q])
+    if params[:location].present?
+      @q = Profile.published.near(params[:location].split(",").map(&:to_f), 50).ransack(params[:q])
+    else
+      @q = Profile.published.ransack(params[:q])
+    end
 		@profiles = @q.result.includes(:tags).paginate(:page => params[:page], :per_page => 2)
 	end
 
