@@ -5,6 +5,9 @@
   h1 {
     margin-bottom: $gutter;
   }
+  .aspect-ratio {
+    overflow: hidden;
+  }
 }
 
 .event-info {

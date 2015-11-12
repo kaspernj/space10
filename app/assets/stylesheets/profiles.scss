@@ -32,6 +32,20 @@
 	}
 }
 
+.profiles.show {
+	.panel-default img {
+		width: 100%;
+		position: absolute;
+		left: -50px;
+		bottom: -50px;
+		z-index: -9999;
+	}
+	.profile-description {
+		font-size: 12px;
+		margin-bottom: $gutter;
+	}
+}
+
 .community-profiles {
 	padding-top: $gutter;
 	padding-bottom: $gutter;
