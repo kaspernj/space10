@@ -23,12 +23,12 @@ class Lab < ActiveRecord::Base
 	def timespan
 		if starts_at.present? && ends_at.present?
 			if starts_at.year == ends_at.year
-				starts_at.strftime("%B") + " &mdash; " + ends_at.strftime("%B %Y")
+				starts_at.strftime("%B %d") + " &mdash; " + ends_at.strftime("%B %d, %Y")
 			else
-				starts_at.strftime("%B %Y") + " &mdash; " + ends_at.strftime("%B %Y")
+				starts_at.strftime("%B %d, %Y") + " &mdash; " + ends_at.strftime("%B %d, %Y")
 			end
 		else
-			(starts_at || ends_at).strftime("%B %Y")
+			(starts_at || ends_at).strftime("%B %d, %Y")
 		end		
 	end
 
