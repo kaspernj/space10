@@ -168,46 +168,14 @@ input[value="Schedule"] {
   }  
 }
 
-.row-eq{
-  &-xs {
-    @media (min-width: $screen-xs-min) {
-      display: table;
-    }
-  }
-  &-sm {
-    @media (min-width: $screen-sm-min) {
-      display: table;
-    }
-  }
-  &-md {
-    @media (min-width: $screen-md-min) {
-      display: table;
-    }
-  }
-}
-
-.col-eq {
-  &-xs {
-    @media (min-width: $screen-xs-min) {
-      float: none;
-      display: table-cell;
-    }
-  }
-  &-sm {
-    @media (min-width: $screen-sm-min) {
-      float: none;
-      display: table-cell;
-    }
-  }
-  &-md {
-    @media (min-width: $screen-md-min) {
-      float: none;
-      display: table-cell;
-    }
-  }
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
 .col-bottom {
-  vertical-align: bottom;
+  align-self: flex-end;
 }
 
 .centered_container {
