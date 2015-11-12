@@ -1,0 +1,17 @@
+.post-thumbnail {
+  border-left: 1px solid #ddd;
+  &:first-child {
+    border-left: none;
+  }
+}
+.post-miniature {
+  img {
+    margin-bottom: $gutter/3;
+  }
+  .meta-text {
+    margin: 0 0 $gutter/3 0;
+  }
+  p, .meta-text {
+    font-size: 12px;
+  }
+}

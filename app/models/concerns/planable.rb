@@ -46,6 +46,10 @@ module Planable
     def current_or_next
       current_or_future.first
     end
+
+    def current_or_previous
+      where('starts_at > :d AND ends_at < :d', d: Time.zone.now).first || historic.first
+    end
   end
 
 private

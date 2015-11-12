@@ -46,21 +46,6 @@
   }
 }
 
-.post-thumbnail {
-  border-left: 1px solid #ddd;
-  &:first-child {
-    border-left: none;
-  }
-}
-.post-miniature {
-  .meta-text {
-    margin: $gutter/2 0;
-  }
-  p {
-    font-size: 0.9em;
-  }
-}
-
 .meta-text {
   color: $gray-light;
   font-size: 0.8em;
