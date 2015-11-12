@@ -36,8 +36,8 @@
           <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
           <li>
             <%= link_to edit_user_path(current_user), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} do %>
-              <%= image_tag current_user.personal_profile.image_url(:thumbnail), width: '22', class: 'img-circle' %>
-              &nbsp;<%= current_user.first_name %>
+              <%= current_user.first_name %>
+              &nbsp;<%= image_tag current_user.personal_profile.image_url(:thumbnail), width: '22', class: 'img-circle' %>
             <% end %>
           </li>
         <% else %>
