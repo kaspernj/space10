@@ -44,11 +44,7 @@
 		<div class="row community-profiles">
 			<% @profiles.each do |profile| %>
 				<div class="col-md-3 col-xs-6">
-					<%= link_to profile_path(profile) do %>
-						<%= image_tag profile.image_url(:medium), class: "full_width" %>
-						<h4><%= profile.title %></h4>
-						<p class="meta-text"><%= profile.tags.any? ? profile.tags.pluck(:title).join(" / ") : nil %></p>
-					<% end %>
+					<%= render 'profiles/profile_card', profile: profile %>
 				</div>
 			<% end %>
 		</div>

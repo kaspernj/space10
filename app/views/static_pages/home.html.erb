@@ -87,7 +87,7 @@
 	</div>
 </div>
 
-<div class="container profiles_block">
+<div class="container">
 	<hr>
 	<div class="row">
 		<div class="col-md-12 text-center">
@@ -97,9 +97,7 @@
 	<div class="row content_block">
 		<% @profiles.each do |profile| %>
 			<div class="col-xs-6 col-md-3">
-				<%= image_tag profile.image_url(:medium), class: "full_width" %>
-				<p class="profile-heading"><strong><%= profile.title %></strong></p>
-				<p class="meta-text"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
+				<%= render 'profiles/profile_card', profile: profile %>
 			</div>
 		<% end %>
 	</div>

@@ -118,8 +118,42 @@
 	}
 }
 
+.profile_card {
+	img {
+		margin-bottom: $gutter/3;
+	}
+	.meta-text, .profile-heading{
+		margin: 0;
+	}
+}
+
+.profiles.index, .profiles.show {
+	.profile_card {
+		.profile-heading, .meta-text {
+			font-size: 11px;
+		}
+		.meta-text {
+			color: #4C4C4C;
+		}
+		.profile-location {
+			display: none;
+		}
+	}
+}
+
+.static_pages.home {
+	.profile_card {
+		.profile-tags {
+			display: none;
+		}
+		.meta-text {
+			font-size: 14px;
+		}
+	}
+}
+
 @media (max-width: $screen-xs-max) {
-		p.profile-heading {
+		.profile-heading {
 			line-height: 1.4em;
 		}
 	}

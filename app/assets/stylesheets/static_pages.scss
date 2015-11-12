@@ -10,15 +10,6 @@
 			font-size: $font-size-h1*0.5;
 		}
 	}
-	.profiles_block {
-		p {
-			margin: $gutter/2 0;
-		}
-		h2 {
-			// padding-top: $gutter;
-			// border-top: 1px solid $gray-little-lighter;
-		}
-	}
 	@media (max-width: $screen-xs-max) {
 		.space-description .lead {
 			font-size: 1.6em;
