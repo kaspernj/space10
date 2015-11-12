@@ -63,11 +63,11 @@
 	</div>
 <% end %>
 
-<% if VideoBlock.any? %>
+<% if VideoAttachment.featured.any? %>
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<%= render 'posts/featured_videos', object: VideoBlock.last %>
+	<div class="row content_block featured_videos_block">
+		<div class="col-md-8 col-md-offset-2">
+			<%= render 'posts/featured_videos', videos: VideoAttachment.featured.limit(4) %>
 		</div>
 	</div>
 </div>

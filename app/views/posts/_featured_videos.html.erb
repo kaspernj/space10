@@ -1,21 +1,41 @@
 <div class="row">
-	<div class="col-md-10 col-md-offset-1 content_block">
-		<div class="aspect-ratio r-16-9">
-			<div class="video-group">
-				<div class="video-poster" style="background-image: url(<%= object.video_attachment.image %>)">
-					<div class="video-overlay"></div>
-					<a href="#" class="video-play-button"><%= image_tag 'play.svg' %></a>
-					<div class="video-title">
-						<% if object.resource && object.resource.tags.any? %>
-							<span>&mdash; <%= object.resource.tags.pluck(:title).join(" / ") %></span>
-						<% end %>
-						<h3><%= object.video_attachment.title %></h3>
+	<% videos.each_with_index do |video, i| %>
+		<% if i == 0 %>
+			<div class="col-md-12 margin-bottom-gutter">
+				<div class="aspect-ratio r-16-9">
+					<div class="video-container">
+						<div class="video-poster" style="background-image: url(<%= video.image %>)">
+							<div class="video-overlay"></div>
+							<a href="#" class="video-play-button"><%= image_tag 'play.svg' %></a>
+							<div class="video-title">
+								<p><%= video.resource.resource.lab.present? ? ['&mdash; ', video.resource.resource.lab.title].join('').html_safe : nil %></p>
+								<h3><%= video.title %></h3>
+							</div>
+						</div>
+						<div class="video-embed" data-embed-src="<%= video.embed_src %>">
+							<iframe width="640" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						</div>
 					</div>
 				</div>
-				<div class="video-embed" data-embed-src="<%= object.video_attachment.embed_src %>">
-					<iframe width="640" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+		<% else %>
+			<div class="col-md-4">
+				<div class="aspect-ratio r-16-9">
+					<div class="video-container video-container-small">
+						<div class="video-poster" style="background-image: url(<%= video.image %>)">
+							<div class="video-overlay"></div>
+							<a href="#" class="video-play-button"><%= image_tag 'play.svg' %></a>
+							<div class="video-title">
+								<p><%= video.resource.resource.lab.present? ? ['&mdash; ', video.resource.resource.lab.title].join('').html_safe : nil %></p>
+								<h3><%= video.title %></h3>
+							</div>
+						</div>
+						<div class="video-embed" data-embed-src="<%= video.embed_src %>">
+							<iframe width="640" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		<% end %>
+	<% end %>
 </div>

@@ -18,6 +18,10 @@ $gutter: $grid-gutter-width;
   margin: 0;
 }
 
+.margin-bottom-gutter {
+  margin-bottom: $gutter;
+}
+
 img.full_width {
     max-width: 100%;
   }

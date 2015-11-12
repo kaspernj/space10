@@ -1,9 +1,9 @@
 $(document).on('ready page:load', function () {
 	$('.video-play-button').click(function(e){
-		var group = $(this).closest('.video-group');
-		group.find('.video-poster').hide();
-		var src = group.find('.video-embed').data('embed-src')
-		group.find('.video-embed').show().find('iframe').attr('src', src);
+		var container = $(this).closest('.video-container');
+		container.find('.video-poster').hide();
+		var src = container.find('.video-embed').data('embed-src')
+		container.find('.video-embed').show().find('iframe').attr('src', src);
 		return false
 	})
 });

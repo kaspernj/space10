@@ -21,6 +21,8 @@ class VideoAttachment < ActiveRecord::Base
 
 	validates_presence_of :provider, :video_id
 
+  scope :featured, -> { where('featured = true') }
+
 	def embed_src
 		if provider.downcase == 'vimeo'
 			"//player.vimeo.com/video/#{video_id}?autoplay=1"

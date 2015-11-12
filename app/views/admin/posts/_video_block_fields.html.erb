@@ -37,6 +37,11 @@
 						<%= builder.label :description %>
 						<%= builder.text_area :description, class: "form-control video_description_field" %>	
 					</div>
+					<div class="checkbox">
+						<%= label_tag do %>
+							<%= builder.check_box :featured %> featured?
+						<% end %>
+					</div>
 					<div class="form-group">
 						<%= builder.hidden_field :image, class: 'video_image_field' %>
 					</div>
