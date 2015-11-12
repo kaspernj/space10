@@ -15,6 +15,10 @@ a:not([class]):hover:after {
 	border-bottom: 1.5em solid #ddd;
 }
 
+a:focus {
+  outline: 0 none;
+}
+
 input, select {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
