@@ -12,6 +12,10 @@
 #  user_id     :integer
 #  published   :boolean
 #  image       :string
+#  latitude    :float
+#  longitude   :float
+#  website     :string
+#  featured    :boolean
 #
 
 class PersonalProfile < Profile

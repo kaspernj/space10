@@ -3,7 +3,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <%= link_to "&times;".html_safe, '#', class: 'close', data: { dismiss: 'modal' } %>
+        <%= link_to '#', class: 'large_close', data: { dismiss: 'modal' } do %>
+          <span></span>
+        <% end %>
         <!-- <h4 class="modal-title" id="myModalLabel">Login</h4> -->
       </div>
       <div class="modal-body">

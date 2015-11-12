@@ -21,6 +21,16 @@ def omniauth_facebook_hash
       'credentials' => {
         'token' => 'mock_token',
         'expires_at' => '1321747205'
+      },
+      'extra' => {
+        'raw_info' => {
+          'email' => 'johndoe@example.com',
+          'name' => 'John Doe',
+          'first_name' => 'John',
+          'last_name' => 'Doe',
+          'gender' => 'male',
+          'birthday' => '01/10/2014'
+        }
       }
     }
 end

@@ -1,5 +1,5 @@
 <div class="manage-user">
-<div class="row">
+<div class="row content_block">
   <div class="col-md-3">
     <h2><%= user.name %></h2>
   </div>
@@ -21,14 +21,17 @@
         <div class="col-md-4">
           <%= f.input :name, label: false, placeholder: 'Name' %>
           <%= f.input :email, label: false, placeholder: 'Email' %>
+          <%= f.input :birthday, label: false, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], prompt: {year: 'Year', month: 'Month', day: 'Day'} %>
+          <%= f.input :gender, label: false, collection: [['Male', 'male'],['Female','female']], include_blank: 'Gender' %>
           <%= f.input :password, label: false, placeholder: "Change password" %>
         </div>
         <div class="col-md-4">
           <%= f.simple_fields_for :personal_profile do |profile| %>
+            <%= profile.input :tag_tokens, label: false, input_html: {data: { provider: 'tokeninput', load: user.personal_profile.tags }}, placeholder: 'Tags' %>
+            <%= profile.input :website, label: false, placeholder: 'Website' %>
             <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'autocomplete', id: 'gmaps-input-address'} %>
-            <%= profile.input :description, label: false, placeholder: 'Bio' %>
           <% end %>
-          <%= f.button :submit, "Save", class: 'btn btn-default' %>
+          <%= f.button :submit, "Save", class: 'btn btn-lg btn-default pull-right' %>
           <div class="loading-indicator" style="display:none;"><i class="fa fa-spinner fa-pulse"></i></div>
         </div>
       <% end %>

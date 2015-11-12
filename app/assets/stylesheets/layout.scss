@@ -272,3 +272,37 @@ input[value="Schedule"] {
     }
   }
 }
+
+.large_close span {
+    position: relative;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    float: right;
+    display: block
+}
+
+.large_close span:before, .large_close span:after {
+    content: '';
+    -webkit-transform-origin: 50% 50% !important;
+    -ms-transform-origin: 50% 50% !important;
+    transform-origin: 50% 50% !important;
+    position: absolute;
+    background: #8a8a8a;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%
+}
+
+.large_close span:before {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.large_close span:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+}

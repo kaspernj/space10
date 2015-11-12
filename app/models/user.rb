@@ -10,6 +10,8 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
+#  birthday        :date
+#  gender          :string
 #
 
 class User < ActiveRecord::Base
@@ -49,6 +51,8 @@ class User < ActiveRecord::Base
 		find_or_initialize_by(email: omniauth['info']['email']).tap do |user|
 			user.email = omniauth['info']['email']
 			user.name = (omniauth['info']['name'] || [omniauth['info']['first_name'],omniauth['info']['last_name']].join(" "))
+			user.birthday = Date.strptime(omniauth['extra']['raw_info']['birthday'],'%m/%d/%Y') rescue nil
+			user.gender = omniauth['extra']['raw_info']['gender'] rescue nil
 			user.personal_profile = PersonalProfile.from_omniauth(user, omniauth)
 			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end

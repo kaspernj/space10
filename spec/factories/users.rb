@@ -10,6 +10,8 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
+#  birthday        :date
+#  gender          :string
 #
 
 FactoryGirl.define do

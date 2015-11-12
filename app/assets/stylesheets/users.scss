@@ -3,4 +3,58 @@
     font-size: 46px;
     margin-top: 0;
   }
+
+  .content_block {
+    border-top: 1px solid #F2F2F2;
+  }
+
+  // After icons
+  .form-group.string, .form-group.email, .form-group.password, .form-group.select {
+    position: relative;
+    &:after {
+      font-family: FontAwesome;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      padding: 5px 10px;
+    }
+  }
+  .form-group.string, .form-group.email, .form-group.password {
+    &:after {
+      content: "\f040";
+    }
+  }
+  .form-group.select {
+    &:after {
+      content: "\f107";
+      font-size: 16px;
+    }
+  }
+
+  // General styles for inputs
+  .form-control, .token-input-list-bootstrap input {
+    background-color: #F2F3F4;
+    border-color: transparent;
+    color: black;
+  }
+  .form-control, .token-input-list-bootstrap input, .token-input-token-bootstrap {
+    font-size: 11px;
+    font-weight: bold;
+  }
+  li.token-input-token-bootstrap {
+    padding: 2px 6px;
+    margin: 5px 2px;
+  }
+  ul.token-input-list-bootstrap li input {
+    padding: 3px 6px;
+    margin: 5px 2px;
+  }
+
+  .date {
+    select {
+      width: 32.3% !important;
+      display: inline-block;
+    }
+  }
 }

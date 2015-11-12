@@ -10,6 +10,8 @@
 #  auth_token      :string
 #  admin           :boolean          default(FALSE)
 #  name            :string
+#  birthday        :date
+#  gender          :string
 #
 
 require 'rails_helper'
@@ -32,6 +34,8 @@ RSpec.describe User, type: :model do
   	it { should_not allow_value('danielriis').for(:email) }
 
     it { should respond_to :admin }
+    it { should respond_to :birthday }
+    it { should respond_to :gender }
 
   	it 'should validate case insensitive uniqueness' do
   		create(:user, email: "test@example.com", password: "12345678")
