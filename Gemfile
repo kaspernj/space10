@@ -65,6 +65,9 @@ gem 'jquery-ui-rails'
 # Geocode
 gem 'geocoder'
 
+# Exceptions
+gem 'exception_notification'
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'
