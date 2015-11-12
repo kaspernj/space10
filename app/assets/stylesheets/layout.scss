@@ -310,3 +310,19 @@ input[value="Schedule"] {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg)
 }
+
+.navbar {
+  a {
+    .img-circle {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+    &:hover .img-circle {
+      opacity: 1;
+      filter: alpha(opacity=100);
+    }
+    &:focus {
+      color: inherit;
+    }
+  }
+}
