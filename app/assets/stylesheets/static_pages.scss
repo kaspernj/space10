@@ -61,6 +61,7 @@
 
 	h1.heading {
 		position: relative;
+		white-space: nowrap;
 		&:after {
 			content: " ";
 			position: absolute;
