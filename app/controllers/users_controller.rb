@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 			sign_in(@user)
 			redirect_to root_path, notice: "Signed up successfully"
 		else
-			render action: 'new'
+			render action: 'new', layout: 'clean_application'
 		end
 	end
 

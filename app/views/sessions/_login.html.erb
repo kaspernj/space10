@@ -1,21 +1,22 @@
 <div class="row login-content">
   <div class="col-md-3 text-center">
-    <%= link_to root_path do %>
+    <%= link_to root_path, class: 'no-link-style' do %>
       <%= image_tag 'text-logo.svg' %>
     <% end %>
-    <%= link_to '<i class="fa fa-facebook"></i> Log in with Facebook'.html_safe, '/auth/facebook', class: "btn btn-lg btn-primary btn-facebook" %>
+    <%= link_to '<i class="fa fa-lg fa-fw fa-facebook"></i> Login with Facebook'.html_safe, '/auth/facebook', class: "btn btn-block btn-primary btn-social" %>
+    <%= link_to '<i class="fa fa-lg fa-fw fa-linkedin"></i> Login with LinkedIn'.html_safe, '/auth/linkedin', class: "btn btn-block btn-primary btn-social" %>
     <p class="meta-text">Or with email</p>
     <%= form_for :session, url: sessions_path do |f| %>
       <div class="form-group">
         <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+        <%= f.text_field :email, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.submit "Log in", class: "btn btn-default" %>
+        <%= f.submit "Log in", class: "btn btn-lg btn-default" %>
       </div>
       <%= link_to "Don't have an account?", new_user_path %>
     <% end %>
