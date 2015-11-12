@@ -24,7 +24,7 @@ a:focus {
   font-size: 13px;
 }
 
-input, select {
+input, select, ul.token-input-list-bootstrap {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
