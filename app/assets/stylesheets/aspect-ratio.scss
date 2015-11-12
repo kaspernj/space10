@@ -1,11 +1,16 @@
 .aspect-ratio {
 	position: relative;
 	width: 100%;
+  overflow: hidden;
 }
 
 .aspect-ratio > div {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.r-20-9 {
+  padding-bottom: 45%;
 }
 
 .r-16-9 {

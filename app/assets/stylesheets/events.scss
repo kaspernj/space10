@@ -90,6 +90,8 @@
   }
   .featured-image-left {
     left: $gutter*4;
+    bottom: -$gutter*2;
+    width: 50%;
     @media (max-width: $screen-xs-max) {
       left: $gutter/2;
     }
