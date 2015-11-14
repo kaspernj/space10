@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
 
+  # TEMPORARY
+  get 'invitation' => redirect('https://rebelunited-yuji.squarespace.com/invitation')
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 

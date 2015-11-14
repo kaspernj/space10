@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :check_admin_mode
+
   around_filter :use_copenhagen_time
 
   include SessionsHelper
@@ -16,4 +18,10 @@ class ApplicationController < ActionController::Base
 	def default_serializer_options
 	  {root: false}
 	end
+
+  def check_admin_mode
+    if ENV['ADMIN_MODE'] == 'true' && controller_name != 'sessions' && (current_user.nil? || !current_user.admin?)
+      redirect_to 'https://rebelunited-yuji.squarespace.com/'
+    end
+  end
 end

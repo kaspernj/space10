@@ -6,6 +6,9 @@ initialize_tokeninput = function() {
     zindex: 99999,
     placeholder: 'Tags'
   });
+  // $('[data-provider="tokeninput"]').prev('ul').find('input').keypress(function(e) {
+  //   alert(e.which)
+  // });
 }
 $(document).on('ready page:load', function () {
   initialize_tokeninput();
@@ -13,3 +16,5 @@ $(document).on('ready page:load', function () {
 $(document).bind('ajax:complete', function() {
   initialize_tokeninput();
 });
+
+$(document).on('')
