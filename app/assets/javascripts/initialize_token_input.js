@@ -8,14 +8,6 @@ initialize_tokeninput = function() {
     zindex: 99999,
     placeholder: 'Tags'
   });
-  // $('[data-provider="tokeninput"]').prev('ul').find('input').keypress(function(e) {
-  //   alert(e.which)
-  // });
-  tokeninput_field.prev('ul').find('input').on('keydown', function(e) { 
-    if (e.which == 13) { 
-      alert('enter')
-    } 
-  });
 }
 $(document).on('ready page:load', function () {
   initialize_tokeninput();
