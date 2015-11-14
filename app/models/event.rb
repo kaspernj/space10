@@ -40,7 +40,7 @@ class Event < ActiveRecord::Base
     if featured_image.present?
       featured_image.image_url(size)
     else
-      "fallback/" + [size, "default.png"].compact.join('_')
+      "image_fallback/" + [size, "default.png"].compact.join('_')
     end
   end
 

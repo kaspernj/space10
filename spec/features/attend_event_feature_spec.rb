@@ -20,10 +20,12 @@ RSpec.describe 'attend_event_feature', type: :feature do
 			before :each do
 				sign_in user
 			end
-			it 'should be possible to request a seat' do
-				visit new_event_registration_path(event)
+			it 'should be possible to request a seat', js: true do
+				visit event_path(event)
+				click_on 'Attend'
 				expect(page).to have_content('Accept')
-				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
+				click_on 'Accept'
+				expect(page).to have_content('Seat requested')
 				expect(Registration.last.confirmed?).to eq false
 				expect(last_email.to).to include user.email
 			end

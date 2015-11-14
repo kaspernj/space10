@@ -19,7 +19,11 @@
 		<div class="col-sm-4 col-sm-push-8">
 			<%= render 'events/event_info', event: @event %>
 			<% if @event.published? && !@event.historic? %>
-				<%= link_to "Attend", new_event_registration_path(@event), class: 'btn btn-lg btn-default' %>
+				<% if !signed_in? || !current_user.registrations.find_by(event: @event).present? %>
+					<%= link_to "Attend", new_event_registration_path(@event), {class: 'btn btn-lg btn-default', remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %>
+				<% elsif !current_user.registrations.find_by(event: @event).confirmed? %>
+					<button class="btn btn-lg btn-default">Seat requested</button>
+				<% end %>	
 			<% end %>
 		</div>
 		<div class="col-sm-6 col-sm-offset-2 col-sm-pull-4 text_block">

@@ -15,6 +15,10 @@ class RegistrationsController < ApplicationController
 
 	def new
 		current_user.registrations.new(event: @event)
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def create
@@ -26,7 +30,10 @@ class RegistrationsController < ApplicationController
 				UserMailer.unconfirmed_registration(@registration.user.id, @registration.event.id).deliver_now
 			end
 			flash[:success] = "Seat requested"
-			redirect_to [@event, @registration]
+			respond_to do |format|
+	      format.html { redirect_to [@event, @registration] }
+	      format.js
+	    end
 		else
 			render 'new'
 		end
@@ -70,9 +77,13 @@ private
 	end
 
 	def only_once
-		if current_user.registrations.find_by(event: @event).present?
+		@registration = current_user.registrations.find_by(event: @event)
+		if @registration.present?
 			flash[:notice] = "You have already requested a seat for this event"
-			redirect_to @event
+			respond_to do |format|
+	      format.html { redirect_to [@event, @registration] }
+	      format.js
+	    end
 		end
 	end
 

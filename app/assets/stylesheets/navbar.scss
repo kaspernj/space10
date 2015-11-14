@@ -4,7 +4,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@media (max-width: $screen-sm-max) {
   a {
     font-size: 18px;
   }
@@ -26,12 +26,19 @@
     .navbar-nav {
       margin-top: 0;
       margin-bottom: 0;
+      li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
     }
     .navbar-nav .open .dropdown-menu {
       position: absolute;
       left: -100%;
       right: 0;
       background-color: #000;
+      * {
+        color: white;
+      }
     }
   }
 }

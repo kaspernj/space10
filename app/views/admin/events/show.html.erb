@@ -31,6 +31,7 @@
         </thead>
         <tbody>
         	<% @event.registrations.each do |r| %>
+            <tr>
 						<th scope="row"><%= r.id %></th>
 						<td><%= r.user.name %></td>
 						<td><%= r.created_at.localtime.to_s(:formatted) %></td>
@@ -40,6 +41,7 @@
             <% else %>
               <td>Confirmed</td>
             <% end %>
+            </tr>
         	<% end %>
         	<% if @event.registrations.empty? %>
 						<td colspan="5">No registrations yet</td>
