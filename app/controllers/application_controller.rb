@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def check_admin_mode
     if ENV['ADMIN_MODE'] == 'true' && controller_name != 'sessions' && (current_user.nil? || !current_user.admin?)
-      redirect_to 'http://launch.space10.io'
+      redirect_to 'https://rebelunited-yuji.squarespace.com/'
     end
   end
 end
