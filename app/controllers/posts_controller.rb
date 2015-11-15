@@ -6,9 +6,9 @@ class PostsController < ApplicationController
 		@posts = Post.published
 		@instagram_photos = InstagramApi.new.user_photos('214647329')
 		
-		@featured_lab = Lab.current_or_previous
+		@featured_lab = Settings.get['posts']['index']['featured_tag']
 		
-		featured_posts = @featured_lab.try('posts')
+		featured_posts = @posts.where_tagged_with(@featured_lab)
 
 		if featured_posts
 			featured_posts_count = featured_posts.count

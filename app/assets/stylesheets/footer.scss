@@ -5,9 +5,12 @@ footer {
   margin-top: $gutter*4;
   padding-top: $gutter;
   padding-bottom: $gutter;
-  a, a:hover, a:focus {
+  a {
     color: white;
     font-weight: bold;
+    &:focus, &:hover {
+      color: darken(white,20%);
+    }
   }
   .form-control {
     background-color: black;

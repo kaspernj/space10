@@ -7,9 +7,17 @@
 				<div class="col-md-11 col-md-offset-1">
 					<%= link_to event do %>
 					<div class="event-images">
-						<%= image_tag event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url, class: 'full_width' %>
+						<div class="aspect-ratio r-20-9">
+							<div style="background-image: url('<%= event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url %>');">
+							</div>
+						</div>
 						<% if event.secondary_image.present? %>
-							<%= image_tag event.featured_image.image_url, class: "featured-image featured-image-right" %>
+							<div class="featured-image featured-image-right">
+								<div class="aspect-ratio r-4-3">
+									<div style="background-image:url('<%= event.featured_image.image_url %>');">
+									</div>
+								</div>
+							</div>
 						<% end %>
 					</div>
 					<% end %>
@@ -28,16 +36,20 @@
 					</div>
 				</div>
 			<% else %>
-				<div class="col-md-11">
+				<div class="col-md-12">
 					<%= link_to event do %>
 					<div class="event-images">
 						<div class="aspect-ratio r-20-9">
-							<div>
-								<%= image_tag event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url, class: 'full_width' %>
+							<div style="background-image: url('<%= event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url %>');">
 							</div>
 						</div>
 						<% if event.secondary_image.present? %>
-							<%= image_tag event.featured_image.image_url, class: "featured-image featured-image-left" %>
+							<div class="featured-image featured-image-left">
+								<div class="aspect-ratio r-16-9">
+									<div style="background-image:url('<%= event.featured_image.image_url %>');">
+									</div>
+								</div>
+							</div>
 						<% end %>
 					</div>
 					<% end %>

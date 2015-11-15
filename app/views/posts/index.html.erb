@@ -39,14 +39,14 @@
 	</div>
 </div>
 
-<% if @featured_lab %>
+<% if @featured_posts.any? %>
 	<div class="bg-gray">
 		<div class="container">
 			<div class="row content_block">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="row">
 						<div class="col-md-12">
-							<h3>#<%= @featured_lab.title.delete(' ') %></h3>
+							<h3>#<%= @featured_lab.delete(' ').downcase %></h3>
 						</div>
 					</div>
 					<div class="row">
@@ -54,7 +54,11 @@
 							<div class="col-md-<%= 12/@featured_posts_count %> post-miniature">
 								<%= link_to post do %>
 									<%= image_tag post.featured_image.image_url(:medium), class: "full_width" %>
-									<% if post.tags.any? %><p class="meta-text">&mdash; <%= post.tags.pluck(:title).join('/') %></p><% end %>
+									<% if post.lab.present? %>
+										<p class="meta-text">&mdash; <%= post.lab.title %></p>
+									<% else %>
+										<p class="meta-text">&mdash; <%= post.tags.pluck(:title).first %></p>
+									<% end %>
 									<p><%= post.title %></p>
 								<% end %>
 							</div>

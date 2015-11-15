@@ -21,6 +21,7 @@ class Address < ActiveRecord::Base
 	end
 
   def html_address
-    [name, address_1, address_2, zipcode, city, country].compact.reject!(&:blank?).join("<br>")
+    zip_and_city = [zipcode, city].compact.reject!(&:blank?).join(" ") rescue nil
+    [name, address_1, address_2, zip_and_city, country].compact.reject!(&:blank?).join("<br>")
   end
 end

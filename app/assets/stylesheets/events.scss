@@ -6,7 +6,10 @@
     margin-bottom: $gutter;
   }
   .aspect-ratio {
-    overflow: hidden;
+    background-color: #ddd;
+  }
+  .aspect-ratio:last-child {
+    background-color: darken(#ddd,20%);
   }
 }
 
@@ -62,6 +65,7 @@
   line-height: 1em;
   font-weight: 600;
   margin-bottom: 0;
+  letter-spacing: -5px;
 }
 
 @media (max-width: $screen-xs-max) {
@@ -79,7 +83,7 @@
   .featured-image {
     position: absolute;
     bottom: -$gutter*4;
-    width: 70%;
+    width: 60%;
     @media (max-width: $screen-xs-max) {
       width: 80%;
       bottom: -$gutter;

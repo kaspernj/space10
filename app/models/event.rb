@@ -53,15 +53,41 @@ class Event < ActiveRecord::Base
   end
 
   def timespan
+    # if ends_at.present?
+    #   if starts_at.to_date == ends_at.to_date
+    #     starts_at.strftime("%l.%M%p") + " - " + ends_at.strftime("%l.%M%p")
+    #   else
+    #     starts_at.strftime("%B %e %I.%M%p") + " - " + ends_at.strftime("%B %e %I.%M%p")
+    #   end
+    # else
+    #   starts_at.strftime("%I.%M%p")
+    # end
+    start_date = starts_at.strftime("%B %e")
+    start_hour = starts_at.strftime("%l")
+    start_minute = starts_at.strftime("%M").gsub("00",'')
+    start_ampm = starts_at.strftime("%p")
+    start_hm = [start_hour, start_minute].reject(&:blank?).join(".")
+    start_hm_p = [start_hm, start_ampm].join("")
+
     if ends_at.present?
+      end_date = ends_at.strftime("%B %e")
+      end_hour = ends_at.strftime("%l")
+      end_minute = ends_at.strftime("%M").gsub("00",'')
+      end_ampm = ends_at.strftime("%p")
+      end_hm = [end_hour, end_minute].reject(&:blank?).join(".")
+      end_hm_p = [end_hm, end_ampm].join("")
+
       if starts_at.to_date == ends_at.to_date
-        starts_at.strftime("%I.%M%p") + " - " + ends_at.strftime("%I.%M%p")
+        start_time = start_hm_p
+        end_time = end_hm_p
       else
-        starts_at.strftime("%B %e %I.%M%p") + " - " + ends_at.strftime("%B %e %I.%M%p")
+        start_time = [start_date,start_hm_p].join(" ")
+        end_time = [end_date,end_hm_p].join(" ")
       end
-    else
-      starts_at.strftime("%I.%M%p")
     end
+  
+    [start_time, end_time].join(" - ")    
+
   end
 
 end

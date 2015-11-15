@@ -12,6 +12,13 @@ a {
   }
 }
 
+a, button, input {
+  -webkit-transition: all 500ms ease-out 0s;
+    -moz-transition: all 500ms ease-out 0s;
+    -o-transition: all 500ms ease-out 0s;
+    transition: all 500ms ease-out 0s;
+}
+
 .container-align-left {
   max-width: 100%;
   & > .row {
@@ -169,8 +176,8 @@ input[value="Schedule"] {
 }
 
 .content_block {
-  padding-top: $gutter*2;
-  padding-bottom: $gutter*2;
+  padding-top: $gutter*1.5;
+  padding-bottom: $gutter*1.5;
 }
 
 @media (max-width: $screen-xs-max) {

@@ -129,6 +129,14 @@
 	.join-us {
 		padding-top: $gutter*5; 
 		padding-bottom: $gutter*3; 
+		h1 {
+			margin-bottom: $gutter;
+		}
+		.lead {
+			font-size: 17px;
+			padding: 0 30px;
+			margin-bottom: $gutter;
+		}
 	}
 }
 
