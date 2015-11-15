@@ -6,7 +6,7 @@
 			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
 				<% @posts.limit(3).each do |post| %>
 					<%= link_to post do %>
-						<%= image_tag post.image_attachments.first.image_url(:large), height: "500" %>
+						<%= image_tag post.image_attachments.first.image_url(:medium), height: "500" %>
 						<h2><%= post.title %></h2>
 					<% end %>
 				<% end %>

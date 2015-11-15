@@ -1,7 +1,9 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-11 col-xs-no-padding">
-			<%= image_tag @event.featured_image_url, class: "full_width" %>
+		<div class="col-md-11 no-padding">
+			<div class="aspect-ratio r-2-1">
+				<div style="background-image:url('<%= @event.image_attachments.first.image %>');"></div>
+			</div>
 		</div>
 	</div>
 	<div class="row">

@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10 col-md-offset-2">
 			<div class="row community-profile">
-				<div class="col-xs-8 col-md-6">
+				<div class="col-xs-8 col-md-5">
 					<div class="panel panel-default ">
 						<div class="panel-body">
 							<div class="aspect-ratio r-1-1">
@@ -11,11 +11,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-6">
-					<p><strong><i class="fa fa-map-marker"></i> <%= @profile.location %></strong></p>
+				<div class="col-xs-12 col-md-7">
+					<p class="profile-location"><strong><i class="fa fa-lg fa-fw fa-map-marker"></i> <%= @profile.location %></strong></p>
 					<h1><%= @profile.title %></h1>
-					<p class="meta-text"><%= @profile.tags.pluck(:title).join(" / ") %></p>
-					<p class="profile-description"><%= @profile.description %></p>
+					<p class="profile-tags meta-text"><%= @profile.tags.pluck(:title).join(" / ") %></p>
+					<div class="row">
+						<div class="col-md-7">
+							<p class="profile-description"><%= @profile.description %></p>
+						</div>
+					</div>
 					<% if @profile.website.present? %>
 						<%= link_to 'Visit website', @profile.website, target: '_blank', class: 'btn btn-lg btn-default' %>
 					<% end %>

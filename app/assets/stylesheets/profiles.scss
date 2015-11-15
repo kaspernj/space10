@@ -36,9 +36,18 @@
 	.panel-default img {
 		width: 100%;
 		position: absolute;
-		left: -50px;
-		bottom: -50px;
+		left: -40px;
+		bottom: -40px;
 		z-index: -9999;
+	}
+	h1 {
+		font-size:56px;
+	}
+	.profile-location {
+		font-size: 12px;
+	}
+	.profile-tags {
+		font-size: 18px
 	}
 	.profile-description {
 		font-size: 12px;

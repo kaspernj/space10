@@ -1,9 +1,11 @@
-<div class="row">
-	<div class="col-md-8 col-md-offset-2 content_block <%= object.type.underscore %>">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-		    <%= object.text_attachment.content.html_safe %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 content_block <%= object.type.underscore %>">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <%= object.text_attachment.content.html_safe %>
+        </div>
       </div>
     </div>
-	</div>
+  </div>
 </div>
