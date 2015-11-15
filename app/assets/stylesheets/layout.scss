@@ -1,5 +1,17 @@
 $gutter: $grid-gutter-width;
 
+a {
+  img {
+    -webkit-transition: all 500ms ease-out 0s;
+    -moz-transition: all 500ms ease-out 0s;
+    -o-transition: all 500ms ease-out 0s;
+    transition: all 500ms ease-out 0s;
+  }
+  &:hover img:first-child {
+    opacity: 0.8;
+  }
+}
+
 .container-align-left {
   max-width: 100%;
   & > .row {
