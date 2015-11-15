@@ -3,8 +3,8 @@
     <%= link_to root_path, class: 'no-link-style' do %>
       <%= image_tag 'text-logo.svg' %>
     <% end %>
-    <%= link_to '<i class="fa fa-lg fa-fw fa-facebook"></i> Login with Facebook'.html_safe, '/auth/facebook', class: "btn btn-block btn-primary btn-social" %>
-    <%= link_to '<i class="fa fa-lg fa-fw fa-linkedin"></i> Login with LinkedIn'.html_safe, '/auth/linkedin', class: "btn btn-block btn-primary btn-social" %>
+    <%= link_to '<i class="fa fa-lg fa-fw fa-facebook"></i> Sign in with Facebook'.html_safe, '/auth/facebook', class: "btn btn-block btn-primary btn-social" %>
+    <%= link_to '<i class="fa fa-lg fa-fw fa-linkedin"></i> Sign in with LinkedIn'.html_safe, '/auth/linkedin', class: "btn btn-block btn-primary btn-social" %>
     <p class="meta-text">Or with email</p>
     <%= form_for :session, url: sessions_path do |f| %>
       <div class="form-group">

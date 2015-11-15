@@ -11,7 +11,6 @@
       <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
         <% if signed_in? %>
           <% if current_user.admin? %><li><%= link_to "<i class='fa fa-user-secret'></i>".html_safe, admin_root_path %></li><% end %>
-          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
           <li>
             <%= link_to edit_user_path(current_user), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} do %>
               <%= image_tag current_user.personal_profile.image_url(:thumbnail), width: '22', class: 'img-circle' %>
@@ -19,8 +18,7 @@
             <% end %>
           </li>
         <% else %>
-          <!-- <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path %></li> -->
-          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Sign in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
         <% end %>
         <!-- <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li> -->
       </ul>
@@ -33,7 +31,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right visible-xs-block visible-sm-block">
         <% if signed_in? %>
-          <li><%= link_to "<i class='fa fa-power-off'></i>".html_safe, logout_path, id: "logout" %></li>
           <li>
             <%= link_to edit_user_path(current_user), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} do %>
               <%= current_user.first_name %>
@@ -41,7 +38,7 @@
             <% end %>
           </li>
         <% else %>
-          <li><%= link_to "<i class='icon-fingerprint'></i> Log in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Sign in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->
