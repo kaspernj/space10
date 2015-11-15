@@ -27,6 +27,8 @@ module Space10
     config.active_record.raise_in_transactional_callbacks = true
 
     config.cache_store = :file_store, '/tmp/cache/'
+
+    config.encoding = "utf-8"
     
     # Loads environment variables in development mode
     config.before_configuration do
