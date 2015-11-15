@@ -2,9 +2,9 @@
 
 <div class="container">
 	<% @events.each do |event| %>
-		<div class="row">
-			<% if cycle('odd', 'even') == 'odd' %>
-				<div class="col-md-11 col-md-offset-1">
+		<% if cycle('odd', 'even') == 'odd' %>
+			<div class="row event-large event-large-right">
+				<div class="col-md-11 col-md-offset-1 no-padding">
 					<%= link_to event do %>
 					<div class="event-images">
 						<div class="aspect-ratio r-20-9">
@@ -22,7 +22,7 @@
 					</div>
 					<% end %>
 					<div class="row content_block">
-						<div class="col-md-7">
+						<div class="col-md-7 event-title-and-excerpt">
 							<h1><%= event.title %></h1>
 							<p class="excerpt"><%= event.excerpt %></p>
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default hidden-xs' %>
@@ -35,17 +35,19 @@
 						</div>
 					</div>
 				</div>
-			<% else %>
-				<div class="col-md-12">
+			</div>
+		<% else %>
+			<div class="row event-large event-large-left">
+				<div class="col-md-11 no-padding">
 					<%= link_to event do %>
 					<div class="event-images">
-						<div class="aspect-ratio r-20-9">
+						<div class="aspect-ratio r-16-9">
 							<div style="background-image: url('<%= event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url %>');">
 							</div>
 						</div>
 						<% if event.secondary_image.present? %>
 							<div class="featured-image featured-image-left">
-								<div class="aspect-ratio r-16-9">
+								<div class="aspect-ratio r-5-3">
 									<div style="background-image:url('<%= event.featured_image.image_url %>');">
 									</div>
 								</div>
@@ -54,7 +56,7 @@
 					</div>
 					<% end %>
 					<div class="row content_block">
-						<div class="col-md-7 col-md-push-5">
+						<div class="col-md-7 col-md-push-5 event-title-and-excerpt">
 							<h1><%= event.title %></h1>
 							<p class="excerpt"><%= event.excerpt %></p>
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default hidden-xs' %>
@@ -67,8 +69,8 @@
 						</div>
 					</div>
 				</div>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	<% end %>
 	<% if @events.empty? %>
 		<div class="row">

@@ -11,6 +11,19 @@
   .aspect-ratio:last-child {
     background-color: darken(#ddd,20%);
   }
+  .event-large-left {
+    h1 {
+      margin-top: $gutter*2;
+    }
+    .event-title-and-excerpt {
+      padding-left: $gutter*1.5;
+    }
+  }
+  .event-large-right {
+    .event-title-and-excerpt {
+      padding-right: $gutter*1.5;
+    }
+  }
 }
 
 .event-info {
@@ -103,6 +116,10 @@
       left: $gutter/2;
     }
   }
+}
+
+.event-large {
+  margin-bottom: $gutter*4;
 }
 
 @media (max-width: $screen-xs-max) {
