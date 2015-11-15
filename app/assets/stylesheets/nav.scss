@@ -12,14 +12,18 @@
 
 .primary-nav > li {
   a {
-    padding-left: $gutter * 1.5;
+    width: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+    margin-left: $gutter/2;
     &:before {
       content: " ";
       position: absolute;
       top: $navbar-height/2 - ($gutter * 0.8);
+      right: 0;
       left: 0;
-      right: $gutter/2;
-      border-top: 10px solid #ddd;
+      border-top: 10px solid #f4f4f4;
     }
     &.active:before, &:hover:before {
       border-color: $brand-primary;

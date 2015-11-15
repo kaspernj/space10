@@ -25,7 +25,7 @@
         	<% @profiles.each do |profile| %>
 	          <tr>
 	            <th scope="row"><%= profile.id %></th>
-	            <td><%= link_to profile.title, admin_profile_path(profile) %></td>
+	            <td><%= link_to profile.title, edit_admin_profile_path(profile) %></td>
 	            <td><%= profile.type.underscore.humanize rescue '-' %></td>
               <td><%= profile.updated_at.to_s(:formatted) %></td>
 	            <td><%= profile.published? ? 'Published' : 'Unpublished' %></td>

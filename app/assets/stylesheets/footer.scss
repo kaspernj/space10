@@ -36,6 +36,27 @@ footer {
     }
   }
   .btn-default {
-    border-color: #fff;
+    border-color: transparent;
+    text-transform: none;
+    text-align: left;
+    &:hover {
+      border-color: transparent;
+    }
+  }
+  .mc-field-group {
+    *::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color:    #fff;
+    }
+    *:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color:    #fff;
+       opacity:  1;
+    }
+    *::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color:    #fff;
+       opacity:  1;
+    }
+    *:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color:    #fff;
+    }
   }
 }

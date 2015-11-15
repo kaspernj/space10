@@ -2,8 +2,9 @@
 	h2 {
 		@extend h1;
 		span {
-			color: $gray-light;
+			color: #DCDDE0;
 		}
+		margin-bottom: $gutter;
 	}
 	@media (max-width: $screen-xs-max) {
 		h2 {

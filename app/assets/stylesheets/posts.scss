@@ -1,7 +1,17 @@
 .post-thumbnail {
   border-left: 1px solid #ddd;
+  margin-bottom: $gutter/2;
   &:first-child {
     border-left: none;
+  }
+  h3 {
+    padding-right: $gutter*2;
+  }
+  .meta-text:last-child {
+    margin: $gutter*1.5 0 0 0;
+  }
+  .thumbnail {
+    margin-bottom: 0;
   }
 }
 .post-miniature {

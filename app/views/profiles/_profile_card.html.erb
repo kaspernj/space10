@@ -1,7 +1,11 @@
 <div class="profile_card">
   <%= link_to profile_path(profile) do %>
     <%= image_tag profile.image_url(:medium), class: "full_width" %>
-    <p class="profile-heading"><strong><%= profile.title %></strong></p>
+    <% if controller_name == 'static_pages' %>
+      <p class="profile-heading"><strong><%= [profile.title, profile.tags.pluck(:title).first].join(', <br>').html_safe %></strong></p>
+    <% else %>
+      <p class="profile-heading"><strong><%= profile.title %></strong></p>
+    <% end %>
     <p class="meta-text profile-tags"><%= profile.tags.pluck(:title).join(" / ") %></p>
     <p class="meta-text profile-location"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
   <% end %>

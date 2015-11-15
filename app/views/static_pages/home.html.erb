@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-11 col-md-offset-1">
 			<div class="row">
-				<div class="col-sm-8 col-sm-push-4">
+				<div class="col-sm-8 col-sm-push-4 no-padding">
 					<%= image_tag 'frontpage_image.jpg', class: "full_width" %>
 				</div>
 				<div class="col-sm-4 col-sm-pull-8">
@@ -13,11 +13,11 @@
 		</div>
 	</div>
 	<div class="row content_block">
-		<div class="col-sm-8 content_block space-description">
+		<div class="col-sm-7 col-sm-offset-1 content_block space-description">
 			<p class="lead"><strong>Space10 is located in the heart of Copenhagen. A space for exploration and inspiration rooted in the idea that together we can co-create a better everyday life for the many people.</strong></p>
 		</div>
 		<div class="col-sm-4 content_block text-center current-lab">
-			<p class="meta-text"><%= @current_lab.current? ? "Currently exploring" : "Next up" %></p>
+			<p class="meta-text"><%= @current_lab.current? ? "Currently exploring" : "Upcoming lab" %></p>
 			<p class="lead"><strong><%= @current_lab.title %></strong></p>
 			<p class="meta-text"><%= @current_lab.timespan.html_safe %></p>
 		</div>
@@ -26,18 +26,18 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 text-center">
-			<h2>Space Journal <span>Latest</span></h2>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
-				<% @posts.each do |post| %>
-					<div class="col-sm-4 post-thumbnail">
+				<div class="col-md-12 text-center">
+					<h2>Space Journal <span>Latest</span></h2>
+				</div>
+				<div class="row">
+				<% @posts.each_with_index do |post, i| %>
+					<div class="col-sm-6 col-md-4 post-thumbnail">
 						<%= render 'posts/thumbnail', post: post %>
 					</div>
 				<% end %>
+				</div>
 			</div>
 			<div class="row text-center">
 				<%= link_to "View all", posts_path, class: 'btn btn-lg btn-default' %>
@@ -64,13 +64,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<h2>Space Program <span>Upcomming</span></h2>
+			<h2>Space Program <span>Upcoming</span></h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
-				<% @events.each do |event| %>
+				<% @events.each_with_index do |event, i| %>
 					<div class="col-sm-6 event-small">
 						<%= render 'events/event_small', event: event %>
 					</div>
@@ -78,7 +78,7 @@
 				<% if @events.empty? %>
 					<div class="col-md-12 text-center">
 						<p class="lead">
-							No upcomming events. Stay tuned.
+							No upcoming events. Stay tuned.
 						</p>
 					</div>
 				<% end %>
