@@ -32,6 +32,11 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.text_field :email, class: "form-control", placeholder: 'Email' %>
+		</div>
+
+		<div class="form-group">
 			<%= f.label :tag_tokens, "Tags" %>
 			<%= f.text_field :tag_tokens, class: 'form-control', data: { provider: 'tokeninput', load: @profile.tags } %>
 		</div>

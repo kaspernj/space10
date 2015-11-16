@@ -16,6 +16,7 @@
 #  longitude   :float
 #  website     :string
 #  featured    :boolean
+#  email       :string
 #
 
 class CompanyProfile < Profile
