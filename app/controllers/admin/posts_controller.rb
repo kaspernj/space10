@@ -42,7 +42,7 @@ class Admin::PostsController < AdminController
 
 	def post_params
 		content_block = :id, :type, :resource_type, :resource_id, :row_order, :_destroy
-		image_attachment = :id, :resource_type, :resource_id, :image, :image_cache, :row_order, :_destroy
+		image_attachment = :id, :resource_type, :resource_id, :title, :description, :image, :image_cache, :row_order, :_destroy
 		text_attachment = :id, :resource_type, :resource_id, :content
 		video_attachment = :id, :resource_type, :resource_id, :featured, :title, :description, :video_url, :provider, :video_id, :image
 		project_partnership = :id, :resource_type, :resource_id, :partner_id, :person_id, :_destroy

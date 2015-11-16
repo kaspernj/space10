@@ -28,6 +28,7 @@ class Profile < ActiveRecord::Base
 	validates_presence_of :title, :type
   # validates_format_of :website, with: /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i, allow_blank: true
 
-	scope :published, -> { where('published = true') }
+  scope :published, -> { where('published = true') }
+	scope :featured, -> { where('featured = true') }
 
 end

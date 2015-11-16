@@ -2,7 +2,7 @@ footer {
   color: white;
   font-weight: bold;
   background-color: $brand-primary;
-  margin-top: $gutter*4;
+  margin-top: $gutter*2;
   padding-top: $gutter;
   padding-bottom: $gutter;
   a {
@@ -11,6 +11,10 @@ footer {
     &:focus, &:hover {
       color: darken(white,20%);
     }
+  }
+  .container {
+    padding-left: $gutter*2;
+    padding-right: $gutter*2;
   }
   .form-control {
     background-color: black;
@@ -28,6 +32,9 @@ footer {
   @media (max-width: $screen-xs-max) {
     #mc_embed_signup {
       margin-top: $gutter/2;
+    }
+    .space-footer-info, .footer-links, #mc_embed_signup {
+      margin-bottom: $gutter;
     }
   }
   .space-footer-info {

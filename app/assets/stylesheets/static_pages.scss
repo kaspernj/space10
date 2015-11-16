@@ -100,3 +100,20 @@
 		}
 	}	
 }
+
+.gallery {
+	margin-top: $gutter;
+	margin-bottom: $gutter;
+	div {
+		padding: 0;
+	}
+	@media (min-width: $screen-sm-min) {
+		margin-top: 0;
+		padding: 0 60px;
+		.half-up {
+			img {
+				margin-top: -50%;
+			}
+		}
+	}
+}

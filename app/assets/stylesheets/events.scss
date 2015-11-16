@@ -122,6 +122,12 @@
   margin-bottom: $gutter*4;
 }
 
+.event-small {
+  img {
+    display: block;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .event-small {
     position: relative;

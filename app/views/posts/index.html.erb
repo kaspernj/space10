@@ -17,7 +17,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
+			<div class="row">
 				<% @posts.offset(3).limit(2).each do |post| %>
 					<div class="col-md-6 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
@@ -28,7 +28,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
+			<div class="row">
 				<% @posts.offset(5).limit(3).each do |post| %>
 					<div class="col-md-4 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
@@ -51,7 +51,7 @@
 					</div>
 					<div class="row">
 						<% @featured_posts.each do |post| %>
-							<div class="col-md-<%= 12/@featured_posts_count %> post-miniature">
+							<div class="col-md-<%= 12/@featured_posts_count %> col-xs-6 post-miniature">
 								<%= link_to post do %>
 									<%= image_tag post.featured_image.image_url(:medium), class: "full_width" %>
 									<% if post.lab.present? %>
@@ -70,11 +70,11 @@
 	</div>
 <% end %>
 
-<% if VideoAttachment.featured.any? %>
+<% if @featured_videos.any? %>
 <div class="container">
 	<div class="row content_block featured_videos_block">
 		<div class="col-md-8 col-md-offset-2">
-			<%= render 'posts/featured_videos', videos: VideoAttachment.featured.limit(4) %>
+			<%= render 'posts/featured_videos', videos: @featured_videos %>
 		</div>
 	</div>
 </div>

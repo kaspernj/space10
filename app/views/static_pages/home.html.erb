@@ -25,18 +25,44 @@
 </div>
 
 <div class="container">
+	<div class="row gallery">
+		<div class="col-sm-6"></div>
+		<div class="col-sm-6">
+			<%= image_tag 'frontpage_gallery/first.jpg', class: 'full_width' %>
+		</div>
+		<div class="col-xs-9 col-sm-4 half-up">
+			<%= image_tag 'frontpage_gallery/second.jpg', class: 'full_width' %>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<%= image_tag 'frontpage_gallery/third.jpg', class: 'full_width' %>
+		</div>
+		<div class="col-xs-8 col-xs-offset-4 col-sm-4 col-sm-offset-1 col-sm-push-6">
+			<%= image_tag 'frontpage_gallery/fourth.jpg', class: 'full_width' %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-sm-pull-5">
+			<%= image_tag 'frontpage_gallery/fifth.jpg', class: 'full_width' %>
+		</div>
+		<div class="col-xs-8 col-sm-4 col-sm-offset-3">
+			<%= image_tag 'frontpage_gallery/sixth.jpg', class: 'full_width' %>
+		</div>
+	</div>
+</div>
+
+<div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
 				<div class="col-md-12 text-center">
 					<h2>Space Journal <span>Latest</span></h2>
 				</div>
-				<div class="row">
-				<% @posts.each_with_index do |post, i| %>
-					<div class="col-sm-6 col-md-4 post-thumbnail">
-						<%= render 'posts/thumbnail', post: post %>
+				<div class="col-md-12">
+					<div class="row">
+						<% @posts.each_with_index do |post, i| %>
+							<div class="col-sm-6 col-md-4 post-thumbnail">
+								<%= render 'posts/thumbnail', post: post %>
+							</div>
+						<% end %>
 					</div>
-				<% end %>
 				</div>
 			</div>
 			<div class="row text-center">
@@ -50,8 +76,8 @@
 	<div class="container">
 		<div class="row content_block">
 			<div class="col-md-12 content_block instagram-row">
-				<% @instagram_photos.first(6).each do |photo| %>
-					<%= link_to photo["link"], class: 'col-xs-6 col-md-2 instagram-photo-container', target: '_blank' do %>
+				<% @instagram_photos.first(4).each do |photo| %>
+					<%= link_to photo["link"], class: 'col-xs-6 col-md-3 instagram-photo-container', target: '_blank' do %>
 						<% photo_url = photo["images"]["standard_resolution"]["url"] %>
 						<div class="instagram-photo aspect-ratio r-1-1" style="background-image: url('<%= photo_url %>');"></div>
 					<% end %>
@@ -70,7 +96,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
-				<% @events.each_with_index do |event, i| %>
+				<% @events.each do |event| %>
 					<div class="col-sm-6 event-small">
 						<%= render 'events/event_small', event: event %>
 					</div>
@@ -94,7 +120,7 @@
 			<h2>Latest Collaborators</span></h2>
 		</div>
 	</div>
-	<div class="row row-collaborators content_block">
+	<div class="row row-profiles content_block">
 		<% @profiles.each do |profile| %>
 			<div class="col-xs-6 col-sm-3">
 				<%= render 'profiles/profile_card', profile: profile %>

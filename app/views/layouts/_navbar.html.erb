@@ -18,7 +18,7 @@
             <% end %>
           </li>
         <% else %>
-          <li><%= link_to "<i class='icon-fingerprint'></i> Sign in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Sign up".html_safe, new_user_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
         <% end %>
         <!-- <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li> -->
       </ul>
@@ -38,7 +38,7 @@
             <% end %>
           </li>
         <% else %>
-          <li><%= link_to "<i class='icon-fingerprint'></i> Sign in".html_safe, login_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Sign up".html_safe, new_user_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->

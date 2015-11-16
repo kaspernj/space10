@@ -68,6 +68,9 @@ gem 'geocoder'
 # Exceptions
 gem 'exception_notification'
 
+gem 'bullet', group: :development
+gem 'rack-mini-profiler', group: :development
+
 group :development, :test do
 	gem 'guard'
 	gem 'guard-livereload'

@@ -61,7 +61,7 @@
 
 .navbar-brand {
   margin-right: $gutter;
-  margin-left: 0 !important;
+  margin-left: $gutter/2 !important;
 }
 
 .navbar-brand > img {

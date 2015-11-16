@@ -10,6 +10,8 @@
 	}
 	.hero-block {
 		padding-bottom: $gutter*2;
+		padding-left: $gutter; 
+		padding-right: $gutter;
 		h1 {
 			font-size: 9em;
 			line-height: 0.9em;
@@ -58,6 +60,8 @@
 .community-profiles {
 	padding-top: $gutter;
 	padding-bottom: $gutter/2;
+	padding-left: $gutter/2;
+	padding-right: $gutter/2;
 	img {
 		display: block;
 	}
@@ -137,7 +141,7 @@
 	}
 	.join-us {
 		padding-top: $gutter*5; 
-		padding-bottom: $gutter*3; 
+		padding-bottom: $gutter*4;
 		h1 {
 			margin-bottom: $gutter;
 		}
@@ -194,7 +198,7 @@
 		}
 	}
 
-.row-collaborators {
+.row-profiles {
 		padding-left: $gutter;
 		padding-right: $gutter;
 	}

@@ -23,13 +23,14 @@ class Event < ActiveRecord::Base
 	validates_presence_of :title, :starts_at
   validate :end_date_after_start_date
 
-  belongs_to :address, dependent: :destroy
   has_many :image_attachments, as: :resource, dependent: :destroy
+  accepts_nested_attributes_for :image_attachments, allow_destroy: true
+
   has_many :registrations, dependent: :destroy
   has_many :users, through: :registrations
 
+  belongs_to :address, dependent: :destroy
   accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :image_attachments, allow_destroy: true
 
 
   def featured_image

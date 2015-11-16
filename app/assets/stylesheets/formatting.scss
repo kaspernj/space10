@@ -32,6 +32,11 @@
     font-size: 2.9em;
     font-weight: bold;
     line-height: 1.1em;
+    padding: 0;
+    &+p span {
+      color: #B3B3B3;
+      font-size: 17px;
+    }
   }
 }
 

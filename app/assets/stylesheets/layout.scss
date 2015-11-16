@@ -1,5 +1,9 @@
 $gutter: $grid-gutter-width;
 
+.inline-block {
+  display: inline-block;
+}
+
 a {
   img {
     -webkit-transition: all 500ms ease-out 0s;
@@ -187,15 +191,15 @@ input[value="Schedule"] {
   }  
 }
 
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}
-.col-bottom {
-  align-self: flex-end;
-}
+// .row-eq-height {
+//   display: -webkit-box;
+//   display: -webkit-flex;
+//   display: -ms-flexbox;
+//   display:         flex;
+// }
+// .col-bottom {
+//   align-self: flex-end;
+// }
 
 .centered_container {
   text-align: center;
