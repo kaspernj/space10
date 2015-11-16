@@ -88,16 +88,26 @@
     padding-right: 0;
     text-align: right;
     margin-left: 25px;
+    border-top: 12px solid #f4f4f4;
+    margin-top: 41px;
+    padding-top: 0;
+    line-height: 2.5;
     &:before {
       content: " ";
       position: absolute;
-      top: $navbar-height/2 - ($gutter);
+      // top: $navbar-height/2 - ($gutter);
+      top: -12px;
       right: 0;
-      left: 0;
-      border-top: 12px solid #f4f4f4;
+      left: 100%;
+      border-top: 12px solid #000;
+      -webkit-transition: left 0.15s ease-in;
+      -o-transition: left 0.15s ease-in;
+      -moz-transition: left 0.15s ease-in;
+      -ms-transition: left 0.15s ease-in;
+      transition: left 0.15s ease-in;
     }
     &.active:before, &:hover:before {
-      border-color: $brand-primary;
+      left: 0;
     }
   }
 }
