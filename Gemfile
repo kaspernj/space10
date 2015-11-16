@@ -68,8 +68,14 @@ gem 'geocoder'
 # Exceptions
 gem 'exception_notification'
 
+gem 'jquery-turbolinks'
+
 gem 'bullet', group: :development
 gem 'rack-mini-profiler', group: :development
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
 	gem 'guard'

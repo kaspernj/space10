@@ -2,9 +2,9 @@
   <div class="container">
     <div class="navbar-header">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'logo.svg', height: "114", width: '94', id: 'svg_logo', class: 'hidden-xs' %>
-        <%= image_tag 'logo_wo_text.svg', width: '60', class: 'visible-xs-block' %>
-        <%= image_tag 'logo.gif', height: "114", width: '94', id: 'gif_logo', style: "display:none;" %>
+        <%= image_tag 'logos/logo.svg', height: "114", width: '94', id: 'svg_logo', class: 'hidden-xs' %>
+        <%= image_tag 'logos/logo_wo_text.svg', width: '60', class: 'visible-xs-block' %>
+        <%= image_tag 'logos/logo.gif', height: "114", width: '94', id: 'gif_logo', style: "display:none;" %>
       <% end %>
     </div>
     <div id="navbar">
@@ -23,11 +23,25 @@
         <!-- <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li> -->
       </ul>
       <ul class="nav navbar-nav primary-nav navbar-right hidden-xs hidden-sm">
-        <li><%= nav_link "Journal", posts_path %></li>
-        <li><%= nav_link "Program", events_path %></li>
-        <li><%= nav_link "Labs", labs_path %></li>
-        <li><%= nav_link "Community", profiles_path %></li>
-        <li><%= nav_link "About", "#" %></li>
+        <li onmouseover="PlaySound('journal')" onmouseout="StopSound('journal')">
+          <%= nav_link "Journal", posts_path %></li>
+          <%= audio_tag 'journal.mp3', id: 'journal', preload: true %>
+        
+        <li onmouseover="PlaySound('program')" onmouseout="StopSound('program')">
+          <%= nav_link "Program", events_path %></li>
+          <%= audio_tag 'program.mp3', id: 'program', preload: true %>
+        
+        <li onmouseover="PlaySound('labs')" onmouseout="StopSound('labs')">
+          <%= nav_link "Labs", labs_path %></li>
+          <%= audio_tag 'labs.mp3', id: 'labs', preload: true %>
+        
+        <li onmouseover="PlaySound('community')" onmouseout="StopSound('community')">
+          <%= nav_link "Community", profiles_path %></li>
+          <%= audio_tag 'community.mp3', id: 'community', preload: true %>
+        
+        <li onmouseover="PlaySound('about')" onmouseout="StopSound('about')">
+          <%= nav_link "About", "#" %></li>
+          <%= audio_tag 'about.mp3', id: 'about', preload: true %>
       </ul>
       <ul class="nav navbar-nav navbar-right visible-xs-block visible-sm-block">
         <% if signed_in? %>

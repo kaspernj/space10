@@ -6,7 +6,7 @@
     <% else %>
       <p class="profile-heading"><strong><%= profile.title %></strong></p>
     <% end %>
-    <p class="meta-text profile-tags"><%= profile.tags.pluck(:title).join(" / ") %></p>
+    <p class="meta-text profile-tags"><%= profile.tags.any? ? profile.tags.pluck(:title).join(" / ") : '&nbsp;'.html_safe %></p>
     <p class="meta-text profile-location"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
   <% end %>
 </div>

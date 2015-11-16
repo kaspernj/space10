@@ -42,4 +42,16 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields #{options[:class]}", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def prepend_http(url)
+    if url.starts_with?('http://')
+      url
+    elsif url.starts_with?('https://')
+      url
+    elsif url.starts_with?('//')
+      "http:" + url
+    else
+      'http://' + url
+    end
+  end
 end

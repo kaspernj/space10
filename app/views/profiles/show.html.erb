@@ -21,7 +21,7 @@
 						</div>
 					</div>
 					<% if @profile.website.present? %>
-						<%= link_to 'Visit website', @profile.website, target: '_blank', class: 'btn btn-lg btn-default' %>
+						<%= link_to 'Visit website', prepend_http(@profile.website), target: '_blank', class: 'btn btn-lg btn-default' %>
 					<% end %>
 				</div>
 			</div>

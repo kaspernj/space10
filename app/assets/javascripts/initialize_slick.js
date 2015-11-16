@@ -7,7 +7,7 @@ $(document).on('ready page:load', function () {
 	  dots: false,
 	  initialSlide: 0,
 	  lazyLoad: 'ondemand'
-	});
+	}).slick('slickGoTo','0');
 	$('body').on('click', '.slick-slide:not(.slick-active)', function(){
 		$('.slick-variable-width').slick('slickNext');
 		return false
