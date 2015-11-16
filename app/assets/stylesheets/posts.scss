@@ -26,5 +26,7 @@
   }
 }
 .share-box {
-  padding-left: $gutter*2;
+  @media (min-width: $screen-sm-min) {
+    padding-left: $gutter*2;
+  }
 }
