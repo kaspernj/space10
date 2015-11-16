@@ -30,10 +30,7 @@ class RegistrationsController < ApplicationController
 				UserMailer.unconfirmed_registration(@registration.user.id, @registration.event.id).deliver_now
 			end
 			flash[:success] = "Seat requested"
-			respond_to do |format|
-	      format.html { redirect_to [@event, @registration] }
-	      format.js
-	    end
+			redirect_to @event
 		else
 			render 'new'
 		end

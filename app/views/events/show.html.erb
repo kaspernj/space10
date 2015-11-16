@@ -25,6 +25,8 @@
 					<%= link_to "Attend", new_event_registration_path(@event), {class: 'btn btn-lg btn-default', remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %>
 				<% elsif !current_user.registrations.find_by(event: @event).confirmed? %>
 					<button class="btn btn-lg btn-default">Seat requested</button>
+				<% elsif current_user.registrations.find_by(event: @event).confirmed? %>
+					<button class="btn btn-lg btn-default">Seat confirmed</button>
 				<% end %>	
 			<% end %>
 		</div>
