@@ -8,3 +8,9 @@ function StopSound(soundobj) {
   thissound.pause();
   thissound.currentTime = 0;
 }
+
+$(document).on('ready page:load', function () {
+  $('.play_sound a').mouseover(function(){
+    $(this).next('audio')[0].play();
+  })
+});

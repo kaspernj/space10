@@ -1,9 +1,4 @@
-$(document).on('ready page:change', function () {
-	$('#svg_logo').show();
-	$('#gif_logo').hide();
-}).on('ready page:fetch', function () {
-  if( $('#svg_logo').is(':visible') ) {
-    $('#svg_logo').hide();
-    $('#gif_logo').show();
-  }
-});
+// $(document).on('ready page:load', function () {
+//   var img_url = $('#svg_logo').attr("src")
+//   $('#svg_logo').attr("src", img_url+"?a="+Math.random());
+// });
