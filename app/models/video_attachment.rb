@@ -27,7 +27,7 @@ class VideoAttachment < ActiveRecord::Base
 		if provider.downcase == 'vimeo'
 			"//player.vimeo.com/video/#{video_id}?autoplay=1"
 		elsif provider.downcase == 'youtube'
-			"http://www.youtube.com/embed/#{video_id}?autoplay=1"
+			"https://www.youtube.com/embed/#{video_id}?autoplay=1"
 		end
 	end
 end
