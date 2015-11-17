@@ -4,7 +4,7 @@
 	<% @events.each do |event| %>
 		<% if cycle('odd', 'even') == 'odd' %>
 			<div class="row event-large event-large-right">
-				<div class="col-md-11 col-md-offset-1 no-padding">
+				<div class="col-md-11 col-md-offset-1 no-sm-padding">
 					<%= link_to event do %>
 					<div class="event-images">
 						<div class="aspect-ratio r-20-9">
@@ -22,7 +22,7 @@
 					</div>
 					<% end %>
 					<div class="row content_block">
-						<div class="col-md-7 event-title-and-excerpt">
+						<div class="col-sm-7 event-title-and-excerpt">
 							<h1><%= event.title %></h1>
 							<p class="excerpt"><%= event.excerpt %></p>
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default hidden-xs' %>
@@ -30,7 +30,7 @@
 						<div class="col-xs-6 visible-xs-block">
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default' %>
 						</div>
-						<div class="col-md-5 col-xs-6 event-info">
+						<div class="col-sm-5 col-xs-6 event-info">
 							<%= render 'event_info', event: event %>
 						</div>
 					</div>
@@ -38,7 +38,7 @@
 			</div>
 		<% else %>
 			<div class="row event-large event-large-left">
-				<div class="col-md-11 no-padding">
+				<div class="col-md-11 no-sm-padding">
 					<%= link_to event do %>
 					<div class="event-images">
 						<div class="aspect-ratio r-16-9">
@@ -56,7 +56,7 @@
 					</div>
 					<% end %>
 					<div class="row content_block">
-						<div class="col-md-7 col-md-push-5 event-title-and-excerpt">
+						<div class="col-sm-7 col-sm-push-5 event-title-and-excerpt">
 							<h1><%= event.title %></h1>
 							<p class="excerpt"><%= event.excerpt %></p>
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default hidden-xs' %>
@@ -64,7 +64,7 @@
 						<div class="col-xs-6 visible-xs-block">
 							<%= link_to "Read more", event, class: 'btn btn-lg btn-default' %>
 						</div>
-						<div class="col-md-5 col-xs-6 col-md-pull-7 event-info">
+						<div class="col-sm-5 col-xs-6 col-sm-pull-7 event-info">
 							<%= render 'event_info', event: event %>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 				</div>
 				<div class="row">
 					<% @previous_events.each do |event| %>
-						<div class="col-md-6 event-small">
+						<div class="col-sm-6 event-small">
 							<%= render 'event_small', event: event %>
 						</div>
 					<% end %>

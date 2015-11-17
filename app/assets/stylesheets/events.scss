@@ -16,12 +16,16 @@
       margin-top: $gutter*2;
     }
     .event-title-and-excerpt {
-      padding-left: $gutter*1.5;
+      @media (min-width: $screen-sm-min) {
+        padding-left: $gutter*1.5;
+      }
     }
   }
   .event-large-right {
     .event-title-and-excerpt {
-      padding-right: $gutter*1.5;
+      @media (min-width: $screen-sm-min) {
+        padding-right: $gutter*1.5;
+      }
     }
   }
 }
@@ -42,7 +46,7 @@
     }
   }
   @media (min-width: $screen-xs-min) {
-    &.col-md-pull-7 {
+    &.col-sm-pull-7 {
       text-align: right;
       border-left: 0;
       padding-left: 0;

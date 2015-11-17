@@ -80,7 +80,7 @@
 								<%= content_tag :p, @post.try(:project_partners_text) %>
 								<div class="row">
 									<% @post.project_partners.each do |p| %>
-										<div class="col-md-6">
+										<div class="col-xs-6">
 											<%= link_to profile_path(p), class: 'no-link-style' do %>
 												<%= image_tag p.logo_url(:medium), class: "full_width" %>
 											<% end %>

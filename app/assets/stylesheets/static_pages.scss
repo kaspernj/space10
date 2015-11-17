@@ -21,7 +21,7 @@
 			padding-right: $gutter*3;
 		}
 	}
-	@media (max-width: $screen-xs-max) {
+	@media (max-width: $screen-sm-max) {
 		.current-lab {
 			font-size: 1.3em;
 			position: relative;
@@ -57,7 +57,9 @@
 		p.lead {
 			text-transform: uppercase;
 		}
-		border-left: 1px solid $gray-little-lighter;
+		@media (min-width: $screen-md-min) {
+			border-left: 1px solid $gray-little-lighter;
+		}
 	}
 
 	h1.heading {
@@ -107,7 +109,7 @@
 	div {
 		padding: 0;
 	}
-	@media (min-width: $screen-sm-min) {
+	@media (min-width: $screen-md-min) {
 		margin-top: 0;
 		padding: 0 60px;
 		.half-up {

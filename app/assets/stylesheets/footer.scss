@@ -15,7 +15,7 @@ footer {
   .container {
     padding-left: $gutter;
     padding-right: $gutter;
-    @media (min-width: $screen-sm-min) {
+    @media (min-width: $screen-md-min) {
       padding-left: $gutter*2;
       padding-right: $gutter*2;
     }

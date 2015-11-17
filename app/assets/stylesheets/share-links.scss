@@ -3,7 +3,7 @@
   border-left: 1px solid #DCDDE0;
   border-bottom: 1px solid #DCDDE0;
   width: 100%;
-  @media (min-width: $screen-sm-min) {
+  @media (min-width: $screen-md-min) {
     width: 120px;
   }
   overflow: auto;
@@ -11,7 +11,7 @@
     color: #DCDDE0;
     float: left;
     width: 20%;
-    @media (min-width: $screen-sm-min) {
+    @media (min-width: $screen-md-min) {
       width: 50%;
     }
     border-right: 1px solid #DCDDE0;
@@ -21,12 +21,12 @@
     }
     &:last-child {
       width: 20%;
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-md-min) {
         width: 100%;
       }
       div.aspect-ratio {
         padding-bottom: 100%;
-        @media (min-width: $screen-sm-min) {
+        @media (min-width: $screen-md-min) {
           padding-bottom: 50%;
         }
       }
