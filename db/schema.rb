@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116065248) do
+ActiveRecord::Schema.define(version: 20151117152626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,23 @@ ActiveRecord::Schema.define(version: 20151116065248) do
     t.datetime "publish_at"
     t.boolean  "published"
     t.integer  "max_registrations"
+    t.string   "slug"
   end
+
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "image_attachments", force: :cascade do |t|
     t.string   "resource_type"
@@ -100,7 +116,10 @@ ActiveRecord::Schema.define(version: 20151116065248) do
     t.integer  "lab_id"
     t.text     "project_partners_text"
     t.text     "project_people_text"
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "profile_authorizations", force: :cascade do |t|
     t.integer  "user_id"
@@ -124,7 +143,10 @@ ActiveRecord::Schema.define(version: 20151116065248) do
     t.string   "website"
     t.boolean  "featured"
     t.string   "email"
+    t.string   "slug"
   end
+
+  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
 
   create_table "project_partnerships", force: :cascade do |t|
     t.string   "resource_type"

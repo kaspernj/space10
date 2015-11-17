@@ -18,6 +18,9 @@
 class Post < ActiveRecord::Base
   include Taggable
   include Schedulable
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
   
 	validates_presence_of :title
 

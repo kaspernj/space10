@@ -189,6 +189,8 @@ GEM
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     geocoder (1.2.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -422,6 +424,7 @@ DEPENDENCIES
   faker
   fog (~> 1.28.0)
   font-awesome-rails
+  friendly_id (~> 5.1.0)
   geocoder
   guard
   guard-livereload

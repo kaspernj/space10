@@ -21,6 +21,10 @@
 
 class Profile < ActiveRecord::Base
 	include Taggable
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
   mount_uploader :image, AvatarUploader
   geocoded_by :location
   after_validation :geocode, if: lambda{ |obj| obj.location_changed? }

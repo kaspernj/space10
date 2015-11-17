@@ -20,6 +20,9 @@ class Event < ActiveRecord::Base
   include Planable
   include Schedulable
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
 	validates_presence_of :title, :starts_at
   validate :end_date_after_start_date
 
