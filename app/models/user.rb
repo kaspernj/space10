@@ -53,7 +53,6 @@ class User < ActiveRecord::Base
 			user.name = (omniauth['info']['name'] || [omniauth['info']['first_name'],omniauth['info']['last_name']].join(" "))
 			user.birthday = Date.strptime(omniauth['extra']['raw_info']['birthday'],'%m/%d/%Y') rescue nil
 			user.gender = omniauth['extra']['raw_info']['gender'] rescue nil
-			user.personal_profile = PersonalProfile.from_omniauth(user, omniauth)
 			user.password = SecureRandom.urlsafe_base64(8) if user.new_record?
 		end
 	end

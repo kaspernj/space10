@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
 		omniauth = request.env['omniauth.auth']
 		user = Authentication.from_omniauth(omniauth).user
 		if user.save
+			user.personal_profile = PersonalProfile.from_omniauth(user, omniauth)
 			sign_in(user)
 			flash[:success] = "Logged in successfully"
 			redirect_to root_path
