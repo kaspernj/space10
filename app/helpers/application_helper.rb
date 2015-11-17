@@ -11,9 +11,12 @@ module ApplicationHelper
 
 	def nav_link(text, link_path, options={})
 		classes = (options[:class] || '')
-		current_path_controller = Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:controller]
-		link_path_controller = Rails.application.routes.recognize_path(link_path)[:controller]
-		active = current_path_controller == link_path_controller ? ' active' : ''
+		# current_path_controller = Rails.application.routes.recognize_path(request.env['PATH_INFO'])[:controller]
+		# link_path_controller = Rails.application.routes.recognize_path(link_path)[:controller]
+    # active = current_path_controller == link_path_controller ? ' active' : ''
+		
+    active = current_page?(link_path) ? 'active' : ''
+
 		classes << active
 		link_to text, link_path, class: "#{classes}"
 	end
