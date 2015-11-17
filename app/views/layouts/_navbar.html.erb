@@ -36,7 +36,7 @@
         </li>
         <% if lab.present? %>
           <li class="play_sound">
-            <%= nav_link "Labs", posts_path(lab) %>
+            <%= nav_link "Labs", lab %>
             <%= audio_tag 'labs.mp3', id: 'labs', preload: true %>
           </li>
         <% end %>
@@ -74,7 +74,7 @@
             <li><%= link_to "Journal", posts_path %></li>
             <li><%= link_to "Program", events_path %></li>
             <% if lab.present? %>
-              <li><%= link_to "Labs", post_path(lab) %></li>
+              <li><%= link_to "Labs", lab %></li>
             <% end %>
             <li><%= link_to "Community", profiles_path %></li>
             <li><%= link_to "About", about_path %></li>
