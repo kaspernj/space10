@@ -17,11 +17,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :events, only: [:index, :show] do
+  resources :events, only: [:index, :show], path: "program" do
     resources :registrations
   end
-  resources :posts, only: [:index, :show]
-  resources :profiles, only: [:index, :show]
+  resources :posts, only: [:index, :show], path: "journal"
+  resources :profiles, only: [:index, :show], path: "community"
   resources :labs, only: [:index, :show]
   resources :tags, only: [:index, :show]
 
