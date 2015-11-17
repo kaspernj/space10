@@ -1,24 +1,24 @@
 --- !ruby/hash:ActionController::Parameters
 posts: !ruby/hash:ActionController::Parameters
   index: !ruby/hash:ActionController::Parameters
-    featured_tag: IKEA
+    featured_tag: Aspirational Objects
 social_media: !ruby/hash:ActionController::Parameters
   instagram: https://instagram.com/space10_journal/
-  facebook: https://instagram.com/space10_journal/
-  youtube: https://instagram.com/space10_journal/
-  twitter: https://instagram.com/space10_journal/
-  linkedin: https://instagram.com/space10_journal/
+  facebook: ''
+  youtube: https://youtube.space10.io
+  twitter: https://twitter.com/space10_journal/
+  linkedin: https://linkedin.com/company/space-10
 footer: !ruby/hash:ActionController::Parameters
   links: !ruby/hash:ActionController::Parameters
     first: !ruby/hash:ActionController::Parameters
       title: About
-      link: "#"
+      link: https://www.space10.io/about
     second: !ruby/hash:ActionController::Parameters
-      title: App
-      link: "#"
+      title: Press
+      link: https://www.space10.io/about
     third: !ruby/hash:ActionController::Parameters
-      title: Terms
-      link: "#"
+      title: Contact us
+      link: mailto:discover@space10.io
     fourth: !ruby/hash:ActionController::Parameters
       title: ''
       link: ''

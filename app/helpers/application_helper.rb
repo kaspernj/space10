@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(title)
-    base_title = "Space 10"
+    base_title = "Space10"
     if title.present?
       title + " | " + base_title
     else

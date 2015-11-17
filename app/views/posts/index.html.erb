@@ -110,15 +110,17 @@
 <% end %>
 
 <div class="container">
-	<div class="row">
+	<div class="row content_block">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
-				<% @posts.offset(10).limit(3).each do |post| %>
+			<% @posts.offset(10).in_groups_of(3, false) do |group| %>
+				<div class="row">
+					<% group.each do |post| %>
 					<div class="col-md-4 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
 					</div>
-				<% end %>
-			</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

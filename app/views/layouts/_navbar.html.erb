@@ -1,3 +1,6 @@
+<!-- TEMP -->
+<% lab = Post.find_by(title: 'The Fresh Living Lab') %>
+
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
@@ -31,10 +34,12 @@
           <%= nav_link "Program", events_path %>
           <%= audio_tag 'program.mp3', id: 'program', preload: true %>
         </li>
-        <li class="play_sound">
-          <%= nav_link "Labs", labs_path %>
-          <%= audio_tag 'labs.mp3', id: 'labs', preload: true %>
-        </li>
+        <% if lab.present? %>
+          <li class="play_sound">
+            <%= nav_link "Labs", posts_path(lab) %>
+            <%= audio_tag 'labs.mp3', id: 'labs', preload: true %>
+          </li>
+        <% end %>
         <li class="play_sound">
           <%= nav_link "Community", profiles_path %>
           <%= audio_tag 'community.mp3', id: 'community', preload: true %>
@@ -68,7 +73,9 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Journal", posts_path %></li>
             <li><%= link_to "Program", events_path %></li>
-            <li><%= link_to "Labs", labs_path %></li>
+            <% if lab.present? %>
+              <li><%= link_to "Labs", post_path(lab) %></li>
+            <% end %>
             <li><%= link_to "Community", profiles_path %></li>
             <li><%= link_to "About", about_path %></li>
           </ul>
