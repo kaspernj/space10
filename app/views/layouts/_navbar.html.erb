@@ -40,7 +40,7 @@
           <%= audio_tag 'community.mp3', id: 'community', preload: true %>
         </li>
         <li class="play_sound">
-          <%= nav_link "About", "#" %>
+          <%= nav_link "About", about_path %>
           <%= audio_tag 'about.mp3', id: 'about', preload: true %>
         </li>
       </ul>
@@ -70,7 +70,7 @@
             <li><%= link_to "Program", events_path %></li>
             <li><%= link_to "Labs", labs_path %></li>
             <li><%= link_to "Community", profiles_path %></li>
-            <li><%= link_to "About", "#" %></li>
+            <li><%= link_to "About", about_path %></li>
           </ul>
         </li>
       </ul>

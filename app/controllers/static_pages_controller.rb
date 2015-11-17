@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
 		@instagram_photos = InstagramApi.new.hashtag_photos('space10') unless Rails.env.test?
 	end
 
+  def about
+    
+  end
+
 end

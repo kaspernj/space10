@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   root 'static_pages#home'
 
+  get 'about', to: 'static_pages#about', as: 'about'
+
   # TEMPORARY
   get 'invitation' => redirect('https://rebelunited-yuji.squarespace.com/invitation')
 
