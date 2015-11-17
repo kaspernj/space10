@@ -49,9 +49,9 @@
 </div>
 
 <div class="container">
-	<div class="row">
+	<div class="row content_block">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
+			<div class="row ">
 				<div class="col-md-12 text-center">
 					<h2>Space Journal <span>Latest</span></h2>
 				</div>
@@ -109,6 +109,11 @@
 					</div>
 				<% end %>
 			</div>
+			<div class="row content_block">
+				<div class="col-md-12 text-center">
+					<%= link_to "View all", events_path, class: 'btn btn-lg btn-default' %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -126,6 +131,11 @@
 				<%= render 'profiles/profile_card', profile: profile %>
 			</div>
 		<% end %>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<%= link_to "View all", profiles_path, class: 'btn btn-lg btn-default' %>
+		</div>
 	</div>
 </div>
 <% end %>

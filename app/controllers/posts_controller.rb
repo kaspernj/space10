@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.published
-		@instagram_photos = InstagramApi.new.popular_hashtag_photos('space10')
+		@instagram_photos = InstagramApi.new.user_photos('2179243523')
 		
 		@featured_lab = Settings.get['posts']['index']['featured_tag']
 		@featured_videos = VideoAttachment.featured.includes(:resource).limit(4)
