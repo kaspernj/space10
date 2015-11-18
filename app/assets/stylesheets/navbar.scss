@@ -128,3 +128,16 @@
     }
   }
 }
+
+// HACK
+
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+  .navbar-left > li {
+    a {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+}

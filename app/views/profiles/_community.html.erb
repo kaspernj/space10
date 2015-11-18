@@ -1,4 +1,4 @@
-<div class="bg-gray community-controls">
+<div class="bg-gray hidden-xs community-controls">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray">
+<div class="bg-gray hidden-xs">
 	<div class="container">
 		<div class="row community-profiles">
 			<% @profiles.each do |profile| %>
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray community-controls">
+<div class="bg-gray hidden-xs community-controls">
 	<div class="container">
 		<div class="row text-center">
 			<%= will_paginate @profiles, :previous_label => 'Previous', :next_label => 'Next' %>

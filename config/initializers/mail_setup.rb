@@ -19,7 +19,7 @@ ActionMailer::Base.default_url_options = {
     } if Rails.env.staging?
 
 ActionMailer::Base.default_url_options = {
-      host: "space10.herokuapp.com"
+      host: "www.space10.io"
     } if Rails.env.production?
 
 ActionMailer::Base.default_url_options = {
