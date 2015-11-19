@@ -29,8 +29,18 @@ describe "Posts api", type: :request do
 					'excerpt' => post.excerpt,
 					'title' => post.title,
 					'featured_image' => nil,
+					'tags' => [],
 					'content' => post.content,
-					'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601
+					'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
+					'project_partners' => {
+						'text' => nil,
+						'partners' => [],
+					},
+					'project_people' => {
+						'text' => nil,
+						'people' => [],
+					},
+					'lab' => nil
 				}
 			)
 		end

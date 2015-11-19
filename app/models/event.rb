@@ -36,6 +36,16 @@ class Event < ActiveRecord::Base
   belongs_to :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  has_many :company_partnerships, source: 'ProjectPartnership', as: :resource, dependent: :destroy
+  accepts_nested_attributes_for :company_partnerships, allow_destroy: true
+  has_many :project_partners, through: :company_partnerships
+
+  has_many :person_partnerships, source: 'ProjectPartnership', as: :resource, dependent: :destroy
+  accepts_nested_attributes_for :person_partnerships, allow_destroy: true
+  has_many :project_people, through: :person_partnerships
+
+  belongs_to :lab
+
 
   def featured_image
     image_attachments.first

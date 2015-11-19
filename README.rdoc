@@ -217,22 +217,40 @@ Endpoints that are protected with HTTP Token Authentication:
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
-      'featured_image' => event.featured_image_url,
-      'secondary_image' => event.secondary_image_url,
-      'starts_at' => event.starts_at,
-      'ends_at' => event.ends_at,
-      'published_at' => event.published_at
+      'featured_image' => nil,
+      'secondary_image' => nil,
+      'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+      'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+      'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
+      'project_partners' => {
+        'text' => event.project_partners_text,
+        'partners' => [],
+      },
+      'project_people' => {
+        'text' => project_people_text,
+        'people' => [],
+      },
+      'lab' => event.lab
     },
     {
       'id' => 2,
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
-      'featured_image' => event.featured_image_url,
-      'secondary_image' => event.secondary_image_url,
-      'starts_at' => event.starts_at,
-      'ends_at' => event.ends_at,
-      'published_at' => event.published_at
+      'featured_image' => nil,
+      'secondary_image' => nil,
+      'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+      'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+      'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
+      'project_partners' => {
+        'text' => event.project_partners_text,
+        'partners' => [],
+      },
+      'project_people' => {
+        'text' => project_people_text,
+        'people' => [],
+      },
+      'lab' => event.lab
     }
   ]
 
@@ -248,11 +266,20 @@ Endpoints that are protected with HTTP Token Authentication:
     'title' => event.title,
     'excerpt' => event.excerpt,
     'content' => event.content,
-    'featured_image' => event.featured_image_url,
-      'secondary_image' => event.secondary_image_url,
-    'starts_at' => event.starts_at,
-    'ends_at' => event.ends_at,
-    'published_at' => event.published_at
+    'featured_image' => nil,
+    'secondary_image' => nil,
+    'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+    'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+    'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
+    'project_partners' => {
+      'text' => event.project_partners_text,
+      'partners' => [],
+    },
+    'project_people' => {
+      'text' => project_people_text,
+      'people' => [],
+    },
+    'lab' => event.lab
   }
 
 ==== Get authenticated user's events
@@ -364,7 +391,16 @@ Endpoints that are protected with HTTP Token Authentication:
       'title' => post.title,
       'featured_image' => post.featured_image_url,
       'content' => post.content,
-      'published_at' => post.published_at
+      'published_at' => post.published_at,
+      'project_partners' => {
+        'text' => post.project_partners_text,
+        'partners' => [],
+      },
+      'project_people' => {
+        'text' => project_people_text,
+        'people' => [],
+      },
+      'lab' => post.lab
     },
     {
       'id' => post.id,
@@ -372,7 +408,16 @@ Endpoints that are protected with HTTP Token Authentication:
       'title' => post.title,
       'featured_image' => post.featured_image_url,
       'content' => post.content,
-      'published_at' => post.published_at
+      'published_at' => post.published_at,
+      'project_partners' => {
+        'text' => post.project_partners_text,
+        'partners' => [],
+      },
+      'project_people' => {
+        'text' => project_people_text,
+        'people' => [],
+      },
+      'lab' => post.lab
     }
   ]
 
@@ -389,7 +434,16 @@ Endpoints that are protected with HTTP Token Authentication:
     'title' => post.title,
     'featured_image' => post.featured_image_url,
     'content' => post.content,
-    'published_at' => post.published_at
+    'published_at' => post.published_at,
+    'project_partners' => {
+      'text' => post.project_partners_text,
+      'partners' => [],
+    },
+    'project_people' => {
+      'text' => project_people_text,
+      'people' => [],
+    },
+    'lab' => post.lab
   }
 
 === Profiles
