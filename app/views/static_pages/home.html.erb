@@ -64,7 +64,7 @@
 				</div>
 				<div class="col-md-12">
 					<div class="row">
-						<% @posts.each_with_index do |post, i| %>
+						<% @posts.each do |post| %>
 							<div class="col-sm-6 col-md-4 post-thumbnail">
 								<%= render 'posts/thumbnail', post: post %>
 							</div>
