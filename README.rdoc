@@ -109,6 +109,12 @@ Endpoints that are protected with HTTP Token Authentication:
   get '/api/user/registrations/:id'
   delete '/api/user/registrations/:id'
 
+=== Pagination
+
+Requests that return multiple items will be paginated to 5 items by default. You can specify further pages with the page parameter. You can also set a custom page size up to 100 with the per_page parameter.
+
+  $ curl -u USERNAME:PASSWORD https://space10-staging.herokuapp.com/api/events?page=2&per_page=100
+
 === API index
 
 - {Users}[https://github.com/danielfriis/space10#users]
