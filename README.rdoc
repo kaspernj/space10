@@ -217,6 +217,8 @@ Endpoints that are protected with HTTP Token Authentication:
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
+      'featured_image' => event.featured_image_url,
+      'secondary_image' => event.secondary_image_url,
       'starts_at' => event.starts_at,
       'ends_at' => event.ends_at,
       'published_at' => event.published_at
@@ -226,6 +228,8 @@ Endpoints that are protected with HTTP Token Authentication:
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
+      'featured_image' => event.featured_image_url,
+      'secondary_image' => event.secondary_image_url,
       'starts_at' => event.starts_at,
       'ends_at' => event.ends_at,
       'published_at' => event.published_at
@@ -244,6 +248,8 @@ Endpoints that are protected with HTTP Token Authentication:
     'title' => event.title,
     'excerpt' => event.excerpt,
     'content' => event.content,
+    'featured_image' => event.featured_image_url,
+      'secondary_image' => event.secondary_image_url,
     'starts_at' => event.starts_at,
     'ends_at' => event.ends_at,
     'published_at' => event.published_at
@@ -356,6 +362,7 @@ Endpoints that are protected with HTTP Token Authentication:
       'id' => post.id,
       'excerpt' => post.excerpt,
       'title' => post.title,
+      'featured_image' => post.featured_image_url,
       'content' => post.content,
       'published_at' => post.published_at
     },
@@ -363,6 +370,7 @@ Endpoints that are protected with HTTP Token Authentication:
       'id' => post.id,
       'excerpt' => post.excerpt,
       'title' => post.title,
+      'featured_image' => post.featured_image_url,
       'content' => post.content,
       'published_at' => post.published_at
     }
@@ -379,6 +387,7 @@ Endpoints that are protected with HTTP Token Authentication:
     'id' => post.id,
     'excerpt' => post.excerpt,
     'title' => post.title,
+    'featured_image' => post.featured_image_url,
     'content' => post.content,
     'published_at' => post.published_at
   }

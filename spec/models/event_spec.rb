@@ -14,6 +14,7 @@
 #  publish_at        :datetime
 #  published         :boolean
 #  max_registrations :integer
+#  slug              :string
 #
 
 require 'rails_helper'

@@ -14,6 +14,7 @@
 #  publish_at        :datetime
 #  published         :boolean
 #  max_registrations :integer
+#  slug              :string
 #
 
 class Event < ActiveRecord::Base
@@ -50,6 +51,14 @@ class Event < ActiveRecord::Base
 
   def secondary_image
     image_attachments.second
+  end
+
+  def secondary_image_url(size = nil)
+    if secondary_image.present?
+      secondary_image.image_url(size)
+    else
+      "image_fallback/" + [size, "default.png"].compact.join('_')
+    end
   end
 
   def fully_booked?

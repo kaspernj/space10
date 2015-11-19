@@ -29,6 +29,8 @@ describe "Events api", type: :request do
 					'title' => event.title,
 					'excerpt' => event.excerpt,
 					'content' => event.content,
+					'featured_image' => nil,
+					'secondary_image' => nil,
 					'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
 					'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
 					'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601

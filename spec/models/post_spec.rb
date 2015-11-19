@@ -13,6 +13,7 @@
 #  lab_id                :integer
 #  project_partners_text :text
 #  project_people_text   :text
+#  slug                  :string
 #
 
 require 'rails_helper'

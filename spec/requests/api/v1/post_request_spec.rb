@@ -4,8 +4,8 @@ describe "Posts api", type: :request do
 
 	describe "GET /api/posts" do
 		it 'returns all posts' do
-			create :post, title: "Great Talk"
-			create :post, title: "Awesome workshop"
+			post1 = create :post, title: "Great Talk"
+			post2 = create :post, title: "Awesome workshop"
 
 			get '/api/posts', {}, request_headers
 
@@ -28,6 +28,7 @@ describe "Posts api", type: :request do
 					'id' => post.id,
 					'excerpt' => post.excerpt,
 					'title' => post.title,
+					'featured_image' => nil,
 					'content' => post.content,
 					'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601
 				}

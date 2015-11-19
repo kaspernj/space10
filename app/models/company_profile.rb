@@ -17,6 +17,7 @@
 #  website     :string
 #  featured    :boolean
 #  email       :string
+#  slug        :string
 #
 
 class CompanyProfile < Profile

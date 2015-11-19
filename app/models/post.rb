@@ -13,6 +13,7 @@
 #  lab_id                :integer
 #  project_partners_text :text
 #  project_people_text   :text
+#  slug                  :string
 #
 
 class Post < ActiveRecord::Base
@@ -50,7 +51,15 @@ class Post < ActiveRecord::Base
   belongs_to :lab
 
 	def featured_image
-		image_attachments.first
-	end
+    image_attachments.first
+  end
+
+  def featured_image_url(size = nil)
+    if featured_image.present?
+      featured_image.image_url(size)
+    else
+      "image_fallback/" + [size, "default.png"].compact.join('_')
+    end
+  end
 
 end
