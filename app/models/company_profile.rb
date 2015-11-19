@@ -27,6 +27,10 @@ class CompanyProfile < Profile
   has_one :logo_attachment, as: :resource, dependent: :destroy
   accepts_nested_attributes_for :logo_attachment, allow_destroy: true
 
+  def logo
+    logo_attachment
+  end
+
   def logo_url(size = nil)
     if logo_attachment.present?
       logo_attachment.image_url(size)
