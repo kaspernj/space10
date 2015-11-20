@@ -39,7 +39,6 @@ RSpec.describe Post, type: :model do
 		it { should have_many :tags }
 		# it { should have_many :authors }
 
-		it { should have_many :project_partnerships }
 		it { should have_many :project_partners }
 
 		it { should have_many :project_people }

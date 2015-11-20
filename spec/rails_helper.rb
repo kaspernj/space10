@@ -33,6 +33,11 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
+  config.block_url("http://maps.googleapis.com/maps/api/geocode/json?address=MyString&language=en&sensor=false")
+end
+
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false

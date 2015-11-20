@@ -16,8 +16,6 @@ require 'rails_helper'
 
 RSpec.describe ProjectPartnership, type: :model do
   describe 'validations' do
-    it { should validate_presence_of :resource_id }
     it { should validate_presence_of :resource_type }
-    it { should validate_presence_of :partner_id }
   end
 end
