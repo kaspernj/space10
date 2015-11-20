@@ -1,6 +1,8 @@
 $(document).on('ready page:change', function () {
-  $('body').addClass('animated fadeIn');
+  $('body').removeClass('animated fadeOut')
+  $('body').addClass('animated fadeIn')
 });
 $(document).on('ready page:fetch', function () {
-  // $('body').addClass('animated fadeOut');
+  $('body').removeClass('animated fadeIn')
+  $('body').addClass('animated fadeOut')
 });
