@@ -15,11 +15,13 @@ describe 'user authentication', type: :feature do
 		expect(page).to have_content("Invalid email or password")
 	end
 
-	it "allows user to sign out" do
+	it "allows user to sign out", js: true do
 		user = create(:user)
 		sign_in(user)
 
 		visit root_path
+		click_on user.first_name
+		expect(page).to have_content user.name
 		page.first("#logout").click
 
 		expect(page).to have_content("Logged out successfully")

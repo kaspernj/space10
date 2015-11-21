@@ -18,7 +18,7 @@ RSpec.describe 'Post feature', type: :feature do
 				expect(Post.last.title).to eq 'My title'
 			end
 
-			it 'allows to associate project partners', js: true, focus: true do
+			it 'allows to associate project partners', js: true do
 				click_on "Add project partner"
 				expect(page).to have_content "Project partner"
 				select @partner.title, from: 'Project partner'
@@ -27,7 +27,7 @@ RSpec.describe 'Post feature', type: :feature do
 				expect(Post.last.project_partners.pluck(:title)).to include @partner.title
 			end
 
-			it 'allows to associate project people', js: true, focus: true do
+			it 'allows to associate project people', js: true do
 				click_on "Add project person"
 				expect(page).to have_content "Project person"
 				select @person.title, from: 'Project person'
@@ -46,7 +46,8 @@ RSpec.describe 'Post feature', type: :feature do
 
 				click_on 'Schedule'
 
-				expect(page).to have_content('Post created successfully')
+				# expect(page).to have_content('Post created successfully')
+				expect(current_path).to eq admin_posts_path
 				expect(Post.published.count).to eq 0
 				expect(Post.scheduled.count).to eq 1
 			end

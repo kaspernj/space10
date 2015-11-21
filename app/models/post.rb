@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
     if featured_image.present?
       featured_image.image_url(size)
     else
-      "image_fallback/" + [size, "default.png"].compact.join('_')
+      ActionController::Base.helpers.asset_path("image_fallback/" + [size, "default.png"].compact.join('_'))
     end
   end
 
