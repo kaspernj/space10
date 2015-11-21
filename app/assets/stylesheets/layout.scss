@@ -74,14 +74,7 @@ img.full_width {
 }
 
 .alert {
-  display: hidden;
   color: white !important;
-}
-
-.admin {
-  .alert {
-    display: block;
-  }
 }
 
 #flash_notice {
