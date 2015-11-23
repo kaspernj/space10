@@ -1,6 +1,6 @@
 json.id post.id
 json.title post.title
-json.featured_image post.featured_image.present? ? post.featured_image_url : nil
+json.featured_image post.featured_image.present? ? post.featured_image_url(:large) : nil
 json.tags post.tags, :id, :title
 json.excerpt post.excerpt
 json.content post.content
