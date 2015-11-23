@@ -207,28 +207,23 @@ input[value="Schedule"] {
 //   align-self: flex-end;
 // }
 
-.centered_container {
-  text-align: center;
-}
 
 .centered_cover {
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
  
-.centered_container:before {
-  content: '';
-  display: inline-block;
-  height: 100%; 
-  vertical-align: middle;
-  margin-right: -0.25em;
+.centered_container {
+  height: 100%;
+  width: 100%;
+  display: table;
  }
 
 .centered {
-  display: inline-block;
+  display: table-cell;
   vertical-align: middle;
 }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119100344) do
+ActiveRecord::Schema.define(version: 20151123173939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.datetime "updated_at",    null: false
     t.integer  "row_order"
   end
+
+  add_index "content_blocks", ["resource_id", "resource_type"], name: "index_content_blocks_on_resource_id_and_resource_type", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -90,6 +92,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.integer  "row_order"
   end
 
+  add_index "image_attachments", ["resource_id", "resource_type"], name: "index_image_attachments_on_resource_id_and_resource_type", using: :btree
+
   create_table "labs", force: :cascade do |t|
     t.string   "title"
     t.string   "subtitle"
@@ -107,6 +111,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "logo_attachments", ["resource_id", "resource_type"], name: "index_logo_attachments_on_resource_id_and_resource_type", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -161,6 +167,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.string   "type"
   end
 
+  add_index "project_partnerships", ["resource_id", "resource_type"], name: "index_project_partnerships_on_resource_id_and_resource_type", using: :btree
+
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -177,6 +185,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.datetime "updated_at",    null: false
   end
 
+  add_index "taggings", ["resource_id", "resource_type"], name: "index_taggings_on_resource_id_and_resource_type", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -190,6 +200,8 @@ ActiveRecord::Schema.define(version: 20151119100344) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "text_attachments", ["resource_id", "resource_type"], name: "index_text_attachments_on_resource_id_and_resource_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

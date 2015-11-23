@@ -1,5 +1,5 @@
 .login-content {
-  .col-md-3 {
+  &> div {
     float: none;
     margin: 0 auto;
     img {

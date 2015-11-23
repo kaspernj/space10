@@ -1,5 +1,5 @@
 <%= link_to event do %>
-  <%= image_tag event.image_attachments.first.image_url(:medium), class: "full_width" %>
+  <%= image_tag nil, {class: "lazyload full_width", data: {src: event.image_attachments.first.image_url(:medium)}} %>
 <% end %>
 <div class="row">
 	<div class="col-xs-7 col-md-6 event-info-primary">

@@ -22,6 +22,7 @@
 //= require codemirror
 //= require summernote
 //= require slick.min
+//= require lazysizes.min
 //= require jquery.tokeninput.min
 //= require_tree .
 //= require turbolinks
