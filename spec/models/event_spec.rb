@@ -35,7 +35,6 @@ RSpec.describe Event, type: :model do
       expect(event).not_to be_valid
     end
     
-	  it { should have_many :project_partnerships }
     it { should have_many :project_partners }
 
     it { should have_many :project_people }

@@ -46,7 +46,8 @@ RSpec.describe 'Post feature', type: :feature do
 
 				click_on 'Schedule'
 
-				expect(page).to have_content('Post created successfully')
+				# expect(page).to have_content('Post created successfully')
+				expect(current_path).to eq admin_posts_path
 				expect(Post.published.count).to eq 0
 				expect(Post.scheduled.count).to eq 1
 			end

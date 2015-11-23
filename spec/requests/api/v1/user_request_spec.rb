@@ -44,7 +44,9 @@ describe "Users api", type: :request do
 						'title' => user.name,
 						'description' => nil,
 						'location' => nil,
-						'tags' => []
+						'tags' => [],
+						'avatar' => user.personal_profile.image_url,
+						'logo' => nil
 						},
 					'company_profiles' => []
 				}

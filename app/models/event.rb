@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
     if featured_image.present?
       featured_image.image_url(size)
     else
-      "image_fallback/" + [size, "default.png"].compact.join('_')
+      ActionController::Base.helpers.asset_path("image_fallback/" + [size, "default.png"].compact.join('_'))
     end
   end
 
@@ -67,7 +67,7 @@ class Event < ActiveRecord::Base
     if secondary_image.present?
       secondary_image.image_url(size)
     else
-      "image_fallback/" + [size, "default.png"].compact.join('_')
+      ActionController::Base.helpers.asset_path("image_fallback/" + [size, "default.png"].compact.join('_'))
     end
   end
 

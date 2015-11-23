@@ -16,14 +16,25 @@ describe "Registrations api", type: :request do
 					'id' => registration.id,
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
-							'id' => event.id,
-							'title' => event.title,
-							'excerpt' => event.excerpt,
-							'content' => event.content,
-							'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
-							'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
-							'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
+						'id' => event.id,
+						'title' => event.title,
+						'excerpt' => event.excerpt,
+						'content' => event.content,
+						'featured_image' => nil,
+						'secondary_image' => nil,
+						'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+						'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+						'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
+						'project_partners' => {
+							'text' => nil,
+							'partners' => [],
 						},
+						'project_people' => {
+							'text' => nil,
+							'people' => [],
+						},
+						'lab' => nil
+					},
 				}]
 			)
 		end
@@ -39,14 +50,25 @@ describe "Registrations api", type: :request do
 					'id' => registration.id,
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
-							'id' => event.id,
-							'title' => event.title,
-							'excerpt' => event.excerpt,
-							'content' => event.content,
-							'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
-							'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
-							'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601
+						'id' => event.id,
+						'title' => event.title,
+						'excerpt' => event.excerpt,
+						'content' => event.content,
+						'featured_image' => nil,
+						'secondary_image' => nil,
+						'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
+						'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
+						'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
+						'project_partners' => {
+							'text' => nil,
+							'partners' => [],
 						},
+						'project_people' => {
+							'text' => nil,
+							'people' => [],
+						},
+						'lab' => nil
+					},
 				}
 			)
 		end
@@ -78,14 +100,25 @@ describe "Registrations api", type: :request do
 					'id' => Registration.last.id,
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
-							'id' => another_event.id,
-							'title' => another_event.title,
-							'excerpt' => another_event.excerpt,
-							'content' => another_event.content,
-							'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').iso8601,
-							'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').iso8601,
-							'published_at' => another_event.published_at.in_time_zone('Copenhagen').iso8601
+						'id' => another_event.id,
+						'title' => another_event.title,
+						'excerpt' => another_event.excerpt,
+						'content' => another_event.content,
+						'featured_image' => nil,
+						'secondary_image' => nil,
+						'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').iso8601,
+						'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').iso8601,
+						'published_at' => another_event.published_at.in_time_zone('Copenhagen').iso8601,
+						'project_partners' => {
+							'text' => nil,
+							'partners' => [],
 						},
+						'project_people' => {
+							'text' => nil,
+							'people' => [],
+						},
+						'lab' => nil
+					},
 				}
 			)
 		end

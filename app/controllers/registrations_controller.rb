@@ -78,7 +78,7 @@ private
 		if @registration.present?
 			flash[:notice] = "You have already requested a seat for this event"
 			respond_to do |format|
-	      format.html { redirect_to [@event, @registration] }
+	      format.html { redirect_to @event }
 	      format.js
 	    end
 		end

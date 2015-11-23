@@ -20,12 +20,15 @@ RSpec.describe 'attend_event_feature', type: :feature do
 			before :each do
 				sign_in user
 			end
+
 			it 'should be possible to request a seat', js: true do
 				visit event_path(event)
 				click_on 'Attend'
-				expect(page).to have_content('Accept')
-				click_on 'Accept'
-				expect(page).to have_content('Seat requested')
+				within('.modal-body') do
+					click_on 'Yes'
+				end
+				expect(current_path).to eq event_path(event)
+				expect(page).to have_content('SEAT REQUESTED')
 				expect(Registration.last.confirmed?).to eq false
 				expect(last_email.to).to include user.email
 			end
@@ -39,7 +42,8 @@ RSpec.describe 'attend_event_feature', type: :feature do
 			
 			it 'should not be possible to request multiple seats' do
 				visit new_event_registration_path(event)
-				expect{ click_on 'Accept' }.to change(Registration, :count).by 1
+				expect(page).to have_content('Yes')
+				click_on 'Yes'
 
 				visit new_event_registration_path(event)
 				expect(page).to have_content "You have already requested a seat for this event"

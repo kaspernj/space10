@@ -12,7 +12,7 @@ describe 'user creation', type: :feature do
 
 		expect(page).to have_content('Signed up successfully')
 		expect(last_email.to).to include 'John@email.com'
-		expect(page).to have_content('Account')
+		expect(page).to have_content('John')
 		expect(User.last.personal_profile.title).to eq User.last.name
 	end
 
@@ -23,7 +23,7 @@ describe 'user creation', type: :feature do
 			click_on 'Join with Facebook'
 			
 			expect(page).to have_content('Logged in successfully')
-			expect(page).to have_content('Account')
+			expect(page).to have_content('John')
 		end
 
 		it 'handles authentication failure' do
@@ -42,7 +42,7 @@ describe 'user creation', type: :feature do
 			click_on 'Join with LinkedIn'
 			
 			expect(page).to have_content('Logged in successfully')
-			expect(page).to have_content('Account')
+			expect(page).to have_content('John')
 		end
 	end
 
@@ -59,7 +59,7 @@ describe 'user creation', type: :feature do
 
 		describe "user update" do
 			it 'allows update', js: true do
-				click_on 'Account'
+				click_on 'John'
 				expect(page).to have_content @user.name
 				
 				fill_in 'user[name]', with: "Mouwgli"

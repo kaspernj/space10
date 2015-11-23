@@ -31,7 +31,7 @@ describe "profiles api", type: :request do
 					'description' => profile.description,
 					'location' => profile.location,
 					'tags' => [],
-					'avatar' => profile.image_url,
+					'avatar' => profile.image_url(:medium),
 					'logo' => nil
 				}
 			)
