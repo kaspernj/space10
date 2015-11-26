@@ -510,6 +510,8 @@ Requests that return multiple items will be paginated to 5 items by default. You
       'id' => lab.id,
       'title' => lab.title,
       'subtitle' => lab.subtitle,
+      'starts_at' => lab.starts_at.in_time_zone('Copenhagen').iso8601,
+      'ends_at' => lab.ends_at.in_time_zone('Copenhagen').iso8601,
       'events' => [],
       'posts' => []
     },
@@ -517,6 +519,8 @@ Requests that return multiple items will be paginated to 5 items by default. You
       'id' => lab.id,
       'title' => lab.title,
       'subtitle' => lab.subtitle,
+      'starts_at' => lab.starts_at.in_time_zone('Copenhagen').iso8601,
+      'ends_at' => lab.ends_at.in_time_zone('Copenhagen').iso8601,
       'events' => [],
       'posts' => []
     }
@@ -533,6 +537,8 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'id' => lab.id,
     'title' => lab.title,
     'subtitle' => lab.subtitle,
+    'starts_at' => lab.starts_at.in_time_zone('Copenhagen').iso8601,
+    'ends_at' => lab.ends_at.in_time_zone('Copenhagen').iso8601,
     'events' => [],
     'posts' => []
   }

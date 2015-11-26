@@ -31,6 +31,8 @@ describe "Labs api", type: :request do
           'id' => lab.id,
           'title' => lab.title,
           'subtitle' => lab.subtitle,
+          'starts_at' => lab.starts_at.in_time_zone('Copenhagen').iso8601,
+          'ends_at' => lab.ends_at.in_time_zone('Copenhagen').iso8601,
           'events' => [],
           'posts' => [
             {
