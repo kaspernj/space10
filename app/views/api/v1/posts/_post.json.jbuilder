@@ -13,4 +13,12 @@ json.project_people do
   json.text post.project_people_text
   json.people post.project_people, :id, :title, :image_url
 end
-json.lab post.lab, :id, :title, :subtitle
+json.lab do
+  if post.lab.present?
+    json.id post.lab.id
+    json.title post.lab.title
+    json.subtitle post.lab.subtitle
+  else
+    json.nil!
+  end
+end

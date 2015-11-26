@@ -18,7 +18,7 @@ describe "Posts api", type: :request do
 
 	describe "GET /api/posts/:id" do
 		it 'returns requested post' do
-			post = create(:post)
+			post = create(:post, lab: nil)
 
 			get "/api/posts/#{post.id}", {}, request_headers
 
@@ -40,11 +40,7 @@ describe "Posts api", type: :request do
 						'text' => nil,
 						'people' => [],
 					},
-					'lab' => {
-						'id' => post.lab.id,
-						'title' => post.lab.title,
-						'subtitle' => post.lab.subtitle
-					}
+					'lab' => nil
 				}
 			)
 		end
