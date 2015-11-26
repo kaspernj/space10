@@ -496,6 +496,46 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'tags' => []
   }
 
+=== Labs
+
+==== Get all labs
+
+  get /api/labs
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  [
+    {
+      'id' => lab.id,
+      'title' => lab.title,
+      'subtitle' => lab.subtitle,
+      'events' => [],
+      'posts' => []
+    },
+    {
+      'id' => lab.id,
+      'title' => lab.title,
+      'subtitle' => lab.subtitle,
+      'events' => [],
+      'posts' => []
+    }
+  ]
+
+==== Get specific lab
+
+  get /api/labs/:id
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  {
+    'id' => lab.id,
+    'title' => lab.title,
+    'subtitle' => lab.subtitle,
+    'events' => [],
+    'posts' => []
+  }
 
 === Beacons
 
