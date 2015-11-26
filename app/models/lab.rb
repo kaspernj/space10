@@ -33,5 +33,6 @@ class Lab < ActiveRecord::Base
 	end
 
 	has_many :posts
+	has_many :events
 
 end

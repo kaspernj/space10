@@ -15,10 +15,10 @@
 FactoryGirl.define do
   factory :lab do
     title "MyString"
-subtitle "MyString"
-published false
-starts_at "2015-10-16 13:40:45"
-ends_at "2015-10-16 13:40:45"
+    subtitle "MyString"
+    published true
+    starts_at "2015-10-16 13:40:45"
+    ends_at "2015-10-17 13:40:45"
   end
 
 end

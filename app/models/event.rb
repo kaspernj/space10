@@ -2,19 +2,22 @@
 #
 # Table name: events
 #
-#  id                :integer          not null, primary key
-#  title             :string
-#  excerpt           :text
-#  content           :text
-#  starts_at         :datetime
-#  ends_at           :datetime
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  address_id        :integer
-#  publish_at        :datetime
-#  published         :boolean
-#  max_registrations :integer
-#  slug              :string
+#  id                    :integer          not null, primary key
+#  title                 :string
+#  excerpt               :text
+#  content               :text
+#  starts_at             :datetime
+#  ends_at               :datetime
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  address_id            :integer
+#  publish_at            :datetime
+#  published             :boolean
+#  max_registrations     :integer
+#  slug                  :string
+#  lab_id                :integer
+#  project_partners_text :text
+#  project_people_text   :text
 #
 
 class Event < ActiveRecord::Base

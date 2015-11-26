@@ -21,6 +21,7 @@ FactoryGirl.define do
     title "MyString"
     publish_at 2.days.ago.to_s(:formatted)
     published true
+    lab
   end
 
 end
