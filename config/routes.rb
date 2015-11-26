@@ -67,6 +67,9 @@ Rails.application.routes.draw do
 
       get 'profiles', to: 'profiles#index'
       get 'profiles/:id', to: 'profiles#show'
+
+      get 'labs', to: 'labs#index'
+      get 'labs/:id', to: 'labs#show'
     end
   end
 

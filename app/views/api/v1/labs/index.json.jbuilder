@@ -1,0 +1,1 @@
+json.array! @labs, partial: 'lab', as: :lab

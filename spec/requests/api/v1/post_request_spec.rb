@@ -40,7 +40,11 @@ describe "Posts api", type: :request do
 						'text' => nil,
 						'people' => [],
 					},
-					'lab' => nil
+					'lab' => {
+						'id' => post.lab.id,
+						'title' => post.lab.title,
+						'subtitle' => post.lab.subtitle
+					}
 				}
 			)
 		end
