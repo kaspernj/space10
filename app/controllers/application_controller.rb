@@ -47,10 +47,10 @@ private
       twitter:    {
                     site_name: site_name,
                     title: title,
-                    site: 'space10_journal',
+                    site: '@space10_journal',
                     card: 'summary',
                     description: description,
-                    image: {src: image}
+                    image: image
                   },
       og:         {
                     title: title,
