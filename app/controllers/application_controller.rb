@@ -30,6 +30,7 @@ private
   def prepare_meta_tags(options={})
 
     site_name   = "Space10"
+    title       = options[:title] if options[:title].present?
     description = options[:description] || "A future-living lab and exhibition space."
     image       = options[:image] || ActionController::Base.helpers.asset_url('frontpage_image.jpg')
     current_url = request.url
@@ -39,17 +40,20 @@ private
 
     defaults = {
       site:        site_name,
+      title:       title,
       image:       image,
       description: description,
       keywords:    %w[future lab ikea exhibition space artrebels],
       twitter:    {
                     site_name: site_name,
+                    title: title,
                     site: 'space10_journal',
                     card: 'summary',
                     description: description,
                     image: {src: image}
                   },
       og:         {
+                    title: title,
                     url: current_url,
                     site_name: site_name,
                     image: image,
