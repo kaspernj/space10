@@ -7,9 +7,11 @@ class ApplicationController < ActionController::Base
 
   around_filter :use_copenhagen_time
 
+  before_action :prepare_meta_tags, if: "request.get?"
+
   include SessionsHelper
 
-  private
+private
 
 	def use_copenhagen_time(&block)
 	  Time.use_zone('Copenhagen', &block)
@@ -23,5 +25,42 @@ class ApplicationController < ActionController::Base
     if ENV['ADMIN_MODE'] == 'true' && controller_name != 'sessions' && (current_user.nil? || !current_user.admin?)
       redirect_to 'https://rebelunited-yuji.squarespace.com/'
     end
+  end
+
+  def prepare_meta_tags(options={})
+
+    site_name   = "Space10"
+    description = options[:description] || "A future-living lab and exhibition space."
+    image       = options[:image] || ActionController::Base.helpers.asset_url('frontpage_image.jpg')
+    current_url = request.url
+    type        = options[:type] || 'website'
+
+    # Let's prepare a nice set of defaults
+
+    defaults = {
+      site:        site_name,
+      image:       image,
+      description: description,
+      keywords:    %w[future lab ikea exhibition space artrebels],
+      twitter:    {
+                    site_name: site_name,
+                    site: 'space10_journal',
+                    card: 'summary',
+                    description: description,
+                    image: {src: image}
+                  },
+      og:         {
+                    url: current_url,
+                    site_name: site_name,
+                    image: image,
+                    description: description,
+                    type: type
+                  }
+    }
+
+    options.deeper_merge(defaults)
+
+    set_meta_tags options
+
   end
 end

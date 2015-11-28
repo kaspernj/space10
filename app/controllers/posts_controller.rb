@@ -30,6 +30,13 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.published.find(params[:id])
 		@posts = Post.published.limit(3)
+
+		prepare_meta_tags(title: @post.title,
+                      description: @post.excerpt,
+                      image: @post.featured_image_url(:large),
+                      keywords: @post.tags.pluck(:title),
+                      type: 'article',
+                      twitter: {card: "summary_large_image"})
 	end
 
 end

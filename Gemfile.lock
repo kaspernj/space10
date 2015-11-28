@@ -245,6 +245,8 @@ GEM
     mandrill-api (1.0.53)
       excon (>= 0.16.0, < 1.0)
       json (>= 1.7.7, < 2.0)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_magick (4.2.10)
@@ -435,6 +437,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   mandrill-api
+  meta-tags
   mini_magick
   momentjs-rails (>= 2.9.0)
   omniauth-facebook

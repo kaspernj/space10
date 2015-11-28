@@ -72,6 +72,8 @@ gem 'jquery-turbolinks'
 
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'meta-tags'
+
 gem 'bullet', group: :development
 gem 'rack-mini-profiler', group: :development
 
