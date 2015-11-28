@@ -25,6 +25,8 @@ class PostsController < ApplicationController
 			end
 			@featured_posts_count = @featured_posts.count
 		end
+
+		prepare_meta_tags(title: "Journal")
 	end
 
 	def show
