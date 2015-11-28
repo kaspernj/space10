@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 	end
 
   def about
-    
+    prepare_meta_tags(title: 'About')
   end
 
 end

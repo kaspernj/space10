@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
       @q = Profile.published.ransack(params[:q])
     end
 		@profiles = @q.result.includes(:tags).paginate(:page => params[:page], :per_page => 8)
+
+    prepare_meta_tags(title: "Community")
 	end
 
 	def show
