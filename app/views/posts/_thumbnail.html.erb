@@ -1,6 +1,6 @@
 <div class="thumbnail">
 	<%= link_to post do %>
-		<%= image_tag nil, {class: 'lazyload', data: {src: post.image_attachments.first.image_url(:medium)}} %>
+		<%= image_tag post.featured_image_url(:medium) %>
 		<div class="caption">
 			<p class="meta-text"><%= post.tags.pluck("title").join(" / ") %></p>
 			<h3><%= post.title %></h3>

@@ -1,6 +1,6 @@
 <div class="profile_card">
   <%= link_to profile_path(profile) do %>
-    <%= image_tag nil, {class: "lazyload full_width", data: {src: profile.image_url(:medium)}} %>
+    <%= image_tag profile.image_url(:medium), {class: "full_width"} %>
     <% if controller_name == 'static_pages' %>
       <p class="profile-heading"><strong><%= [profile.title, profile.tags.pluck(:title).first].join(', <br>').html_safe %></strong></p>
     <% else %>
