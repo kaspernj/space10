@@ -84,7 +84,7 @@
 }
 
 .community-controls {
-	p, select, .pagination, button {
+	p, select, button {
 		font-weight: bold;
 		font-size: 11px;
 	}
@@ -103,10 +103,10 @@
 		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
-	.pagination a, select, button {
-			background-color: $gray-little-lighter;
-		}
-	.pagination, p, .form-group, button {
+	select, button {
+		background-color: $gray-little-lighter;
+	}
+	p, .form-group, button {
 		margin: $gutter/2 0;
 	}
 	form .col-md-5 .col-md-6:first-child, form .col-md-5 .col-xs-6:first-child {
@@ -117,37 +117,13 @@
 }
 
 .profiles {
-	.pagination {
-		a, a:focus, a:hover {
-			border: none;
-			color: black;
-			margin-right: 5px;
-			padding: 16px 22px;
-			&:after {
-				border:none;
-			}
-		}
-		& > li.disabled > a {
-			color: $gray-light;
-		}
-		& > li > a:hover {
-			background-color: lighten($gray-light,10%);
-		}
-		li.active a {
-			background-color: #d3d3d3;
-		}
-		li.prev a, li.next a {
-			padding-left: $gutter*2;
-			padding-right: $gutter*2;
-		}
-	}
 	.join-us {
 		@media (min-width: $screen-sm-min) {
-			padding-top: $gutter*5; 
+			padding-top: $gutter*4; 
 			padding-bottom: $gutter*4;
 		}
 		h1 {
-			margin-bottom: $gutter;
+			margin: $gutter 0;
 		}
 		.lead {
 			font-size: 17px;
