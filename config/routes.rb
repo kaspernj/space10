@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       get 'posts/:id', to: 'posts#show'
 
       get 'profiles', to: 'profiles#index'
+      get 'profiles/filter_options', to: 'profiles#filter_options'
       get 'profiles/:id', to: 'profiles#show'
 
       get 'labs', to: 'labs#index'
