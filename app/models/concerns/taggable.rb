@@ -14,7 +14,11 @@ module Taggable
 
   module ClassMethods
   	def where_tagged_with(tags)
-  		joins(:tags).where(:tags => {:title => tags})
+      if tags.present?
+  		  joins(:tags).where(:tags => {:title => tags})
+      else
+        all
+      end
   	end
   end
 end

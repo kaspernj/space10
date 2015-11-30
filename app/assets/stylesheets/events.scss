@@ -127,15 +127,16 @@
 }
 
 .event-small {
+  margin-bottom: $gutter;
   img {
     display: block;
   }
 }
 
+
 @media (max-width: $screen-xs-max) {
   .event-small {
     position: relative;
-    margin-bottom: $gutter;
     .event-info-primary {
       h3 {
         font-size: 1.5em;

@@ -1,0 +1,18 @@
+.pagination {
+  font-weight: bold;
+  font-size: 11px;
+  margin: $gutter/2;
+  & > li > a, & > li > a:focus, & > li > a:hover {
+    margin: 0 5px 5px 0;
+    padding: 16px 22px;
+    &:after {
+      border:none;
+    }
+  }
+  li.prev a, li.next a {
+    @media (min-width: $screen-sm-min) {
+      padding-left: $gutter*2;
+      padding-right: $gutter*2;
+    }
+  }
+}

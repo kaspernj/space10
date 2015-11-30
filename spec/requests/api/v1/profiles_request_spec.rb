@@ -3,16 +3,38 @@ require "rails_helper"
 describe "profiles api", type: :request do
 
 	describe "GET /api/profiles" do
-		it "should return all profiles" do
-			create :profile, title: "Company 1", type: 'CompanyProfile'
-			create :profile, title: "Company 2", type: 'CompanyProfile'
+		let!(:profile_one ) { create(:profile, title: "Company 1", type: 'CompanyProfile', location: 'Copenhagen, Denmark' )}
+		let!(:profile_two) 	{ create(:profile, title: "Company 2", type: 'CompanyProfile', location: 'Berlin, Germany' )}
 
+		it "should return all profiles" do
 			get '/api/profiles', {}, request_headers
 
 			expect(response.status).to eq 200
 
 			profile_titles = response_body.map{ |m| m['title'] }
 			expect(profile_titles).to eq(["Company 1", "Company 2"])
+		end
+
+		it "should return all profiles based on category" do
+			tag = profile_one.tags.create! title: 'Tag on'
+
+			get "/api/profiles?category=#{tag.title}", {}, request_headers
+
+			expect(response.status).to eq 200
+
+			profile_titles = response_body.map{ |m| m['title'] }
+			expect(profile_titles).to eq(["Company 1"])
+		end
+
+		it "should return all profiles based on location" do
+			tag = profile_one.tags.create! title: 'Tag on'
+
+			get "/api/profiles?location=#{profile_two.location}", {}, request_headers
+
+			expect(response.status).to eq 200
+
+			profile_titles = response_body.map{ |m| m['title'] }
+			expect(profile_titles).to eq(["Company 2"])
 		end
 	end
 
@@ -38,4 +60,21 @@ describe "profiles api", type: :request do
 		end
 	end
 
+	describe "GET /api/profiles/filter_options" do
+		it "should return filter options" do
+			create :tag, title: "Tag one"
+			create :tag, title: "Tag two"
+			create :profile, title: "Company 1", type: "CompanyProfile", location: 'Copenhagen, Denmark'
+
+			get '/api/profiles/filter_options', {}, request_headers
+
+			expect(response.status).to eq 200
+			expect(response_body).to eq (
+				{
+					'categories' => ['Tag one', 'Tag two'],
+					'locations' => ['Copenhagen, Denmark']
+				}
+			)
+		end
+	end
 end

@@ -5,8 +5,10 @@
 }
 
 @media (max-width: $screen-sm-max) {
-  a {
-    font-size: 18px;
+  .navbar {
+    a {
+      font-size: 18px;
+    }
   }
   .navbar-header {
     float: left;
