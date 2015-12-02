@@ -28,5 +28,6 @@
 .share-box {
   @media (min-width: $screen-md-min) {
     padding-left: $gutter*2;
+    margin-top: $gutter*1.5;
   }
 }

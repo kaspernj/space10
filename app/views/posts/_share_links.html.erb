@@ -1,0 +1,27 @@
+<div class="share-links">
+  <%= link_to ("https://www.facebook.com/sharer/sharer.php?u=" + request.original_url), class: 'share-link', target: '_blank' do %>
+    <div class="aspect-ratio">
+      <div><i class="fa fa-fw fa-facebook"></i></div>
+    </div>
+  <% end %>
+  <%= link_to ("https://twitter.com/home?status=" + post.title + " " + request.original_url + " via @space10_journal"), class: 'share-link', target: '_blank' do %>
+    <div class="aspect-ratio">
+      <div><i class="fa fa-fw fa-twitter"></i></div>
+    </div>
+  <% end %>
+  <%= link_to ("https://www.linkedin.com/shareArticle?mini=true&url=" + request.original_url + "&title=" + post.title + "&source=Space%2010"), class: 'share-link', target: '_blank' do %>
+    <div class="aspect-ratio">
+      <div><i class="fa fa-fw fa-linkedin"></i></div>
+    </div>
+  <% end %>
+  <%= link_to ("https://pinterest.com/pin/create/button/?url=" + request.original_url + "&media=" + post.image_attachments.first.image_url(:large) + "&description="), class: 'share-link', target: '_blank' do %>
+    <div class="aspect-ratio">
+      <div><i class="fa fa-fw fa-pinterest-p"></i></div>
+    </div>
+  <% end %>
+  <%= link_to ("mailto:?&subject=" + post.title + "&body=" + "Hey! Checkout this article from Space 10: " + request.original_url), class: 'share-link', target: '_blank' do %>
+    <div class="aspect-ratio">
+      <div><i class="fa fa-fw fa-envelope"></i></div>
+    </div>
+  <% end %>
+</div>
