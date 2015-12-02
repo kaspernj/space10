@@ -1,4 +1,4 @@
-<div class="bg-gray hidden-xs community-controls">
+<div class="bg-gray community-controls">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
@@ -39,18 +39,23 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray hidden-xs">
-	<div class="container">
-		<div class="row community-profiles">
-			<% @profiles.each do |profile| %>
-				<div class="col-md-3 col-xs-6">
-					<%= render 'profiles/profile_card', profile: profile %>
-				</div>
-			<% end %>
-		</div>
+<div class="bg-gray">
+	<div class="container community-profiles">
+		<% @profiles.in_groups_of(4, false) do |group| %>
+			<div class="row">
+				<% group.each_with_index do |profile, i| %>
+					<div class="col-md-3 col-xs-6">
+						<%= render 'profiles/profile_card', profile: profile %>
+					</div>
+					<% if cycle('odd', 'even') == 'even' %> 
+						<div class="clearfix visible-xs"></div>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 </div>
-<div class="bg-gray hidden-xs community-controls">
+<div class="bg-gray community-controls">
 	<div class="container">
 		<div class="row text-center">
 			<%= will_paginate @profiles, :previous_label => 'Previous', :next_label => 'Next' %>
