@@ -49,10 +49,12 @@
         <div class="col-md-4">
           <div class="thumbnail">
             <div class="aspect-ratio r-16-9">
-              <div class="centered_container background-cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
-                <span class="centered btn btn-inverse">
-                  <%= user.registrations.find_by(event: event).confirmation_status.capitalize %>
+              <div class="centeret_cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
+                <div class="centered_container">
+                <span class="centered text-center">
+                  <span class="btn btn-inverse"><%= user.registrations.find_by(event: event).confirmation_status.capitalize %></span>
                 </span>
+              </div>
               </div>
             </div>
             <div class="caption">
