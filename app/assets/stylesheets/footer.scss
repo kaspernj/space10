@@ -34,16 +34,25 @@ footer {
     }
   }
   @media (max-width: $screen-xs-max) {
+    .space-footer-info {
+      margin-bottom: $gutter;
+    }
+  }
+  @media (max-width: $screen-sm-max) {
     #mc_embed_signup {
       margin-top: $gutter/2;
+      margin-bottom: $gutter;
     }
-    .space-footer-info, .footer-links, #mc_embed_signup {
+    .footer-links {
       margin-bottom: $gutter;
     }
   }
   .space-footer-info {
     img {
       margin: $gutter/2 0;
+    }
+    p {
+      margin-bottom:0; 
     }
     @media (min-width: $screen-sm-min) {
       float: right;

@@ -19,7 +19,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
 				<% @posts.offset(3).limit(2).each do |post| %>
-					<div class="col-md-6 post-thumbnail">
+					<div class="col-sm-6 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
@@ -85,7 +85,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
 				<% @posts.offset(8).limit(2).each do |post| %>
-					<div class="col-md-6 post-thumbnail">
+					<div class="col-sm-6 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
