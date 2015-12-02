@@ -6,6 +6,7 @@ $gutter: $grid-gutter-width;
 
 a {
   img {
+    -webkit-transform: translateZ(0);
     -webkit-transition: all 500ms ease-out 0s;
     -moz-transition: all 500ms ease-out 0s;
     -o-transition: all 500ms ease-out 0s;
