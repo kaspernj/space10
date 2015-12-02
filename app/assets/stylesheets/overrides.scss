@@ -63,7 +63,13 @@ input, select, ul.token-input-list-bootstrap {
 }
 
 .panel:not(.note-editor) {
-	border-width: 10px;
+	border-width: 5px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .panel:not(.note-editor) {
+    border-width: 10px;
+  }
 }
 
 @media (max-width: $screen-xs-max) {
