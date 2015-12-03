@@ -18,6 +18,7 @@
 #  featured    :boolean
 #  email       :string
 #  slug        :string
+#  tagline     :string
 #
 
 require 'rails_helper'

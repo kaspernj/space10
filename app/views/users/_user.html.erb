@@ -27,6 +27,7 @@
         </div>
         <div class="col-md-4">
           <%= f.simple_fields_for :personal_profile do |profile| %>
+            <%= profile.input :tagline, label: false, placeholder: 'Tagline' %>
             <%= profile.input :tag_tokens, label: false, input_html: {data: { provider: 'tokeninput', load: user.personal_profile.tags }}, placeholder: 'Tags' %>
             <%= profile.input :website, label: false, placeholder: 'Website' %>
             <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'autocomplete', id: 'gmaps-input-address'} %>

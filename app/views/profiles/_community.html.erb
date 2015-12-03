@@ -10,7 +10,7 @@
 						<div class="col-md-6 no-padding">
 							<div class="form-group">
 								<div class="form-select">
-									<%= f.collection_select :tags_id_eq, Tag.all, :id, :title, {include_blank: 'Show all'}, {class: 'form-control'} %>
+									<%= f.collection_select :tags_id_eq, Tag.joins(:taggings).where('taggings.resource_type = ?', 'Profile').uniq , :id, :title, {include_blank: 'Show all'}, {class: 'form-control'} %>
 									<span class="caret"></span>
 								</div>
 							</div>
@@ -18,7 +18,7 @@
 						<div class="col-md-6 no-padding">
 							<div class="form-group">
 								<div class="form-select">
-									<%= select_tag :location, options_for_select(Profile.all.map{ |p| [p.location, [p.latitude, p.longitude].join(",")] }.uniq, params[:location]), {include_blank: 'Location', class: 'form-control'} %>
+									<%= select_tag :location, options_for_select(Profile.published.all.map{ |p| [p.location, [p.latitude, p.longitude].join(",")] }.uniq.reject{|l| l[0].blank? }, params[:location]), {include_blank: 'Location', class: 'form-control'} %>
 									<span class="caret"></span>
 								</div>
 							</div>

@@ -16,7 +16,7 @@
 				<div class="col-xs-12 col-md-7">
 					<p class="profile-location"><strong><i class="fa fa-lg fa-fw fa-map-marker"></i> <%= @profile.location %></strong></p>
 					<h1><%= @profile.title %></h1>
-					<p class="profile-tags meta-text"><%= @profile.tags.pluck(:title).join(" / ") %></p>
+					<p class="profile-tags meta-text"><%= @profile.tags.pluck(:title).unshift(@profile.try(:tagline)).reject(&:blank?).join(" / ") %></p>
 					<div class="row">
 						<div class="col-md-7">
 							<p class="profile-description"><%= @profile.description %></p>
