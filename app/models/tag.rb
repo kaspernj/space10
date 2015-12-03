@@ -13,6 +13,7 @@ class Tag < ActiveRecord::Base
 	validates_uniqueness_of :title
 
 	has_many :taggings, dependent: :destroy
+	has_many :profiles, through: :taggings, source: :resource, source_type: 'Profile'
 
 	def self.tokens(query)
 	  tags = where("lower(title) like ?", "%#{query.downcase}%")

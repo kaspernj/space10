@@ -10,7 +10,7 @@
 						<div class="col-md-6 no-padding">
 							<div class="form-group">
 								<div class="form-select">
-									<%= f.collection_select :tags_id_eq, Tag.joins(:taggings).where('taggings.resource_type = ?', 'Profile').uniq , :id, :title, {include_blank: 'Show all'}, {class: 'form-control'} %>
+									<%= f.collection_select :tags_id_eq, Tag.joins(:profiles).where('profiles.published', true).uniq , :id, :title, {include_blank: 'Show all'}, {class: 'form-control'} %>
 									<span class="caret"></span>
 								</div>
 							</div>
