@@ -11,7 +11,8 @@ describe "profiles api", type: :request do
 
 			expect(response.status).to eq 200
 
-			profile_titles = response_body.map{ |m| m['title'] }
+			expect(response_body['profiles_count']).to eq(2)
+			profile_titles = response_body['profiles'].map{ |m| m['title'] }
 			expect(profile_titles).to eq(["Company 1", "Company 2"])
 		end
 
@@ -22,7 +23,8 @@ describe "profiles api", type: :request do
 
 			expect(response.status).to eq 200
 
-			profile_titles = response_body.map{ |m| m['title'] }
+			expect(response_body['profiles_count']).to eq(1)
+			profile_titles = response_body['profiles'].map{ |m| m['title'] }
 			expect(profile_titles).to eq(["Company 1"])
 		end
 
@@ -33,7 +35,8 @@ describe "profiles api", type: :request do
 
 			expect(response.status).to eq 200
 
-			profile_titles = response_body.map{ |m| m['title'] }
+			expect(response_body['profiles_count']).to eq(1)
+			profile_titles = response_body['profiles'].map{ |m| m['title'] }
 			expect(profile_titles).to eq(["Company 2"])
 		end
 	end
