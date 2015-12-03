@@ -122,6 +122,7 @@ Requests that return multiple items will be paginated to 5 items by default. You
 - {Event registrations}[https://github.com/danielfriis/space10#event-registrations]
 - {Posts}[https://github.com/danielfriis/space10#posts]
 - {Profiles}[https://github.com/danielfriis/space10#profiles]
+- {Labs}[https://github.com/danielfriis/space10#labs]
 - {Beacons}[https://github.com/danielfriis/space10#beacons]
 
 
@@ -459,6 +460,13 @@ Requests that return multiple items will be paginated to 5 items by default. You
   get /api/profiles
   Authorization: Basic USERNAME:PASSWORD
 
+*Parameters*
+
+  category: string
+  location: string
+
+See filter options below.
+
 *Response*
 
   [
@@ -495,6 +503,18 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'location' => profile.location,
     'tags' => []
   }
+
+==== Get filter options
+
+  get /api/profiles/filter_options
+  Authorization: Basic USERNAME:PASSWORD
+
+*Response*
+
+  {
+    'categories' => ['Tag one', 'Tag two'],
+    'locations' => ['Copenhagen, Denmark']
+  }  
 
 === Labs
 
