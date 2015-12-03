@@ -4,7 +4,7 @@
 			<div class="col-md-2">
 				<p>Filter/Sort</p>
 			</div>
-			<%= search_form_for @q, class: 'auto_submit' do |f| %>
+			<%= search_form_for @q, remote: true, class: 'auto_submit' do |f| %>
 				<div class="col-md-5">
 					<div class="row no-margin">
 						<div class="col-md-6 no-padding">
