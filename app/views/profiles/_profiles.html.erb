@@ -1,12 +1,21 @@
 <% @profiles.in_groups_of(4, false) do |group| %>
-    <div class="row">
-      <% group.each_with_index do |profile, i| %>
-        <div class="col-md-3 col-xs-6">
-          <%= render 'profiles/profile_card', profile: profile %>
-        </div>
-        <% if cycle('odd', 'even') == 'even' %> 
-          <div class="clearfix visible-xs"></div>
-        <% end %>
+  <div class="row">
+    <% group.each_with_index do |profile, i| %>
+      <div class="col-md-3 col-xs-6">
+        <%= render 'profiles/profile_card', profile: profile %>
+      </div>
+      <% if cycle('odd', 'even') == 'even' %> 
+        <div class="clearfix visible-xs"></div>
       <% end %>
+    <% end %>
+  </div>
+<% end %>
+<% if !@profiles.any? %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <p class="lead content_block">
+        Damn! No one matches those criteria.
+      </p>
     </div>
-  <% end %>
+  </div>
+<% end %>
