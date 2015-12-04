@@ -41,6 +41,7 @@ private
     defaults = {
       site:        site_name,
       title:       title,
+      reverse:     true,
       image:       image,
       description: description,
       keywords:    %w[future lab ikea exhibition space artrebels],
