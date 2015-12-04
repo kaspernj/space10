@@ -68,19 +68,34 @@
   <div class="container">
     <div id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_section %> <i class="fa fa-chevron-down"></i> </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Journal", posts_path %></li>
-            <li><%= link_to "Program", events_path %></li>
-            <% if lab.present? %>
-              <li><%= link_to "Labs", lab %></li>
-            <% end %>
-            <li><%= link_to "Community", profiles_path %></li>
-            <li><%= link_to "About", about_path %></li>
-          </ul>
+        <li>
+          <%= link_to "#", {data: {toggle: "modal", target: "#modal-navigate"}} do %>
+            <%= current_section %> <i class="fa fa-chevron-down"></i>
+          <% end %>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="modal modal-fullscreen fade" data-backdrop-color="black" id="modal-navigate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= link_to '#', class: 'large_close', data: { dismiss: 'modal' } do %>
+          <span></span>
+        <% end %>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div><%= link_to "Journal", posts_path, class: 'h1' %></div><br>
+            <div><%= link_to "Program", events_path, class: 'h1' %></div><br>
+            <div><%= link_to "Labs", lab, class: 'h1' if lab.present? %></div><br>
+            <div><%= link_to "Community", profiles_path, class: 'h1' %></div><br>
+            <div><%= link_to "About", about_path, class: 'h1' %></div><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
