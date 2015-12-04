@@ -83,4 +83,5 @@ Rails.application.configure do
     :sender_address => %{"ExceptionNotification" <exception@spacce10.io>},
     :exception_recipients => %w{space10@friis.me}
   }
+
 end
