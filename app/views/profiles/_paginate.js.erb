@@ -1,0 +1,10 @@
+$('.community-profiles').html('<%= j render "profiles/profiles" %>');
+$('.ajax_pagination').html('<%= j render "profiles/pagination" %>');
+init_ajax_pagination();
+
+// $('.community-profiles').find('.profile_card').each(function(i){
+//   var el = $(this);
+//   setTimeout( function(){
+//     el.addClass('animated fadeIn');
+//   }, 50*i);
+// });

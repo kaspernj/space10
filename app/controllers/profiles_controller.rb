@@ -8,6 +8,11 @@ class ProfilesController < ApplicationController
 		@profiles = @q.result.includes(:tags).paginate(:page => params[:page], :per_page => 8)
 
     prepare_meta_tags(title: "Community")
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def show
@@ -21,5 +26,10 @@ class ProfilesController < ApplicationController
                       image: @profile.image_url(:large),
                       type: 'profile',
                       twitter_card: "summary_large_image")
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 end

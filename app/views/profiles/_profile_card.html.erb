@@ -1,6 +1,10 @@
 <div class="profile_card">
-  <%= link_to profile_path(profile) do %>
-    <%= image_tag profile.image_url(:medium), {class: "full_width"} %>
+  <%= link_to profile_path(profile, page: params['page'], q: params['q'], location: params['location']) do %>
+    <div class="profile-image-container aspect-ratio r-1-1">
+      <div>
+        <%= image_tag profile.image_url(:medium), {class: "full_width"} %>
+      </div>
+    </div>
     <% if controller_name == 'static_pages' %>
       <p class="profile-heading"><strong><%= [profile.title, profile.try(:tagline) || profile.tags.pluck(:title).first].join(', <br>').html_safe %></strong></p>
     <% else %>
