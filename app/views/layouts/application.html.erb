@@ -3,10 +3,8 @@
   <%= render 'layouts/head' %>
   <body class="<%= controller_name %> <%= controller.action_name %>">
     <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flash_messages' %>
     
-    <div class="container">
-      <%= render 'layouts/flash_messages' %>
-    </div>
     <%= yield %>
     
     <%= render 'layouts/footer' %>

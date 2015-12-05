@@ -74,8 +74,13 @@ img.full_width {
   }
 }
 
-.alert {
+.alert {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
   color: white !important;
+  border: none !important;
 }
 
 #flash_notice {
