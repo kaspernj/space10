@@ -39,6 +39,18 @@ class Event < ActiveRecord::Base
   belongs_to :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  has_many :content_blocks, as: :resource, dependent: :destroy
+  has_many :image_blocks, source: 'ContentBlock', as: :resource
+  has_many :image_slider_blocks, source: 'ContentBlock', as: :resource
+  has_many :text_blocks, source: 'ContentBlock', as: :resource
+  has_many :video_blocks, source: 'ContentBlock', as: :resource
+
+  accepts_nested_attributes_for :content_blocks, allow_destroy: true
+  accepts_nested_attributes_for :image_blocks, allow_destroy: true
+  accepts_nested_attributes_for :image_slider_blocks, allow_destroy: true
+  accepts_nested_attributes_for :text_blocks, allow_destroy: true
+  accepts_nested_attributes_for :video_blocks, allow_destroy: true
+
   has_many :company_partnerships, source: 'ProjectPartnership', as: :resource, dependent: :destroy
   accepts_nested_attributes_for :company_partnerships, allow_destroy: true
   has_many :project_partners, through: :company_partnerships

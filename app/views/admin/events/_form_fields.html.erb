@@ -96,11 +96,60 @@
 	<%= label_tag :featured_images %>
 	<div class="image_attachments sortable">
 		<%= f.fields_for :image_attachments do |builder| %>
-			<%= render 'image_attachment_fields', f: builder %>
+			<%= render 'admin/content_blocks/image_attachment_fields', f: builder %>
 		<% end %>
-		<%= link_to_add_fields "Add image", f, :image_attachments, {:class => 'add_image add_fields_here btn btn-default'} %>
+		<%= link_to_add_fields "Add image", f, :image_attachments, { path: 'admin/content_blocks', :class => 'add_image add_fields_here btn btn-default'} %>
 	</div>
 	<div class="clearfix"></div>
+</div>
+
+<hr>
+
+<div class="form-group">
+	<%= label_tag :project_partners %>
+	<div class="form-group">
+		<%= f.text_area :project_partners_text, class: 'form-control', placeholder: "About the partners" %>
+	</div>
+	<div class="clearfix"></div>
+	<%= f.fields_for :company_partnerships do |builder| %>
+		<%= render 'admin/content_blocks/company_partnership_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Add project partner", f, :company_partnerships, { path: 'admin/content_blocks', :class => 'add_fields_here btn btn-default'} %>
+</div>
+<hr>
+<div class="form-group">
+	<%= label_tag :project_people %>
+	<div class="form-group">
+		<%= f.text_area :project_people_text, class: 'form-control', placeholder: "About the people" %>
+	</div>
+	<div class="clearfix"></div>
+	<%= f.fields_for :person_partnerships do |builder| %>
+		<%= render 'admin/content_blocks/person_partnership_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Add project person", f, :person_partnerships, { path: 'admin/content_blocks' ,:class => 'add_fields_here btn btn-default'} %>
+</div>
+<hr>
+<div class="form-group">
+	<%= f.label :lab_id %>
+	<div class="form-select">
+		<%= f.select :lab_id, Lab.published.pluck(:title,:id), {include_blank: "Select lab"}, {class: 'form-control'} %>
+		<span class="caret"></span>
+	</div>
+</div>
+
+<hr>
+
+<div class="sortable">
+	<%= f.fields_for :content_blocks do |builder| %>
+		<%= render "admin/content_blocks/#{builder.object.class.name.underscore}_fields", f: builder %>
+	<% end %>
+
+	<div class="add_fields_here">
+		<%= link_to_add_fields '<i class="fa fa-fw icon-image"></i> Add image block'.html_safe, f, :image_blocks, { path: 'admin/content_blocks', class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="fa fa-fw icon-text"></i> Add text block'.html_safe, f, :text_blocks, { path: 'admin/content_blocks', class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="fa fa-fw icon-images"></i> Add image slider block'.html_safe, f, :image_slider_blocks, { path: 'admin/content_blocks', class: 'btn btn-default' } %>
+		<%= link_to_add_fields '<i class="fa fa-fw icon-video"></i> Add video block'.html_safe, f, :video_blocks, { path: 'admin/content_blocks', class: 'btn btn-default' } %>
+	</div>
 </div>
 
 <hr>

@@ -48,7 +48,26 @@ class Admin::EventsController < AdminController
 private
 
 	def event_params
-		return_params = params.require(:event).permit(:title, :published, :publish_at, :excerpt, :content, :starts_at, :ends_at, :max_registrations, :address_id, address_attributes: [:id, :name, :address_1, :address_2, :zipcode, :city, :country], image_attachments_attributes: [:id, :resource_type, :resource_id, :image, :image_cache, :row_order, :_destroy] )
+		content_block = :id, :type, :resource_type, :resource_id, :row_order, :_destroy
+		image_attachment = :id, :resource_type, :resource_id, :title, :description, :image, :image_cache, :row_order, :_destroy
+		text_attachment = :id, :resource_type, :resource_id, :content
+		video_attachment = :id, :resource_type, :resource_id, :featured, :title, :description, :video_url, :provider, :video_id, :image
+		project_partnership = :id, :resource_type, :resource_id, :partner_id, :person_id, :_destroy
+		
+		return_params = params.require(:event).permit(:title, :published, :publish_at, :excerpt, :content, :starts_at, :ends_at, :max_registrations, :address_id, address_attributes: [:id, :name, :address_1, :address_2, :zipcode, :city, :country], image_attachments_attributes: [:id, :resource_type, :resource_id, :image, :image_cache, :row_order, :_destroy], 
+			content_blocks_attributes: [content_block, 
+				image_attachments_attributes: [image_attachment], 
+				image_attachment_attributes: [image_attachment],
+				text_attachment_attributes: [text_attachment],
+				video_attachment_attributes: [video_attachment]
+				],
+			image_slider_blocks_attributes: [content_block, image_attachments_attributes: [image_attachment]], 
+			image_blocks_attributes: [content_block, image_attachment_attributes: [image_attachment]],
+			text_blocks_attributes: [content_block, text_attachment_attributes: [text_attachment]],
+			video_blocks_attributes: [content_block, video_attachment_attributes: [video_attachment]],
+			company_partnerships_attributes: [project_partnership],
+			person_partnerships_attributes: [project_partnership]
+			)
 
 		if params[:commit].downcase == "publish now"
 			return_params[:published] = true

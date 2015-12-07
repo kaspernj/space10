@@ -34,8 +34,13 @@
 			<p><%=raw @event.content %></p>
 		</div>
 	</div>
+</div>
+<% @event.content_blocks.each do |content_block| %>
+	<%= render "content_blocks/#{content_block.type.underscore}", object: content_block %>
+<% end %>
+<div class="container">
 	<div class="row">
-		<div class="col-sm-8 col-md-6 col-md-offset-2 text-center">
+		<div class="col-md-12 text-center">
 			<%= link_to 'View all events', events_path, class: 'btn btn-lg btn-default' %>
 		</div>
 	</div>

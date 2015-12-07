@@ -42,7 +42,7 @@
 	</div>
 </div>
 <% @post.content_blocks.each do |content_block| %>
-	<%= render "posts/#{content_block.type.underscore}", object: content_block %>
+	<%= render "content_blocks/#{content_block.type.underscore}", object: content_block %>
 <% end %>
 
 <div class="container">

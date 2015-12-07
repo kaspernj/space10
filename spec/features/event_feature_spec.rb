@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'events feature', type: :feature do
 	describe "event creation" do
+		let!(:user) 		{ create(:user, admin: true) }
+		let!(:partner) { create(:profile, type: "CompanyProfile") }
+		let!(:person) 	{ create(:profile, type: "PersonalProfile") }
+
 		before :each do
-			user = create(:user, admin: true)
 			sign_in(user)
 
 			visit new_admin_event_path
@@ -43,19 +46,62 @@ RSpec.describe 'events feature', type: :feature do
 		end
 
 		it 'allows featured image attachements'
-		# it 'allows image attachement', js: true, focus: true do
-		# 	click_on 'Add image'
+		
+		context 'adding content blocks' do
 
-		# 	script = "$('.file_upload').removeClass('file_upload');"
-  #   	page.execute_script(script)
+			it 'allows to associate project partners', js: true do
+				click_on "Add project partner"
+				expect(page).to have_content "Project partner"
+				select partner.title, from: 'Project partner'
+				click_on 'Publish now'
+				expect(page).to have_content 'Event created successfully'
+				expect(Event.last.project_partners.pluck(:title)).to include partner.title
+			end
 
-  #   	expect(page).to have_css('.upload_image')
-			
-		# 	attach_file('.upload_image', Rails.root + 'spec/factories/images/image_1.jpg')
-		# 	click_on "Publish now"
+			it 'allows to associate project people', js: true do
+				click_on "Add project person"
+				expect(page).to have_content "Project person"
+				select person.title, from: 'Project person'
+				click_on 'Publish now'
+				expect(page).to have_content 'Event created successfully'
+				expect(Event.last.project_people.pluck(:title)).to include person.title
+			end
 
-		# 	expect(Event.last.image_attachments.count).to eq 1
-		# 	expect(ImageAttachment.last.image).not_to eq nil
-		# end
+			it 'allows admins to add text blocks to events', js: true do
+				click_on "Add text block"
+				expect(page).to have_content "Text block content"
+				all('div[contenteditable]').last.set('Dummy text')
+				click_on 'Publish now'
+				expect(page).to have_content 'Event created successfully'
+				expect(Event.last.text_blocks.last.text_attachment.content).to eq "Dummy text"
+			end
+
+			it 'allows admins to add image blocks to events', js: true do
+				click_on "Add image block"
+				page.should have_xpath "//input[contains(@name,'[image_attachment_attributes][image]')]"
+				find(:xpath, "//input[contains(@name,'[image_attachment_attributes][image]')]").set(Rails.root + 'spec/factories/images/image_1.jpg')
+				click_on 'Publish now'
+				expect(page).to have_content 'Event created successfully'
+				expect(Event.last.image_blocks.last.image_attachment.image).not_to eq nil
+			end
+
+			it 'allows admins to add image slider blocks to events', js: true do
+				click_on "Add image slider block"
+				expect(page).to have_css('.image_slider_block')
+				within('.image_slider_block') do
+					click_on 'Add image'
+					page.should have_xpath "//input[contains(@name,'event[image_slider_blocks_attributes]')]"
+					find(:css, '.upload_image').set(Rails.root + 'spec/factories/images/image_1.jpg')
+				end
+				click_on 'Publish now'
+				expect(page).to have_content 'Event created successfully'
+				expect(Event.last.image_slider_blocks.last.image_attachments.last.image).not_to eq nil
+			end
+
+			it 'allows admins to add video blocks to events', js: true do
+				click_on "Add video block"
+				expect(page).to have_content "Video url"
+			end
+		end
 	end
 end

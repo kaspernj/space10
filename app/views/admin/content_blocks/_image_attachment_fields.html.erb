@@ -1,5 +1,5 @@
 <fieldset class="file_upload sortable_item">
-	<%= image_tag (f.object.image.present? ? f.object.image : "image_fallback/300_default.png"), height: "100", class: "image_preview" %>
+	<%= image_tag (f.object.image.present? ? f.object.image : "image_fallback/square_default.png"), height: "150", class: "image_preview" %>
 	
 	<%= f.file_field :image, class: "upload upload_image" %>
 	<%= f.hidden_field :image_cache %>

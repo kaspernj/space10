@@ -1,4 +1,4 @@
-<fieldset class="panel panel-default sortable_item">
+<fieldset class="panel panel-default sortable_item image_slider_block">
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			<%= f.hidden_field :_destroy, class: 'destroy' %>
@@ -10,9 +10,9 @@
 		<%= f.hidden_field :row_order, class: 'row_order' %>
 		<div class="image_attachments sortable">
 			<%= f.fields_for :image_attachments do |builder| %>
-				<%= render 'image_attachment_fields', f: builder %>
+				<%= render 'admin/content_blocks/image_attachment_fields', f: builder %>
 			<% end %>
-			<%= link_to_add_fields "Add image", f, :image_attachments, {:class => 'add_image add_fields_here btn btn-default'} %>
+			<%= link_to_add_fields "Add image", f, :image_attachments, { path: 'admin/content_blocks', :class => 'add_image add_fields_here btn btn-default'} %>
 		</div>
 		<div class="clearfix"></div>
 	</div>
