@@ -26,6 +26,40 @@ describe "Users api", type: :request do
 		end
 	end
 
+	describe "POST /api/auth/facebook/callback" do
+		it "allows users to signup with facebook" do
+			facebook_hash = omniauth_facebook_hash.to_json
+
+			post "/api/auth/facebook/callback", facebook_hash, request_headers
+
+			expect(response.status).to eq 200
+			expect(response_body).to eq (
+				{
+					'id' => User.last.id,
+					'auth_token' => User.last.auth_token,
+					'name' => 'John Doe',
+					'email' => 'johndoe@example.com'
+				}
+			)
+		end
+
+		it "allows users to signup with linkedin" do
+			linkedin_hash = omniauth_linkedin_hash.to_json
+
+			post "/api/auth/linkedin/callback", linkedin_hash, request_headers
+
+			expect(response.status).to eq 200
+			expect(response_body).to eq (
+				{
+					'id' => User.last.id,
+					'auth_token' => User.last.auth_token,
+					'name' => 'John Doe',
+					'email' => 'johndoe@example.com'
+				}
+			)
+		end
+	end
+
 	describe "GET /api/user" do
 		it "should return authenticated user" do
 			user = create(:user)

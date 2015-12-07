@@ -38,5 +38,4 @@ describe "Authenticate api", type: :request do
 			expect(response_body['auth_token']).to eq nil
 		end
 	end
-
 end
