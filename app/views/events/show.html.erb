@@ -40,6 +40,63 @@
 <% end %>
 <div class="container">
 	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row content_block project_partnerships_block">
+				<% if (@event.project_partners.any?) || (@event.project_partners_text.present?) %>
+					<div class="col-md-4 project_partnership_content">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<h3>Project partners</h3>
+								<%= content_tag :p, @event.try(:project_partners_text) %>
+								<div class="row">
+									<% @event.project_partners.each do |p| %>
+										<div class="col-xs-6">
+											<%= link_to profile_path(p), class: 'no-link-style' do %>
+												<%= image_tag p.logo_url(:medium), class: "full_width" %>
+											<% end %>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+				<% if (@event.project_people.any?) || (@event.project_people_text.present?) %>
+					<div class="col-md-4 project_partnership_content">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<h3><%= @event.project_people.pluck(:title).map{|t| t.split(" ").first }.to_sentence(last_word_connector: ' & ') %></h3>
+								<%= content_tag :p, @event.try(:project_people_text) %>
+								<% @event.project_people.each do |p| %>
+									<%= link_to profile_path(p), class: 'project_person' do %>
+										<%= image_tag p.image_url(:thumbnail), width: '60', class: "img-circle" %>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+				<% if @event.lab.present? %>
+					<div class="col-md-4 project_partnership_content">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<h3><%= @event.lab.title %></h3>
+								<p><%= @event.lab.subtitle %></p>
+								<div class="row">
+									<div class="col-md-8">
+										<%= image_tag 'logos/text-logo.svg', class: "full_width" %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
 		<div class="col-md-12 text-center">
 			<%= link_to 'View all events', events_path, class: 'btn btn-lg btn-default' %>
 		</div>
