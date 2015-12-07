@@ -56,7 +56,7 @@ Rails.application.routes.draw do
       end
 
       post 'authenticate', to: 'sessions#create'
-      get 'auth/:provider/callback', to: 'sessions#create_with_omniauth'
+      post 'auth/:provider/callback', to: 'sessions#create_with_omniauth'
       get 'auth/failure', to: 'sessions#omniauth_failure'
 
       get 'events', to: 'events#index'

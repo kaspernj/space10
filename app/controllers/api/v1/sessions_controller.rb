@@ -10,4 +10,18 @@ class Api::V1::SessionsController < Api::V1::ApiController
     end
 	end
 
+  def create_with_omniauth
+    omniauth = params
+    @user = Authentication.from_omniauth(omniauth).user
+    if @user.save
+      @user.personal_profile = PersonalProfile.from_omniauth(@user, omniauth)
+      @user
+    else
+      render json: { errors: ["User could not be authenticated."] }, status: 400
+    end
+  end
+
+  def omniauth_failure
+    render json: { errors: ["Authentication failure."] }, status: 400
+  end
 end
