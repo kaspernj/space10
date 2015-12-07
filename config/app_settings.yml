@@ -5,7 +5,7 @@ posts: !ruby/hash:ActionController::Parameters
 social_media: !ruby/hash:ActionController::Parameters
   instagram: https://instagram.com/space10_journal/
   facebook: ''
-  youtube: https://youtube.space10.io
+  youtube: http://youtube.space10.io
   twitter: https://twitter.com/space10_journal/
   linkedin: https://linkedin.com/company/space-10
 footer: !ruby/hash:ActionController::Parameters
