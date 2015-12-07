@@ -73,7 +73,7 @@ input, select, ul.token-input-list-bootstrap {
 }
 
 @media (max-width: $screen-xs-max) {
-	h1 {
+	h1, .h1 {
 		font-size: $font-size-h1*0.6;
 	}
 }

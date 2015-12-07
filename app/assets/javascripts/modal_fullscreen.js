@@ -1,19 +1,18 @@
 $(document).on('ready page:load', function () {
-  $(".modal-transparent").on('show.bs.modal', function () {
-    setTimeout( function() {
-      $(".modal-backdrop").addClass("modal-backdrop-transparent");
-    }, 0);
+  $("a[data-toggle='modal']").on('click', function(){
+    $(this).addClass('modal-toggle-pressed');
   });
-  $(".modal-transparent").on('hidden.bs.modal', function () {
-    $(".modal-backdrop").addClass("modal-backdrop-transparent");
-  });
-
   $(".modal-fullscreen").on('show.bs.modal', function () {
+    var color = $(this).data('backdrop-color') || 'white'
     setTimeout( function() {
-      $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+      $(".modal-backdrop").addClass("modal-backdrop-fullscreen modal-backdrop-" + color);
     }, 0);
+  });
+  $(".modal-fullscreen").on('hide.bs.modal', function () {
+    $("a[data-toggle='modal']").removeClass('modal-toggle-pressed');
   });
   $(".modal-fullscreen").on('hidden.bs.modal', function () {
-    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+    var color = $(this).data('backdrop-color') || 'white'
+    $(".modal-backdrop").removeClass("modal-backdrop-fullscreen modal-backdrop-" + color);
   });
 });
