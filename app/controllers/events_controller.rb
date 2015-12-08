@@ -11,8 +11,8 @@ class EventsController < ApplicationController
                       description: @event.excerpt,
                       image: @event.featured_image_url(:large),
                       type: 'event',
+                      event: {start_time: @event.starts_at.in_time_zone('Copenhagen').iso8601},
                       twitter: {card: "summary_large_image"},
-                      og: {event: {start_time: @event.starts_at.in_time_zone('Copenhagen').iso8601}}
                       )
 	end
 end
