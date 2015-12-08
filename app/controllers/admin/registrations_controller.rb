@@ -1,5 +1,14 @@
 class Admin::RegistrationsController < AdminController
 
+	def index
+		@event = Event.find(params[:event_id])
+		@registrations = @event.registrations
+		respond_to do |format|
+      format.html
+      format.xls
+    end
+	end
+
 	def update
 		@registration = Registration.find(params[:id])
 		if @registration.update(registration_params)

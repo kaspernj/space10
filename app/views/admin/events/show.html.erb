@@ -4,7 +4,8 @@
 		<h2><%= @event.title %></h2>
 	</div>
 	<div class="col-md-2 text-right">
-		<%= link_to "Edit Event", edit_admin_event_path(@event), class: 'btn btn-sm btn-default' %>
+    <%= link_to "<i class='fa fa-download'></i> XLS".html_safe, admin_event_registrations_path(@event, format: :xls), class: 'btn btn-sm btn-default' %>
+		<%= link_to "Edit", edit_admin_event_path(@event), class: 'btn btn-sm btn-default' %>
 	</div>
 </div>
 <div class="row">
