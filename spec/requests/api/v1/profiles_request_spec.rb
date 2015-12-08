@@ -52,6 +52,7 @@ describe "profiles api", type: :request do
 				{
 					'id' => profile.id,
 					'title' => profile.title,
+					'tagline' => profile.tagline,
 					'type' => profile.type,
 					'description' => profile.description,
 					'location' => profile.location,

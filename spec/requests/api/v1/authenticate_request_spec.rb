@@ -19,7 +19,9 @@ describe "Authenticate api", type: :request do
 					'id' => user.id,
 					'auth_token' => user.auth_token,
 					'name' => user.name,
-					'email' => user.email
+					'email' => user.email,
+					'birthday' => user.birthday.try(:strftime,"%F"),
+					'gender' => user.gender
 				}
 			)
 		end

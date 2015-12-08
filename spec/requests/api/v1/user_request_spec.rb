@@ -20,7 +20,9 @@ describe "Users api", type: :request do
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
 					'name' => 'John',
-					'email' => 'johndoe@example.com'
+					'email' => 'johndoe@example.com',
+					'birthday' => User.last.birthday.try(:strftime,"%F"),
+					'gender' => User.last.gender
 				}
 			)
 		end
@@ -38,7 +40,9 @@ describe "Users api", type: :request do
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
 					'name' => 'John Doe',
-					'email' => 'johndoe@example.com'
+					'email' => 'johndoe@example.com',
+					'birthday' => User.last.birthday.try(:strftime,"%F"),
+					'gender' => User.last.gender
 				}
 			)
 		end
@@ -54,7 +58,9 @@ describe "Users api", type: :request do
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
 					'name' => 'John Doe',
-					'email' => 'johndoe@example.com'
+					'email' => 'johndoe@example.com',
+					'birthday' => User.last.birthday.try(:strftime,"%F"),
+					'gender' => User.last.gender
 				}
 			)
 		end
@@ -72,10 +78,13 @@ describe "Users api", type: :request do
 					'auth_token' => user.auth_token,
 					'name' => user.name,
 					'email' => user.email,
+					'birthday' => user.birthday.try(:strftime,"%F"),
+					'gender' => user.gender,
 					'personal_profile' => {
 						'id' => user.personal_profile.id,
 						'type' => user.personal_profile.type,
 						'title' => user.name,
+						'tagline' => user.personal_profile.tagline,
 						'description' => nil,
 						'location' => nil,
 						'tags' => [],
