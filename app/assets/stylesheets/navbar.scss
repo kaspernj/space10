@@ -76,10 +76,33 @@ body {
   padding: $gutter $gutter/2;
   margin-right: $gutter;
   margin-left: $gutter/2 !important;
+  & > img {
+    position: relative;
+  }
+  & > #svg_logo {
+    display: none;
+  }
 }
 
-.navbar-brand > img {
-  position: relative;
+@media (min-width: $screen-sm-min) {
+  .navbar-brand {
+    & > #svg_logo {
+      display: block;
+    }
+    & > #mobile_logo {
+      display: none;
+    }
+  }
+  .navbar-fixed-top.shrink {
+    .navbar-brand {
+      & > #svg_logo {
+        display: none;
+      }
+      & > #mobile_logo {
+        display: block;
+      }
+    }
+  }
 }
 
 .primary-nav {
@@ -102,8 +125,8 @@ body {
     text-align: right;
     margin-left: 25px;
     border-top: 12px solid #f4f4f4;
-    margin-top: 41px;
-    margin-bottom: 53px;
+    margin-top: $navbar-padding-vertical - 12px;
+    margin-bottom: $navbar-padding-vertical;
     padding-top: 0;
     padding-bottom: 0;
     line-height: 2.5;
@@ -142,8 +165,25 @@ body {
   }
 }
 
-// HACK
+.navbar-fixed-top.shrink {
+  &.navbar {
+    min-height: 0;
+  }
+  $shrink-subtract: 20px;
+  .navbar-brand {
+    padding: 15px 15px;
+  }
+  .navbar-right > li > a {
+    margin-top: $navbar-padding-vertical - 12px - $shrink-subtract;
+    margin-bottom: $navbar-padding-vertical - $shrink-subtract;
+  }
+  .navbar-left > li > a {
+    padding-top: $navbar-padding-vertical - $shrink-subtract;
+    padding-bottom: $navbar-padding-vertical - $shrink-subtract;
+  }
+}
 
+// HACK for ipad portrait
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
   .navbar-left > li {
