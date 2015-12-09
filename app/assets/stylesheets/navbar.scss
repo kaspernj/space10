@@ -20,6 +20,13 @@ body {
       font-size: 18px;
     }
   }
+  .navbar-nav {
+    margin:0;
+    & > li > a {
+      padding-top: $navbar-padding-vertical;
+      padding-bottom: $navbar-padding-vertical;
+    }
+  }
   .navbar-header {
     float: left;
   }
@@ -35,13 +42,9 @@ body {
   .navbar-fixed-bottom {
     min-height: 30px;
     z-index: 99999;
-    .navbar-nav {
-      margin-top: 0;
-      margin-bottom: 0;
-      li > a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
+    .navbar-nav li > a {
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
     .navbar-nav .open .dropdown-menu {
       position: absolute;
@@ -173,11 +176,11 @@ body {
   .navbar-brand {
     padding: 15px 15px;
   }
-  .navbar-right > li > a {
+  .navbar-right.hidden-xs > li > a {
     margin-top: $navbar-padding-vertical - 12px - $shrink-subtract;
     margin-bottom: $navbar-padding-vertical - $shrink-subtract;
   }
-  .navbar-left > li > a {
+  .navbar-left > li > a, .navbar-right.visible-xs-block > li > a {
     padding-top: $navbar-padding-vertical - $shrink-subtract;
     padding-bottom: $navbar-padding-vertical - $shrink-subtract;
   }
