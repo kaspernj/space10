@@ -18,6 +18,12 @@ body.modal-open {
   }
 }
 
+.modal.fade:not(.in).modal-slide-up .modal-dialog {
+  -webkit-transform: translate3d(0, 25%, 0);
+  transform: translate3d(0, 25%, 0);
+}
+
+
 .fa-chevron-down {
 -webkit-transition: all 500ms ease-out 0s;
     -moz-transition: all 500ms ease-out 0s;

@@ -284,6 +284,10 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.3)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -443,6 +447,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-linkedin-oauth2
   pg
+  pg_search
   rack-mini-profiler
   rails (= 4.2.0)
   rails_12factor

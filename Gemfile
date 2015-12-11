@@ -77,6 +77,8 @@ gem 'meta-tags'
 gem 'bullet', group: :development
 gem 'rack-mini-profiler', group: :development
 
+gem 'pg_search'
+
 group :production do
   gem 'rails_12factor'
 end

@@ -22,6 +22,9 @@ class Post < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
+
+  include PgSearch
+  multisearchable against: [:title, :excerpt]
   
 	validates_presence_of :title
 
