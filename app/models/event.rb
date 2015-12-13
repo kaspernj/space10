@@ -27,6 +27,9 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
+  include PgSearch
+  multisearchable against: [[:title, 'A'], [:excerpt, 'B']]
+
 	validates_presence_of :title, :starts_at
   validate :end_date_after_start_date
 

@@ -8,6 +8,7 @@
               <li><%= link_to link[1]['title'], link[1]['link'], target: '_blank' %></li>
             <% end %>
           <% end %>
+          <% if signed_in? && current_user.admin? %><li><%= link_to "Admin", admin_root_path %></li><% end %>
 	    	</ul>
 	    </div>
       <div class="col-md-3 col-md-push-6 col-xs-6 text-right"><%= link_to "Back to Top", '#top' %></div>

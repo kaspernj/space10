@@ -1,0 +1,21 @@
+#search_query {
+  border:none;
+  background-color: transparent;
+  height: auto;
+  margin-top: 0;
+  padding-left: 0;
+  font-size: 88px;
+  @extend .h1;
+}
+
+#search_results {
+  .search_result {
+    border-top: 1px solid #ddd;
+  }
+  .h2 {
+    margin-top: 0;
+  }
+  .meta-text {
+    margin: 10px 0;
+  }
+}

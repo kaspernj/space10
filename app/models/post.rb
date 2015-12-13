@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :finders]
 
   include PgSearch
-  multisearchable against: [:title, :excerpt]
+  multisearchable against: [[:title, 'A'], [:excerpt, 'B']]
   
 	validates_presence_of :title
 

@@ -1,0 +1,20 @@
+<% @search_results.each do |result| %>
+  <div class="row">
+    <div class="col-md-10 content_block search_result">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag result.featured_image_url(:medium), class: 'full_width' %>
+            </div>
+            <div class="col-md-8">
+              <p class="h2"><%= result.title %></p>
+              <p class="meta-text"><%= result.publish_at.to_date.to_s(:formatted) %></p>
+              <p><%= truncate result.excerpt, length: 150 %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

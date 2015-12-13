@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 
-  post 'search', to: 'search#search', as: 'search'
+  get 'search', to: 'search#search', as: 'search'
+  post 'search', to: 'search#search_results', as: 'search_results'
 
   namespace :admin do
   	get "/", to: "static_pages#dashboard", as: "root"
