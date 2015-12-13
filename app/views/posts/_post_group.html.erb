@@ -1,0 +1,14 @@
+<div class="row">
+  <% posts.each do |post| %>
+    <div class="col-md-4 post-thumbnail">
+      <%= render 'thumbnail', post: post %>
+    </div>
+  <% end %>
+</div>
+<div class="row ajax-posts">
+  <div class="col-md-12 text-center">
+    <% unless posts.empty? %>
+      <%= link_to "Load more", posts_path(last_post: last_post), class: 'btn btn-default', remote: true %>
+    <% end %>
+  </div>
+</div>

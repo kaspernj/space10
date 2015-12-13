@@ -3,7 +3,14 @@ require 'instagram_api'
 class PostsController < ApplicationController
 
 	def index
-		@posts = Post.published
+		if params[:last_post]
+			last_post = params[:last_post].to_i
+			@posts = Post.published.offset(last_post).limit(3)
+			@last_post = last_post + 3
+		else
+			@posts = Post.published.limit(13)
+		end
+
 		@instagram_photos = InstagramApi.new.user_photos('2179243523')
 		
 		@featured_lab = Settings.get['posts']['index']['featured_tag']
@@ -27,6 +34,11 @@ class PostsController < ApplicationController
 		end
 
 		prepare_meta_tags(title: "Journal")
+
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def show
