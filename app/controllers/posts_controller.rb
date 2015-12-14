@@ -43,7 +43,13 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.published.find(params[:id])
-		@posts = Post.published.limit(3)
+		if params[:last_post]
+			last_post = params[:last_post].to_i
+			@posts = Post.published.offset(last_post).limit(3)
+			@last_post = last_post + 3
+		else
+			@posts = Post.published.limit(3)
+		end
 
 		prepare_meta_tags(title: @post.title,
                       description: @post.excerpt,
@@ -51,6 +57,11 @@ class PostsController < ApplicationController
                       keywords: @post.tags.pluck(:title),
                       type: 'article',
                       twitter: {card: "summary_large_image"})
+
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 end

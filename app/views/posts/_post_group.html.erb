@@ -7,7 +7,7 @@
 </div>
 <div class="row ajax-posts">
   <div class="col-md-12 text-center">
-    <% unless posts.empty? %>
+    <% unless posts.count < 3 %>
       <%= link_to "Load more", posts_path(last_post: last_post), class: 'btn btn-default', remote: true %>
     <% end %>
   </div>
