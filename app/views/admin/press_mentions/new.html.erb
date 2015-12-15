@@ -1,0 +1,15 @@
+<% provide(:title, "New mention") %>
+<div class="row">
+  <div class="col-md-12">
+    <h2>New mention</h2>
+    <%= simple_form_for @press_mention, url: admin_press_mentions_path do |f| %>
+      <%= f.input :title, placeholder: "New York Times: Space10 to win it all" %>
+      <%= f.input :excerpt, placeholder: "Space10 nominated to win it all, won it all ealier today at a ..." %>
+      <%= f.input :source, placeholder: "New York Times" %>
+      <%= f.input :url, placeholder: "http://www.newyorktimes.com/articles/space10_won_it_all" %>
+      <%= f.input :published_at, as: :date_time_picker %>
+      <%= f.input :image %>
+      <%= f.submit class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

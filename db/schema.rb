@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203155134) do
+ActiveRecord::Schema.define(version: 20151215071907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,16 @@ ActiveRecord::Schema.define(version: 20151203155134) do
 
   add_index "logo_attachments", ["resource_id", "resource_type"], name: "index_logo_attachments_on_resource_id_and_resource_type", using: :btree
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at",            null: false
@@ -129,6 +139,17 @@ ActiveRecord::Schema.define(version: 20151203155134) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+
+  create_table "press_mentions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "excerpt"
+    t.string   "url"
+    t.string   "source"
+    t.datetime "published_at"
+    t.string   "image"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "profile_authorizations", force: :cascade do |t|
     t.integer  "user_id"

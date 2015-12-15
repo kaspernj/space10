@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :profiles
     resources :labs
     resources :tags
+    resources :press_mentions
     
     get 'edit_settings', to: 'settings#edit', as: 'edit_settings'
     put 'update_settings', to: 'settings#update', as: 'update_settings'
