@@ -19,11 +19,17 @@ class Admin::PressMentionsController < AdminController
   end
 
   def edit
-    
+    @press_mention = PressMention.find(params[:id])
   end
 
   def update
-    
+    @press_mention = PressMention.find(params[:id])
+    if @press_mention.update(press_mention_params)
+      flash[:success] = "Press mention updated"
+      redirect_to edit_admin_press_mention_path(@press_mention)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -33,6 +39,6 @@ class Admin::PressMentionsController < AdminController
 private
 
   def press_mention_params
-    params.require(:press_mention).permit(:title, :destription, :source, :url, :image, :image_cache)
+    params.require(:press_mention).permit(:title, :destription, :source, :url, :published_at, :published, :featured, :image, :image_cache)
   end
 end

@@ -16,7 +16,7 @@
             <th>#</th>
             <th>Title</th>
             <th>Source</th>
-            <th>Updated at</th>
+            <th>Created at</th>
             <th></th>
           </tr>
         </thead>
@@ -24,9 +24,9 @@
           <% @press_mentions.each do |mention| %>
             <tr>
               <th scope="row"><%= mention.id %></th>
-              <td><%= link_to mention.title, edit_admin_press_mention_path(mention) %></td>
+              <td><%= link_to truncate(mention.title, length: 75), edit_admin_press_mention_path(mention) %></td>
               <td><%= mention.source %></td>
-              <td><%= mention.updated_at.to_s(:formatted) %></td>
+              <td><%= mention.created_at.to_s(:formatted) %></td>
               <td class="text-right">
                 <%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>
                 <%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_press_mention_path(mention) %>

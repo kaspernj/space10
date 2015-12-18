@@ -23,6 +23,10 @@ RSpec.describe 'Press mention feature', type: :feature do
       end
 
       it 'allows to edit a mention' do
+        visit edit_admin_press_mention_path(mention)
+        fill_in "Title", with: "New Title"
+        click_on "Update"
+        expect(mention.reload.title).to eq "New Title"
       end
 
       it 'allows to destroy a mention'

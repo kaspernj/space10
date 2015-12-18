@@ -1,0 +1,14 @@
+<% if @mentions.count >= 4 %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row content_block">
+          <div class="col-md-12">
+            <h2>In The Press</h2>
+          </div>
+        </div>
+        <%= render 'posts/press_mentions', mentions: @mentions %>
+      </div>
+    </div>
+  </div>
+<% end %>

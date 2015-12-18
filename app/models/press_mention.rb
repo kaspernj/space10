@@ -15,4 +15,9 @@
 
 class PressMention < ActiveRecord::Base
   mount_uploader :image, PressImageUploader
+
+  validates_presence_of :title, :source
+
+  scope :published, -> { where('published = true') }
+  scope :featured, -> { where('featured = true') }
 end

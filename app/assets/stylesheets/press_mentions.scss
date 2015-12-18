@@ -1,0 +1,29 @@
+.press_mentions_block {
+  padding: $gutter $gutter/2;
+  margin-left: 0;
+  margin-right: 0;
+  border: 1px solid #F2F2F2;
+}
+
+.press_mentions_content {
+  overflow: hidden;
+}
+
+.press_mention {
+  .thumbnail {
+    p {
+      font-size: 11px;
+    }
+    .meta-text {
+      margin: 15px 0 10px 0;
+    }
+  }
+  @media (min-width: $screen-md-min) {
+    border-left: 1px solid #ddd;
+    &:first-child {
+      border-left: 0;
+    }
+  }
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}

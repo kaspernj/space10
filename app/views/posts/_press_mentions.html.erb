@@ -1,0 +1,19 @@
+<div class="row press_mentions_block">
+  <% mentions.in_groups_of(4, false) do |mentions| %>
+    <div class="press_mentions_content">
+      <% mentions.each do |mention| %>
+        <div class="col-xs-6 col-md-3 press_mention">
+          <%= link_to mention.url || "#" do %>
+            <div class="thumbnail">
+              <%= image_tag mention.image_url(:medium) %>
+              <div class="caption">
+                <p class="meta-text"><%= mention.source %></p>
+                <p><%= truncate(mention.title, length: 230) %></p>
+              </div>  
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

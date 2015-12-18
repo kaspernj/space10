@@ -14,24 +14,28 @@
 .col-xs-height {
   display: table-cell;
   float: none !important;
+  vertical-align: top;
 }
 
 @media (min-width: 768px) {
   .col-sm-height {
     display: table-cell;
     float: none !important;
+    vertical-align: top;
   }
 }
 @media (min-width: 992px) {
   .col-md-height {
     display: table-cell;
     float: none !important;
+    vertical-align: top;
   }
 }
 @media (min-width: 1200px) {
   .col-lg-height {
     display: table-cell;
     float: none !important;
+    vertical-align: top;
   }
 }
 
