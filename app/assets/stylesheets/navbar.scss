@@ -1,9 +1,9 @@
-body {
+body:not(.admin) {
   padding-top: 160px; // Height of nav
 }
 
 @media (min-width: $screen-sm-min) {
-  body {
+  body:not(.admin) {
     padding-top: 180px; // Height of nav
   }
 }
