@@ -13,7 +13,6 @@ RSpec.describe 'Press mention feature', type: :feature do
       it 'allows to create press mention' do
         visit new_admin_press_mention_path
         fill_in 'Title', with: 'Headline'
-        fill_in 'Excerpt', with: 'Excerpt'
         fill_in 'Source', with: 'Source'
         fill_in 'Url', with: 'Url'
         fill_in 'Published at', with: 2.days.ago.to_s(:formatted)

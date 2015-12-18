@@ -33,7 +33,9 @@ class Admin::PressMentionsController < AdminController
   end
 
   def destroy
-    
+    @press_mention = PressMention.find(params[:id])
+    @press_mention.destroy
+    redirect_to admin_press_mentions_path, notice: "Mention destroyed"
   end
 
 private
