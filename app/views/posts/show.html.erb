@@ -114,6 +114,11 @@
 					</div>
 				<% end %>
 			</div>
+			<div class="row ajax-posts">
+			  <div class="col-md-12 text-center">
+			    <%= link_to "Load more", posts_path(last_post: 3), class: 'btn btn-default', remote: true %>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>

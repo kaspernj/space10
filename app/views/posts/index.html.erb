@@ -112,15 +112,18 @@
 <div class="container">
 	<div class="row content_block">
 		<div class="col-md-10 col-md-offset-1">
-			<% @posts.offset(10).in_groups_of(3, false) do |group| %>
-				<div class="row">
-					<% group.each do |post| %>
+			<div class="row">
+				<% @posts.offset(10).limit(3).each do |post| %>
 					<div class="col-md-4 post-thumbnail">
 						<%= render 'thumbnail', post: post %>
 					</div>
-					<% end %>
-				</div>
-			<% end %>
+				<% end %>
+			</div>
+			<div class="row ajax-posts">
+			  <div class="col-md-12 text-center">
+			    <%= link_to "Load more", posts_path(last_post: 13), class: 'btn btn-default', remote: true %>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>
