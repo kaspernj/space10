@@ -130,9 +130,8 @@ body:not(.admin) {
     border-top: 12px solid #f4f4f4;
     margin-top: $navbar-padding-vertical - 12px;
     margin-bottom: $navbar-padding-vertical;
-    padding-top: 0;
+    padding-top: 8px;
     padding-bottom: 0;
-    line-height: 2.5;
     &:before {
       content: " ";
       position: absolute;
@@ -172,17 +171,24 @@ body:not(.admin) {
   &.navbar {
     min-height: 0;
   }
-  $shrink-subtract: 20px;
+  $shrink-subtract: 24px;
   .navbar-brand {
     padding: 15px 15px;
+    @media (max-width: $screen-sm-max) {
+      img { height: 40px }
+    }
   }
   .navbar-right.hidden-xs > li > a {
     margin-top: $navbar-padding-vertical - 12px - $shrink-subtract;
     margin-bottom: $navbar-padding-vertical - $shrink-subtract;
   }
-  .navbar-left > li > a, .navbar-right.visible-xs-block > li > a {
-    padding-top: $navbar-padding-vertical - $shrink-subtract;
-    padding-bottom: $navbar-padding-vertical - $shrink-subtract;
+  .navbar-left > li > a {
+    padding-top: $navbar-padding-vertical - $shrink-subtract + 4px;
+    padding-bottom: $navbar-padding-vertical - $shrink-subtract + 4px;
+  }
+  .navbar-right.visible-xs-block > li > a {
+    padding-top: $navbar-padding-vertical - $shrink-subtract + 4px - 10px;
+    padding-bottom: $navbar-padding-vertical - $shrink-subtract + 4px - 10px;
   }
 }
 
