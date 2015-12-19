@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 		
 		@featured_lab = Settings.get['posts']['index']['featured_tag']
 		@featured_videos = VideoAttachment.featured.includes(:resource).limit(4)
+		@mentions = PressMention.published.featured.limit(8)
 		
 		featured_posts = @posts.where_tagged_with(@featured_lab)
 

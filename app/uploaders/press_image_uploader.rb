@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class PressImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -20,7 +20,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path("image_fallback/" + [version_name, "default.png"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("press_image_fallback/" + [version_name, "default.png"].compact.join('_'))
   
     # "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
@@ -33,16 +33,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :square do
-    process :resize_to_fill => [560, 560]
+  version :small do
+    process :resize_to_fill => [420, 240]
   end
 
   version :medium do
-    process :resize_to_fill => [1000, 640]
+    process :resize_to_fill => [630, 360]
   end
 
   version :large do
-    process :resize_to_limit => [nil, 1000]
+    process :resize_to_fill => [840, 480]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

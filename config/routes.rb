@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show], path: "community"
   resources :labs, only: [:index, :show]
   resources :tags, only: [:index, :show]
+  resources :press_mentions, only: [:index]
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     resources :profiles
     resources :labs
     resources :tags
+    resources :press_mentions
     
     get 'edit_settings', to: 'settings#edit', as: 'edit_settings'
     put 'update_settings', to: 'settings#update', as: 'update_settings'

@@ -1,0 +1,46 @@
+<% provide(:title, "All Mentions") %>
+<div class="row">
+  <div class="col-md-8">
+    <h2>All Mentions</h2>
+  </div>
+  <div class="col-md-4 text-right">
+    <%= link_to "New mention", new_admin_press_mention_path, class: 'btn btn-sm btn-default' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Created at</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @press_mentions.each do |mention| %>
+            <tr>
+              <th scope="row"><%= mention.id %></th>
+              <td><%= link_to truncate(mention.title, length: 75), edit_admin_press_mention_path(mention) %></td>
+              <td><%= mention.source %></td>
+              <td><%= mention.created_at.to_s(:formatted) %></td>
+              <td class="text-right">
+                <%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>
+                <%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_press_mention_path(mention) %>
+                <%= link_to '<i class="fa fa-fw fa-trash"></i>'.html_safe, admin_press_mention_path(mention), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @press_mentions.empty? %>
+            <tr>
+              <td colspan="5">No mentions yet</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
