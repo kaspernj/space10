@@ -1,8 +1,11 @@
 body.modal-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
+  @media (max-width: $screen-md-max) {
+    position: fixed;
+    width: 100%;
+  }
 }
+
 .modal-fullscreen {
   background: transparent;
   .modal-header {
