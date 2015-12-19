@@ -1,5 +1,6 @@
-<%= simple_form_for :search, url: search_results_path, method: :post, remote: true, authenticity_token: true, html: {class: 'auto_submit'} do |f| %>
+<%= simple_form_for :search, url: search_results_path, method: :post, remote: true, authenticity_token: true, html: {id: 'search_form'} do |f| %>
   <%= f.input :query, autofocus: true, label: false, placeholder: 'Search' , input_html: { autocomplete: 'off' } %>
+  <%= f.input :sort_by, as: :radio_buttons_inline, required: false, label: "Sort by:", boolean_style: :inline, collection: [["Most relevant", "relevant"], ["Most recent", "recent"]], checked: "relevant" %>
 <% end %>
 <div id="search_results">
 </div>

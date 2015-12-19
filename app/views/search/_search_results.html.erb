@@ -18,3 +18,18 @@
     </div>
   </div>
 <% end %>
+<% if @search_results.empty? %>
+  <div class="row">
+    <div class="col-md-10 content_block search_result">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="larger">Oh no! Your search didn't return anything.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

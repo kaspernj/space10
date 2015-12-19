@@ -19,3 +19,37 @@
     margin: 10px 0;
   }
 }
+
+#search_form {
+  .radio-buttons, .collection_radio_buttons, .radio_buttons_inline {
+    color: #b3b3b3;
+    font-weight: normal;
+    font-size: 11px;
+  }
+  .radio_buttons_inline {
+    margin-right: $gutter/2;
+  }
+  .radio-inline {
+    display: inline;
+  }
+  input[type="radio"] {
+    display:none;
+  }
+  input[type="radio"] + label:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 0;
+    bottom: 0;
+    border: 1px solid #b3b3b3;
+    background-color: #fff;
+  }
+  input[type="radio"]:checked + label:before {
+      background-image: image-url("search-cross.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+  }
+}
