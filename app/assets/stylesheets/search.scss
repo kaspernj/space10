@@ -4,13 +4,20 @@
   height: auto;
   margin-top: 0;
   padding-left: 0;
-  font-size: 88px;
+  @media (min-width: $screen-sm-min) {
+    font-size: 88px;
+  }
   @extend .h1;
 }
 
 #search_results {
   .search_result {
     border-top: 1px solid #ddd;
+  }
+  @media (max-width: $screen-sm-max) {
+    img {
+      margin-bottom: $gutter/2;
+    }
   }
   .h2 {
     margin-top: 0;
