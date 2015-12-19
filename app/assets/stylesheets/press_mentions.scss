@@ -1,5 +1,8 @@
 .press_mentions_block {
-  padding: $gutter $gutter/2;
+  padding: $gutter/2 0;
+  @media (min-width: $screen-md-min) {
+    padding: $gutter $gutter/2;
+  }
   margin-left: 0;
   margin-right: 0;
   border: 1px solid #F2F2F2;
