@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :press_mentions, only: [:index]
   resources :messages
+  resources :password_resets
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 

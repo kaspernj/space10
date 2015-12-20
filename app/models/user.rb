@@ -65,6 +65,13 @@ class User < ActiveRecord::Base
 		UserMailer.welcome(self.id).deliver_now
 	end
 
+	def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self.id).deliver_now
+  end
+
 	def update_personal_profile
 		PersonalProfile.find_or_initialize_by(user: self).tap do |profile|
 			profile.title = self.name

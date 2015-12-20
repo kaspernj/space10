@@ -10,6 +10,18 @@ class UserMailer < BaseMandrillMailer
     send_mail(user.email, subject, body)
   end
 
+  def password_reset(user_id)
+    user = User.find(user_id)
+    subject = "Password reset instructions"
+    merge_vars = {
+      "FNAME" => user.first_name,
+      "PASSWORD_RESET_URL" => edit_password_reset_url(user.password_reset_token)
+    }
+    body = mandrill_template("Transactional: Reset password", merge_vars)
+
+    send_mail(user.email, subject, body)
+  end
+
   def send_message(message, sender_id)
     message = message
     recipient = Profile.find(message.recipient)

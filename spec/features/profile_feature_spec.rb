@@ -10,7 +10,7 @@ RSpec.describe 'Profile feature', type: :feature do
 
 		it 'should allow admins to create company profiles' do
 			select 'Company', from: 'Profile type'
-			fill_in 'Title', with: 'Lucas Films inc.'
+			fill_in 'Full name', with: 'Lucas Films inc.'
 			fill_in 'Description', with: 'A film production company'
 			fill_in 'Location', with: 'Los Angeles, California'
 
