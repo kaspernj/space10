@@ -16,10 +16,10 @@ describe 'messaging', type: :feature do
     it 'allows to message community users', js: true do
       visit profile_path(user_2.personal_profile)
 
-      expect(page).to have_content "GET IN TOUCH"
+      expect(page).to have_content "Get in touch".upcase
       click_on "Get in touch"
 
-      expect(page).to have_content "To #{user_2.personal_profile.title}"
+      expect(page).to have_content "To: #{user_2.personal_profile.title}".upcase
       fill_in "message[body]", with: "Hola chica"
       click_on "Send message"
 

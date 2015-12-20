@@ -1,6 +1,9 @@
 <div class="row">
-  <div class="col-md-12">
-    To <%= @profile.title %> | From <%= current_user.name %>
+  <div class="col-md-10">
+    <div class="row message-to-from">
+      <div class="col-sm-3">To: <%= @profile.title %></div>
+      <div class="col-sm-9">From: <%= current_user.name %></div>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -14,7 +17,7 @@
       <div class="row">
         <div class="col-md-6">
           <%= f.hidden_field :recipient, value: @profile.id %>
-          <%= f.input :body, as: :text, label: false %>
+          <%= f.input :body, as: :text, label: false, placeholder: "Message", input_html: {class: 'auto-resize'} %>
         </div>
       </div>
       <div class="row">

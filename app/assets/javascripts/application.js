@@ -23,6 +23,7 @@
 //= require summernote
 //= require slick.min
 //= require lazysizes.min
+//= require autosize.min
 //= require jquery.tokeninput.min
 //= require_tree .
 //= require turbolinks
