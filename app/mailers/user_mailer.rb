@@ -10,6 +10,22 @@ class UserMailer < BaseMandrillMailer
     send_mail(user.email, subject, body)
   end
 
+  def send_message(message, sender_id)
+    message = message
+    recipient = Profile.find(message.recipient)
+    sender = User.find(sender_id)
+
+    subject = "#{sender.first_name} sent you a message"
+    merge_vars = {
+      "FNAME" => recipient.title,
+      "SENDER_NAME" => sender.name,
+      "MESSAGE_BODY" => message.body.gsub(/\n/, '<br/>').html_safe
+    }
+    body = mandrill_template("Transactional: Message received", merge_vars)
+
+    mail(to: recipient.email, from: "#{sender.first_name} via Space10 <no-reply@space10.io>", reply_to: "#{sender.first_name} <#{sender.email}>", subject: subject, body: body, content_type: "text/html")
+  end
+
   def confirm_registration(user_id, event_id)
     user = User.find(user_id)
     event = Event.find(event_id)
