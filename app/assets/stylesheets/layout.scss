@@ -280,8 +280,15 @@ input[value="Schedule"] {
       padding-bottom: 0;
     }
   }
+  .project_partner {
+    display: block;
+    margin-bottom: 5px;
+  }
   .project_person {
+    display: inline-block;
+    float: left;
     margin-right: 5px;
+    margin-bottom: 5px;
   }
 }
 

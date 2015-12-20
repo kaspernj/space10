@@ -97,18 +97,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<h2>Space Program <span>Upcoming</span></h2>
+			<h2>Space Program <span><%= @events.any? ? "Upcoming" : "Recent" %></span></h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row content_block">
-				<% @events.each do |event| %>
+				<% showing_events = @events.any? ? @events : @past_events %>
+				<% showing_events.each do |event| %>
 					<div class="col-sm-6 event-small">
 						<%= render 'events/event_small', event: event %>
 					</div>
 				<% end %>
-				<% if @events.empty? %>
+				<% if showing_events.empty? %>
 					<div class="col-md-12 text-center">
 						<p class="lead">
 							No upcoming events. Stay tuned.

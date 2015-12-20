@@ -58,7 +58,7 @@
 								<div class="row">
 									<% @post.project_partners.each do |p| %>
 										<div class="col-xs-6">
-											<%= link_to profile_path(p), class: 'no-link-style' do %>
+											<%= link_to profile_path(p), class: 'project_partner' do %>
 												<%= image_tag p.logo_url(:medium), class: "full_width" %>
 											<% end %>
 										</div>

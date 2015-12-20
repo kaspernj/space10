@@ -1,7 +1,8 @@
 <% content_for :title, "Program" %>
 
 <div class="container">
-	<% @events.each do |event| %>
+	<% showing_events = @events.any? ? @events : @previous_events %>
+	<% showing_events.each do |event| %>
 		<% if cycle('odd', 'even') == 'odd' %>
 			<div class="row event-large event-large-right">
 				<div class="col-md-11 col-md-offset-1 no-sm-padding">
@@ -72,16 +73,16 @@
 			</div>
 		<% end %>
 	<% end %>
-	<% if @events.empty? %>
+	<% if showing_events.empty? %>
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<p class="lead">
-					No upcomming events. Stay tuned.
+					No events. Stay tuned.
 				</p>
 			</div>
 		</div>
 	<% end %>
-	<% if @previous_events.any? %>
+	<% if @previous_events.any? && showing_events != @previous_events %>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row">
