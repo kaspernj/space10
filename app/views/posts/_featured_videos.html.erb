@@ -1,9 +1,9 @@
 <div class="row">
 	<% videos.each_with_index do |video, i| %>
 		<% if i == 0 %>
-			<div class="col-md-12 margin-bottom-gutter">
+			<div class="col-sm-6 col-md-12 video-col">
 				<div class="aspect-ratio r-16-9">
-					<div class="video-container">
+					<div class="video-container video-container-large">
 						<div class="video-poster" style="background-image: url(<%= video.image %>)">
 							<div class="video-overlay"></div>
 							<a href="#" class="video-play-button"><%= image_tag 'play.svg' %></a>
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		<% else %>
-			<!-- <div class="col-md-4">
+			<div class="col-sm-6 col-md-4 video-col">
 				<div class="aspect-ratio r-16-9">
 					<div class="video-container video-container-small">
 						<div class="video-poster" style="background-image: url(<%= video.image %>)">
@@ -35,7 +35,7 @@
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
 		<% end %>
 	<% end %>
 </div>
