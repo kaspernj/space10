@@ -2,7 +2,12 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1 text-center content_block">
       <div class="inline-block">
-        <%= image_tag nil, {class: "full_width lazyload", data: { src: object.image_attachment.image_url(:large) }} %>
+        <% ext = object.image_attachment.image.file.extension.downcase %>
+        <% if ext == 'gif' %>
+          <%= image_tag object.image_attachment.image_url, {class: "full_width"} %>
+        <% else %>
+          <%= image_tag object.image_attachment.image_url(:large), {class: "full_width"} %>
+        <% end %>
         <p class="meta-text text-left"><%= [object.image_attachment.title, object.image_attachment.description].reject(&:blank?).join(" - ") %></p>
       </div>
     </div>
