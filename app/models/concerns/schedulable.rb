@@ -2,11 +2,9 @@ module Schedulable
 	extend ActiveSupport::Concern
 
 	included do
-		scope :published, -> { where('published = true AND publish_at < ?', DateTime.now).order('publish_at DESC') }
+		scope :published, -> { where('published = true AND publish_at < ?', DateTime.now) }
 	  scope :unpublished, -> { where('published = false OR publish_at > ?', DateTime.now) }
 	  scope :scheduled, -> { where('published = true AND publish_at > ?', DateTime.now) }
-
-    default_scope { order('publish_at desc') }
 	end
 
   def status

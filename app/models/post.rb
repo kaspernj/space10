@@ -53,6 +53,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :lab
 
+  default_scope { order('publish_at desc') }
+
 	def featured_image
     image_attachments.first
   end

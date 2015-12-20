@@ -2,10 +2,9 @@ module Planable
 	extend ActiveSupport::Concern
 
   included do
-    scope :future, -> { where("starts_at > :d AND (ends_at IS NULL OR ends_at > :d)", d: Time.zone.now) }
-    scope :current_or_future, -> { where("ends_at > :d OR starts_at > :d", d: Time.zone.now) }
-    scope :historic, -> { where("starts_at < :d AND (ends_at IS NULL OR ends_at < :d)", d: Time.zone.now) }
-    default_scope { order("starts_at asc") }
+    scope :future, -> { where("starts_at > :d AND (ends_at IS NULL OR ends_at > :d)", d: Time.zone.now).order("starts_at asc") }
+    scope :current_or_future, -> { where("ends_at > :d OR starts_at > :d", d: Time.zone.now).order("starts_at asc") }
+    scope :historic, -> { where("starts_at < :d AND (ends_at IS NULL OR ends_at < :d)", d: Time.zone.now).order("starts_at desc") }
   end
 
 	def starts_at=(date)

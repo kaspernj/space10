@@ -4,7 +4,7 @@ describe 'user creation', type: :feature do
 	it 'allowers visitors to create a user' do
 		visit new_user_path
 
-		fill_in 'Name', with: 'John Doe'
+		fill_in 'Full name', with: 'John Doe'
 		fill_in 'Email', with: 'John@email.com'
 		fill_in 'Password', with: 'foobar12'
 
