@@ -37,4 +37,5 @@ class Profile < ActiveRecord::Base
   scope :published, -> { where('published = true') }
 	scope :featured, -> { where('featured = true') }
 
+  default_scope { order('title asc') }
 end
