@@ -2,7 +2,7 @@ require "mandrill"
 
 class BaseMandrillMailer < ActionMailer::Base
   default(
-    from: "Space 10 <hello@space10.io>"
+    from: "Space10 <hello@space10.io>"
   )
 
   private

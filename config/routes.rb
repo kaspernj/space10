@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :labs, only: [:index, :show]
   resources :tags, only: [:index, :show]
   resources :press_mentions, only: [:index]
+  resources :messages
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 

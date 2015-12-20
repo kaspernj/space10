@@ -18,7 +18,7 @@ module SessionsHelper
 	def signed_in_user
     if !signed_in?
     	store_location
-      redirect_to signup_url, notice: "Sign up or log in."
+      redirect_to new_user_url, notice: "Sign up or log in."
     end
   end
 
