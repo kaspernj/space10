@@ -3,7 +3,7 @@
     <div class="press_mentions_content">
       <% mentions.each do |mention| %>
         <div class="col-xs-6 col-md-3 press_mention">
-          <%= link_to mention.url || "#" do %>
+          <% if mention.url.present? %><a href="<%= mention.url %>" target="_blank"><% end %>
             <div class="thumbnail">
               <%= image_tag mention.image_url(:medium) %>
               <div class="caption">
@@ -11,7 +11,7 @@
                 <p><%= truncate(mention.title, length: 230) %></p>
               </div>  
             </div>
-          <% end %>
+          <% if mention.url.present? %></a><% end %>
         </div>
       <% end %>
     </div>

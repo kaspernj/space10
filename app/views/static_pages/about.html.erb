@@ -72,7 +72,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="row content_block fact-block">
+  <div class="row content_block fact-block underline-links">
     <div class="col-md-6">
       <h2>The<br>Space</h2>
       <div class="about-address">
@@ -86,34 +86,27 @@
     <div class="col-md-6">
       <div class="row">
         <div class="col-sm-6">
-          <%= link_to events_path do %>
             <h4>Opening hours</h4>
-            <p>Space10 is open to the public. Anyone interested can check out the Space10 program here.</p>
-          <% end %>
+            <%= link_to events_path do %>Space10 is open to the public. Anyone interested can check out the Space10 program here.<% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
-        <%= link_to 'mailto:simon@space10.io' do %>
           <h4>Press Kit</h4>
-          <p>Get everything you need to spread the word about Space10.</p>
+          <%= link_to 'mailto:simon@space10.io' do %>Get everything you need to spread the word about Space10.
         <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
-        <%= link_to 'mailto:kaave@space10.io' do %>
           <h4>Use the Space</h4>
-          <p>Have a cool project that aligns with our mission? Let’s have a chat.</p>
-        <% end %>
+          <%= link_to 'mailto:kaave@space10.io' do %>Have a cool project that aligns with our mission? Let’s have a chat.<% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
-        <%= link_to 'mailto:discover@space10.io' do %>
           <h4>Open positions</h4>
-          <p>We are always looking for fresh talent and experienced frontrunners.</p>
-        <% end %>
+          <%= link_to 'mailto:discover@space10.io' do %>We are always looking for fresh talent and experienced frontrunners.<% end %>
         </div>
       </div>
     </div>
@@ -183,7 +176,7 @@
       </p>
     </div>
   </div>
-  <div class="row">
+  <div class="row underline-links">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <div class="col-sm-4 post-thumbnail">

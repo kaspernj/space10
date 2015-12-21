@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 	has_many :authentications, dependent: :destroy
 	has_many :registrations, dependent: :destroy
 	has_many :events,  -> { current_or_future }, through: :registrations
-	has_many :historic_events,  -> { historic }, through: :registrations, class_name: 'Event'
+	has_many :historic_events,  -> { historic }, through: :registrations, source: :event
 
 	has_many :profile_authorizations, dependent: :destroy
 	has_many :company_profiles, through: :profile_authorizations

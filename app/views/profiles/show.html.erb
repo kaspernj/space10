@@ -22,12 +22,16 @@
 							<p class="profile-description"><%= @profile.description %></p>
 						</div>
 					</div>
-					<% if @profile.website.present? %>
-						<%= link_to 'Visit website', prepend_http(@profile.website), target: '_blank', class: 'btn btn-lg btn-default' %>
-					<% end %>
-					<% if @profile.email.present? %>
-						<%= link_to 'Get in touch', new_message_path(profile_id: @profile.id), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}, class: 'btn btn-lg btn-default'} %>
-					<% end %>
+					<div class="row profile-controls">
+						<div class="col-md-12">
+							<% if @profile.website.present? %>
+								<%= link_to 'Visit website', prepend_http(@profile.website), target: '_blank', class: 'btn btn-lg btn-default' %>
+							<% end %>
+							<% if @profile.email.present? %>
+								<%= link_to 'Get in touch', new_message_path(profile_id: @profile.id), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}, class: 'btn btn-lg btn-default'} %>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -4,15 +4,11 @@
 
 .slick-slide {
   margin-left: $gutter;
-  opacity: 0.5;
   position: relative;
   -webkit-transition: opacity 500ms ease-out 0s;
   -moz-transition: opacity 500ms ease-out 0s;
   -o-transition: opacity 500ms ease-out 0s;
   transition: opacity 500ms ease-out 0s;
-  &:hover {
-    opacity: 0.8;
-  }
 	h2 {
 		font-size: 2.7em;
 		position: absolute;
@@ -34,6 +30,13 @@
       right: 10px;
       bottom: 10px;
     }
+  }
+}
+
+.slick-slide:not(.slick-active) {
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
   }
 }
 

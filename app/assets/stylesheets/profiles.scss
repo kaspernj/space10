@@ -1,6 +1,6 @@
 .profiles.index {
 	.hero-image {
-		width: 110%;
+		width: 115%;
 		float: right;
 	}
 	@media (max-width: $screen-xs-max) {
@@ -61,6 +61,14 @@
 		font-size: 12px;
 		margin-bottom: $gutter;
 	}
+	.profile-controls {
+		.btn {
+			text-transform: none;
+		}
+		.btn:first-child {
+			margin-right: $gutter/2;
+		}
+	}
 }
 
 .community-profiles {
@@ -69,6 +77,11 @@
 	padding-left: $gutter/2;
 	padding-right: $gutter/2;
 	img {
+		opacity: 0;
+  	-webkit-transition: opacity 150ms;
+    -moz-transition: opacity 150ms;
+    -ms-transition: opacity 150ms;
+    transition: opacity 150ms;
 		display: block;
 	}
 	h4 {

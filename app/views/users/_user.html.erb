@@ -45,26 +45,34 @@
     <h2>My <br>Events</h2>
   </div>
   <div class="col-md-8">
-    <div class="row">
-      <% user.events.each do |event| %>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <div class="aspect-ratio r-16-9">
-              <div class="centeret_cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
-                <div class="centered_container">
-                <span class="centered text-center">
-                  <span class="btn btn-inverse"><%= user.registrations.find_by(event: event).confirmation_status.capitalize %></span>
-                </span>
+    
+    <% showing_events = user.events + user.historic_events %>
+    <% showing_events.in_groups_of(3, false) do |events| %>
+      <div class="row">
+        <% events.each do |event| %>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <%= link_to event do %>
+              <div class="aspect-ratio r-16-9">
+                <div class="centeret_cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
+                  <div class="centered_container">
+                    <span class="centered text-center">
+                      <span class="btn btn-inverse"><%= event.historic? ? 'Past event' : user.registrations.find_by(event: event).confirmation_status.capitalize %></span>
+                    </span>
+                  </div>
+                </div>
               </div>
+              <% end %>
+              <div class="caption">
+                <h4><%= event.title %></h4>
               </div>
-            </div>
-            <div class="caption">
-              <h4><%= event.title %></h4>
             </div>
           </div>
-        </div>
-      <% end %>
-      <% if user.events.empty? %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="row">
+      <% if showing_events.empty? %>
         <div class="col-md-12">
           <p >
             You have not registered for any events. <%= link_to "See what's coming up.", events_path %>.

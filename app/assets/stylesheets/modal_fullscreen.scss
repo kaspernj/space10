@@ -6,6 +6,12 @@ body.modal-open {
   }
 }
 
+@media (min-width: $screen-md-min) {
+.modal-body {
+  padding-left: $gutter;
+}
+}
+
 .modal-fullscreen {
   background: transparent;
   .modal-header {

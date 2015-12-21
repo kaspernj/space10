@@ -178,7 +178,7 @@ body:not(.admin) {
   .navbar-brand {
     padding: 15px 15px;
     @media (max-width: $screen-sm-max) {
-      img { height: 40px }
+      img { width: 40px }
     }
   }
   .navbar-right.hidden-xs > li > a {

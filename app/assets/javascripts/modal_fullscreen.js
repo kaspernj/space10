@@ -22,9 +22,9 @@ $(document).on('ready page:load', function () {
   //   var color = $(this).data('backdrop-color') || 'white'
   //   $(".modal-backdrop").removeClass("modal-backdrop-fullscreen modal-backdrop-" + color);
   // });
-  // $('.modal').on('hidden.bs.modal', function(event){
-  //   setTimeout(function(){
-  //     $('[data-toggle="modal"]').blur();
-  //   });
-  // });
+  $('.modal').on('hidden.bs.modal', function(event){
+    setTimeout(function(){
+      $('[data-toggle="modal"]').blur();
+    });
+  });
 });

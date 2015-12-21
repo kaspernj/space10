@@ -3,14 +3,14 @@ body.profiles footer {
 }
 
 footer {
-  margin-top: $gutter;
+  margin-top: $gutter*1.5;
 }
 
 footer {
   color: white;
   font-weight: bold;
   background-color: $brand-primary;
-  padding-top: $gutter;
+  padding-top: $gutter*1.5;
   padding-bottom: $gutter;
   a {
     color: white;

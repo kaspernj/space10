@@ -2,7 +2,7 @@
   <%= link_to profile_path(profile, page: params['page'], q: params['q'], location: params['location']) do %>
     <div class="profile-image-container aspect-ratio r-1-1">
       <div>
-        <%= image_tag profile.image_url(:medium), {class: "full_width"} %>
+        <%= image_tag profile.image_url(:medium), {class: "full_width", onload: "imgLoaded(this)"} %>
       </div>
     </div>
     <% if controller_name == 'static_pages' %>
