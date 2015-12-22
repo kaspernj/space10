@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
 
   def search
-    
+    respond_to do |format|
+      format.js
+    end
   end
 
   def search_results
@@ -11,7 +13,6 @@ class SearchController < ApplicationController
       @search_results.sort!{|a,b| b.publish_at <=> a.publish_at} if @search_results.any?
     end
     respond_to do |format|
-      format.html
       format.js
     end
   end
