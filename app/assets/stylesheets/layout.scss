@@ -84,15 +84,19 @@ img.full_width {
 }
 
 #flash_notice {
+  background-color: black;
   @extend .alert-info;
 }
 #flash_success {
+  background-color: black;
   @extend .alert-success;
 }
 #flash_error, #flash_alert {
+  background-color: black;
   @extend .alert-danger;
 }
 #flash_warning {
+  background-color: black;
   @extend .alert-warning;
 }
 
