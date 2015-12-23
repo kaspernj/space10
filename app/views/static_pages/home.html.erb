@@ -1,4 +1,3 @@
-<% if @posts.any? && @current_lab.present? %>
 <div class="container">
 	<div class="row">
 		<div class="col-md-11 col-md-offset-1">
@@ -18,16 +17,18 @@
 		</div>
 		<!-- TEMP -->
 		<% lab = Post.find_by(title: 'The Fresh Living Lab') %>
-
-		<div class="col-md-4 content_block text-center current-lab">
-			<p class="meta-text"><%= @current_lab.current? ? "Currently exploring" : "Upcoming lab" %></p>
-			<% if lab %>
-				<p class="lead"><strong><%= link_to @current_lab.title, lab, class: 'no-style' %></strong></p>
-			<% else %>
-				<p class="lead"><strong><%= @current_lab.title %></strong></p>
-			<% end %>
-			<p class="meta-text"><%= @current_lab.timespan.html_safe %></p>
-		</div>
+		
+		<% if @current_lab.present? %>
+			<div class="col-md-4 content_block text-center current-lab">
+				<p class="meta-text"><%= @current_lab.current? ? "Currently exploring" : (@current_lab.historic? ? 'Recent exploration' : 'Upcoming exploration') %></p>
+				<% if lab %>
+					<p class="lead"><strong><%= link_to @current_lab.title, lab, class: 'no-style' %></strong></p>
+				<% else %>
+					<p class="lead"><strong><%= @current_lab.title %></strong></p>
+				<% end %>
+				<p class="meta-text"><%= @current_lab.timespan.html_safe %></p>
+			</div>
+		<% end %>
 	</div>
 </div>
 
@@ -67,6 +68,13 @@
 						<% @posts.each do |post| %>
 							<div class="col-md-4 post-thumbnail">
 								<%= render 'posts/thumbnail', post: post %>
+							</div>
+						<% end %>
+						<% if @posts.empty? %>
+							<div class="col-md-12 text-center">
+								<p class="lead">
+									No posts. Stay tuned.
+								</p>
 							</div>
 						<% end %>
 					</div>
@@ -112,7 +120,7 @@
 				<% if showing_events.empty? %>
 					<div class="col-md-12 text-center">
 						<p class="lead">
-							No upcoming events. Stay tuned.
+							No events. Stay tuned.
 						</p>
 					</div>
 				<% end %>
@@ -146,4 +154,3 @@
 		</div>
 	</div>
 </div>
-<% end %>

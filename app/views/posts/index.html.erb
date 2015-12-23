@@ -4,9 +4,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
-				<% @posts.limit(3).each do |post| %>
+				<% @posts.limit(3).each_with_index do |post, i| %>
 					<%= link_to post do %>
-						<%= image_tag post.image_attachments.first.image_url(:medium), height: "500" %>
+						<%= image_tag post.featured_image_url(:medium), height: "500" %>
 						<h2><%= post.title %></h2>
 					<% end %>
 				<% end %>
@@ -120,9 +120,11 @@
 				</div>
 				<%= render 'press_mentions', mentions: @mentions %>
 				<div class="row content_block">
-					<div class="col-md-12 text-center">
-						<%= link_to "View all", press_mentions_path, class: 'btn btn-default' %>
-					</div>
+					<% if @mentions.count < PressMention.published.count %>
+						<div class="col-md-12 text-center">
+							<%= link_to "View all", press_mentions_path, class: 'btn btn-default' %>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

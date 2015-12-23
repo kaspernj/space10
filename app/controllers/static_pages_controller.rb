@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
 		@events = Event.published.current_or_future.limit(2)
     @past_events = Event.published.historic.limit(2)
 		@profiles = Profile.published.featured.limit(4)
-		@current_lab = Lab.current_or_next
+		@current_lab = Lab.current_or_next || Lab.historic.first
 		@instagram_photos = InstagramApi.new.user_photos('2179243523') unless Rails.env.test?
 	end
 
