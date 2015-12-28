@@ -6,7 +6,7 @@
 					<%= image_tag 'frontpage_image.jpg', class: "full_width" %>
 				</div>
 				<div class="col-sm-4 col-sm-pull-8">
-					<h1 class="heading">A future-living lab<br> and exhibition space</h1>
+					<h1 class="heading">A future-living lab<br class="hidden-xs"> and exhibition space</h1>
 				</div>
 			</div>
 		</div>
@@ -142,10 +142,13 @@
 		</div>
 	</div>
 	<div class="row row-profiles content_block">
-		<% @profiles.each do |profile| %>
-			<div class="col-xs-6 col-sm-3">
-				<%= render 'profiles/profile_card', profile: profile %>
-			</div>
+		<% @profiles.in_groups_of(2, false).each do |group| %>
+			<% group.each do |profile| %>
+				<div class="col-xs-6 col-sm-3">
+					<%= render 'profiles/profile_card', profile: profile %>
+				</div>
+			<% end %>
+			<div class="clearfix visible-xs"></div>
 		<% end %>
 	</div>
 	<div class="row">

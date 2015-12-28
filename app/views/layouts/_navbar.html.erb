@@ -57,7 +57,7 @@
           <li>
             <%= link_to edit_user_path(current_user), {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} do %>
               <%= current_user.first_name %>
-              &nbsp;<%= image_tag current_user.personal_profile.image_url(:thumbnail), width: '22', class: 'img-circle' %>
+              &nbsp;<span><%= image_tag current_user.personal_profile.image_url(:thumbnail), width: '22', class: 'img-circle' %></span>
             <% end %>
           </li>
         <% else %>
@@ -97,12 +97,14 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <div><%= link_to "Journal", posts_path, class: 'h1' %></div><br>
-            <div><%= link_to "Program", events_path, class: 'h1' %></div><br>
-            <div><%= link_to "Labs", lab, class: 'h1' if lab.present? %></div><br>
-            <div><%= link_to "Community", profiles_path, class: 'h1' %></div><br>
-            <div><%= link_to "About", about_path, class: 'h1' %></div><br>
+          <div class="col-md-12 mobile-nav-links text-center">
+            <ul class="list-unstyled">
+              <li><%= link_to "Journal", posts_path %></li>
+              <li><%= link_to "Program", events_path %></li>
+              <li><%= link_to "Labs", lab if lab.present? %></li>
+              <li><%= link_to "Community", profiles_path %></li>
+              <li><%= link_to "About", about_path %></li>
+            </ul>
           </div>
         </div>
       </div>

@@ -198,13 +198,16 @@ input[value="Schedule"] {
 .content_block {
   padding-top: $gutter*1.5;
   padding-bottom: $gutter*1.5;
+  @media (max-width: $screen-xs-max) {
+    padding-top: $gutter*0.75;
+    padding-bottom: $gutter*0.75;
+  }
 }
-
-@media (max-width: $screen-xs-max) {
-  .content_block {
-    padding-top: $gutter;
-    padding-bottom: $gutter;
-  }  
+.content_block-sm {
+  @media (min-width: $screen-sm-min) {
+    padding-top: $gutter*1.5;
+    padding-bottom: $gutter*1.5;
+  }
 }
 
 // .row-eq-height {
@@ -263,25 +266,19 @@ input[value="Schedule"] {
   }
   .project_partnership_content {
     // padding: 0 $gutter*2;
-    border-top: 1px solid $gray-little-lighter;
-    border-bottom: 1px solid $gray-little-lighter;
-    padding-bottom: $gutter;
+    // border-top: 1px solid $gray-little-lighter;
+    // border-bottom: 1px solid $gray-little-lighter;
+    padding-bottom: $gutter/2;
+    margin-bottom: $gutter;
     @media (min-width: $screen-md-min) {
-      border-top: none;
-      border-bottom: none;
+      // border-top: none;
+      // border-bottom: none;
+      padding-bottom: $gutter;
       border-left: 1px solid $gray-little-lighter;
       border-right: 1px solid $gray-little-lighter;
     }
-    margin-bottom: $gutter;
-    &:first-child {
-      // padding-left: $gutter/2;
-      border: none;
-      padding-bottom: 0;
-    }
-    &:last-child {
-      // padding-right: $gutter/2;
-      border: none;
-      padding-bottom: 0;
+    &:first-child, &:last-child {
+      border:none;
     }
   }
   .project_partner {
@@ -299,8 +296,12 @@ input[value="Schedule"] {
 .large_close span {
     position: relative;
     cursor: pointer;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    @media (min-width: $screen-md-min) {
+      height: 50px;
+      width: 50px;
+    }
     float: right;
     display: block
 }
@@ -333,3 +334,15 @@ input[value="Schedule"] {
 .img-preview {
   display: block;
 }
+
+.smaller-inside-gutter-xs {
+  @media (max-width: $screen-xs-max) {
+    margin-left: -$gutter/5;
+    margin-right: -$gutter/5;
+    &> [class*='col-'] {
+      padding-right: $gutter/5;
+      padding-left: $gutter/5;
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 body:not(.admin) {
-  padding-top: 160px; // Height of nav
+  padding-top: 135px; // Height of nav
 }
 
 @media (min-width: $screen-sm-min) {
@@ -58,6 +58,14 @@ body:not(.admin) {
         color: white;
       }
     }
+  }
+}
+
+.mobile-nav-links {
+  a {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
   }
 }
 

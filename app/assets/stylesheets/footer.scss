@@ -4,6 +4,7 @@ body.profiles footer {
 
 footer {
   margin-top: $gutter*1.5;
+
 }
 
 footer {
@@ -11,7 +12,7 @@ footer {
   font-weight: bold;
   background-color: $brand-primary;
   padding-top: $gutter*1.5;
-  padding-bottom: $gutter;
+  padding-bottom: $gutter*1.5;
   a {
     color: white;
     font-weight: bold;

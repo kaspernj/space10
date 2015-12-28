@@ -18,19 +18,8 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
-				<% @posts.offset(3).limit(2).each do |post| %>
-					<div class="col-sm-6 post-thumbnail">
-						<%= render 'thumbnail', post: post %>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="row">
-				<% @posts.offset(5).limit(3).each do |post| %>
-					<div class="col-md-4 post-thumbnail">
+				<% @posts.offset(3).limit(2).each_with_index do |post, i| %>
+					<div class="col-sm-6 post-thumbnail with-left-border <%= i != 0 ? 'hidden-xs' : '' %>">
 						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
@@ -38,19 +27,35 @@
 		</div>
 	</div>
 </div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row smaller-inside-gutter-xs">
+				<% @posts.offset(4).limit(4).each_with_index do |post, i| %>
+					<div class="col-xs-6 col-md-4 post-thumbnail <%= i == 0 ? 'visible-xs' : 'with-left-border' %>">
+						<%= render 'thumbnail', post: post %>
+					</div>
+					<% if i % 2 == 1 %>
+						<div class="clearfix visible-xs"></div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
 <% if @featured_posts.any? %>
-	<div class="bg-gray hidden-xs">
+	<div class="bg-gray">
 		<div class="container">
-			<div class="row content_block">
+			<div class="row content_block-sm">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="row">
 						<div class="col-md-12">
 							<h3>#<%= @featured_lab.delete(' ').downcase %></h3>
 						</div>
 					</div>
-					<div class="row">
-						<% @featured_posts.each do |post| %>
+					<div class="row smaller-inside-gutter-xs">
+						<% @featured_posts.each_with_index do |post, i| %>
 							<div class="col-md-<%= 12/@featured_posts_count %> col-xs-6 post-miniature">
 								<%= link_to post do %>
 									<%= image_tag post.featured_image.image_url(:medium), class: "full_width" %>
@@ -59,9 +64,12 @@
 									<% else %>
 										<p class="meta-text">&mdash; <%= post.tags.pluck(:title).first %></p>
 									<% end %>
-									<p><%= post.title %></p>
+									<p class="post-title"><%= post.title %></p>
 								<% end %>
 							</div>
+							<% if i % 2 == 1 %>
+								<div class="clearfix visible-xs"></div>
+							<% end %>
 						<% end %>
 					</div>
 				</div>
@@ -71,7 +79,7 @@
 <% end %>
 
 <% if @featured_videos.any? %>
-<div class="container">
+<div class="container hidden-xs">
 	<div class="row content_block featured_videos_block">
 		<div class="col-md-8 col-md-offset-2">
 			<%= render 'posts/featured_videos', videos: @featured_videos %>
@@ -83,9 +91,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="row content_block">
+			<div class="row content_block-sm">
 				<% @posts.offset(8).limit(2).each do |post| %>
-					<div class="col-sm-6 post-thumbnail">
+					<div class="col-sm-6 post-thumbnail with-left-border">
 						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>
@@ -113,9 +121,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				<div class="row content_block">
+				<div class="row content_block-sm">
 					<div class="col-md-12">
-						<h2>In The Press</h2>
+						<h3>In The Press</h3>
 					</div>
 				</div>
 				<%= render 'press_mentions', mentions: @mentions %>
@@ -136,7 +144,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
 				<% @posts.offset(10).limit(3).each do |post| %>
-					<div class="col-md-4 post-thumbnail">
+					<div class="col-md-4 post-thumbnail with-left-border">
 						<%= render 'thumbnail', post: post %>
 					</div>
 				<% end %>

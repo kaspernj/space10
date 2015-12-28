@@ -6,9 +6,13 @@
 		<% if cycle('odd', 'even') == 'odd' %>
 			<div class="row event-large event-large-right">
 				<div class="col-md-11 col-md-offset-1 no-sm-padding">
-					<%= link_to event do %>
-					<div class="event-images">
-						<div class="aspect-ratio r-20-9">
+					<%= link_to event, class: 'event-images' do %>
+					
+						<div class="aspect-ratio r-20-9 hidden-xs">
+							<div style="background-image: url('<%= event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url %>');">
+							</div>
+						</div>
+						<div class="aspect-ratio r-16-9 visible-xs">
 							<div style="background-image: url('<%= event.secondary_image.present? ? event.secondary_image.image_url : event.featured_image.image_url %>');">
 							</div>
 						</div>
@@ -20,7 +24,6 @@
 								</div>
 							</div>
 						<% end %>
-					</div>
 					<% end %>
 					<div class="row content_block">
 						<div class="col-sm-7 event-title-and-excerpt">

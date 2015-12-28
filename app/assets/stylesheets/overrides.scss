@@ -10,6 +10,13 @@ h2 {
   letter-spacing: -1px;
 }
 
+@media (max-width: $screen-xs-max) {
+  h1, .h1 {
+    font-size: $font-size-h1*0.5;
+    letter-spacing: -1px;
+  }
+}
+
 .underline-links a:not([class]) {
   border-bottom: 3px solid #ddd;
   box-shadow: inset 0 -3px 0 #ddd;
@@ -68,12 +75,6 @@ input, select, ul.token-input-list-bootstrap {
   .panel:not(.note-editor) {
     border-width: 10px;
   }
-}
-
-@media (max-width: $screen-xs-max) {
-	h1, .h1 {
-		font-size: $font-size-h1*0.6;
-	}
 }
 
 hr {

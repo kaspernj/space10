@@ -29,7 +29,10 @@
   }
   blockquote {
     border:none;
-    font-size: 2.9em;
+    font-size: 2em;
+    @media (min-width: $screen-sm-min) {
+      font-size: 2.9em;
+    }
     font-weight: bold;
     line-height: 1.1em;
     padding: 0;
@@ -43,6 +46,8 @@
 @media (max-width: $screen-xs-max) {
   .posts.show, .events.show, .events.index, .static_pages {
     p.excerpt {
+      letter-spacing: -1px;
+      font-size: 1.4em;
       line-height: 1.3em;
     }
     .text_block p {

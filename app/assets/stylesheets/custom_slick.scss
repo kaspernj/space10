@@ -21,8 +21,9 @@
 
 @media (max-width: $screen-xs-max) {
   .slick-slide {
+    margin-right: $gutter/2;
     &> img {
-      height: 240px;
+      height: 190px;
     }
     h2 {
       font-size: 1.5em;

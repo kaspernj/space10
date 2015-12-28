@@ -1,11 +1,19 @@
 .press_mentions_block {
-  padding: $gutter/2 0;
   @media (min-width: $screen-md-min) {
+    padding: $gutter/2 0;
     padding: $gutter $gutter/2;
+    margin-left: 0;
+    margin-right: 0;
+    border: 1px solid #F2F2F2;
   }
-  margin-left: 0;
-  margin-right: 0;
-  border: 1px solid #F2F2F2;
+  @media (max-width: $screen-xs-max) {
+    margin-left: -$gutter/5;
+    margin-right: -$gutter/5;
+    .press_mention {
+      padding-left: $gutter/5;
+      padding-right: $gutter/5;
+    }
+  }
 }
 
 .press_mentions_content {
