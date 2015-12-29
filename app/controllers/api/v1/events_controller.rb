@@ -5,6 +5,14 @@ class Api::V1::EventsController < Api::V1::ApiController
 		@events = Event.published.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
 	end
 
+	def future
+		@events = Event.published.current_or_future.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
+	end
+
+	def historic
+		@events = Event.published.historic.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
+	end
+
 	def show
 		@event = Event.published.find(params[:id])
 		respond_to do |format|

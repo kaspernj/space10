@@ -28,7 +28,11 @@ describe "Posts api", type: :request do
 					'id' => post.id,
 					'excerpt' => post.excerpt,
 					'title' => post.title,
-					'featured_image' => nil,
+					'featured_image'  => {
+							'small' => post.featured_image_url(:small),
+							'medium' => post.featured_image_url(:medium),
+							'large' => post.featured_image_url(:large)
+						},
 					'tags' => [],
 					'content' => post.content,
 					'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,

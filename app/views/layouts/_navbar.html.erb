@@ -18,15 +18,14 @@
               &nbsp;<%= current_user.first_name %>
             <% end %>
           </li>
+        <% else %>
+          <li><%= link_to "<i class='icon-fingerprint'></i> Sign up".html_safe, new_user_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
+        <% end %>
           <li>
             <%= link_to search_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} do %>
               <i class="fa fa-search"></i> Search
             <% end %>
           </li>
-        <% else %>
-          <li><%= link_to "<i class='icon-fingerprint'></i> Sign up".html_safe, new_user_path, {remote: true, data: {toggle: "modal", target: "#modal-fullscreen"}} %></li>
-        <% end %>
-        <!-- <li><%= link_to "<i class='fa fa-search'></i> Search".html_safe, "#" %></li> -->
       </ul>
       <ul class="nav navbar-nav primary-nav navbar-right hidden-xs hidden-sm">
         <li class="play_sound">

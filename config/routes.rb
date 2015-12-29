@@ -67,6 +67,8 @@ Rails.application.routes.draw do
       get 'auth/failure', to: 'sessions#omniauth_failure'
 
       get 'events', to: 'events#index'
+      get 'future_events', to: 'events#future'
+      get 'historic_events', to: 'events#historic'
       get 'events/:id', to: 'events#show'
 
       get 'posts', to: 'posts#index'

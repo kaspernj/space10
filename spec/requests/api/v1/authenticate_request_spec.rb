@@ -15,14 +15,28 @@ describe "Authenticate api", type: :request do
 
 			expect(response.status).to eq 200
 			expect(response_body).to eq(
-				{
-					'id' => user.id,
-					'auth_token' => user.auth_token,
-					'name' => user.name,
-					'email' => user.email,
-					'birthday' => user.birthday.try(:strftime,"%F"),
-					'gender' => user.gender
-				}
+				'id' => user.id,
+	      'auth_token' => user.auth_token,
+	      'name' => user.name,
+	      'email' => user.email,
+	      'birthday' => user.birthday.try(:strftime,"%F"),
+	      'gender' => user.gender,
+	      'personal_profile' => {
+	        'id' => user.personal_profile.id,
+	        'type' => user.personal_profile.type,
+	        'title' => user.name,
+	        'tagline' => user.personal_profile.tagline,
+	        'description' => nil,
+	        'location' => nil,
+	        'tags' => [],
+	        'avatar' => {
+	          'small' => user.personal_profile.image_url(:thumbnail),
+	          'medium' => user.personal_profile.image_url(:medium),
+	          'large' => user.personal_profile.image_url(:large)
+	          },
+	        'logo' => nil
+	        },
+	      'company_profiles' => []
 			)
 		end
 

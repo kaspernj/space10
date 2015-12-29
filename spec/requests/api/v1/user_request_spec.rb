@@ -15,14 +15,30 @@ describe "Users api", type: :request do
 			post '/api/users', user_params, request_headers
 
 			expect(response.status).to eq 200 # created
-			expect(response_body).to eq (
+			expect(response_body).to eq(
 				{
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
-					'name' => 'John',
-					'email' => 'johndoe@example.com',
+					"name" => "John",
+					"email" => "johndoe@example.com",
 					'birthday' => User.last.birthday.try(:strftime,"%F"),
-					'gender' => User.last.gender
+					'gender' => User.last.gender,
+					'personal_profile' => {
+						'id' => User.last.personal_profile.id,
+						'type' => User.last.personal_profile.type,
+						"title" => "John",
+						'tagline' => User.last.personal_profile.tagline,
+						'description' => nil,
+						'location' => nil,
+						'tags' => [],
+						'avatar' => {
+							'small' => User.last.personal_profile.image_url(:thumbnail),
+							'medium' => User.last.personal_profile.image_url(:medium),
+							'large' => User.last.personal_profile.image_url(:large)
+							},
+						'logo' => nil
+						},
+					'company_profiles' => []
 				}
 			)
 		end
@@ -35,14 +51,30 @@ describe "Users api", type: :request do
 			post "/api/auth/facebook/callback", facebook_hash, request_headers
 
 			expect(response.status).to eq 200
-			expect(response_body).to eq (
+			expect(response_body).to eq(
 				{
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
-					'name' => 'John Doe',
-					'email' => 'johndoe@example.com',
+					"name" => "John Doe",
+					"email" => "johndoe@example.com",
 					'birthday' => User.last.birthday.try(:strftime,"%F"),
-					'gender' => User.last.gender
+					'gender' => User.last.gender,
+					'personal_profile' => {
+						'id' => User.last.personal_profile.id,
+						'type' => User.last.personal_profile.type,
+						"title" => "John Doe",
+						'tagline' => User.last.personal_profile.tagline,
+						'description' => nil,
+						'location' => nil,
+						'tags' => [],
+						'avatar' => {
+							'small' => User.last.personal_profile.image_url(:thumbnail),
+							'medium' => User.last.personal_profile.image_url(:medium),
+							'large' => User.last.personal_profile.image_url(:large)
+							},
+						'logo' => nil
+						},
+					'company_profiles' => []
 				}
 			)
 		end
@@ -53,14 +85,30 @@ describe "Users api", type: :request do
 			post "/api/auth/linkedin/callback", linkedin_hash, request_headers
 
 			expect(response.status).to eq 200
-			expect(response_body).to eq (
+			expect(response_body).to eq(
 				{
 					'id' => User.last.id,
 					'auth_token' => User.last.auth_token,
-					'name' => 'John Doe',
-					'email' => 'johndoe@example.com',
+					"name" => "John Doe",
+					"email" => "johndoe@example.com",
 					'birthday' => User.last.birthday.try(:strftime,"%F"),
-					'gender' => User.last.gender
+					'gender' => User.last.gender,
+					'personal_profile' => {
+						'id' => User.last.personal_profile.id,
+						'type' => User.last.personal_profile.type,
+						"title" => "John Doe",
+						'tagline' => User.last.personal_profile.tagline,
+						'description' => nil,
+						'location' => nil,
+						'tags' => [],
+						'avatar' => {
+							'small' => User.last.personal_profile.image_url(:thumbnail),
+							'medium' => User.last.personal_profile.image_url(:medium),
+							'large' => User.last.personal_profile.image_url(:large)
+							},
+						'logo' => nil
+						},
+					'company_profiles' => []
 				}
 			)
 		end
@@ -88,7 +136,11 @@ describe "Users api", type: :request do
 						'description' => nil,
 						'location' => nil,
 						'tags' => [],
-						'avatar' => user.personal_profile.image_url(:medium),
+						'avatar' => {
+							'small' => user.personal_profile.image_url(:thumbnail),
+							'medium' => user.personal_profile.image_url(:medium),
+							'large' => user.personal_profile.image_url(:large)
+							},
 						'logo' => nil
 						},
 					'company_profiles' => []
@@ -121,8 +173,26 @@ describe "Users api", type: :request do
 				{
 					'id' => @user.id,
 					'auth_token' => @user.auth_token,
-					'name' => 'Frank',
-					'email' => @user.email
+					'name' => "Frank",
+					'email' => @user.email,
+					'birthday' => @user.birthday.try(:strftime,"%F"),
+					'gender' => @user.gender,
+					'personal_profile' => {
+						'id' => @user.personal_profile.id,
+						'type' => @user.personal_profile.type,
+						'title' => "Frank",
+						'tagline' => @user.personal_profile.tagline,
+						'description' => nil,
+						'location' => nil,
+						'tags' => [],
+						'avatar' => {
+							'small' => @user.personal_profile.image_url(:thumbnail),
+							'medium' => @user.personal_profile.image_url(:medium),
+							'large' => @user.personal_profile.image_url(:large)
+							},
+						'logo' => nil
+						},
+					'company_profiles' => []
 				}
 			)
 		end

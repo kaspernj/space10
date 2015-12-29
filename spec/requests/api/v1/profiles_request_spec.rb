@@ -51,13 +51,17 @@ describe "profiles api", type: :request do
 			expect(response_body).to eq (
 				{
 					'id' => profile.id,
-					'title' => profile.title,
-					'tagline' => profile.tagline,
 					'type' => profile.type,
+					"title" => profile.title,
+					'tagline' => profile.tagline,
 					'description' => profile.description,
 					'location' => profile.location,
 					'tags' => [],
-					'avatar' => profile.image_url(:medium),
+					'avatar' => {
+						'small' => profile.image_url(:thumbnail),
+						'medium' => profile.image_url(:medium),
+						'large' => profile.image_url(:large)
+						},
 					'logo' => nil
 				}
 			)

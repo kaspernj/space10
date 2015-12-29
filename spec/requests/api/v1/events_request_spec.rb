@@ -16,6 +16,34 @@ describe "Events api", type: :request do
 		end
 	end
 
+	describe "GET /api/events/future" do
+		it "should return all future events" do
+			create :event, title: "Great Talk", starts_at: 2.days.ago.to_s(:formatted), ends_at: 1.day.ago.to_s(:formatted)
+			create :event, title: "Awesome workshop"
+
+			get '/api/future_events', {}, request_headers
+
+			expect(response.status).to eq 200
+
+			event_titles = response_body.map{ |m| m['title'] }
+			expect(event_titles).to eq(["Awesome workshop"])
+		end
+	end
+
+	describe "GET /api/events/historic" do
+		it "should return all historic events" do
+			create :event, title: "Great Talk", starts_at: 2.days.ago.to_s(:formatted), ends_at: 1.day.ago.to_s(:formatted)
+			create :event, title: "Awesome workshop"
+
+			get '/api/historic_events', {}, request_headers
+
+			expect(response.status).to eq 200
+
+			event_titles = response_body.map{ |m| m['title'] }
+			expect(event_titles).to eq(["Great Talk"])
+		end
+	end
+
 	describe "GET /api/events/:id" do
 		it "should return requested event" do
 			event = create(:event)
@@ -29,8 +57,16 @@ describe "Events api", type: :request do
 					'title' => event.title,
 					'excerpt' => event.excerpt,
 					'content' => event.content,
-					'featured_image' => nil,
-					'secondary_image' => nil,
+					'featured_image' => {
+							'small' => event.featured_image_url(:small),
+							'medium' => event.featured_image_url(:medium),
+							'large' => event.featured_image_url(:large)
+						},
+					'secondary_image' => {
+							'small' => event.secondary_image_url(:small),
+							'medium' => event.secondary_image_url(:medium),
+							'large' => event.secondary_image_url(:large)
+						},
 					'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
 					'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
 					'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,

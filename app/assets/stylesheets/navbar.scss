@@ -8,6 +8,10 @@ body:not(.admin) {
   }
 }
 
+body.clean-layout {
+  padding-top: 40px; // Height of nav
+}
+
 .navbar, .dropdown-menu {
   a:after, a:hover:after {
     border: none;

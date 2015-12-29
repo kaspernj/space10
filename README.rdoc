@@ -146,11 +146,29 @@ Requests that return multiple items will be paginated to 5 items by default. You
 *Response*
 
   {
-    'id' => 1,
-    'auth_token' => AUTH_TOKEN,
-    'name' => 'John',
-    'email' => 'johndoe@example.com'
-  }
+      'id' => user.id,
+      'auth_token' => user.auth_token,
+      'name' => "John",
+      'email' => "johndoe@example.com",
+      'birthday' => user.birthday.try(:strftime,"%F"),
+      'gender' => user.gender,
+      'personal_profile' => {
+        'id' => user.personal_profile.id,
+        'type' => user.personal_profile.type,
+        'title' => "John",
+        'tagline' => user.personal_profile.tagline,
+        'description' => nil,
+        'location' => nil,
+        'tags' => [],
+        'avatar' => {
+          'small' => user.personal_profile.image_url(:thumbnail),
+          'medium' => user.personal_profile.image_url(:medium),
+          'large' => user.personal_profile.image_url(:large)
+          },
+        'logo' => nil
+        },
+      'company_profiles' => []
+    }
 
 ==== Authenticate user
 
@@ -170,7 +188,25 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'id' => user.id,
     'auth_token' => user.auth_token,
     'name' => user.name,
-    'email' => user.email
+    'email' => user.email,
+    'birthday' => user.birthday.try(:strftime,"%F"),
+    'gender' => user.gender,
+    'personal_profile' => {
+      'id' => user.personal_profile.id,
+      'type' => user.personal_profile.type,
+      'title' => user.name,
+      'tagline' => user.personal_profile.tagline,
+      'description' => nil,
+      'location' => nil,
+      'tags' => [],
+      'avatar' => {
+        'small' => user.personal_profile.image_url(:thumbnail),
+        'medium' => user.personal_profile.image_url(:medium),
+        'large' => user.personal_profile.image_url(:large)
+        },
+      'logo' => nil
+      },
+    'company_profiles' => []
   }
 
 ==== Get authenticated user
@@ -185,7 +221,23 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'auth_token' => user.auth_token,
     'name' => user.name,
     'email' => user.email,
-    'personal_profile' => [],
+    'birthday' => user.birthday.try(:strftime,"%F"),
+    'gender' => user.gender,
+    'personal_profile' => {
+      'id' => user.personal_profile.id,
+      'type' => user.personal_profile.type,
+      'title' => user.name,
+      'tagline' => user.personal_profile.tagline,
+      'description' => nil,
+      'location' => nil,
+      'tags' => [],
+      'avatar' => {
+        'small' => user.personal_profile.image_url(:thumbnail),
+        'medium' => user.personal_profile.image_url(:medium),
+        'large' => user.personal_profile.image_url(:large)
+        },
+      'logo' => nil
+      },
     'company_profiles' => []
   }
 
@@ -205,8 +257,26 @@ Requests that return multiple items will be paginated to 5 items by default. You
   {
     'id' => user.id,
     'auth_token' => user.auth_token,
-    'name' => 'Frank',
-    'email' => user.email
+    'name' => user.name,
+    'email' => user.email,
+    'birthday' => user.birthday.try(:strftime,"%F"),
+    'gender' => user.gender,
+    'personal_profile' => {
+      'id' => user.personal_profile.id,
+      'type' => user.personal_profile.type,
+      'title' => user.name,
+      'tagline' => user.personal_profile.tagline,
+      'description' => nil,
+      'location' => nil,
+      'tags' => [],
+      'avatar' => {
+        'small' => user.personal_profile.image_url(:thumbnail),
+        'medium' => user.personal_profile.image_url(:medium),
+        'large' => user.personal_profile.image_url(:large)
+        },
+      'logo' => nil
+      },
+    'company_profiles' => []
   }
 
 === Events
@@ -214,6 +284,16 @@ Requests that return multiple items will be paginated to 5 items by default. You
 ==== Get all events
 
   get /api/events
+  Authorization: Basic USERNAME:PASSWORD
+
+Note: You may also get just the future or historic events, by doing following call.
+
+  get /api/future_events
+  Authorization: Basic USERNAME:PASSWORD
+
+or
+
+  get /api/historic_events
   Authorization: Basic USERNAME:PASSWORD
 
 *Response*
@@ -224,40 +304,56 @@ Requests that return multiple items will be paginated to 5 items by default. You
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
-      'featured_image' => nil,
-      'secondary_image' => nil,
+      'featured_image' => {
+          'small' => event.featured_image_url(:small),
+          'medium' => event.featured_image_url(:medium),
+          'large' => event.featured_image_url(:large)
+        },
+      'secondary_image' => {
+          'small' => event.secondary_image_url(:small),
+          'medium' => event.secondary_image_url(:medium),
+          'large' => event.secondary_image_url(:large)
+        },
       'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
       'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
       'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
-        'text' => event.project_partners_text,
+        'text' => nil,
         'partners' => [],
       },
       'project_people' => {
-        'text' => project_people_text,
+        'text' => nil,
         'people' => [],
       },
-      'lab' => event.lab
+      'lab' => nil
     },
     {
       'id' => 2,
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
-      'featured_image' => nil,
-      'secondary_image' => nil,
+      'featured_image' => {
+          'small' => event.featured_image_url(:small),
+          'medium' => event.featured_image_url(:medium),
+          'large' => event.featured_image_url(:large)
+        },
+      'secondary_image' => {
+          'small' => event.secondary_image_url(:small),
+          'medium' => event.secondary_image_url(:medium),
+          'large' => event.secondary_image_url(:large)
+        },
       'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
       'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
       'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
-        'text' => event.project_partners_text,
+        'text' => nil,
         'partners' => [],
       },
       'project_people' => {
-        'text' => project_people_text,
+        'text' => nil,
         'people' => [],
       },
-      'lab' => event.lab
+      'lab' => nil
     }
   ]
 
@@ -273,20 +369,28 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'title' => event.title,
     'excerpt' => event.excerpt,
     'content' => event.content,
-    'featured_image' => nil,
-    'secondary_image' => nil,
+    'featured_image' => {
+        'small' => event.featured_image_url(:small),
+        'medium' => event.featured_image_url(:medium),
+        'large' => event.featured_image_url(:large)
+      },
+    'secondary_image' => {
+        'small' => event.secondary_image_url(:small),
+        'medium' => event.secondary_image_url(:medium),
+        'large' => event.secondary_image_url(:large)
+      },
     'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
     'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
     'published_at' => event.published_at.in_time_zone('Copenhagen').iso8601,
     'project_partners' => {
-      'text' => event.project_partners_text,
+      'text' => nil,
       'partners' => [],
     },
     'project_people' => {
-      'text' => project_people_text,
+      'text' => nil,
       'people' => [],
     },
-    'lab' => event.lab
+    'lab' => nil
   }
 
 ==== Get authenticated user's events
@@ -396,35 +500,45 @@ Requests that return multiple items will be paginated to 5 items by default. You
       'id' => post.id,
       'excerpt' => post.excerpt,
       'title' => post.title,
-      'featured_image' => post.featured_image_url,
+      'featured_image'  => {
+          'small' => post.featured_image_url(:small),
+          'medium' => post.featured_image_url(:medium),
+          'large' => post.featured_image_url(:large)
+        },
+      'tags' => [],
       'content' => post.content,
-      'published_at' => post.published_at,
+      'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
-        'text' => post.project_partners_text,
+        'text' => nil,
         'partners' => [],
       },
       'project_people' => {
-        'text' => project_people_text,
+        'text' => nil,
         'people' => [],
       },
-      'lab' => post.lab
+      'lab' => nil
     },
     {
       'id' => post.id,
       'excerpt' => post.excerpt,
       'title' => post.title,
-      'featured_image' => post.featured_image_url,
+      'featured_image'  => {
+          'small' => post.featured_image_url(:small),
+          'medium' => post.featured_image_url(:medium),
+          'large' => post.featured_image_url(:large)
+        },
+      'tags' => [],
       'content' => post.content,
-      'published_at' => post.published_at,
+      'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
-        'text' => post.project_partners_text,
+        'text' => nil,
         'partners' => [],
       },
       'project_people' => {
-        'text' => project_people_text,
+        'text' => nil,
         'people' => [],
       },
-      'lab' => post.lab
+      'lab' => nil
     }
   ]
 
@@ -439,18 +553,23 @@ Requests that return multiple items will be paginated to 5 items by default. You
     'id' => post.id,
     'excerpt' => post.excerpt,
     'title' => post.title,
-    'featured_image' => post.featured_image_url,
+    'featured_image'  => {
+        'small' => post.featured_image_url(:small),
+        'medium' => post.featured_image_url(:medium),
+        'large' => post.featured_image_url(:large)
+      },
+    'tags' => [],
     'content' => post.content,
-    'published_at' => post.published_at,
+    'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
     'project_partners' => {
-      'text' => post.project_partners_text,
+      'text' => nil,
       'partners' => [],
     },
     'project_people' => {
-      'text' => project_people_text,
+      'text' => nil,
       'people' => [],
     },
-    'lab' => post.lab
+    'lab' => nil
   }
 
 === Profiles
@@ -472,19 +591,33 @@ See filter options below.
   [
     {
       'id' => profile.id,
-      'title' => profile.title,
       'type' => profile.type,
+      'title' => profile.title,
+      'tagline' => profile.tagline,
       'description' => profile.description,
       'location' => profile.location,
-      'tags' => []
+      'tags' => [],
+      'avatar' => {
+        'small' => profile.image_url(:thumbnail),
+        'medium' => profile.image_url(:medium),
+        'large' => profile.image_url(:large)
+        },
+      'logo' => nil
     },
     {
       'id' => profile.id,
-      'title' => profile.title,
       'type' => profile.type,
+      'title' => profile.title,
+      'tagline' => profile.tagline,
       'description' => profile.description,
       'location' => profile.location,
-      'tags' => []
+      'tags' => [],
+      'avatar' => {
+        'small' => profile.image_url(:thumbnail),
+        'medium' => profile.image_url(:medium),
+        'large' => profile.image_url(:large)
+        },
+      'logo' => nil
     }
   ]
 
@@ -497,11 +630,18 @@ See filter options below.
 
   {
     'id' => profile.id,
-    'title' => profile.title,
     'type' => profile.type,
+    'title' => profile.title,
+    'tagline' => profile.tagline,
     'description' => profile.description,
     'location' => profile.location,
-    'tags' => []
+    'tags' => [],
+    'avatar' => {
+      'small' => profile.image_url(:thumbnail),
+      'medium' => profile.image_url(:medium),
+      'large' => profile.image_url(:large)
+      },
+    'logo' => nil
   }
 
 ==== Get filter options
