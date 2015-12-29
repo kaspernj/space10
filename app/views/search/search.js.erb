@@ -2,11 +2,4 @@ $("#modal-fullscreen").find('.modal-body').html("<%= escape_javascript(render 's
 $("#modal-fullscreen").on('shown.bs.modal', function () {
     $('#search_query').focus();
 });
-$('#search_query').keyup(function () {
-  if (this.value.length > 2) {
-    $(this).closest('form').submit();
-  };
-});
-$('input[type=radio]').on( 'change', function() {
-  $(this).closest('form').submit();
-});
+init_search();

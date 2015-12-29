@@ -16,7 +16,7 @@ describe 'messaging', type: :feature do
     it 'allows to message community users', js: true do
       visit profile_path(user_2.personal_profile)
 
-      expect(page).to have_content "Get in touch".upcase
+      expect(page).to have_content "Get in touch"
       click_on "Get in touch"
 
       expect(page).to have_content "To: #{user_2.personal_profile.title}".upcase
@@ -34,7 +34,7 @@ describe 'messaging', type: :feature do
     it 'does not allow messaging', js: true do
       visit profile_path(user_2.personal_profile)
 
-      expect(page).to have_content "GET IN TOUCH"
+      expect(page).to have_content "Get in touch"
       click_on "Get in touch"
 
       expect(page).not_to have_content "To #{user_2.personal_profile.title}"

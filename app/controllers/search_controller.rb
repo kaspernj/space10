@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
   def search
     respond_to do |format|
+      format.html { render layout: 'clean_application' }
       format.js
     end
   end
