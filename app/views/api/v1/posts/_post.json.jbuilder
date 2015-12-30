@@ -8,6 +8,12 @@ json.featured_image do
 end
 json.tags post.tags, :id, :title
 json.content post.content
+json.content_blocks post.content_blocks do |block|
+  json.id block.id
+  json.type block.type
+  json.row_order block.row_order
+  json.partial! "api/v1/content_blocks/#{block.type.underscore}", block: block
+end
 json.published_at post.published_at.iso8601
 json.project_partners do
   json.text post.project_partners_text

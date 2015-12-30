@@ -12,9 +12,10 @@
 #
 
 FactoryGirl.define do
-  factory :content_block do
-    type ""
+  factory :image_slider_block do
+    type "ImageSliderBlock"
     resource_type "MyString"
     resource_id 1
+    image_attachments { create_list(:image_attachment, 3) }
   end
 end

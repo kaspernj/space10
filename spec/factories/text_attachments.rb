@@ -13,8 +13,7 @@
 FactoryGirl.define do
   factory :text_attachment do
     resource_type "MyString"
-resource_id 1
-content "MyText"
+    resource_id 1
+    content "MyText"
   end
-
 end

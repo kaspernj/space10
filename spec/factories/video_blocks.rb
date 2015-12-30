@@ -12,9 +12,10 @@
 #
 
 FactoryGirl.define do
-  factory :content_block do
-    type ""
+  factory :video_block do
+    type "VideoBlock"
     resource_type "MyString"
     resource_id 1
+    video_attachment
   end
 end

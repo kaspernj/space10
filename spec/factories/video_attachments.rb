@@ -19,10 +19,10 @@
 FactoryGirl.define do
   factory :video_attachment do
     title "MyString"
-description "MyString"
-featured false
-provider "MyString"
-video_id "MyString"
+    description "MyString"
+    featured false
+    video_url "MyString"
+    provider "MyString"
+    video_id "MyString"
   end
-
 end

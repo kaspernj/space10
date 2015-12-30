@@ -10,7 +10,7 @@
     <% else %>
       <p class="profile-heading"><strong><%= profile.title %></strong></p>
     <% end %>
-    <p class="meta-text profile-tags"><%= profile.tags.pluck(:title).unshift(profile.try(:tagline)).reject(&:blank?).join(" / ") %></p>
+    <p class="meta-text profile-tags"><%= profile.try(:tagline) || profile.tags.limit(3).pluck(:title).join(" / ") %></p>
     <p class="meta-text profile-location"><i class="fa fa-map-marker"></i> <%= profile.location %></p>
   <% end %>
 </div>

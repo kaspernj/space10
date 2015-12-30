@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-unstyled">
+      <li>Users: <%= User.all.count %></li>
+      <li>Published profiles: <%= Profile.published.count %></li>
+      <li>Published posts: <%= Post.published.count %></li>
+      <li>Published events: <%= Event.published.count %></li>
+      <li>Published press mentions: <%= Event.published.count %></li>
+    </ul>
+  </div>
+</div>

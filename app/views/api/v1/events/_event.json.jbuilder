@@ -2,6 +2,12 @@ json.id event.id
 json.title event.title
 json.excerpt event.excerpt
 json.content event.content
+json.content_blocks event.content_blocks do |block|
+  json.id block.id
+  json.type block.type
+  json.row_order block.row_order
+  json.partial! "api/v1/content_blocks/#{block.type.underscore}", block: block
+end
 json.featured_image do
    json.small event.featured_image_url(:small)
    json.medium event.featured_image_url(:medium)

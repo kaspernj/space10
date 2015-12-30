@@ -57,6 +57,7 @@ describe "Events api", type: :request do
 					'title' => event.title,
 					'excerpt' => event.excerpt,
 					'content' => event.content,
+					'content_blocks' => [],
 					'featured_image' => {
 							'small' => event.featured_image_url(:small),
 							'medium' => event.featured_image_url(:medium),

@@ -19,7 +19,7 @@ FactoryGirl.define do
 		resource_id 1
 		title "MyString"
 		description "MyString"
-		image "sritng"
+		image { File.new("#{Rails.root}/spec/factories/images/image_1.jpg") } 
   end
 
 end

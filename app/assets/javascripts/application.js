@@ -25,5 +25,7 @@
 //= require jquery.unveil
 //= require autosize.min
 //= require jquery.tokeninput.min
+//= require select2.full.min
+//= require jquery.placecomplete
 //= require_tree .
 //= require turbolinks

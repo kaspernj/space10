@@ -14,9 +14,11 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-7">
-					<p class="profile-location"><strong><i class="fa fa-lg fa-fw fa-map-marker"></i> <%= @profile.location %></strong></p>
+					<% if @profile.location.present? %>
+						<p class="profile-location"><strong><i class="fa fa-lg fa-fw fa-map-marker"></i> <%= @profile.location %></strong></p>
+					<% end %>
 					<h1><%= @profile.title %></h1>
-					<p class="profile-tags meta-text"><%= @profile.tags.pluck(:title).unshift(@profile.try(:tagline)).reject(&:blank?).join(" / ") %></p>
+					<p class="meta-text profile-tags"><%= @profile.try(:tagline) || @profile.tags.limit(3).pluck(:title).join(" / ") %></p>
 					<div class="row">
 						<div class="col-md-7">
 							<p class="profile-description"><%= @profile.description %></p>
