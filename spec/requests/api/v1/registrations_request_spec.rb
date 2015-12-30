@@ -20,6 +20,7 @@ describe "Registrations api", type: :request do
 						'title' => event.title,
 						'excerpt' => event.excerpt,
 						'content' => event.content,
+						'content_blocks' => [],
 						'featured_image' => {
 								'small' => event.featured_image_url(:small),
 								'medium' => event.featured_image_url(:medium),
@@ -62,6 +63,7 @@ describe "Registrations api", type: :request do
 						'title' => event.title,
 						'excerpt' => event.excerpt,
 						'content' => event.content,
+						'content_blocks' => [],
 						'featured_image' => {
 								'small' => event.featured_image_url(:small),
 								'medium' => event.featured_image_url(:medium),
@@ -120,6 +122,7 @@ describe "Registrations api", type: :request do
 						'title' => another_event.title,
 						'excerpt' => another_event.excerpt,
 						'content' => another_event.content,
+						'content_blocks' => [],
 						'featured_image' => {
 								'small' => another_event.featured_image_url(:small),
 								'medium' => another_event.featured_image_url(:medium),

@@ -46,6 +46,7 @@ describe "Labs api", type: :request do
                 },
               'tags' => [],
               'content' => post.content,
+              'content_blocks' => [],
               'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
               'project_partners' => {
                 'text' => nil,
