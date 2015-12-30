@@ -304,6 +304,14 @@ or
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
+      'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
       'featured_image' => {
           'small' => event.featured_image_url(:small),
           'medium' => event.featured_image_url(:medium),
@@ -332,6 +340,14 @@ or
       'title' => event.title,
       'excerpt' => event.excerpt,
       'content' => event.content,
+      'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
       'featured_image' => {
           'small' => event.featured_image_url(:small),
           'medium' => event.featured_image_url(:medium),
@@ -369,6 +385,14 @@ or
     'title' => event.title,
     'excerpt' => event.excerpt,
     'content' => event.content,
+    'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
     'featured_image' => {
         'small' => event.featured_image_url(:small),
         'medium' => event.featured_image_url(:medium),
@@ -507,6 +531,14 @@ or
         },
       'tags' => [],
       'content' => post.content,
+      'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
       'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
         'text' => nil,
@@ -529,6 +561,14 @@ or
         },
       'tags' => [],
       'content' => post.content,
+      'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
       'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
       'project_partners' => {
         'text' => nil,
@@ -560,6 +600,14 @@ or
       },
     'tags' => [],
     'content' => post.content,
+    'content_blocks' => [
+          {
+            'id' => content_block.id,
+            'type' => 'ImageBlock',
+            'row_order' => 1,
+            'content' => CONTENT
+          }
+        ],
     'published_at' => post.published_at.in_time_zone('Copenhagen').iso8601,
     'project_partners' => {
       'text' => nil,
