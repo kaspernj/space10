@@ -11,7 +11,7 @@ $(document).on('ready page:load', function () {
     var largeContainer = $('.video-container-large');
     var mq = window.matchMedia( "(min-width: 500px)" );
 
-    if (clickedContainer != largeContainer && mq.matches) {
+    if (largeContainer.length > 0 && clickedContainer != largeContainer && mq.matches) {
       var largeHtml = largeContainer.html();
       var smallHtml = clickedContainer.html();
 
@@ -20,6 +20,7 @@ $(document).on('ready page:load', function () {
 
       clickedContainer = largeContainer;
     }
+
     clickedContainer.find('.video-poster').hide();
     var src = clickedContainer.find('.video-embed').data('embed-src')
     clickedContainer.find('.video-embed').show().find('iframe').attr('src', src);
