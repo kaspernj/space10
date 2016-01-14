@@ -79,6 +79,8 @@ gem 'rack-mini-profiler', group: :development
 
 gem 'pg_search'
 
+gem 'parse-ruby-client'
+
 group :production do
   gem 'rails_12factor'
 end
