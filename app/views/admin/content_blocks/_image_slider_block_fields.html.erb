@@ -15,5 +15,24 @@
 			<%= link_to_add_fields "Add image", f, :image_attachments, { path: 'admin/content_blocks', :class => 'add_image add_fields_here btn btn-default'} %>
 		</div>
 		<div class="clearfix"></div>
+		<div class="row">
+			<div class="col-md-12">
+				<hr>
+				<div class="row">
+					<div class="col-md-6">
+					<div class="form-group">
+						<%= f.label :title %>
+						<%= f.text_field :title, class: 'form-control' %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= f.label :description %>
+						<%= f.text_field :description, class: 'form-control' %>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </fieldset>

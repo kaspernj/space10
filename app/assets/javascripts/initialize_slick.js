@@ -10,7 +10,7 @@ $(document).on('ready page:load', function () {
 		}).slick('slickGoTo','0');
 	});
 	$('body').on('click', '.slick-slide:not(.slick-active)', function(){
-		$('.slick-variable-width').slick('slickNext');
+		$(this).closest('.slick-variable-width').slick('slickNext');
 		return false
 	});
 });
