@@ -19,11 +19,12 @@ class Tag < ActiveRecord::Base
 	  tags = where("lower(title) like ?", "%#{query.downcase}%")
 	  exact_match = where("lower(title) like ?", "#{query.downcase}")
 	  if tags.empty?
-	    [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
+	    # [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
 	  elsif exact_match.present?
 	    tags
 	  else
-	  	tags + [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
+	  	tags
+	  	# tags + [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
 	  end
 	end
 
