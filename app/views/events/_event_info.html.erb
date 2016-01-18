@@ -8,5 +8,5 @@
 <% end %>
 <p class="event-address">
 	Time <br>
-	<%= (event.timespan).downcase.capitalize %>
+	<%= (event.timespan).split.map(&:capitalize).join(' ') %>
 </p>

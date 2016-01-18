@@ -23,5 +23,4 @@ FactoryGirl.define do
     published true
     lab
   end
-
 end

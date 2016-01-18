@@ -44,6 +44,7 @@ describe "Labs api", type: :request do
                   'medium' => post.featured_image_url(:medium),
                   'large' => post.featured_image_url(:large)
                 },
+              'featured_images' => [],
               'tags' => [],
               'content' => post.content,
               'content_blocks' => [],

@@ -1,6 +1,7 @@
 json.id event.id
 json.title event.title
 json.excerpt event.excerpt
+json.address event.address
 json.content event.content
 json.content_blocks event.content_blocks do |block|
   json.id block.id
@@ -23,10 +24,26 @@ json.ends_at event.ends_at.iso8601
 json.published_at event.published_at.iso8601
 json.project_partners do
   json.text event.project_partners_text
-  json.partners event.project_partners, :id, :title, :logo_url
+  json.partners event.project_partners do |project_partner|
+    json.id project_partner.id
+    json.title project_partner.title
+    json.images do
+      json.small project_partner.logo_url(:small)
+      json.medium project_partner.logo_url(:medium)
+      json.large project_partner.logo_url
+    end
+  end
 end
 json.project_people do
   json.text event.project_people_text
-  json.people event.project_people, :id, :title, :image_url
+  json.people event.project_people do |project_person|
+    json.id project_person.id
+    json.title project_person.title
+    json.images do
+      json.small project_person.image_url(:thumbnail)
+      json.medium project_person.image_url(:medium)
+      json.large project_person.image_url(:large)
+    end
+  end
 end
 json.lab event.lab

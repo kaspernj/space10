@@ -19,6 +19,7 @@ describe "Posts api", type: :request do
 	describe "GET /api/posts/:id" do
 		it 'returns requested post' do
 			post = create(:post, lab: nil)
+			img_att = create :image_attachment, resource: post
 			img_block = create :image_block, resource: post, row_order: 1
 			txt_block = create :text_block, resource: post, row_order: 2
 			img_slider_block = create :image_slider_block, resource: post, row_order: 3
@@ -33,10 +34,15 @@ describe "Posts api", type: :request do
 					'excerpt' => post.excerpt,
 					'title' => post.title,
 					'featured_image'  => {
-							'small' => post.featured_image_url(:small),
-							'medium' => post.featured_image_url(:medium),
-							'large' => post.featured_image_url(:large)
-						},
+												'small' => post.featured_image_url(:small),
+												'medium' => post.featured_image_url(:medium),
+												'large' => post.featured_image_url(:large)
+											},
+					'featured_images'  => [{
+												'small' => post.featured_image_url(:small),
+												'medium' => post.featured_image_url(:medium),
+												'large' => post.featured_image_url(:large)
+											}],
 					'tags' => [],
 					'content' => post.content,
 					'content_blocks' => [
@@ -45,9 +51,13 @@ describe "Posts api", type: :request do
 								'type' => 'ImageBlock',
 								'row_order' => 1,
 								'content' => {
-									'small' => img_block.image_attachment.image_url(:small),
-									'medium' => img_block.image_attachment.image_url(:medium),
-									'large' => img_block.image_attachment.image_url(:large)
+									'title' => img_block.image_attachment.title,
+									'description' => img_block.image_attachment.description,
+									'image' => {
+										'small' => img_block.image_attachment.image_url(:small),
+										'medium' => img_block.image_attachment.image_url(:medium),
+										'large' => img_block.image_attachment.image_url(:large)
+									}
 								}
 							},
 							{
@@ -60,7 +70,10 @@ describe "Posts api", type: :request do
 								'id' => img_slider_block.id,
 								'type' => 'ImageSliderBlock',
 								'row_order' => 3,
-								'content' => [
+								'content' => {
+									'title' => img_slider_block.title,
+									'description' => img_slider_block.description,
+									'images' => [
 										{
 											'small' => img_slider_block.image_attachments.third.image_url(:small),
 											'medium' => img_slider_block.image_attachments.third.image_url(:medium),
@@ -77,6 +90,7 @@ describe "Posts api", type: :request do
 											'large' => img_slider_block.image_attachments.first.image_url(:large)
 										}
 									]
+								}
 							},
 							{
 								'id' => vid_block.id,

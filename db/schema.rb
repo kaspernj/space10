@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220184514) do
+ActiveRecord::Schema.define(version: 20160118123427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20151220184514) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "row_order"
+    t.string   "title"
+    t.string   "description"
   end
 
   add_index "content_blocks", ["resource_id", "resource_type"], name: "index_content_blocks_on_resource_id_and_resource_type", using: :btree

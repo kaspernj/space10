@@ -21,5 +21,4 @@ FactoryGirl.define do
 		description "MyString"
 		image { File.new("#{Rails.root}/spec/factories/images/image_1.jpg") } 
   end
-
 end
