@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 underline-links content_block <%= object.type.underscore %>">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <blockquote><%= object.quote_attachment.quote.html_safe %></blockquote>
+          <% if object.quote_attachment.author.present? %>
+            <p class="quote-author">
+              <%= object.quote_attachment.author.html_safe %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
