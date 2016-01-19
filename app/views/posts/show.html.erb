@@ -9,8 +9,8 @@
 	<div class="row">
 		<div class="col-md-12 content_block">
 			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
-				<% @post.image_attachments.each do |attachment| %>
-					<a href="#"><%= image_tag attachment.image_url(:large), height: "500" %></a>
+				<% @post.image_attachments.each_with_index do |attachment, index| %>
+					<a href="#"><%= image_tag attachment.image_url(:large), height: "500", onload: (index == 0 ? "slickGoToStart(this)" : '') %></a>
 				<% end %>
 			</div>
 		</div>

@@ -35,5 +35,4 @@ $(document).on('ready page:load', function () {
 	};
 
 	init_sortable();
-
 });
