@@ -1,3 +1,5 @@
+require 'parse_notification'
+
 class Admin::RegistrationsController < AdminController
 
 	def index
@@ -24,6 +26,7 @@ class Admin::RegistrationsController < AdminController
 		@registration.update_attributes(confirmed: true)
 		if @registration.save
 			UserMailer.confirm_registration(@registration.user.id, @registration.event.id).deliver_now
+			ParseNotification.new(user_id: @registration.user.id, data: {alert: "You have been confirmed for #{@registration.event.title}", type: 'Event', type_id: @registration.event.id}).send unless Rails.env.test?
 			flash[:success] = "Registration confirmed"
 		else
 			flash[:danger] = "Registration could not be updated"
