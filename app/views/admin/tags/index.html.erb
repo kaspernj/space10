@@ -15,6 +15,7 @@
           <tr>
             <th>#</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Created at</th>
             <th></th>
           </tr>
@@ -24,6 +25,7 @@
             <tr>
               <th scope="row"><%= tag.id %></th>
               <td><%= link_to truncate(tag.title, length: 75), edit_admin_tag_path(tag) %></td>
+              <td><%= tag.type %></td>
               <td><%= tag.created_at.to_s(:formatted) %></td>
               <td class="text-right">
                 <%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>

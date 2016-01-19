@@ -12,5 +12,8 @@
 
 class Tagging < ActiveRecord::Base
 	belongs_to :resource, polymorphic: true
-	belongs_to :tag
+
+  belongs_to :tag
+  belongs_to :profile_tag, foreign_key: 'tag_id', class_name: 'ProfileTag'
+	belongs_to :post_tag, foreign_key: 'tag_id', class_name: 'PostTag'
 end

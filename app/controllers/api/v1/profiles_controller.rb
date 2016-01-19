@@ -10,7 +10,7 @@ class Api::V1::ProfilesController < Api::V1::ApiController
 	end
 
 	def filter_options
-		@categories = Tag.all.pluck(:title)
+		@categories = ProfileTag.all.pluck(:title)
 		@locations = Profile.all.pluck(:location).uniq
 	end
 

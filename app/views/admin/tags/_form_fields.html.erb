@@ -1,1 +1,3 @@
 <%= f.input :title, placeholder: "Designer" %>
+<%= f.input :type, collection: [['Post','PostTag'],['Profile','ProfileTag']], include_blank: "Select tag type", disabled: (@tag.new_record? ? false : true) %>
+<%= hidden_field_tag(:tag_type, @tag.type) unless @tag.new_record? %>
