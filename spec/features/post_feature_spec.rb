@@ -89,6 +89,11 @@ RSpec.describe 'Post feature', type: :feature do
 					click_on "Add video block"
 					expect(page).to have_content "Video url"
 				end
+
+				it 'allows admin to add quote blocks to posts', js: true do
+					click_on "Add quote block"
+					expect(page).to have_content "Author"
+				end
 			end		
 		end
 	end

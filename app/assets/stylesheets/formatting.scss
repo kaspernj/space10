@@ -36,10 +36,11 @@
     font-weight: bold;
     line-height: 1.1em;
     padding: 0;
-    &+p span {
-      color: #B3B3B3;
-      font-size: 17px;
-    }
+  }
+  blockquote &+p span, p.quote-author {
+    color: #B3B3B3;
+    font-size: 17px;
+    font-weight: bold;
   }
 }
 

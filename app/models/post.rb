@@ -35,13 +35,15 @@ class Post < ActiveRecord::Base
 	has_many :image_blocks, source: 'ContentBlock', as: :resource
 	has_many :image_slider_blocks, source: 'ContentBlock', as: :resource
 	has_many :text_blocks, source: 'ContentBlock', as: :resource
-	has_many :video_blocks, source: 'ContentBlock', as: :resource
+  has_many :video_blocks, source: 'ContentBlock', as: :resource
+	has_many :quote_blocks, source: 'ContentBlock', as: :resource
 
 	accepts_nested_attributes_for :content_blocks, allow_destroy: true
 	accepts_nested_attributes_for :image_blocks, allow_destroy: true
 	accepts_nested_attributes_for :image_slider_blocks, allow_destroy: true
 	accepts_nested_attributes_for :text_blocks, allow_destroy: true
-	accepts_nested_attributes_for :video_blocks, allow_destroy: true
+  accepts_nested_attributes_for :video_blocks, allow_destroy: true
+	accepts_nested_attributes_for :quote_blocks, allow_destroy: true
 
   has_many :company_partnerships, source: 'ProjectPartnership', as: :resource, dependent: :destroy
   accepts_nested_attributes_for :company_partnerships, allow_destroy: true

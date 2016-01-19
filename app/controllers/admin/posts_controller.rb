@@ -45,6 +45,7 @@ class Admin::PostsController < AdminController
 		image_attachment = :id, :resource_type, :resource_id, :title, :description, :image, :image_cache, :row_order, :_destroy
 		text_attachment = :id, :resource_type, :resource_id, :content
 		video_attachment = :id, :resource_type, :resource_id, :featured, :title, :description, :video_url, :provider, :video_id, :image
+		quote_attachment = :id, :resource_type, :resource_id, :quote, :author
 		project_partnership = :id, :resource_type, :resource_id, :partner_id, :person_id, :_destroy
 
 		return_params = params.require(:post).permit(:title, :excerpt, :tag_tokens, :content, :published, :publish_at, :lab_id, :project_partners_text, :project_people_text, image_attachments_attributes: [image_attachment],
@@ -52,12 +53,14 @@ class Admin::PostsController < AdminController
 				image_attachments_attributes: [image_attachment], 
 				image_attachment_attributes: [image_attachment],
 				text_attachment_attributes: [text_attachment],
-				video_attachment_attributes: [video_attachment]
+				video_attachment_attributes: [video_attachment],
+				quote_attachment_attributes: [quote_attachment]
 				],
 			image_slider_blocks_attributes: [content_block, image_attachments_attributes: [image_attachment]], 
 			image_blocks_attributes: [content_block, image_attachment_attributes: [image_attachment]],
 			text_blocks_attributes: [content_block, text_attachment_attributes: [text_attachment]],
 			video_blocks_attributes: [content_block, video_attachment_attributes: [video_attachment]],
+			quote_blocks_attributes: [content_block, quote_attachment_attributes: [quote_attachment]],
 			company_partnerships_attributes: [project_partnership],
 			person_partnerships_attributes: [project_partnership]
 			)
