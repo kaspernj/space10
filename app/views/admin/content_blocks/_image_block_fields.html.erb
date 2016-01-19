@@ -10,27 +10,34 @@
 		<%= f.hidden_field :row_order, class: 'row_order' %>
 		<%= f.fields_for :image_attachment, (f.object.image_attachment || f.object.send('build_image_attachment')) do |builder| %>
 		<div class="row">
-		<div class="col-md-6">
-		<div class="image_attachments">
-			
-				<fieldset class="file_upload">
-					<%= image_tag (builder.object.image.present? ? builder.object.image : "http://placehold.it/400x400?text=Choose+image"), height: "100", class: "image_preview" %>
-					
-					<%= builder.file_field :image, class: "upload upload_image" %>
-					<%= builder.hidden_field :image_cache %>
-				</fieldset>
-			
-		</div>
-		<div class="clearfix"></div>
-		</div>
-		<div class="col-md-6">
-			<div class="form-group">
-				<%= builder.label :title %>
-				<%= builder.text_field :title, class: 'form-control' %>
+		<div class="col-md-12">
+			<div class="image_attachments">
+				
+					<fieldset class="file_upload">
+						<%= image_tag (builder.object.image.present? ? builder.object.image : "http://placehold.it/400x400?text=Choose+image"), height: "100", class: "image_preview" %>
+						
+						<%= builder.file_field :image, class: "upload upload_image" %>
+						<%= builder.hidden_field :image_cache %>
+					</fieldset>
+				
 			</div>
-			<div class="form-group">
-				<%= builder.label :description %>
-				<%= builder.text_field :description, class: 'form-control' %>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12">
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= builder.label :title %>
+						<%= builder.text_field :title, class: 'form-control' %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= builder.label :description %>
+						<%= builder.text_field :description, class: 'form-control' %>
+					</div>
+				</div>
 			</div>
 		</div>
 		</div>

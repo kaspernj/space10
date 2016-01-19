@@ -6,6 +6,7 @@
   				<a href="#"><%= image_tag attachment.image_url(:medium), height: "300" %></a>
   			<% end %>
   		</div>
+      <p class="meta-text text-left container"><%= [object.title, object.description].reject(&:blank?).join(" - ") %></p>
   	</div>
   </div>
 </div>
