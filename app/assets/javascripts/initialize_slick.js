@@ -16,5 +16,5 @@ $(document).on('ready page:load', function () {
 });
 
 function slickGoToStart(img) {
-	$(img).closest('.slick-variable-width').slick('slickGoTo', '0');
+	$(img).closest('.slick-variable-width').slick('slickGoTo', '0', true);
 }
