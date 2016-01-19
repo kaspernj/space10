@@ -17,6 +17,11 @@
 #
 
 class Post < ActiveRecord::Base
+  has_many :taggings, as: :resource, dependent: :destroy
+  has_many :tags, through: :taggings, source: :post_tag
+  def tag_tokens=(tokens)
+    self.tag_ids = PostTag.ids_from_tokens(tokens)
+  end
   include Taggable
   include Schedulable
 

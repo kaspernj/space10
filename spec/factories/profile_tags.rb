@@ -10,9 +10,9 @@
 #
 
 FactoryGirl.define do
-  factory :tag do
+  factory :profile_tag do
     title "MyString"
-    type "PostTag"
+    type "ProfileTag"
   end
 
 end

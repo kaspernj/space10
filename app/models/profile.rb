@@ -22,6 +22,11 @@
 #
 
 class Profile < ActiveRecord::Base
+  has_many :taggings, as: :resource, dependent: :destroy
+  has_many :tags, through: :taggings, source: :profile_tag
+  def tag_tokens=(tokens)
+    self.tag_ids = ProfileTag.ids_from_tokens(tokens)
+  end
 	include Taggable
 
   extend FriendlyId

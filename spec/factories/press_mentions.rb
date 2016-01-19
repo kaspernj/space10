@@ -11,6 +11,8 @@
 #  image        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  published    :boolean
+#  featured     :boolean
 #
 
 FactoryGirl.define do

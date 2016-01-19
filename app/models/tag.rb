@@ -6,6 +6,7 @@
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  type       :string
 #
 
 class Tag < ActiveRecord::Base
@@ -14,19 +15,6 @@ class Tag < ActiveRecord::Base
 
 	has_many :taggings, dependent: :destroy
 	has_many :profiles, through: :taggings, source: :resource, source_type: 'Profile'
-
-	def self.tokens(query)
-	  tags = where("lower(title) like ?", "%#{query.downcase}%")
-	  exact_match = where("lower(title) like ?", "#{query.downcase}")
-	  if tags.empty?
-	    # [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
-	  elsif exact_match.present?
-	    tags
-	  else
-	  	tags
-	  	# tags + [{id: "<<<#{query}>>>", title: "New: \"#{query}\""}]
-	  end
-	end
 
 	def self.ids_from_tokens(tokens)
 	  tokens.gsub!(/<<<(.+?)>>>/) { create!(title: $1).id }

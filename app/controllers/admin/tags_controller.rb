@@ -41,6 +41,7 @@ class Admin::TagsController < AdminController
 private
 
   def tag_params
-    params.require(:tag).permit(:title)
+    type = params[:tag_type] || 'tag'
+    params.require(type.underscore.to_sym).permit(:title, :type)
   end
 end
