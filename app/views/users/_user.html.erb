@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <%= f.input :name, label: false, placeholder: 'Full name', input_html: { autocomplete: 'false' } %>
+          <%= f.input :name, label: false, placeholder: 'Full name', input_html: { autocomplete: 'off' } %>
           <%= f.input :email, label: false, placeholder: 'Email' %>
           <%= f.input :birthday, label: false, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], prompt: {year: 'Year', month: 'Month', day: 'Day'} %>
           <%= f.input :gender, label: false, collection: [['Male', 'male'],['Female','female']], include_blank: 'Gender' %>

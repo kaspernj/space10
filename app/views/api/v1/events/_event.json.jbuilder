@@ -39,7 +39,7 @@ json.project_people do
   json.people event.project_people do |project_person|
     json.id project_person.id
     json.title project_person.title
-    json.images do
+    json.image do
       json.small project_person.image_url(:thumbnail)
       json.medium project_person.image_url(:medium)
       json.large project_person.image_url(:large)

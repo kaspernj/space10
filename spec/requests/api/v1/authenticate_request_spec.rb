@@ -26,10 +26,12 @@ describe "Authenticate api", type: :request do
 	        'type' => user.personal_profile.type,
 	        'title' => user.name,
 	        'tagline' => user.personal_profile.tagline,
+	        'email' => user.personal_profile.email,
+	        'website' => user.personal_profile.website,
 	        'description' => nil,
 	        'location' => nil,
 	        'tags' => [],
-	        'avatar' => {
+	        'image' => {
 	          'small' => user.personal_profile.image_url(:thumbnail),
 	          'medium' => user.personal_profile.image_url(:medium),
 	          'large' => user.personal_profile.image_url(:large)

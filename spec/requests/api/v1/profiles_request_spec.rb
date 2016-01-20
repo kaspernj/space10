@@ -52,12 +52,14 @@ describe "profiles api", type: :request do
 				{
 					'id' => profile.id,
 					'type' => profile.type,
-					"title" => profile.title,
+					'title' => profile.title,
 					'tagline' => profile.tagline,
+					'email' => profile.email,
+					'website' => profile.website,
 					'description' => profile.description,
 					'location' => profile.location,
 					'tags' => [],
-					'avatar' => {
+					'image' => {
 						'small' => profile.image_url(:thumbnail),
 						'medium' => profile.image_url(:medium),
 						'large' => profile.image_url(:large)
@@ -70,8 +72,8 @@ describe "profiles api", type: :request do
 
 	describe "GET /api/profiles/filter_options" do
 		it "should return filter options" do
-			create :tag, title: "Tag one"
-			create :tag, title: "Tag two"
+			create :profile_tag, title: "Tag one"
+			create :profile_tag, title: "Tag two"
 			create :profile, title: "Company 1", type: "CompanyProfile", location: 'Copenhagen, Denmark'
 
 			get '/api/profiles/filter_options', {}, request_headers
