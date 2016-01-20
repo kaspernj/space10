@@ -86,27 +86,3 @@
     </div>
   </div>
 </nav>
-<div class="modal modal-fullscreen modal-slide-up fade" data-backdrop-color="black" id="modal-navigate" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <%= link_to '#', class: 'large_close', data: { dismiss: 'modal' } do %>
-          <span></span>
-        <% end %>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12 mobile-nav-links text-center">
-            <ul class="list-unstyled">
-              <li><%= link_to "Journal", posts_path %></li>
-              <li><%= link_to "Program", events_path %></li>
-              <li><%= link_to "Labs", lab if lab.present? %></li>
-              <li><%= link_to "Community", profiles_path %></li>
-              <li><%= link_to "About", about_path %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
