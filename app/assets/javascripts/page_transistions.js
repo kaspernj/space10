@@ -7,6 +7,8 @@ $(document).on('ready page:fetch', function () {
   $('#gif_logo').attr('src', src);
   $('#page_content').removeClass('animated fadeIn')
   $('#page_content').addClass('animated fadeOut')
+  $('.navbar-fixed-bottom').removeClass('animated fadeIn')
+  $('.navbar-fixed-bottom').addClass('animated fadeOut')
 });
 $(document).on('ready page:change', function () {
   // if ($('#gif_logo').is(':visible')) {
@@ -15,4 +17,6 @@ $(document).on('ready page:change', function () {
   // }
   $('#page_content').removeClass('animated fadeOut')
   $('#page_content').addClass('animated fadeIn')
+  $('.navbar-fixed-bottom').removeClass('animated fadeOut')
+  $('.navbar-fixed-bottom').addClass('animated fadeIn')
 });
