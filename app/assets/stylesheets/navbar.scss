@@ -97,14 +97,14 @@ body.clean-layout {
   & > img {
     position: relative;
   }
-  & > #svg_logo {
+  & > #svg_logo, & > #gif_logo {
     display: none;
   }
 }
 
 @media (min-width: $screen-sm-min) {
   .navbar-brand {
-    & > #svg_logo {
+    & > #svg_logo, & > #gif_logo {
       display: block;
     }
     & > #mobile_logo {
@@ -113,7 +113,7 @@ body.clean-layout {
   }
   .navbar-fixed-top.shrink {
     .navbar-brand {
-      & > #svg_logo {
+      & > #svg_logo, & > #gif_logo {
         display: none;
       }
       & > #mobile_logo {

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <%= render 'layouts/head' %>
-  <body class="<%= controller_name %> <%= controller.action_name %>">
+  <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/flash_messages' %>
     
-    <%= yield %>
+    <div id="page_content" class="<%= controller_name %> <%= controller.action_name %>">
+      <%= yield %>
+    </div>
     
     <%= render 'layouts/footer' %>
     <%= render 'layouts/modals' %>
