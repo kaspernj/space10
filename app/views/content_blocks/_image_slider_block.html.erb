@@ -3,7 +3,7 @@
   	<div class="col-md-12 content_block">
   		<div class="slick-variable-width" data-slick='{"slidesToShow": 2, "slidesToScroll": 1}'>
   			<% object.image_attachments.each_with_index do |attachment,index| %>
-  				<a href="#"><%= image_tag attachment.image_url(:medium), height: "300", onload: (index == 0 ? "slickGoToStart(this)" : '') %></a>
+  				<a href="#"><%= image_tag attachment.image_url(:medium), height: "300" %></a>
   			<% end %>
   		</div>
       <p class="meta-text text-left container"><%= [object.title, object.description].reject(&:blank?).join(" - ") %></p>
