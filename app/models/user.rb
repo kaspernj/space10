@@ -76,8 +76,7 @@ class User < ActiveRecord::Base
 
 	def update_personal_profile
 		PersonalProfile.find_or_initialize_by(user: self).tap do |profile|
-			profile.title = self.name
-			profile.save
+			profile.update_attributes(title: self.name)
 		end
 	end
 

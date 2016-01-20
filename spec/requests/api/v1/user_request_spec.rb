@@ -168,7 +168,10 @@ describe "Users api", type: :request do
 			@user = create(:user, name: 'John')
 			@user_params = {
 				"user" => {
-					"name" => "Frank"
+					"name" => "Frank",
+					"personal_profile_attributes" => {
+						"tagline" => "New tagline"
+					}
 				}
 			}.to_json
 		end
@@ -177,6 +180,7 @@ describe "Users api", type: :request do
 			put '/api/user', @user_params, request_headers(user: @user)
 
 			expect(response.status).to eq 200 # ok
+			expect(@user.reload.personal_profile.title).to eq 'Frank'
 			expect(response_body).to eq(
 				{
 					'id' => @user.id,
@@ -189,7 +193,7 @@ describe "Users api", type: :request do
 						'id' => @user.personal_profile.id,
 						'type' => @user.personal_profile.type,
 						'title' => "Frank",
-						'tagline' => @user.personal_profile.tagline,
+						'tagline' => "New tagline",
 						'email' => @user.personal_profile.email,
 						'website' => @user.personal_profile.website,
 						'description' => nil,

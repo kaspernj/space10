@@ -27,7 +27,7 @@ json.project_partners do
   json.partners event.project_partners do |project_partner|
     json.id project_partner.id
     json.title project_partner.title
-    json.images do
+    json.image do
       json.small project_partner.logo_url(:small)
       json.medium project_partner.logo_url(:medium)
       json.large project_partner.logo_url

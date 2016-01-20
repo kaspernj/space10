@@ -16,8 +16,9 @@ class Api::V1::UsersController < Api::V1::ApiController
 	end
 
 	def update
-		if @user.update(user_params)
-			@user
+		new_params = user_params.deep_merge(personal_profile_attributes: {id: @user.personal_profile.id})
+		if @user.update(new_params)
+			@user.reload
 		else
       render json: { errors: @user.errors.full_messages }, status: 422
     end
