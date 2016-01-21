@@ -80,6 +80,9 @@ Rails.application.routes.draw do
 
       get 'labs', to: 'labs#index'
       get 'labs/:id', to: 'labs#show'
+
+      get 'profile_tags', to: 'tags#profile_tags'
+      get 'post_tags', to: 'tags#post_tags'
     end
   end
 
