@@ -1,23 +1,31 @@
 class Api::V1::EventsController < Api::V1::ApiController
 	before_filter :authenticate_api_client, only: [:index, :show]
+	before_filter :load_events
 
 	def index
-		@events = Event.published.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
+		@events = @events.published.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
 	end
 
 	def future
-		@events = Event.published.current_or_future.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
+		@events = @events.published.current_or_future.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
 	end
 
 	def historic
-		@events = Event.published.historic.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
+		@events = @events.published.historic.paginate(page: params[:page], per_page: (params[:per_page].present? ? params[:per_page] : 5))
 	end
 
 	def show
-		@event = Event.published.find(params[:id])
+		@event = @events.published.find(params[:id])
 		respond_to do |format|
 	    format.html { render 'events/show' }
 	    format.json { @event }
 	  end
+	end
+
+private
+
+	def load_events
+		lab = Lab.find(params[:lab_id]) if params[:lab_id]
+		@events = lab ? lab.events : Event.all
 	end
 end
