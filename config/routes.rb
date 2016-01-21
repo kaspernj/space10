@@ -78,8 +78,12 @@ Rails.application.routes.draw do
       get 'profiles/filter_options', to: 'profiles#filter_options'
       get 'profiles/:id', to: 'profiles#show'
 
-      get 'labs', to: 'labs#index'
-      get 'labs/:id', to: 'labs#show'
+      resources :labs, only: [:index, :show] do
+        get 'posts', to: 'posts#index'
+
+        get 'future_events', to: 'events#future'
+        get 'historic_events', to: 'events#historic'
+      end
     end
   end
 
