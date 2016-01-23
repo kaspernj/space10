@@ -10,7 +10,7 @@ class Api::V1::User::RegistrationsController < Api::V1::ApiController
 	end
 
 	def create
-		@registration = Registration.new(registration_params)
+		@registration = @user.registrations.find_or_initialize_by(event_id: registration_params['event_id'])
 		if @registration.save
 			@registration
 		else
