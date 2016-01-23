@@ -17,6 +17,7 @@ describe "Registrations api", type: :request do
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
 						'id' => event.id,
+						'confirmation_status' => 'unconfirmed',
 						'title' => event.title,
 						'excerpt' => event.excerpt,
 						'address' => event.address,
@@ -61,6 +62,7 @@ describe "Registrations api", type: :request do
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
 						'id' => event.id,
+						'confirmation_status' => 'unconfirmed',
 						'title' => event.title,
 						'excerpt' => event.excerpt,
 						'address' => event.address,
@@ -121,6 +123,7 @@ describe "Registrations api", type: :request do
 					'confirmation_status' => 'unconfirmed',
 					'event' => {
 						'id' => another_event.id,
+						'confirmation_status' => 'unconfirmed',
 						'title' => another_event.title,
 						'excerpt' => another_event.excerpt,
 						'address' => event.address,

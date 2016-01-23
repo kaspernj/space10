@@ -1,4 +1,11 @@
 json.id event.id
+if @user
+  if registration = @user.registrations.find_by(event: event)
+    json.confirmation_status registration.confirmation_status
+  else
+    json.confirmation_status 'no_request'
+  end
+end
 json.title event.title
 json.excerpt event.excerpt
 json.address event.address

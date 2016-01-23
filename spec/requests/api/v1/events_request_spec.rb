@@ -86,4 +86,27 @@ describe "Events api", type: :request do
 		end
 	end
 
+	describe "GET /api/events/:id with token set" do
+		it "should include confirmtion status in response" do
+			user = create(:user)
+			event = create(:event)
+
+			get "/api/events/#{event.id}", {}, request_headers(user: user)
+
+			expect(response.status).to eq 200
+			expect(response_body['confirmation_status']).to eq 'no_request'
+		end
+
+		it "should include confirmtion status in response on requested seats" do
+			user = create(:user)
+			event = create(:event)
+			create :registration, user: user, event: event
+
+			get "/api/events/#{event.id}", {}, request_headers(user: user)
+
+			expect(response.status).to eq 200
+			expect(response_body['confirmation_status']).to eq 'unconfirmed'
+		end
+	end
+
 end
