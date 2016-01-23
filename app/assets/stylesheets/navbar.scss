@@ -97,7 +97,7 @@ body.clean-layout {
   & > img {
     position: relative;
   }
-  & > #svg_logo, & > #gif_logo {
+  & > #svg_logo, & > #gif_logo, & > #shrink_logo {
     display: none;
   }
 }
@@ -116,7 +116,7 @@ body.clean-layout {
       & > #svg_logo, & > #gif_logo {
         display: none;
       }
-      & > #mobile_logo {
+      & > #shrink_logo {
         display: block;
       }
     }
