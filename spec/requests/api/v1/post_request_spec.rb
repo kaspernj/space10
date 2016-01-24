@@ -24,6 +24,7 @@ describe "Posts api", type: :request do
 			txt_block = create :text_block, resource: post, row_order: 2
 			img_slider_block = create :image_slider_block, resource: post, row_order: 3
 			vid_block = create :video_block, resource: post, row_order: 4
+			qut_block = create :quote_block, resource: post, row_order: 5
 
 			get "/api/posts/#{post.id}", {}, request_headers
 
@@ -103,6 +104,15 @@ describe "Posts api", type: :request do
 								  'provider' => vid_block.video_attachment.provider,
 								  'video_id' => vid_block.video_attachment.video_id,
 								  'image' => vid_block.video_attachment.image
+								}
+							},
+							{
+								'id' => qut_block.id,
+								'type' => 'QuoteBlock',
+								'row_order' => 5,
+								'content' => {
+									'quote' => qut_block.quote_attachment.quote,
+									'author' => qut_block.quote_attachment.author
 								}
 							}
 						],

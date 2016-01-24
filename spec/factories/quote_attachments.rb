@@ -12,7 +12,6 @@
 FactoryGirl.define do
   factory :quote_attachment do
     quote "MyText"
-author "MyString"
+    author "MyString"
   end
-
 end
