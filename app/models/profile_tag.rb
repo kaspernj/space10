@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  type       :string
+#
+
 class ProfileTag < Tag
   def self.tokens(query)
     tags = where("lower(title) like ?", "%#{query.downcase}%")

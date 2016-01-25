@@ -8,7 +8,7 @@ describe 'user creation', type: :feature do
 		fill_in 'Email', with: 'John@email.com'
 		fill_in 'Password', with: 'foobar12'
 
-		click_on "Create user"
+		click_on "Sign up"
 
 		expect(page).to have_content('Signed up successfully')
 		expect(last_email.to).to include 'John@email.com'

@@ -91,6 +91,12 @@
 
 <hr>
 
+<div class="checkbox">
+	<%= label_tag do %>
+		<%= f.check_box :rateable %> Toggle ratings
+	<% end %>
+</div>
+
 <% if @post.publish_at.present? && @post.publish_at < DateTime.now  %>
 	<div class="checkbox">
 		<%= label_tag do %>

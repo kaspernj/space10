@@ -1,0 +1,31 @@
+<div class="row rating-box">
+  <%= form_for rating, remote: true do |f| %>
+    <div class="col-sm-4">
+      <p class="h3">Rate this project</p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <fieldset class="score">
+        <% 5.downto 1 do |score| %>
+          <%= f.radio_button :score, score, class: "star-radio" %>
+          <%= f.label "score_#{score}" %>
+        <% end %>
+      </fieldset>
+    </div>
+    <div class="col-sm-4">
+      <% if !signed_in? %>
+        <small>You must be registered to rate this project.</small>
+        <small>Please Login or Register Now</small>
+      <% end %>
+    </div>
+    <div class="col-sm-12">
+      <fieldset class="rating_comment" <%= rating.content.present? ? "style='display:none;'".html_safe : "" %>>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', placeholder: 'Optional: Leave a comment' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Update', class: 'btn btn-sm btn-default' %>
+        </div>
+      </fieldset>
+    </div>
+  <% end %>
+</div>

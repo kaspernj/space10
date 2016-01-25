@@ -48,7 +48,7 @@ class Admin::PostsController < AdminController
 		quote_attachment = :id, :resource_type, :resource_id, :quote, :author
 		project_partnership = :id, :resource_type, :resource_id, :partner_id, :person_id, :_destroy
 
-		return_params = params.require(:post).permit(:title, :excerpt, :tag_tokens, :content, :published, :publish_at, :lab_id, :project_partners_text, :project_people_text, image_attachments_attributes: [image_attachment],
+		return_params = params.require(:post).permit(:title, :excerpt, :tag_tokens, :content, :rateable, :published, :publish_at, :lab_id, :project_partners_text, :project_people_text, image_attachments_attributes: [image_attachment],
 			content_blocks_attributes: [content_block, 
 				image_attachments_attributes: [image_attachment], 
 				image_attachment_attributes: [image_attachment],

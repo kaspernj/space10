@@ -1,0 +1,21 @@
+<div class="row rating-box">
+  <%= form_for([object, Rating.new], html: {class: 'auto_submit'}, remote: true) do |f| %>
+    <div class="col-sm-4">
+      <p class="h3">Rate this project</p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <fieldset class="score">
+        <% 5.downto 1 do |score| %>
+          <%= f.radio_button :score, score, class: "star-radio" %>
+          <%= f.label "score_#{score}" %>
+        <% end %>
+      </fieldset>
+    </div>
+    <div class="col-sm-4 underline-links">
+      <% if !signed_in? %>
+        <small>You must be registered to rate this project.</small>
+        <small>Please <%= link_to 'Login', login_path, remote: true %> or <%= link_to 'Register Now', new_user_path, remote: true %></small>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119094740) do
+ActiveRecord::Schema.define(version: 20160124170823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20160119094740) do
     t.text     "project_partners_text"
     t.text     "project_people_text"
     t.string   "slug"
+    t.boolean  "rateable"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
@@ -202,6 +203,16 @@ ActiveRecord::Schema.define(version: 20160119094740) do
     t.datetime "updated_at",    null: false
     t.string   "resource_type"
     t.integer  "resource_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.text     "content"
+    t.integer  "score"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "registrations", force: :cascade do |t|

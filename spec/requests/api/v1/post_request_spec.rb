@@ -18,8 +18,7 @@ describe "Posts api", type: :request do
 
 	describe "GET /api/posts/:id" do
 		it 'returns requested post' do
-			post = create(:post, lab: nil)
-			img_att = create :image_attachment, resource: post
+			post = create(:post, lab: nil, images_count: 1)
 			img_block = create :image_block, resource: post, row_order: 1
 			txt_block = create :text_block, resource: post, row_order: 2
 			img_slider_block = create :image_slider_block, resource: post, row_order: 3

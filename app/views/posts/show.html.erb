@@ -6,8 +6,8 @@
 	</div>
 </div>
 <div class="container-align-left">
-	<div class="row">
-		<div class="col-md-12 content_block">
+	<div class="row content_block">
+		<div class="col-md-12">
 			<div class="slick-variable-width" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
 				<% @post.image_attachments.each_with_index do |attachment, index| %>
 					<a href="#"><%= image_tag attachment.image_url(:large), height: "500" %></a>
@@ -106,6 +106,23 @@
 		</div>
 	</div>
 </div>
+<% end %>
+
+<% if @post.rateable? %>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<hr class="visible-xs">
+				<% if signed_in? && current_user.ratings.find_by(resource: @post).present? %>
+					<%= render 'ratings/edit', rating: current_user.ratings.find_by(resource: @post) %>
+				<% else %>
+					<%= render 'ratings/new', object: @post %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	
 <% end %>
 
 <div class="container">

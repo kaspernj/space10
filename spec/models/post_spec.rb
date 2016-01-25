@@ -14,6 +14,7 @@
 #  project_partners_text :text
 #  project_people_text   :text
 #  slug                  :string
+#  rateable              :boolean
 #
 
 require 'rails_helper'

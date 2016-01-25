@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
 	has_one :personal_profile
 	accepts_nested_attributes_for :personal_profile
 
+	has_many :ratings
+
 	def generate_token(column)
 	  begin
 	    self[column] = SecureRandom.urlsafe_base64

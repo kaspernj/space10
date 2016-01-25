@@ -1,1 +1,4 @@
 $("#modal-fullscreen").find('.modal-body').html("<%= escape_javascript(render 'sessions/login') %>");
+if (!($("#modal-fullscreen").data('bs.modal') || {}).isShown) {
+  $("#modal-fullscreen").modal('toggle');
+};

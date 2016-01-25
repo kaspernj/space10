@@ -1,0 +1,76 @@
+.rating-box {
+  padding-bottom: $gutter/2;
+  .h3 {
+    margin: $gutter 0 $gutter/2 0;
+  }
+  .score label {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+.rating_comment {
+  padding-top: $gutter/2;
+}
+
+@media (min-width: $screen-sm-min) {
+  .rating-box {
+    border: 1px solid #DCDDE0;
+    padding: 20px;
+    margin-bottom: 2*$gutter;
+    .h3 {
+      margin: 0;
+    }
+    .score label {
+      font-size: 22px;
+      line-height: 22px;
+    }
+  }
+}
+
+// STAR RATING SYSTEM
+
+input.star-radio {
+  position:absolute;
+  top: -2em;
+  clip:rect(0,0,0,0);
+}
+
+.score {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+  border: 0;
+  font-size: 0;
+}
+.score legend {
+  overflow: hidden;
+  height: 0;
+}
+.score label {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  width: 1.2em;
+  height: 1em;
+  overflow: hidden;
+  text-indent: 100%;
+}
+.score label:before {
+   content: "★";
+   position: absolute;
+   top: 0; left: 0; right: 0; bottom: 0;
+   text-indent: 0;
+   line-height: 1em;
+   color: #DCDDE0;
+}
+.score label:hover:before,
+.score label:hover ~ label:before,
+.score input:checked ~ label:before {
+   content: "★";
+   color: #000;
+}
+.score label:active {
+  position: relative;
+  top: 1px;
+}

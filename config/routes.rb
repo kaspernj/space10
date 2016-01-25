@@ -20,13 +20,16 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show], path: "program" do
     resources :registrations
   end
-  resources :posts, only: [:index, :show], path: "journal"
+  resources :posts, only: [:index, :show], path: "journal" do
+    resources :ratings
+  end
   resources :profiles, only: [:index, :show], path: "community"
   resources :labs, only: [:index, :show]
   resources :tags, only: [:index, :show]
   resources :press_mentions, only: [:index]
   resources :messages
   resources :password_resets
+  resources :ratings
 
   post 'video_preview', to: 'video_preview#create', as: 'video_preview'
 
