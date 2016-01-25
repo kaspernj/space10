@@ -32,7 +32,7 @@ class Profile < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
-  mount_uploader :image, AvatarUploader
+  mount_base64_uploader :image, AvatarUploader
   geocoded_by :location
   after_validation :geocode, if: lambda{ |obj| obj.location_changed? }
 	

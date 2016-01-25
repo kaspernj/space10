@@ -31,6 +31,7 @@ gem 'omniauth-linkedin-oauth2'
 
 # Image upload
 gem 'carrierwave'
+gem 'carrierwave-base64'
 gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
 
