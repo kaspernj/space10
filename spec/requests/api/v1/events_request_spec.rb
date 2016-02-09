@@ -60,14 +60,14 @@ describe "Events api", type: :request do
 					'content' => event.content,
 					'content_blocks' => [],
 					'featured_image' => {
-							'small' => event.featured_image_url(:small),
-							'medium' => event.featured_image_url(:medium),
-							'large' => event.featured_image_url(:large)
+							'small' => nil,
+							'medium' => nil,
+							'large' => nil
 						},
 					'secondary_image' => {
-							'small' => event.secondary_image_url(:small),
-							'medium' => event.secondary_image_url(:medium),
-							'large' => event.secondary_image_url(:large)
+							'small' => nil,
+							'medium' => nil,
+							'large' => nil
 						},
 					'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
 					'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
