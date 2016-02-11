@@ -86,6 +86,8 @@ gem 'pg_search'
 
 gem 'parse-ruby-client'
 
+gem 'newrelic_rpm'
+
 group :production do
   gem 'rails_12factor'
 end
