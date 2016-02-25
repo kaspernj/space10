@@ -24,14 +24,14 @@ describe "Registrations api", type: :request do
 						'content' => event.content,
 						'content_blocks' => [],
 						'featured_image' => {
-								'small' => event.featured_image_url(:small),
-								'medium' => event.featured_image_url(:medium),
-								'large' => event.featured_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'secondary_image' => {
-								'small' => event.secondary_image_url(:small),
-								'medium' => event.secondary_image_url(:medium),
-								'large' => event.secondary_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
 						'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
@@ -69,14 +69,14 @@ describe "Registrations api", type: :request do
 						'content' => event.content,
 						'content_blocks' => [],
 						'featured_image' => {
-								'small' => event.featured_image_url(:small),
-								'medium' => event.featured_image_url(:medium),
-								'large' => event.featured_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'secondary_image' => {
-								'small' => event.secondary_image_url(:small),
-								'medium' => event.secondary_image_url(:medium),
-								'large' => event.secondary_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'starts_at' => event.starts_at.in_time_zone('Copenhagen').iso8601,
 						'ends_at' => event.ends_at.in_time_zone('Copenhagen').iso8601,
@@ -130,14 +130,14 @@ describe "Registrations api", type: :request do
 						'content' => another_event.content,
 						'content_blocks' => [],
 						'featured_image' => {
-								'small' => another_event.featured_image_url(:small),
-								'medium' => another_event.featured_image_url(:medium),
-								'large' => another_event.featured_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'secondary_image' => {
-								'small' => another_event.secondary_image_url(:small),
-								'medium' => another_event.secondary_image_url(:medium),
-								'large' => another_event.secondary_image_url(:large)
+								'small' => nil,
+								'medium' => nil,
+								'large' => nil
 							},
 						'starts_at' => another_event.starts_at.in_time_zone('Copenhagen').iso8601,
 						'ends_at' => another_event.ends_at.in_time_zone('Copenhagen').iso8601,

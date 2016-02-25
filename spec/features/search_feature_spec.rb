@@ -8,9 +8,9 @@ RSpec.describe 'Search feature', type: :request do
     let!(:event_irelevant)  { create(:event, title: 'Nothing', excerpt: 'Bla') }
 
     it "returns relevant records" do
-      post '/search', query: "Superman", format: :js
-      
-      expect(response_body['results'].map { |k,v| k['title'] }).to eq [post_relevant.title, event_relevant.title]
+      post '/search', search: {query: "Superman"}, format: :json
+
+      expect(response_body.map { |k,v| k['title'] }).to eq [post_relevant.title, event_relevant.title]
     end
   end
 end

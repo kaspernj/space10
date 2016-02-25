@@ -14,6 +14,7 @@
 
 class Rating < ActiveRecord::Base
   validates :score, presence: true, inclusion: 1..5
+  validates :user_id, uniqueness: { scope: [:resource_id, :resource_type] }
 
   belongs_to :resource, polymorphic: true
 end

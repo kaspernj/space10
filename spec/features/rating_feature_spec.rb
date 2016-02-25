@@ -21,12 +21,16 @@ RSpec.describe 'Rating feature', type: :feature do
   end
 
   describe 'rating' do
-
     context 'not signed in' do
       it 'should prompt sign up', js: true do
         visit post_path(rateable_post)
-        page.find(:xpath, '//input[@value="5"]').trigger('click')
-        expect(page).to have_content 'Sign up'
+        page.find(:xpath, '//input[@value="5"]').select_option
+        expect(current_path).to eq post_path(rateable_post)
+        wait_for_ajax
+        expect(page).to have_selector('.modal', visible: true)
+        within '.modal' do
+          expect(page).to have_link 'Join with'
+        end
       end
     end
 
@@ -34,7 +38,9 @@ RSpec.describe 'Rating feature', type: :feature do
       it 'should be possible to leave a rating', js: true do
         sign_in user
         visit post_path(rateable_post)
-        page.find(:xpath, '//input[@value="5"]').click
+        page.find(:xpath, '//input[@value="5"]').select_option
+        expect(current_path).to eq post_path(rateable_post)
+        wait_for_ajax
         expect(page).to have_content 'Update'
       end
     end

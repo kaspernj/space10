@@ -39,9 +39,6 @@ gem 'carrierwave-base64'
 gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
 
-# API serialization
-# gem 'active_model_serializers'
-
 # Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'
 
@@ -94,14 +91,16 @@ end
 
 group :development, :test do
 	gem 'guard'
-	gem 'guard-livereload'
 	gem 'guard-rspec'
+  gem "spring", "1.6.2"
+  gem "spring-commands-rspec"
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'capybara-webkit'
-	gem 'selenium-webdriver'
 	gem 'factory_girl_rails'
 	gem 'database_cleaner'
 	gem 'shoulda-matchers'
+  gem 'pry-rails'
+  gem "pry-byebug"
 end
 
