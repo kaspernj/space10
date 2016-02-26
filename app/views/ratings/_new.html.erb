@@ -15,6 +15,8 @@
       <% if !signed_in? %>
         <small>You must be registered to rate this project.</small>
         <small>Please <%= link_to 'Login', login_path, remote: true %> or <%= link_to 'Register Now', new_user_path, remote: true %></small>
+      <% else %>
+        <small>We always try to be better and would love to get your feedback on this project.</small>
       <% end %>
     </div>
   <% end %>

@@ -41,7 +41,10 @@ RSpec.describe 'Rating feature', type: :feature do
         find("[for=rating_score_5]").click
         wait_for_ajax
         expect(Rating.all.count).to eq 1
-        expect(current_path).to eq post_path(rateable_post)
+        expect(page).to have_selector('.modal', visible: true)
+        within '.modal' do
+          expect(page).to have_link 'Join with'
+        end
       end
     end
   end
