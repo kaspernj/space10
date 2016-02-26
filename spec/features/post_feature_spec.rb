@@ -22,7 +22,7 @@ RSpec.describe 'Post feature', type: :feature do
 
 			it "allows scheduling in the future", js: true do
 				check 'Schedule'
-				fill_in 'post_publish_at', with: DateTime.tomorrow.to_s(:formatted)
+				fill_in 'post_publish_at', with: (Time.zone.now + 1.day).to_s(:formatted)
 
 				click_on 'Schedule'
 

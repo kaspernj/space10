@@ -13,7 +13,7 @@ RSpec.describe 'events feature', type: :feature do
 			expect(current_path).to eq new_admin_event_path
 
 			fill_in 'Title', with: 'Awesome event'
-			fill_in 'Starts at', with: DateTime.now.to_s(:formatted)
+			fill_in 'Starts at', with: Time.zone.now.to_s(:formatted)
 		end
 
 		it 'allows admins to create an event' do
@@ -36,7 +36,7 @@ RSpec.describe 'events feature', type: :feature do
 		it "allows scheduling in the future", js: true do
 			
 			check 'Schedule'
-			fill_in 'event_publish_at', with: DateTime.tomorrow.to_s(:formatted)
+			fill_in 'event_publish_at', with: (Time.zone.now + 1.day).to_s(:formatted)
 
 			click_on 'Schedule'
 
