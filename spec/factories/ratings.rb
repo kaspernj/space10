@@ -14,11 +14,9 @@
 
 FactoryGirl.define do
   factory :rating do
-    user_id 1
-    resource_type "MyString"
-    resource_id 1
+    user
+    resource
     content "MyText"
-    score 1
+    score 4
   end
-
 end

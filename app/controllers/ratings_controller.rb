@@ -19,7 +19,7 @@ class RatingsController < ApplicationController
 
   def update
     @rating = Rating.find(params[:id])
-    @rateable = rating.resource
+    @rateable = @rating.resource
     if @rating.update_attributes(rating_params)
       respond_to do |format|
         format.html { redirect_to @rateable }

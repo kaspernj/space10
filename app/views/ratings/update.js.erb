@@ -1,5 +1,7 @@
 $('.rating-box').replaceWith("<%= j render 'ratings/edit', rating: @rating %>")
-$("#modal-fullscreen").find('.modal-body').html("<%= j render 'ratings/content_form', rating: @rating %>");
 if (!($("#modal-fullscreen").data('bs.modal') || {}).isShown) {
+  $("#modal-fullscreen").find('.modal-body').html("<%= j render 'ratings/content_form', rating: @rating %>");
+  $("#modal-fullscreen").modal('toggle');
+} else {
   $("#modal-fullscreen").modal('toggle');
 };

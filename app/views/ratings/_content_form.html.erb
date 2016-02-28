@@ -1,24 +1,38 @@
-<%= simple_form_for @rating do |f| %>
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 text-center">
-          <h2>Thanks for your feedback. Would you like to add some additional inputs?</h2>
-          <br><br>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <h2>Thanks for your feedback. Would you like to add some additional inputs?</h2>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="rating-additional-inputs-controls" class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group">
+          <%= link_to "Yes, please!", "#", {class: 'btn btn-block btn-default', id: "rating-show-content"} %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <div class="form-group">
-            <%= link_to "Yes, please!", "#", {class: 'btn btn-block btn-default'} %>
-          </div>
-        </div>
-        <div class="col-sm-8 col-sm-offset-2">
-          <div class="form-group">
-            <%= link_to "No, thanks!", '#', {class: 'btn btn-block btn-default', data: {dismiss: "modal"}} %>
-          </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group">
+          <%= link_to "No, thanks!", '#', {class: 'btn btn-block btn-default', data: {dismiss: "modal"}} %>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+</div>
+<div id="rating-additional-inputs-form" class="row" style="display:none;">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <%= simple_form_for @rating, remote: true, class: "disable-after-submit" do |f| %>
+          <%= f.input :content, label: false, placeholder: "Type here", input_html: {class: 'auto-resize'} %>
+          <%= f.submit "Save", class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

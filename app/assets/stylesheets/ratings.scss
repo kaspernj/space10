@@ -13,6 +13,38 @@
   padding-top: $gutter/2;
 }
 
+#rating_content {
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  outline: 0 none;
+  background-color: transparent;
+  height: auto;
+  margin-top: 0;
+  padding-left: 0;
+  resize: none;
+  @extend .h2;
+  &:focus {
+    box-shadow: none;
+    outline: 0 none;
+  }
+}
+
+#rating_content {
+  &::-webkit-input-placeholder {
+     line-height: normal;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+     line-height: normal;  
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+     line-height: normal;  
+  }
+  &:-ms-input-placeholder {  
+     line-height: normal;  
+  }
+}
+
 @media (min-width: $screen-sm-min) {
   .rating-box {
     border: 1px solid #DCDDE0;
