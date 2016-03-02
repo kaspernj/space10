@@ -8,7 +8,7 @@ init_search = function() {
       $(this).closest('form').submit();
     };
   });
-  $('input[type=radio]').on( 'change', function() {
+  $('#search_form input[type=radio]').on( 'change', function() {
     $(this).closest('form').submit();
   });
 }
