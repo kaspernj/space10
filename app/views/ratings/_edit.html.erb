@@ -1,5 +1,5 @@
 <div class="row rating-box">
-  <%= form_for rating, remote: true do |f| %>
+  <%= form_for rating, html: {class: 'auto_submit'}, method: :patch, remote: true do |f| %>
     <div class="col-sm-4">
       <p class="h3">Rate this project</p>
     </div>

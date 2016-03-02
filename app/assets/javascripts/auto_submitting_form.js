@@ -1,5 +1,5 @@
 $(document).on('ready page:load', function () {
-  $('form.auto_submit').on('change', function(){
+  $('body').on( 'change', 'form.auto_submit', function (e){
     $(this).submit();
   });
 });

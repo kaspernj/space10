@@ -52,20 +52,23 @@ RSpec.describe "Rating feature", type: :feature do
   end
 
   describe "update rating" do
-    it "should allow edit of content", js: true, focus: true do
+    it "should allow edit of content", js: true do
       sign_in user
+
       visit post_path(rateable_post)
       find("[for=rating_score_3]").click
-      wait_for_ajax
-      expect(current_path).to eq post_path(rateable_post)
-
-      visit root_path
-      visit post_path(rateable_post)
-      find("[for=rating_score_5]").click
-      wait_for_ajax
-      expect(current_path).to eq post_path(rateable_post)
-
       expect(page).to have_selector(".modal", visible: true)
+      
+      submitted_rating = Rating.last
+      expect(submitted_rating.score).to eq 3
+
+      visit post_path(rateable_post)
+      expect(page).to have_content "You rated this project"
+
+      find("[for=rating_score_5]").click
+      expect(page).to have_selector(".modal", visible: true)
+
+      expect(submitted_rating.reload.score).to eq 5
 
       within ".modal" do
         expect(page).to have_content "Thanks for your feedback"
