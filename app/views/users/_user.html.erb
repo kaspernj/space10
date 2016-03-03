@@ -1,85 +1,128 @@
 <div class="manage-user">
-<div class="row content_block">
-  <div class="col-md-3">
-    <h2><%= user.name %></h2>
-  </div>
-  <div class="col-md-8">
-    <div class="row">
-      <%= simple_form_for user, html: {class: "disable-after-submit"}, remote: true, authenticity_token: true do |f| %>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.simple_fields_for :personal_profile do |profile| %>
-              <div class="file_upload">
-                <%= image_tag profile.object.image_url(:medium), class: "image_preview full_width" %>
-                
-                <%= profile.file_field :image, class: "upload upload_image" %>
-                <%= profile.hidden_field :image_cache %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :name, label: false, placeholder: 'Full name', input_html: { autocomplete: 'off' } %>
-          <%= f.input :email, label: false, placeholder: 'Email' %>
-          <%= f.input :birthday, label: false, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], prompt: {year: 'Year', month: 'Month', day: 'Day'} %>
-          <%= f.input :gender, label: false, collection: [['Male', 'male'],['Female','female']], include_blank: 'Gender' %>
-          <%= f.input :password, label: false, placeholder: "Change password" %>
-        </div>
-        <div class="col-md-4">
-          <%= f.simple_fields_for :personal_profile do |profile| %>
-            <%= profile.input :tagline, label: false, placeholder: 'Your professional headline' %>
-            <%= profile.input :tag_tokens, label: false, input_html: {data: { provider: 'tokeninput', load: user.personal_profile.tags, tokentype: 'ProfileTag' }}, placeholder: 'Tags' %>
-            <%= profile.input :website, label: false, placeholder: 'Website' %>
-            <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'gmaps-autocomplete', id: 'gmaps-input-address'} %>
-          <% end %>
-          <%= link_to "Sign out", logout_path, class: 'meta-text', id: 'logout' %>
-          <%= f.button :submit, "Save", class: 'btn btn-lg btn-default pull-right' %>
-          <div class="loading-indicator" style="display:none;"><i class="fa fa-spinner fa-pulse"></i></div>
-        </div>
-      <% end %>
+  <div class="row content_block">
+    <div class="col-md-3">
+      <h2><%= user.name %></h2>
     </div>
-  </div>
-</div>
-<div class="row content_block">
-  <div class="col-md-3">
-    <h2>My <br>Events</h2>
-  </div>
-  <div class="col-md-8">
-    
-    <% showing_events = user.events + user.historic_events %>
-    <% showing_events.in_groups_of(3, false) do |events| %>
+    <div class="col-md-8">
       <div class="row">
-        <% events.each do |event| %>
+        <%= simple_form_for user, html: {class: "disable-after-submit"}, remote: true, authenticity_token: true do |f| %>
           <div class="col-md-4">
-            <div class="thumbnail">
-              <%= link_to event do %>
-              <div class="aspect-ratio r-16-9">
-                <div class="centeret_cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
-                  <div class="centered_container">
-                    <span class="centered text-center">
-                      <span class="btn btn-inverse"><%= event.historic? ? 'Past event' : user.registrations.find_by(event: event).confirmation_status.capitalize %></span>
-                    </span>
-                  </div>
+            <div class="form-group">
+              <%= f.simple_fields_for :personal_profile do |profile| %>
+                <div class="file_upload">
+                  <%= image_tag profile.object.image_url(:medium), class: "image_preview full_width" %>
+                  
+                  <%= profile.file_field :image, class: "upload upload_image" %>
+                  <%= profile.hidden_field :image_cache %>
                 </div>
-              </div>
               <% end %>
-              <div class="caption">
-                <h4><%= event.title %></h4>
-              </div>
             </div>
+          </div>
+          <div class="col-md-4">
+            <%= f.input :name, label: false, placeholder: 'Full name', input_html: { autocomplete: 'off' } %>
+            <%= f.input :email, label: false, placeholder: 'Email' %>
+            <%= f.input :birthday, label: false, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], prompt: {year: 'Year', month: 'Month', day: 'Day'} %>
+            <%= f.input :gender, label: false, collection: [['Male', 'male'],['Female','female']], include_blank: 'Gender' %>
+            <%= f.input :password, label: false, placeholder: "Change password" %>
+          </div>
+          <div class="col-md-4">
+            <%= f.simple_fields_for :personal_profile do |profile| %>
+              <%= profile.input :tagline, label: false, placeholder: 'Your professional headline' %>
+              <%= profile.input :tag_tokens, label: false, input_html: {data: { provider: 'tokeninput', load: user.personal_profile.tags, tokentype: 'ProfileTag' }}, placeholder: 'Tags' %>
+              <%= profile.input :website, label: false, placeholder: 'Website' %>
+              <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'gmaps-autocomplete', id: 'gmaps-input-address'} %>
+            <% end %>
+            <%= link_to "Sign out", logout_path, class: 'meta-text', id: 'logout' %>
+            <%= f.button :submit, "Save", class: 'btn btn-lg btn-default pull-right' %>
+            <div class="loading-indicator" style="display:none;"><i class="fa fa-spinner fa-pulse"></i></div>
           </div>
         <% end %>
       </div>
-    <% end %>
-    <div class="row">
-      <% if showing_events.empty? %>
-        <div class="col-md-12">
-          <p >
-            You have not registered for any events. <%= link_to "See what's coming up.", events_path %>.
-          </p>        
-        </div>
-      <% end %>
     </div>
   </div>
-</div>
+  <div class="row content_block">
+    <div class="col-md-3">
+      <h2>My <br>Events</h2>
+    </div>
+    <div class="col-md-8">
+      
+      <% showing_events = user.events + user.historic_events %>
+      <% showing_events.in_groups_of(3, false) do |events| %>
+        <div class="row">
+          <% events.each do |event| %>
+            <div class="col-sm-4">
+              <div class="thumbnail">
+                <%= link_to event do %>
+                <div class="aspect-ratio r-16-9">
+                  <div class="centeret_cover" style="background-image: url('<%= event.featured_image_url(:medium) %>');">
+                    <div class="centered_container">
+                      <span class="centered text-center">
+                        <span class="btn btn-inverse"><%= event.historic? ? 'Past event' : user.registrations.find_by(event: event).confirmation_status.capitalize %></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <div class="caption">
+                  <h4><%= event.title %></h4>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="row">
+        <% if showing_events.empty? %>
+          <div class="col-md-12">
+            <p>
+              You haven't registered for any events. <%= link_to "See what's coming up.", events_path %>.
+            </p>        
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row content_block">
+    <div class="col-md-3">
+      <h2>Rated <br>Projects</h2>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <% user.ratings.in_groups_of(3, false) do |ratings| %>
+          <div class="row">
+            <% ratings.each do |rating| %>
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                  <%= link_to rating.resource do %>
+                    <div class="aspect-ratio r-16-9">
+                      <div class="centeret_cover" style="background-image: url('<%= rating.resource.featured_image_url(:medium) %>');">
+                      </div>
+                    </div>
+                  <% end %>
+                  <div class="caption">
+                    <h4><%= rating.resource.title %></h4>
+                    <div class="caption-rating">
+                      <% (1..rating.score).each do %>
+                        <span class="caption-rating-star">★</span>
+                      <% end %>
+                      <% (rating.score..4).each do %>
+                        <span class="caption-rating-star-o">★</span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <% if user.ratings.empty? %>
+          <div class="col-sm-12">
+            <p>You haven't rated any projects. <%= link_to "Discover what you've missed", posts_path %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

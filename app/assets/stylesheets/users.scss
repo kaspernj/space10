@@ -61,4 +61,12 @@
       display: inline-block;
     }
   }
+
+  .caption .caption-rating {
+    font-size: 1.5em;
+    line-height: 1em;
+    .caption-rating-star-o {
+      color: #DCDDE0;
+    }
+  }
 }
