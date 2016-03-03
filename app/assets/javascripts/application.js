@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery_ujs
 //= require jquery-ui/autocomplete
 //= require jquery.remotipart
 //= require html.sortable.min
@@ -22,10 +22,8 @@
 //= require codemirror
 //= require summernote
 //= require slick.min
-//= require jquery.unveil
 //= require autosize.min
 //= require jquery.tokeninput.min
-//= require select2.full.min
-//= require jquery.placecomplete
+//= require select2.min
 //= require_tree .
 //= require turbolinks

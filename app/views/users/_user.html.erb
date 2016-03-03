@@ -30,7 +30,7 @@
               <%= profile.input :tagline, label: false, placeholder: 'Your professional headline' %>
               <%= profile.input :tag_tokens, label: false, input_html: {data: { provider: 'tokeninput', load: user.personal_profile.tags, tokentype: 'ProfileTag' }}, placeholder: 'Tags' %>
               <%= profile.input :website, label: false, placeholder: 'Website' %>
-              <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'gmaps-autocomplete', id: 'gmaps-input-address'} %>
+              <%= profile.input :location, label: false, placeholder: 'Location', input_html: {class: 'gmaps-autocomplete'} %>
             <% end %>
             <%= link_to "Sign out", logout_path, class: 'meta-text', id: 'logout' %>
             <%= f.button :submit, "Save", class: 'btn btn-lg btn-default pull-right' %>

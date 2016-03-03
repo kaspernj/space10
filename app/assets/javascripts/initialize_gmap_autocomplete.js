@@ -36,8 +36,21 @@ $(document).on('ready page:load', function () {
             }
           }));
         })
+      },
+      change: function (event, ui) {
+        if(!ui.item){
+            $(event.target).val("");
+        }
+      }, 
+      focus: function (event, ui) {
+          return false;
+      }
+    });
+    $(this).keydown(function(e) {
+      if(e.keyCode == 13) { // enter key was pressed
+        // run own code
+        return false; // prevent execution of rest of the script + event propagation / event bubbling + prevent default behaviour
       }
     });
   });
-
 });
