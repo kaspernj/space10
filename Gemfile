@@ -38,7 +38,6 @@ gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
-gem "asset_sync"
 
 # Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'
