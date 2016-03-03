@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124170823) do
+ActiveRecord::Schema.define(version: 20160303093839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "content_blocks", force: :cascade do |t|
     t.string   "type"
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.text     "project_people_text"
   end
 
+  add_index "events", ["address_id"], name: "index_events_on_address_id", using: :btree
+  add_index "events", ["lab_id"], name: "index_events_on_lab_id", using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -141,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.boolean  "rateable"
   end
 
+  add_index "posts", ["lab_id"], name: "index_posts_on_lab_id", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
   create_table "press_mentions", force: :cascade do |t|
@@ -163,6 +168,9 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "profile_authorizations", ["profile_id"], name: "index_profile_authorizations_on_profile_id", using: :btree
+  add_index "profile_authorizations", ["user_id"], name: "index_profile_authorizations_on_user_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -183,6 +191,7 @@ ActiveRecord::Schema.define(version: 20160124170823) do
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "project_partnerships", force: :cascade do |t|
     t.string   "resource_type"
@@ -205,6 +214,8 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.integer  "resource_id"
   end
 
+  add_index "quote_attachments", ["resource_id", "resource_type"], name: "index_quote_attachments_on_resource_id_and_resource_type", using: :btree
+
   create_table "ratings", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "resource_type"
@@ -215,6 +226,9 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.datetime "updated_at",    null: false
   end
 
+  add_index "ratings", ["resource_id", "resource_type"], name: "index_ratings_on_resource_id_and_resource_type", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+
   create_table "registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -222,6 +236,9 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "registrations", ["event_id"], name: "index_registrations_on_event_id", using: :btree
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -232,6 +249,7 @@ ActiveRecord::Schema.define(version: 20160124170823) do
   end
 
   add_index "taggings", ["resource_id", "resource_type"], name: "index_taggings_on_resource_id_and_resource_type", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "title"
@@ -277,5 +295,7 @@ ActiveRecord::Schema.define(version: 20160124170823) do
     t.integer  "resource_id"
     t.string   "image"
   end
+
+  add_index "video_attachments", ["resource_id", "resource_type"], name: "index_video_attachments_on_resource_id_and_resource_type", using: :btree
 
 end

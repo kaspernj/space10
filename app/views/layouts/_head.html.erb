@@ -9,7 +9,7 @@
   
   <% if controller.class.parent.to_s != "Api::V1" %>
     <%= stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true, defer: "defer" %>
   <% else %>
     <style type="text/css">
       <%= raw Rails.application.assets['application.css'].to_s %>

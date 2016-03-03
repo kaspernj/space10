@@ -102,5 +102,6 @@ group :development, :test do
 	gem 'shoulda-matchers'
   gem 'pry-rails'
   gem "pry-byebug"
+  gem "rails_best_practices", "1.15.7", require: false
 end
 
