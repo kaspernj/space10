@@ -1,0 +1,50 @@
+<% provide(:title, "All Ratings") %>
+<div class="row">
+  <div class="col-md-8">
+    <h2>All Ratings</h2>
+  </div>
+  <div class="col-md-4 text-right">
+    <!-- New button goes here -->
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Resource type</th>
+            <th>Resource</th>
+            <th>User</th>
+            <th>Score</th>
+            <th>Content</th>
+            <th>Created at</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ratings.each do |rating| %>
+            <tr>
+              <th scope="row"><%= rating.id %></th>
+              <td><%= rating.resource_type %></td>
+              <td><%= truncate(rating.resource.title, length: 70) %></td>
+              <td><%= rating.user.name %></td>
+              <td><%= rating.score %></td>
+              <td><%= truncate(rating.content, length: 70) %></td>
+              <td><%= rating.created_at.to_s(:formatted) %></td>
+              <td class="text-right">
+                <%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, [:admin, rating] %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @ratings.empty? %>
+            <tr>
+              <td colspan="8">No ratings yet</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

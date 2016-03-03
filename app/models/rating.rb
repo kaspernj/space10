@@ -17,4 +17,5 @@ class Rating < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: [:resource_id, :resource_type] }
 
   belongs_to :resource, polymorphic: true
+  belongs_to :user
 end

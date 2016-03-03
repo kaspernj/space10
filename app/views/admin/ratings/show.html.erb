@@ -1,0 +1,25 @@
+<% provide(:title, "Rating for #{@rating.resource.title}") %>
+<div class="row">
+  <div class="col-md-10">
+    <h2>Rating for <%= @rating.resource.title %></h2>
+  </div>
+  <div class="col-md-2 text-right">
+    <!-- Control buttons goes here -->
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <dl>
+      <dt>Resource type</dt>
+      <dd><%= @rating.resource_type %></dd>
+      <dt>Resource</dt>
+      <dd><%= @rating.resource.title %></dd>
+      <dt>User</dt>
+      <dd><%= @rating.user.name %></dd>
+      <dt>Score</dt>
+      <dd><%= @rating.score %></dd>
+      <dt>Content</dt>
+      <dd><%= @rating.content %></dd>
+    </dl>
+  </div>
+</div>
