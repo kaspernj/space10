@@ -41,6 +41,10 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.3)
+    asset_sync (1.1.0)
+      activemodel
+      fog (>= 1.8.0)
+      unf
     autoprefixer-rails (5.2.1.2)
       execjs
       json
@@ -420,6 +424,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     uniform_notifier (1.9.0)
     will_paginate (3.0.7)
     xpath (2.0.0)
@@ -430,6 +437,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  asset_sync
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.5)
   bootstrap3-datetimepicker-rails (~> 4.14.30)

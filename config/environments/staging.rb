@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_controller.asset_host = "//#{ENV["AWS_S3_BUCKET"]}.s3.amazonaws.com"
+  config.assets.prefix = "/assets"
 end

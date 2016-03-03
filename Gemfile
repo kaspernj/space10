@@ -33,11 +33,12 @@ gem 'codemirror-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
 
-# Image upload
+# Upload and image manipulation
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'fog', "~> 1.28.0"
 gem 'mini_magick'
+gem "asset_sync"
 
 # Fetch oembed info from vimeo and yutube
 gem 'ruby-oembed'
