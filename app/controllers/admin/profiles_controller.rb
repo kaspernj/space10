@@ -15,6 +15,10 @@ class Admin::ProfilesController < AdminController
 
 	def index
 		@profiles = Profile.all
+		respond_to do |format|
+      format.html
+      format.xls
+    end
 	end
 
 	def edit

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table>
+    <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">title</Data></Cell>
+    <Cell><Data ss:Type="String">location</Data></Cell>
+    <Cell><Data ss:Type="String">website</Data></Cell>
+    <Cell><Data ss:Type="String">type</Data></Cell>
+    <Cell><Data ss:Type="String">published</Data></Cell>
+    <Cell><Data ss:Type="String">created_at</Data></Cell>
+   </Row>
+   <% @profiles.each do |profile| %>
+   <Row>
+    <Cell><Data ss:Type="String"><%= profile.id %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.title %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.location %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.website %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.type %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.published %></Data></Cell>
+    <Cell><Data ss:Type="String"><%= profile.created_at.localtime.to_s(:formatted) %></Data></Cell>
+   </Row>
+   <% end %>
+  </Table>
+ </Worksheet>
+</Workbook>
