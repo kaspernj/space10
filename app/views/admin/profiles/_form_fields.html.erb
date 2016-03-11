@@ -43,7 +43,7 @@
 
 		<div class="form-group">
 			<%= f.label :tag_tokens, "Tags" %>
-			<%= f.text_field :tag_tokens, class: 'form-control', data: { provider: 'tokeninput', load: @profile.tags } %>
+			<%= f.text_field :tag_tokens, class: 'form-control', data: { provider: 'tokeninput', load: @profile.tags, tokentype: 'ProfileTag' } %>
 		</div>
 
 		<div class="form-group">

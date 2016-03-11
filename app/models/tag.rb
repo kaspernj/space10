@@ -10,8 +10,8 @@
 #
 
 class Tag < ActiveRecord::Base
-	validates_presence_of :title
-	validates_uniqueness_of :title
+	validates :title, presence: true
+	validates :title, uniqueness: { scope: :type }
 
 	has_many :taggings, dependent: :destroy
 	has_many :profiles, through: :taggings, source: :resource, source_type: 'Profile'
