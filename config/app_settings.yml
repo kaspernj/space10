@@ -15,7 +15,7 @@ footer: !ruby/hash:ActionController::Parameters
       link: https://www.space10.io/about
     second: !ruby/hash:ActionController::Parameters
       title: Press
-      link: https://www.space10.io/about
+      link: http://press.space10.io
     third: !ruby/hash:ActionController::Parameters
       title: Contact
       link: mailto:discover@space10.io
