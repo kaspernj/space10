@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303093839) do
+ActiveRecord::Schema.define(version: 20160503144858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20160303093839) do
     t.string   "email"
     t.string   "slug"
     t.string   "tagline"
+    t.string   "claim_token"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree

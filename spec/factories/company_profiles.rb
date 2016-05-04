@@ -19,15 +19,14 @@
 #  email       :string
 #  slug        :string
 #  tagline     :string
-#  claim_token :string
 #
 
 FactoryGirl.define do
-  factory :profile do
-    title "Profile Title"
-		description "Profile Description"
-		location "Copenhagen, Denmark"
-		type ""
-		published true
+  factory :company_profile do
+    title "Company Profile Title"
+    description "Profile Description"
+    location "Copenhagen, Denmark"
+    type "CompanyProfile"
+    published true
   end
 end

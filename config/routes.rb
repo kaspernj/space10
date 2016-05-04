@@ -1,19 +1,19 @@
-require 'api_constraints'
+require "api_constraints"
 
 Rails.application.routes.draw do
   
-  root 'static_pages#home'
+  root "static_pages#home"
 
-  get 'about', to: 'static_pages#about', as: 'about'
+  get "about", to: "static_pages#about", as: "about"
 
   # TEMPORARY
-  get 'invitation' => redirect('https://rebelunited-yuji.squarespace.com/invitation')
+  get "invitation" => redirect("https://rebelunited-yuji.squarespace.com/invitation")
 
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get "login", to: "sessions#new", as: "login"
+  get "logout", to: "sessions#destroy", as: "logout"
 
-  get 'auth/:provider/callback', to: 'sessions#create_with_omniauth'
-  get 'auth/failure', to: 'sessions#omniauth_failure'
+  get "auth/:provider/callback", to: "sessions#create_with_omniauth"
+  get "auth/failure", to: "sessions#omniauth_failure"
 
   resources :users
   resources :sessions
@@ -30,17 +30,18 @@ Rails.application.routes.draw do
   resources :messages
   resources :password_resets
   resources :ratings
+  resources :profile_claims, only: [:edit, :update]
 
-  post 'video_preview', to: 'video_preview#create', as: 'video_preview'
+  post "video_preview", to: "video_preview#create", as: "video_preview"
 
-  get 'search', to: 'search#search', as: 'search'
-  post 'search', to: 'search#search_results', as: 'search_results'
+  get "search", to: "search#search", as: "search"
+  post "search", to: "search#search_results", as: "search_results"
 
   namespace :admin do
   	get "/", to: "static_pages#dashboard", as: "root"
   	resources :events do
       resources :registrations
-      post 'confirm_registration', to: 'registrations#confirm_registration', as: 'confirm_registration'
+      post "confirm_registration", to: "registrations#confirm_registration", as: "confirm_registration"
     end
     resources :posts
     resources :profiles
@@ -48,50 +49,50 @@ Rails.application.routes.draw do
     resources :tags
     resources :press_mentions
     resources :ratings
+    resources :profile_claims, only: [:create, :show]
     
-    get 'edit_settings', to: 'settings#edit', as: 'edit_settings'
-    put 'update_settings', to: 'settings#update', as: 'update_settings'
+    get "edit_settings", to: "settings#edit", as: "edit_settings"
+    put "update_settings", to: "settings#update", as: "update_settings"
   end
 
-  namespace :api, defaults: {format: 'json'} do
+  namespace :api, defaults: {format: "json"} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      post 'users', to: 'users#create'
-      get 'user', to: 'users#show'
-      put 'user', to: 'users#update'
+      post "users", to: "users#create"
+      get "user", to: "users#show"
+      put "user", to: "users#update"
 
       namespace :user do
-        get 'registrations', to: 'registrations#index'
-        post 'registrations', to: 'registrations#create'
-        get 'registrations/:id', to: 'registrations#show'
-        delete 'registrations/:id', to: 'registrations#destroy'
+        get "registrations", to: "registrations#index"
+        post "registrations", to: "registrations#create"
+        get "registrations/:id", to: "registrations#show"
+        delete "registrations/:id", to: "registrations#destroy"
       end
 
-      post 'authenticate', to: 'sessions#create'
-      post 'auth/:provider/callback', to: 'sessions#create_with_omniauth'
-      get 'auth/failure', to: 'sessions#omniauth_failure'
+      post "authenticate", to: "sessions#create"
+      post "auth/:provider/callback", to: "sessions#create_with_omniauth"
+      get "auth/failure", to: "sessions#omniauth_failure"
 
-      get 'events', to: 'events#index'
-      get 'future_events', to: 'events#future'
-      get 'historic_events', to: 'events#historic'
-      get 'events/:id', to: 'events#show'
+      get "events", to: "events#index"
+      get "future_events", to: "events#future"
+      get "historic_events", to: "events#historic"
+      get "events/:id", to: "events#show"
 
-      get 'posts', to: 'posts#index'
-      get 'posts/:id', to: 'posts#show'
+      get "posts", to: "posts#index"
+      get "posts/:id", to: "posts#show"
 
-      get 'profiles', to: 'profiles#index'
-      get 'profiles/filter_options', to: 'profiles#filter_options'
-      get 'profiles/:id', to: 'profiles#show'
+      get "profiles", to: "profiles#index"
+      get "profiles/filter_options", to: "profiles#filter_options"
+      get "profiles/:id", to: "profiles#show"
 
-      get 'profile_tags', to: 'tags#profile_tags'
-      get 'post_tags', to: 'tags#post_tags'
+      get "profile_tags", to: "tags#profile_tags"
+      get "post_tags", to: "tags#post_tags"
 
       resources :labs, only: [:index, :show] do
-        get 'posts', to: 'posts#index'
+        get "posts", to: "posts#index"
 
-        get 'future_events', to: 'events#future'
-        get 'historic_events', to: 'events#historic'
+        get "future_events", to: "events#future"
+        get "historic_events", to: "events#historic"
       end
     end
   end
-
 end

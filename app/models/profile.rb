@@ -19,6 +19,7 @@
 #  email       :string
 #  slug        :string
 #  tagline     :string
+#  claim_token :string
 #
 
 class Profile < ActiveRecord::Base
@@ -37,10 +38,21 @@ class Profile < ActiveRecord::Base
   after_validation :geocode, if: lambda{ |obj| obj.location_changed? }
 	
 	validates_presence_of :title, :type
-  # validates_format_of :website, with: /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i, allow_blank: true
 
   scope :published, -> { where('published = true') }
 	scope :featured, -> { where('featured = true') }
 
   default_scope { order('title asc') }
+
+  def generate_claim_token
+    generate_token(:claim_token)
+    save!
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Profile.exists?(column => self[column])
+  end
+
 end
