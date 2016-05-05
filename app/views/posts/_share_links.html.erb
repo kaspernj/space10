@@ -14,7 +14,7 @@
       <div><i class="fa fa-fw fa-linkedin"></i></div>
     </div>
   <% end %>
-  <%= link_to ("https://pinterest.com/pin/create/button/?url=" + request.original_url + "&media=" + post.image_attachments.first.image_url(:large) + "&description="), class: 'share-link', target: '_blank' do %>
+  <%= link_to ("https://pinterest.com/pin/create/button/?url=" + request.original_url + "&media=" + post.featured_image_url(:large) + "&description="), class: 'share-link', target: '_blank' do %>
     <div class="aspect-ratio">
       <div><i class="fa fa-fw fa-pinterest-p"></i></div>
     </div>
