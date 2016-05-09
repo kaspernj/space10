@@ -284,7 +284,7 @@ GEM
     parse-ruby-client (0.3.0)
       faraday
       faraday_middleware
-    pg (0.18.3)
+    pg (0.18.4)
     pg_search (1.0.5)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -464,7 +464,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-linkedin-oauth2
   parse-ruby-client
-  pg
+  pg (= 0.18.4)
   pg_search
   pry-byebug
   pry-rails
@@ -490,4 +490,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
