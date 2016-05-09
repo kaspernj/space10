@@ -63,6 +63,11 @@ RSpec.describe "Profile feature", type: :feature do
 					personal_profile.generate_claim_token
 					visit edit_profile_claim_path(personal_profile.reload.claim_token)
 					expect(current_path).to eq new_user_path
+					fill_in "Full name", with: "Peter"
+					fill_in "Email", with: "name@example.com"
+					fill_in "Password", with: "Passw0rd!"
+					click_on "Sign up"
+					expect(current_path).to eq edit_profile_claim_path(personal_profile.reload.claim_token)
 				end
 			end
 		end
