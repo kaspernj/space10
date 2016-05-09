@@ -10,6 +10,7 @@ rvm:
 notifications:
    email: false
 before_install:
+  - sudo apt-get update
   - sudo apt-get install libpq-dev
 before_script:
   - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
