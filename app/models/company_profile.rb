@@ -19,6 +19,7 @@
 #  email       :string
 #  slug        :string
 #  tagline     :string
+#  claim_token :string
 #
 
 class CompanyProfile < Profile

@@ -19,10 +19,12 @@
 #  email       :string
 #  slug        :string
 #  tagline     :string
+#  claim_token :string
 #
 
 class PersonalProfile < Profile
 	belongs_to :user
+  validates :user_id, uniqueness: true, allow_blank: true
 
   def self.from_omniauth(user,omniauth)
     find_or_initialize_by(user: user).tap do |profile|

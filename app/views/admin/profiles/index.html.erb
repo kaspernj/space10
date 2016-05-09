@@ -24,14 +24,14 @@
         </thead>
         <tbody>
         	<% @profiles.each do |profile| %>
-	          <tr>
+	          <tr id="profile_<%= profile.id %>">
 	            <th scope="row"><%= profile.id %></th>
 	            <td><%= link_to profile.title, edit_admin_profile_path(profile) %></td>
 	            <td><%= profile.type.underscore.humanize rescue '-' %></td>
               <td><%= profile.updated_at.to_s(:formatted) %></td>
 	            <td><%= profile.published? ? 'Published' : 'Unpublished' %></td>
 	            <td class="text-right">
-	            	<%= link_to '<i class="fa fa-fw fa-eye"></i>'.html_safe, "#" %>
+                <%= link_to '<i class="fa fa-fw fa-hand-grab-o"></i>'.html_safe, [:admin, :profile_claims, profile_id: profile.id], method: :post, data: { toggle: "tooltip", title: "Generate claim link" } %>
 	            	<%= link_to '<i class="fa fa-fw fa-pencil"></i>'.html_safe, edit_admin_profile_path(profile) %>
 	            	<%= link_to '<i class="fa fa-fw fa-trash"></i>'.html_safe, admin_profile_path(profile), method: :delete, data: { confirm: 'Are you sure?' } %>
 	            </td>

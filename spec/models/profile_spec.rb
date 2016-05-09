@@ -19,6 +19,7 @@
 #  email       :string
 #  slug        :string
 #  tagline     :string
+#  claim_token :string
 #
 
 require 'rails_helper'

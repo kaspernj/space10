@@ -1,0 +1,20 @@
+<div class="centered_cover">
+  <div class="centered_container">
+    <div class="centered">
+      <div class="container">
+        <div class="row login-content">
+          <div class="col-sm-6 col-md-3 text-center">
+            <%= link_to root_path, class: 'no-link-style' do %>
+              <%= image_tag 'logos/text-logo.svg' %>
+            <% end %>
+            <p class="meta-text">You are about to claim this profile</p>
+            <div class="text-left">
+              <%= render "profiles/profile_card", profile: @profile %>
+            </div>
+            <%= link_to "Claim profile", profile_claim_path(@profile.claim_token), class: ["btn", "btn-primary", "btn-block"], method: :patch %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

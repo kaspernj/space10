@@ -1,0 +1,7 @@
+<% provide(:title, "Profile claim token") %>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Profile claim link for: <%= @profile.title %></h2>
+    <%= edit_profile_claim_url(@profile.claim_token) %>
+  </div>
+</div>
