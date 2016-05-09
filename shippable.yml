@@ -1,0 +1,25 @@
+addons:
+  firefox: "28.0"
+services:
+  - selenium
+env:
+  global:
+    - DISPLAY=:99.0
+    - secure: TYply0a5zcrOAD6N/AjqLWOBGeYpjAW+uEZXObQdbe8CN/gWeDbiCC7kAODcor4XDfwYQs9pQab78+Uu2XFH3TdZGY0D97qvUwsjwoVJ2UJaeNJTjOeri53Mvb1J7einf6PVHhLfMVEjRS6Zc6rGzjnKxUW40PEkPIHjPFkv30rmKXSVcf51S8Z8jogIU6huQqmeNl6t3Yhd11uJ/0AdAGtoDSycCMXtpChjHc3CHPCoRAa7c8prFn7wqwY/CFXMO8XKFnxLtY2rRxtL18zHTHr+u2O8QISEdYaos5DEdg+yQr71SsjzHjHsPBqMQ49FfY3Cqi2MZOYFbIuPgiAx5g==
+before_script:
+  - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
+  - psql -c 'CREATE DATABASE "space10-test";' -U postgres
+  - cp config/database.shippable.yml config/database.yml
+  - RAILS_ENV=test bundle exec rake db:schema:load
+  - /etc/init.d/xvfb start
+after_script:
+  - /etc/init.d/xvfb stop
+language: ruby
+cache: bundler
+archive: true
+rvm:
+  - ruby-2.2.1
+script:
+  - bundle exec rspec
+notifications:
+   email: false

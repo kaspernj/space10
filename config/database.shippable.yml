@@ -1,0 +1,5 @@
+test:
+  adapter: postgresql
+  database: space10-test
+  username: postgres
+  pool: 5
