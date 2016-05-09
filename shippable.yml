@@ -1,24 +1,13 @@
-addons:
-  firefox: "28.0"
-services:
-  - selenium
 language: ruby
-cache: bundler
-archive: true
 rvm:
-  - ruby-2.2.1
-notifications:
-   email: false
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install libpq-dev
-before_script:
-  - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
-  - psql -c 'CREATE DATABASE "space10-test";' -U postgres
-  - cp config/database.shippable.yml config/database.yml
-  - RAILS_ENV=test bundle exec rake db:setup
-  - /etc/init.d/xvfb start
-script:
-  - bundle exec rspec
-after_script:
-  - /etc/init.d/xvfb stop
+  - 2.2.1
+services:
+  - postgres
+
+build:
+  ci:
+    - sudo apt-get -y update
+    - sudo apt-get -y install libpq-dev
+    - cp config/database.shippable.yml config/database.yml
+    - bundle exec rake db:setup
+    - bundle exec rspec
