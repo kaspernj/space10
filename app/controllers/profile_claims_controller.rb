@@ -10,6 +10,7 @@ class ProfileClaimsController < ApplicationController
     @profile = Profile.find_by!(claim_token: params[:id])
     if @profile.type == "PersonalProfile"
       current_user.update_attributes!(personal_profile: @profile)
+      @profile.update_attributes!(claim_token: nil)
       redirect_to root_path, notice: "Profile claimed!"
     else
       redirect_to root_path, notice: "Can't claim company profiles!"
