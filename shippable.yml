@@ -1,9 +1,12 @@
 language: ruby
 rvm:
   - ruby-2.2.1
+cache: bundler
+archive: true
 services:
   - postgres
-
+notifications:
+   email: false
 build:
   ci:
     - sudo apt-get -y update
