@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			sign_in(@user)
-			redirect_to root_path, notice: "Signed up successfully"
+			flash[:notice] = "Signed up successfully"
+			redirect_back_or root_path
 		else
 			render action: 'new', layout: 'clean_application'
 		end
