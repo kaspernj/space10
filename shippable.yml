@@ -13,8 +13,6 @@ services:
 notifications:
    email: false
 build:
-  pre_ci:
-    - /etc/init.d/xvfb start
   ci:
     - sudo apt-get -y update
     - sudo apt-get -y install libpq-dev
@@ -25,5 +23,3 @@ build:
     - cp config/database.shippable.yml config/database.yml
     - RAILS_ENV=test bundle exec rake db:schema:load
     - bundle exec rspec
-  post_ci:
-    - /etc/init.d/xvfb stop
