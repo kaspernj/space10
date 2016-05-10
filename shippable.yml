@@ -5,12 +5,16 @@ cache: bundler
 archive: true
 env:
   global:
+    - DISPLAY=:99.0
     - secure: l8XmBtlTZlGhr4eiWfYc9WGRydABMaHrW6lGeuW/LSNrRndIHqtKlIA5XNWr/6Oo89KV2KMcskbqjgwgamAgkCQ5LPRjRQCI4Az36cre7dPFFPKd7UXZXKKNSif8JSBAEnp0gzLgvGzl2fXD7xtFciqVaSjq4UCmcjlRT/MpJma15tJtqVmTK1PGcprqrLbT8jl5Iaq5IARhLCdqJwDQrIcsL5NJDmvhH/jhJoosMmsS6xWxN2eajgQ/spf30/9LpjJbz7t3S29dDSHDPvjWyqfisss05dYVfMrdVwyl7GkmoDTAC2dbibCmqtMVT8vKa7DLGmfMSVN+oxZJUJAYkA==
 services:
   - postgres
+  - selenium
 notifications:
    email: false
 build:
+  pre_ci:
+    - /etc/init.d/xvfb start
   ci:
     - sudo apt-get -y update
     - sudo apt-get -y install libpq-dev
@@ -21,3 +25,5 @@ build:
     - cp config/database.shippable.yml config/database.yml
     - RAILS_ENV=test bundle exec rake db:schema:load
     - bundle exec rspec
+  post_ci:
+    - /etc/init.d/xvfb stop

@@ -1,3 +1,5 @@
+[![Run Status](https://api.shippable.com/projects/56279b131895ca44741f6cc4/badge?branch=master)](https://app.shippable.com/projects/56279b131895ca44741f6cc4)
+
 = SPACE 10
 
 This is the platform powering SPACE 10.
