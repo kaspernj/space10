@@ -14,5 +14,5 @@ build:
     - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
     - bundle install
     - cp config/database.shippable.yml config/database.yml
-    - bundle exec rake db:setup
+    - bundle exec rake db:schema:load
     - bundle exec rspec
