@@ -11,7 +11,7 @@ build:
   ci:
     - sudo apt-get -y update
     - sudo apt-get -y install libpq-dev
-    - gem install bundler
+    - gem install rake
     - cp config/database.shippable.yml config/database.yml
     - bundle exec rake db:setup
     - bundle exec rspec
