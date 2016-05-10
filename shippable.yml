@@ -16,7 +16,6 @@ before_script:
   - sudo apt-get -y update
   - sudo apt-get -y install libpq-dev
   - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-  - bundle install
   - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
   - psql -c 'CREATE DATABASE "space10-test";' -U postgres
   - cp config/database.shippable.yml config/database.yml
