@@ -3,6 +3,9 @@ rvm:
   - ruby-2.2.1
 cache: bundler
 archive: true
+env:
+  global:
+    - secure: d9b5ca198c31bd2f16a1b652452795cd4b0d48ab5a983fad3ece979e6bb2bdd8e9a4f93aabf5819a33dfbcb32b7197b8414254db9a683c2d217b6fa8c6f8bba4
 services:
   - postgres
 notifications:
