@@ -5,7 +5,7 @@ cache: bundler
 archive: true
 env:
   global:
-    - secure: d9b5ca198c31bd2f16a1b652452795cd4b0d48ab5a983fad3ece979e6bb2bdd8e9a4f93aabf5819a33dfbcb32b7197b8414254db9a683c2d217b6fa8c6f8bba4
+    - secure: FwlXJRWQ6hP9eyw0r3iMD43WwNifzqJZQmNoO1wuTbcY3Xg07du4bPftTSj26YxWGfm4/a8XhgpZWalv2OOVpkgtPlQspfgq8GdQ7aSTt3UCtFg7FIZJwh5tDis84PLU4OZlzrmV5pTHn0Hb1mFoBlhwZWq1fG/q04+WKsgk449gB3MX46VJqKTPEer3WdahCosZHiGtMUn2n3pnXei9LnAoahs6KFI8FyjLi0W4t4/TkMZG4JoT/aScaOxbC6MoH6vhlRhPuI31QTl6R2wzXg9Uypml0ChQCtN1iGYq/o8T5M156br13x2DKyzEx8ujmLDlvoxlXPJuVPPQf0xRJw==
 services:
   - postgres
 notifications:
@@ -17,6 +17,5 @@ build:
     - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
     - bundle install
     - cp config/database.shippable.yml config/database.yml
-    - cp config/local_env.shippable.yml config/local_env.yml
     - RAILS_ENV=test bundle exec rake db:schema:load
     - bundle exec rspec
