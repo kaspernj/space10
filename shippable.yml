@@ -8,10 +8,12 @@ services:
 notifications:
    email: false
 build:
-  ci:
+  pre_ci:
     - sudo apt-get -y update
     - sudo apt-get -y install libpq-dev
+    - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
     - bundle install
+  ci:
     - cp config/database.shippable.yml config/database.yml
     - bundle exec rake db:setup
     - bundle exec rspec
