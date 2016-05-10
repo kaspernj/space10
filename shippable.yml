@@ -12,16 +12,17 @@ services:
   - selenium
 notifications:
    email: false
-before_script:
-  - sudo apt-get -y update
-  - sudo apt-get -y install libpq-dev
-  - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-  - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
-  - psql -c 'CREATE DATABASE "space10-test";' -U postgres
-  - cp config/database.shippable.yml config/database.yml
-  - RAILS_ENV=test bundle exec rake db:schema:load
-  - /etc/init.d/xvfb start
-script:
-  - bundle exec rspec
-after_script:
-  - /etc/init.d/xvfb stop
+build:
+  pre_ci:
+    - sudo apt-get -y update
+    - sudo apt-get -y install libpq-dev
+    - sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
+    - psql -c 'DROP DATABASE IF EXISTS "space10-test";' -U postgres
+    - psql -c 'CREATE DATABASE "space10-test";' -U postgres
+    - cp config/database.shippable.yml config/database.yml
+    - RAILS_ENV=test bundle exec rake db:schema:load
+    - /etc/init.d/xvfb start
+  ci:
+    - bundle exec rspec
+  post_ci:
+    - /etc/init.d/xvfb stop
