@@ -24,4 +24,4 @@ build:
     - psql -c 'CREATE DATABASE "space10-test";' -U postgres
     - cp config/database.shippable.yml config/database.yml
     - RAILS_ENV=test bundle exec rake db:schema:load
-    - bundle exec rspec
+    - DISPLAY=localhost:1.0 xvfb-run bundle exec rspec
