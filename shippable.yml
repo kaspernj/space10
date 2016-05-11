@@ -1,3 +1,5 @@
+addons:
+  firefox: "28.0"
 language: ruby
 rvm:
   - ruby-2.2.1
