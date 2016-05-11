@@ -12,7 +12,15 @@ class BaseMandrillMailer < ActionMailer::Base
   end
 
   def mandrill_template(template_name, attributes)
-    mandrill = Mandrill::API.new(ENV["MANDRILL_PASSWORD"])
+    if ENV["MANDRILL_PASSWORD"].present?
+      api_key = ENV["MANDRILL_PASSWORD"]
+    elsif Rails.application.secrets.mandrill
+      api_key = Rails.application.secrets.mandrill.fetch("api_key")
+    else
+      raise "Could not figure out the API key"
+    end
+
+    mandrill = Mandrill::API.new(api_key)
 
     merge_vars = attributes.map do |key, value|
       { name: key, content: value }
